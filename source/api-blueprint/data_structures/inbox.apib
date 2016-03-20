@@ -1,0 +1,21 @@
+## Inbox
+
++ id: `inb_55c8c149` (string, required) - Unique identifier for the inbox
++ address: `team@planet-express.com` (string, required) - Address receiving the messages
++ type (enum[string], required) - Type of the inbox
+    + Members
+        + `email`
+        + `sms`
+        + `twitter`
+        + `facebook`
+        + `smooch`
+        + `intercom`
+        + `truly`
+        + `custom`
++ name: `Team` (string, required) - Name of the inbox
++ send_as: `team@planet-express.com` (string, optional) - Address which appears as the sender for messages sent from Front
+<!-- include(../includes/links_attribute.apib) -->
+    + self: `https://api2.frontapp.com/inboxes/inb_55c8c149` (string, required) - URL of the inbox
+    + related (object, required)
+        + teammates: `https://api2.frontapp.com/inboxes/inb_55c8c149/teammates` (string, required) - URL of the list of teammates that can access the inbox
+        + conversations: `https://api2.frontapp.com/inboxes/inb_55c8c149/conversations` (string, required) - URL of the list of conversations included in this inbox

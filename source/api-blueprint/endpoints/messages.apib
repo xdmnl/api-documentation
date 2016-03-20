@@ -1,0 +1,46 @@
+## Messages [/messages/{message_id}]
+
+A message is a resource which can be either received or sent via an inbox. Messages are grouped by conversations.
+
+A message can be either inbound (received) or outbound (sent). You can know if a message has been received or sent thanks to the boolean `is_inbound`.
+
++ Parameters
+    + message_id (string, required) - Id of the requested message
+
++ Attributes (Message)
+
+### Get  message [GET]
+
+Fetches the information of a message.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes (Message)
+
+### Send a message [POST /inboxes/{inbox_id}/messages]
+
+Sends a new message from an inbox. It will create a new conversation, if you want to reply to an existing conversation, refer to [Send a reply](#reference/conversations/conversation-resource/send-a-reply).
+
++ Parameters
+    + inbox_id (string, required) - Id or address of the inbox from which to send the message
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Outbound new message)
+
+<!-- include(../includes/accepted_response.apib) -->
+
+### Receive an incoming message [POST /inboxes/{inbox_id}/incoming_messages]
+
+Simulate the reception of an incoming message. This endpoint can be used with [custom inboxes](#reference/custom-inboxes) **ONLY**.
+
++ Parameters
+    + inbox_id (string, required) - Id or address of the requested inbox
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Incoming message)
+
+<!-- include(../includes/accepted_response.apib) -->
