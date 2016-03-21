@@ -36,13 +36,17 @@
 ## Outbound new message
 
 + Include Outbound message
-+ recipients (array[Recipient requested], required) - Array of all the recipients for this message.
++ to: `calculon@momsbot.com` (array[string], required) - List of the recipient handles who will receive this message
++ cc (array[string], optional) - List of the recipient handles who will receive a copy of this message
++ bcc (array[string], optional) - List of the recipient handles who will receive a blind copy of this message
 
 ## Outbound reply
 
 + Include Outbound message
 + `inbox_id`: `inb_55c8c149` (string, optional) - In case of a message received on multiple inboxes, you **MUST** choose which one is replying.
-+ recipients (array[Recipient requested], optional) - Array of all the recipients for this message. It will answer to all recipients of the last received message by default.
++ to (array[string], optional) - List of the recipient handles who will receive this message. By default it will use the recipients of the last received message.
++ cc (array[string], optional) - List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message.
++ bcc (array[string], optional) - List of the recipient handles who will receive a blind copy of this message
 
 ## Incoming message
 

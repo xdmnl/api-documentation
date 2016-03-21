@@ -1447,12 +1447,9 @@ curl --include \
     \"archive\": true
   },
   \"inbox_id\": \"inb_55c8c149\",
-  \"recipients\": [
-    {
-      \"handle\": \"calculon@momsbot.com\",
-      \"role\": \"to\"
-    }
-  ]
+  \"to\": [],
+  \"cc\": [],
+  \"bcc\": []
 }" \
 'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/messages'
 ```
@@ -1489,7 +1486,9 @@ author_id | string (optional) | ID or email of the teammate on behalf of whom th
 ,options | object (optional) | Sending options
 options.archive | boolean (optional) | Archive the conversation right when sending the reply (Defaults to `true`) (default: `true`)
 inbox_id | string (optional) | In case of a message received on multiple inboxes, you **MUST** choose which one is replying.
-recipients | array (optional) | Array of all the recipients for this message. It will answer to all recipients of the last received message by default.
+to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message.
+cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message.
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message
 
 # Comments
 > 
@@ -1886,12 +1885,11 @@ curl --include \
   \"options\": {
     \"archive\": true
   },
-  \"recipients\": [
-    {
-      \"handle\": \"calculon@momsbot.com\",
-      \"role\": \"to\"
-    }
-  ]
+  \"to\": [
+    \"calculon@momsbot.com\"
+  ],
+  \"cc\": [],
+  \"bcc\": []
 }" \
 'https://api2.frontapp.com/inboxes/${INBOX_ID}/messages'
 ```
@@ -1927,7 +1925,9 @@ author_id | string (optional) | ID or email of the teammate on behalf of whom th
 ,text | string (optional) | Text version of the body for messages with non-text body
 ,options | object (optional) | Sending options
 options.archive | boolean (optional) | Archive the conversation right when sending the reply (Defaults to `true`) (default: `true`)
-recipients | array | Array of all the recipients for this message.
+to | array | List of the recipient handles who will receive this message
+cc | array (optional) | List of the recipient handles who will receive a copy of this message
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message
 
 ## Receive an incoming message
 ```shell
