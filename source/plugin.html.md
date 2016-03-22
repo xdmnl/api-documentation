@@ -3,7 +3,7 @@ title: Front Plugin API Reference
 
 toc_footers:
   - <a href='https://github.com/frontapp/frontapp.github.io/'>Plugin example</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='/'>API reference</a>
 
 includes:
   - plugin/events
