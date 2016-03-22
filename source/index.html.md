@@ -4,7 +4,6 @@ title: Front API Reference
 toc_footers:
   - <a href='https://frontapp.com/signup'>Create a Front account</a>
   - <a href='plugin.html'>Plugin API documentation</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 language_tabs:
   - shell
@@ -13,7 +12,6 @@ includes:
   - endpoints
   - custom_inboxes
   - webhooks
-  - export_format
 
 search: true
 ---
@@ -66,7 +64,7 @@ When the rate limit is exceeded, the server will respond with a [**429 Too Many 
 
 Since individual inboxes are private, the API does not let you interact with them nor with their content.
 
-<aside class="info">The API can only access conversations that appear in at least one shared inbox.</aside>
+<aside class="info">The API can only access conversations that appear in at least one team inbox.</aside>
 
 ## Resource aliases
 
