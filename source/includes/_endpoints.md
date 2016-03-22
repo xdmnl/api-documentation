@@ -12,9 +12,9 @@ is_admin | boolean | Whether or not the teammate is an admin in your company
 is_available | boolean | Whether or not the teammate is available
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the teammate
-,_links.related | object | 
+_links.related | object | 
 _links.related.inboxes | string | URL of the teammate's inboxes
-,_links.related.conversations | string | URL of the teammate's conversation
+_links.related.conversations | string | URL of the teammate's conversation
 
 A teammate is a Front user, a member of your company.
 
@@ -306,7 +306,7 @@ Lists the conversations assigned to a teammate in reverse chronological order (n
 Name | Type | Description
 -----|------|------------
 teammate_id | string | Id or email of the teammate
-q | object) - Search query. See [Search Parameters](#search-parameters (optional) | 
+q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 
 ## List teammate inboxes
@@ -372,9 +372,9 @@ name | string | Name of the inbox
 send_as | string (optional) | Address which appears as the sender for messages sent from Front
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the inbox
-,_links.related | object | 
+_links.related | object | 
 _links.related.teammates | string | URL of the list of teammates that can access the inbox
-,_links.related.conversations | string | URL of the list of conversations included in this inbox
+_links.related.conversations | string | URL of the list of conversations included in this inbox
 
 An inbox is a resource which can receive messages. It is usually tied to an address (email address, Twitter handle, phone number, ...) and can be of one of the following types:
 
@@ -627,7 +627,7 @@ Lists the conversations which appear in an inbox.
 Name | Type | Description
 -----|------|------------
 inbox_id | string | Id or address of the requested inbox
-q | object) - Search query. See [Search Parameters](#search-parameters (optional) | 
+q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 
 ## List inbox teammates
@@ -697,12 +697,12 @@ tags | array | List of the tags for this conversation
 last_message | Message | List of partial representation of the messages inside the conversation
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the conversation
-,_links.related | object | 
+_links.related | object | 
 _links.related.events | string | URL of the activities related to the conversation
-,_links.related.followers | string | URL of the teammates following the conversation
-,_links.related.messages | string | URL of the list of messages in the conversation
-,_links.related.comments | string | URL of the comments for the conversation
-,_links.related.inboxes | string | URL of the inboxes in which the conversation appears
+_links.related.followers | string | URL of the teammates following the conversation
+_links.related.messages | string | URL of the list of messages in the conversation
+_links.related.comments | string | URL of the comments for the conversation
+_links.related.inboxes | string | URL of the inboxes in which the conversation appears
 
 A conversation is a unique thread of messages. It can appear in one or more inboxes (eg: if you receive an email on contact@ where support@ is Cced).
 
@@ -850,7 +850,7 @@ Lists all the conversations in your company in reverse chronological order (late
 
 Name | Type | Description
 -----|------|------------
-q | object) - Search query. See [Search Parameters](#search-parameters (optional) | 
+q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 
 ## Get conversation
@@ -1480,11 +1480,11 @@ conversation_id | string | Id of the conversation
 Name | Type | Description
 -----|------|------------
 author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent
-,subject | string (optional) | Subject of the message for email message
-,body | string | Body of the message
-,text | string (optional) | Text version of the body for messages with non-text body
-,options | object (optional) | Sending options
-options.archive | boolean (optional) | Archive the conversation right when sending the reply (Defaults to `true`) (default: `true`)
+subject | string (optional) | Subject of the message for email message
+body | string | Body of the message
+text | string (optional) | Text version of the body for messages with non-text body
+options | object (optional) | Sending options
+options.archive | boolean (optional) | Archive the conversation right when sending the reply (default: `true`)
 inbox_id | string (optional) | In case of a message received on multiple inboxes, you **MUST** choose which one is replying.
 to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message.
 cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message.
@@ -1500,9 +1500,9 @@ body | string | Content of the comment
 posted_at | number | Date at which the comment have been posted
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the comment
-,_links.related | object | 
+_links.related | object | 
 _links.related.conversation | string | URL of the conversation from which the comment belongs
-,_links.related.mentions | string | URL of the teammates mentionned in a comment
+_links.related.mentions | string | URL of the teammates mentionned in a comment
 
 A comment is a private message written by a teammate visible only to the other teammates. It is never sent and cannot be shared outside of Front.
 
@@ -1777,9 +1777,9 @@ attachments | array | List of files attached to the message
 metadata | object (optional) | Optional metadata about the message
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the message
-,_links.related | object | 
+_links.related | object | 
 _links.related.conversation | string | URL of the parent conversation
-,_links.related.message_replied_to | string (optional) | URL of the message which have been replied to
+_links.related.message_replied_to | string (optional) | URL of the message which have been replied to
 
 A message is a resource which can be either received or sent via an inbox. Messages are grouped by conversations.
 
@@ -1920,11 +1920,11 @@ inbox_id | string | Id or address of the inbox from which to send the message
 Name | Type | Description
 -----|------|------------
 author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent
-,subject | string (optional) | Subject of the message for email message
-,body | string | Body of the message
-,text | string (optional) | Text version of the body for messages with non-text body
-,options | object (optional) | Sending options
-options.archive | boolean (optional) | Archive the conversation right when sending the reply (Defaults to `true`) (default: `true`)
+subject | string (optional) | Subject of the message for email message
+body | string | Body of the message
+text | string (optional) | Text version of the body for messages with non-text body
+options | object (optional) | Sending options
+options.archive | boolean (optional) | Archive the conversation right when sending the reply (default: `true`)
 to | array | List of the recipient handles who will receive this message
 cc | array (optional) | List of the recipient handles who will receive a copy of this message
 bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message
@@ -1977,8 +1977,8 @@ Name | Type | Description
 -----|------|------------
 sender | object | Data of the sender
 sender.contact_id | string (optional) | ID of the contact in Front corresponding to the sender
-,sender.name | string (optional) | Name of the sender
-,sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender
+sender.name | string (optional) | Name of the sender
+sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender
 subject | string (optional) | Subject of the message
 body | string | Body of the message
 body_format | enum (optional) | Format of the body (Defaults to `'markdown'`) (default: `[object Object]`)
@@ -1998,9 +1998,9 @@ links | array | A set of URL associated to the contact
 handles | array | List of the handles and sources with which the contact is reachable.
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the contact
-,_links.related | object | 
+_links.related | object | 
 _links.related.notes | string | URL to list the notes associated to the contact
-,_links.related.conversations | string | URL to list the URL associated to the contact
+_links.related.conversations | string | URL to list the URL associated to the contact
 
 A contact is a person/entity with whom you have communicated.
 
@@ -2253,10 +2253,10 @@ Creates a new contact. It might also merge two contacts (see explanation above).
 Name | Type | Description
 -----|------|------------
 name | string (optional) | Contact name
-,description | string (optional) | Contact description
-,avatar_url | string (optional) | URL of the contact's avatar
-,is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer
-,links | array (optional) | List of all the links of a contact
+description | string (optional) | Contact description
+avatar_url | string (optional) | URL of the contact's avatar
+is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer
+links | array (optional) | List of all the links of a contact
 handles | array | List of the handles of a contact
 
 ## Delete contact
@@ -2430,7 +2430,7 @@ Lists all the conversations with a contact in reverse chronological order (newes
 
 Name | Type | Description
 -----|------|------------
-q | object) - Search query. See [Search Parameters](#search-parameters (optional) | 
+q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 contact_id | string | Id or alias of the requested contact
 
@@ -2670,7 +2670,7 @@ id | string | Unique identifier of the tag
 name | string | Name of the tag
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the tag
-,_links.related | object | 
+_links.related | object | 
 _links.related.conversations | string | URL of the list of conversations tagged with this tag
 
 A tag is a label that can be used to classify conversations.
@@ -2803,7 +2803,7 @@ Fetches the information of a tag.
 
 Name | Type | Description
 -----|------|------------
-tag_id | string | ID or alias of the requested tag
+tag_id | string | ID of the requested tag
 
 ## List tag conversations
 ```shell
@@ -2945,8 +2945,8 @@ Lists all the conversations tagged with a specific tag.
 
 Name | Type | Description
 -----|------|------------
-tag_id | string | ID or alias of the requested tag
-q | object) - Search query. See [Search Parameters](#search-parameters (optional) | 
+tag_id | string | ID of the requested tag
+q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 
 # Rules
@@ -3057,11 +3057,11 @@ emitted_at | number | Date at which the event has been emitted
 source | object | The event's source
 source._meta | object | Metadata about the resource
 source._meta.type | enum | 
-,source.data | enum (optional) | The resource which triggered the event
+source.data | enum (optional) | The resource which triggered the event
 target | object (optional) | Partial representation (type & id) of the event's target
 target._meta | object | Metadata about the resource
 target._meta.type | enum | 
-,target.data | enum (optional) | The resource which received the event
+target.data | enum (optional) | The resource which received the event
 conversation | Conversation | The conversation on which the event happened
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the event
@@ -3318,7 +3318,7 @@ Lists all the detailed events which occured in the inboxes of your company order
 
 Name | Type | Description
 -----|------|------------
-q | object) - Search query. See [Search Parameters](#search-parameters (optional) | 
+q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 
 ## Get event
@@ -3647,25 +3647,12 @@ Fetches the metrics correspondig to the parameters.
 
 Name | Type | Description
 -----|------|------------
-inbox_ids | array[string] (optional) | List of inbox IDs to include in the generated analytics
-
-+ `alt:address:team@planet-express.com`
-
-tag_ids | array[string] (optional) | List of tag IDs to include in the generated analytics
-
-+ `tag_55c8c149`
-
+inbox_ids | array (optional) | List of inbox IDs to include in the generated analytics
+tag_ids | array (optional) | List of tag IDs to include in the generated analytics
 start | number | Timestamp from which the analytics will start
 end | number | Timestamp from which the analytics will end
 timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC.
-metrics | array[string] | List of the metrics to include in the analytics
-
-+ `avg_conversations_per_day`
-
-+ `first_response_histo`
-
-+ `first_response_graph`
-
+metrics | array | List of the metrics to include in the analytics
 
 # Exports
 > 
@@ -3693,6 +3680,58 @@ Since an export takes some time to process, it has a `status` which can be eithe
 * `failed` in case the generation failed
 
 Once the export has been generated, you can download it with its `url`.
+
+### Format
+
+Exports are formatted as a [CSV](https://en.wikipedia.org/wiki/Comma-separated_values) files. The export will contain 1 line per message received in the given time period.
+
+**If a message appears in multiple inboxes, it will appear once for each inbox**.
+
+Below is table of the field names & descriptions that will be included in the export.
+
+| Name              | Desctiption                                                                                                                                       |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Message ID        | Internal Front ID of the message                                                                                                                  |
+| Conversation ID   | Internal Front ID of the entire conversation                                                                                                      |
+| Direction         | Either `Inbound` or `Outbound`                                                                                                                    |
+| Status            | Status of the conversation: `unassigned`, `assigned`, `archived`, or `trashed`.                                                                   |
+| Inbox             | Name of the inbox where the message was initially sent. If the message appeared in multiple inboxes, it will appear multiple times.               |
+| Message Date      | `YYYY-MM-DD HH:mm:ss` format, in the requested timezone.                                                                                          |
+| Response time     | Duration (in seconds) between an inbound message and the next outbound message in the same conversation.                                          |
+| Handle time       | Total duration (in seconds) that a contact was kept waiting for a reply from the team during an assignment. Metric is calculated per assignment.  |
+| Assignee          | Username of the assignee, if any                                                                                                                  |
+| Contact name      | Contact's first & last name                                                                                                                       |
+| Contact handle    | Contact's email address, twitter handle, or phone number - depending on the source of the message.                                                |
+| Extract           | Sample of the message                                                                                                                             |
+| Tags              | Tags attached to the conversation.                                                                                                                |
+
+**Timezone**
+
+All dates in the the export are presented in the same timezone. If the export was requested from the app (by clicking on "Request Export"), it will be in the timezone of the user. If the export is requested with the API, the timezone can be manually defined (or defaults to UTC).
+
+**Response time**
+
+Response time is always calculated from the point of view of a customer: how did it take for your company to reply?
+
+Most of the time, the response time is the difference between an inbound message from a customer and the next reply from your team.
+
+If your team replies several times to the same message, the response time is the time since the previous reply.
+
+**Assignments and Handle time**
+
+Most of the time, only one discussion happens within a conversation. That is: a customer will open a conversation to ask a specific thing and if they want to ask another one, they will open a new discussion.
+
+However, this is not always the case:
+
+* A customer might decide to reply to an existing conversation even if they are asking for something new.
+
+* Several teammates might write in one conversation.
+
+Because of this, Front will compute a **handle time** to the last message if:
+
+* the conversation is reassigned to a different teammate.
+
+* the conversation is inactive for **4 days**.
 
 
 

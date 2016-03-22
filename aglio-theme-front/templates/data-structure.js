@@ -22,7 +22,7 @@ function _renderField(field, options) {
     if (!ref)
       return '';
 
-    return ref.fields.map(field => _renderField(field));
+    return ref.fields.map(field => _renderField(field)).join('');
   }
 
   var field = _formatField(field);
@@ -43,7 +43,7 @@ function _renderField(field, options) {
 `;
 
   if (field.type === 'object' && field.example)
-    renderedField += field.example.map(subObj => _renderField(subObj, { prefix: formattedName }));
+    renderedField += field.example.map(subObj => _renderField(subObj, { prefix: formattedName })).join('');
 
   return renderedField;
 }

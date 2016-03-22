@@ -14,6 +14,10 @@ Name | Type | Description
 
 function _renderParam(param) {
   var type = param.type;
+
+  if (/array\[\w+\]/.test(type))
+    type = 'array';
+
   if (!param.required)
     type += ' (optional)';
 

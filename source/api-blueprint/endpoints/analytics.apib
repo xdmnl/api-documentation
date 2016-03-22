@@ -57,17 +57,12 @@ Each metrics contains the value for the requested time period (in the field name
 Depending on the date range you request the analytics, it can take some time to process it. This is why you might need to send multiple requests to get the results. To help you estimate the remaining time, the server response will contain a `progress` field containing a number ranging from 0 to 100 which isthe percentage of the analytics processed.
 
 + Parameters
-    + inbox_ids (array[string], optional) - List of inbox IDs to include in the generated analytics
-        + `alt:address:team@planet-express.com`
+    + inbox_ids: `alt:address:team@planet-express.com` (array[string], optional) - List of inbox IDs to include in the generated analytics
     + tag_ids (array[string], optional) - List of tag IDs to include in the generated analytics
-        + `tag_55c8c149`
     + start: `1428889008` (number, required) - Timestamp from which the analytics will start
     + end: `1428889003` (number, required) - Timestamp from which the analytics will end
     + timezone: `America/New_York` (string, optional) - Name of the timezone to format the dates. If omitted, the export will use UTC.
-    + metrics (array[string], required) - List of the metrics to include in the analytics
-        + `avg_conversations_per_day`
-        + `first_response_histo`
-        + `first_response_graph`
+    + metrics: `avg_conversations_per_day, first_response_histo, first_response_graph` (array[string], required) - List of the metrics to include in the analytics
 
 ### Get analytics [GET]
 
