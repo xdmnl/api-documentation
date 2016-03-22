@@ -560,6 +560,10 @@ html, body {
     table tbody {
       color: $main-text;
       text-shadow: none;
+
+      a {
+        color: inherit;
+      }
     }
   }
 
