@@ -22,7 +22,7 @@ Front supports **plugins**. A plugin is a small web application that can communi
 * Take actions directly inside Front on behalf of the user so you can automate a workflow.
 * Link or create entries in your CRM, your knowledge base or any other tool.
 
-![Plugin example](images/plugin-example.png)
+![Plugin example](plugin-example.png)
 
 ## Creating a plugin
 
@@ -35,7 +35,7 @@ Front supports **plugins**. A plugin is a small web application that can communi
 
 You can define the location of your plugin in the settings:
 
-![Add a new plugin](images/plugin-settings.png)
+![Add a new plugin](plugin-settings.png)
 
 <aside class="warning">
 <strong>HTTPS</strong><br>
@@ -51,6 +51,6 @@ It might be desire to ensure that your plugin is indeed requested by Front, espe
 
 Front provides a simple way to verify that your plugin is requested by Front. In the settings of your plugin, you will see an authentication secret. This secret will be passed as a query parameter when requesting your plugin.
 
-![Plugin authentication](images/plugin-auth.png)
+![Plugin authentication](plugin-auth.png)
 
 If you need any help in getting your plugin working, would like more information or a new feature please drop us a line at team@frontapp.com we will be happy to help.

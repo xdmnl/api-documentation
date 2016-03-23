@@ -5,9 +5,9 @@ A webhook allows you to be dynamically notified when something happens in Front 
 To create a webhook, you need to:
 
 * Make sure that the Webhook integration is active (go to Settings > Integrations > Webhooks)
-![Activate webhooks](images/webhook-activation.png)
+![Activate webhooks](webhook-activation.png)
 * Create a new rule with the conditions you want (go to Settings > Rules > New rule)
-![Create a new webhook rule](images/webhook-rule.png)
+![Create a new webhook rule](webhook-rule.png)
 
 Once the rule is created, whenever the conditions are met, Front will send a **POST** HTTP request to the webhook URL you specified.
 
