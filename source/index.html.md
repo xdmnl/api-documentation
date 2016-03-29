@@ -44,7 +44,7 @@ Every response will contains three headers related to the rate-limiting:
 > Example of a response to a request exceeding the rate limit. The client should wait 20s before resending the request.
 
 ```http
-GET /teammates HTTP/1.1
+HTTP/1.1 429 Too Many Requests
 X-RateLimit-Limit: 120
 X-RateLimit-Remaining: 0
 X-RateLimit-Reset: 1454450858
