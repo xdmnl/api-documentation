@@ -4,6 +4,8 @@ title: Front API Reference
 toc_footers:
   - <a href='https://frontapp.com/signup'>Create a Front account</a>
   - <a href='plugin.html'>Plugin API documentation</a>
+  - <a href='migration-guide.html'>Migration guide</a>
+  - <a href='mailto:api@frontapp.com'>Contact</a>
 
 language_tabs:
   - shell

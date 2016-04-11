@@ -4,6 +4,8 @@ title: Front Plugin API Reference
 toc_footers:
   - <a href='https://github.com/frontapp/frontapp.github.io/'>Plugin example</a>
   - <a href='/'>API reference</a>
+  - <a href='migration-guide.html'>Migration guide</a>
+  - <a href='mailto:api@frontapp.com'>Contact</a>
 
 includes:
   - plugin/events
