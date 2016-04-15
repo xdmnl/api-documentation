@@ -1,5 +1,7 @@
 ## Export
 
+<!-- include(../includes/links_attribute.apib) -->
+    + self: `https://api2.frontapp.com/exports/exp_55c8c149` (string, required) - URL of the export URL
 + id: `exp_55c8c149` (string, required) - Unique identifier for the export.
 + status: `running` (enum, required) - Status of the export.
     + `pending`
@@ -11,8 +13,6 @@
 + size: `1000` (number, required) - Size (in bytes) of the export file.
 + created_at: `1453770984.123` (number, required) - Date at which the export has been created.
 + query (Export to create, required) - Query data used to generate the export.
-<!-- include(../includes/links_attribute.apib) -->
-    + self: `https://api2.frontapp.com/exports/exp_55c8c149` (string, required) - URL of the export URL
 
 ## Export to create
 
