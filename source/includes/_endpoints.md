@@ -1,8 +1,13 @@
 
 # Teammates
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the teammate
+_links.related | object | 
+_links.related.inboxes | string | URL of the teammate's inboxes
+_links.related.conversations | string | URL of the teammate's conversation
 id | string | Unique identifier of the teammate
 email | string | Email address of the teammate
 username | string | Username of the teammate (used for "@" mentions)
@@ -10,11 +15,6 @@ first_name | string | First name of the teammate
 last_name | string | Last name of the teammate
 is_admin | boolean | Whether or not the teammate is an admin in your company
 is_available | boolean | Whether or not the teammate is available
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the teammate
-_links.related | object |
-_links.related.inboxes | string | URL of the teammate's inboxes
-_links.related.conversations | string | URL of the teammate's conversation
 
 A teammate is a Front user, a member of your company.
 
@@ -44,20 +44,20 @@ curl --include \
   },
   "_results": [
     {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     }
   ]
 }
@@ -86,20 +86,20 @@ curl --include \
 
 ```json
 {
-  "id": "tea_55c8c149",
-  "email": "leela@planet-express.com",
-  "username": "leela",
-  "first_name": "Leela",
-  "last_name": "Turanga",
-  "is_admin": true,
-  "is_available": true,
   "_links": {
     "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
     "related": {
       "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
       "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
     }
-  }
+  },
+  "id": "tea_55c8c149",
+  "email": "leela@planet-express.com",
+  "username": "leela",
+  "first_name": "Leela",
+  "last_name": "Turanga",
+  "is_admin": true,
+  "is_available": true
 }
 ```
 Fetches the information of a teammate. See [resource aliases](#resource-aliases) to fetch by email.
@@ -188,77 +188,94 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "related": {
+          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+        }
+      },
       "id": "cnv_55c8c149",
       "subject": "You broke my heart, Hubert.",
       "status": "archived",
       "assignee": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipient": {
-        "handle": "calculon@momsbot.com",
-        "role": "to",
         "_links": {
           "related": {
             "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
           }
-        }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
       },
       "tags": [
         {
-          "id": "tag_55c8c149",
-          "name": "Robots",
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tag_55c8c149",
+          "name": "Robots"
         }
       ],
       "last_message": {
+        "_links": {
+          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+          "related": {
+            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+          }
+        },
         "id": "msg_55c8c149",
         "type": "email",
         "is_inbound": true,
         "created_at": 1453770984.123,
         "blurb": "Anything less than immortality is a...",
         "author": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipients": [
           {
-            "handle": "calculon@momsbot.com",
-            "role": "to",
             "_links": {
               "related": {
                 "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
               }
-            }
+            },
+            "handle": "calculon@momsbot.com",
+            "role": "to"
           }
         ],
         "body": "Anything less than immortality is a complete waste of time.",
@@ -271,23 +288,7 @@ curl --include \
             "size": 10000
           }
         ],
-        "_links": {
-          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-          "related": {
-            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-          }
-        }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-        "related": {
-          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-        }
+        "metadata": {}
       }
     }
   ]
@@ -331,11 +332,6 @@ curl --include \
   },
   "_results": [
     {
-      "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "email",
-      "name": "Team",
-      "send_as": "team@planet-express.com",
       "_links": {
         "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
         "related": {
@@ -343,7 +339,12 @@ curl --include \
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
           "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
         }
-      }
+      },
+      "id": "inb_55c8c149",
+      "address": "team@planet-express.com",
+      "type": "smtp",
+      "name": "Team",
+      "send_as": "team@planet-express.com"
     }
   ]
 }
@@ -363,24 +364,24 @@ Name | Type | Description
 teammate_id | string | Id or email of the teammate
 
 # Inboxes
->
+> 
 Name | Type | Description
 -----|------|------------
-id | string | Unique identifier for the inbox
-address | string | **DEPRECATED** Address receiving the messages
-type | enum | **DEPRECATED** Type of the inbox
-name | string | Name of the inbox
-send_as | string (optional) | **DEPRECATED** Address which appears as the sender for messages sent from Front
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the inbox
-_links.related | object |
+_links.related | object | 
 _links.related.teammates | string | URL of the list of teammates that can access the inbox
 _links.related.conversations | string | URL of the list of conversations included in this inbox
 _links.related.channels | string | URL of the list of channels sending messages to this inbox
+id | string | Unique identifier for the inbox
+address | string | **DEPRECATED in favor of channel** Address receiving the messages
+type | enum | **DEPRECATED in favor of channel** Type of the inbox
+name | string | Name of the inbox
+send_as | string (optional) | **DEPRECATED in favor of channel** Address which appears as the sender for messages sent from Front
 
 An inbox is a container of messages.
 
-Messages are sent from and received by [channels](#channels) which then post the messages into the configured inbox.
+Messages are sent from and received by [channels](#channels) which then post the messages into the configured inbox. An inbox can have multiple channels.
 
 
 
@@ -406,11 +407,6 @@ curl --include \
   },
   "_results": [
     {
-      "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "email",
-      "name": "Team",
-      "send_as": "team@planet-express.com",
       "_links": {
         "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
         "related": {
@@ -418,7 +414,12 @@ curl --include \
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
           "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
         }
-      }
+      },
+      "id": "inb_55c8c149",
+      "address": "team@planet-express.com",
+      "type": "smtp",
+      "name": "Team",
+      "send_as": "team@planet-express.com"
     }
   ]
 }
@@ -489,11 +490,6 @@ curl --include \
 
 ```json
 {
-  "id": "inb_55c8c149",
-  "address": "team@planet-express.com",
-  "type": "email",
-  "name": "Team",
-  "send_as": "team@planet-express.com",
   "_links": {
     "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
     "related": {
@@ -501,10 +497,15 @@ curl --include \
       "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
       "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
     }
-  }
+  },
+  "id": "inb_55c8c149",
+  "address": "team@planet-express.com",
+  "type": "smtp",
+  "name": "Team",
+  "send_as": "team@planet-express.com"
 }
 ```
-Fetches the information of an inbox. See [resource aliases](#resource-aliases) to fetch by address.
+Fetches the information of an inbox.
 
 
 
@@ -548,8 +549,8 @@ curl --include \
         }
       },
       "id": "cha_55c8c149",
-      "address": "team@planet-express.con",
-      "type": "email",
+      "address": "team@planet-express.com",
+      "type": "smtp",
       "send_as": "team@planet-express.com",
       "settings": {}
     }
@@ -593,77 +594,94 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "related": {
+          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+        }
+      },
       "id": "cnv_55c8c149",
       "subject": "You broke my heart, Hubert.",
       "status": "archived",
       "assignee": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipient": {
-        "handle": "calculon@momsbot.com",
-        "role": "to",
         "_links": {
           "related": {
             "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
           }
-        }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
       },
       "tags": [
         {
-          "id": "tag_55c8c149",
-          "name": "Robots",
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tag_55c8c149",
+          "name": "Robots"
         }
       ],
       "last_message": {
+        "_links": {
+          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+          "related": {
+            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+          }
+        },
         "id": "msg_55c8c149",
         "type": "email",
         "is_inbound": true,
         "created_at": 1453770984.123,
         "blurb": "Anything less than immortality is a...",
         "author": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipients": [
           {
-            "handle": "calculon@momsbot.com",
-            "role": "to",
             "_links": {
               "related": {
                 "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
               }
-            }
+            },
+            "handle": "calculon@momsbot.com",
+            "role": "to"
           }
         ],
         "body": "Anything less than immortality is a complete waste of time.",
@@ -676,23 +694,7 @@ curl --include \
             "size": 10000
           }
         ],
-        "_links": {
-          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-          "related": {
-            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-          }
-        }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-        "related": {
-          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-        }
+        "metadata": {}
       }
     }
   ]
@@ -736,20 +738,20 @@ curl --include \
   },
   "_results": [
     {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     }
   ]
 }
@@ -769,18 +771,18 @@ Name | Type | Description
 inbox_id | string | Id of the requested inbox
 
 # Channels
->
+> 
 Name | Type | Description
 -----|------|------------
 _links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the inbox.
-_links.related | object |
+_links.self | string | URL of the channel.
+_links.related | object | 
 _links.related.inbox | string | URL of the inbox to which the channel is sending messages.
 id | string | Unique identifier for the channel.
 address | string | Address receiving the messages.
 type | enum | Type of the channel.
 send_as | string (optional) | Address which appears as the sender for messages sent from Front.
-settings | object |
+settings | object | 
 
 A channel is a resource which can send and receive messages.
 
@@ -790,7 +792,7 @@ Here is the list of existing channel types:
 |-------------|--------------------------------------------------------------------------------------------|
 | `smtp`      | For emails managed via SMTP.                                                               |
 | `imap`      | For emails managed via IMAP.                                                               |
-| `sms`       | Linked to a Twilio account.                                                                |
+| `twilio`    | Linked to a Twilio account.                                                                |
 | `twitter`   | Linked to a Twitter account.                                                               |
 | `facebook`  | Linked to a Facebook page.                                                                 |
 | `smooch`    | Linked to a Smooch account.                                                                |
@@ -829,8 +831,8 @@ curl --include \
         }
       },
       "id": "cha_55c8c149",
-      "address": "team@planet-express.con",
-      "type": "email",
+      "address": "team@planet-express.com",
+      "type": "smtp",
       "send_as": "team@planet-express.com",
       "settings": {}
     }
@@ -868,8 +870,8 @@ curl --include \
     }
   },
   "id": "cha_55c8c149",
-  "address": "team@planet-express.con",
-  "type": "email",
+  "address": "team@planet-express.com",
+  "type": "smtp",
   "send_as": "team@planet-express.com",
   "settings": {}
 }
@@ -933,7 +935,7 @@ channel_id | string | Id of the requested channel
 
 Name | Type | Description
 -----|------|------------
-settings | object |
+settings | object | 
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message.
 
 ## Create a channel
@@ -994,7 +996,7 @@ inbox_id | string | Id of the inbox into which the channel messages will go.
 Name | Type | Description
 -----|------|------------
 type | enum | Type of the channel.
-settings | object |
+settings | object | 
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message.
 
 ## Get channel inbox
@@ -1014,11 +1016,6 @@ curl --include \
 
 ```json
 {
-  "id": "inb_55c8c149",
-  "address": "team@planet-express.com",
-  "type": "email",
-  "name": "Team",
-  "send_as": "team@planet-express.com",
   "_links": {
     "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
     "related": {
@@ -1026,7 +1023,12 @@ curl --include \
       "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
       "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
     }
-  }
+  },
+  "id": "inb_55c8c149",
+  "address": "team@planet-express.com",
+  "type": "smtp",
+  "name": "Team",
+  "send_as": "team@planet-express.com"
 }
 ```
 Fetches the inbox to which the channel is linked to.
@@ -1044,9 +1046,17 @@ Name | Type | Description
 channel_id | string | Id of the requested channel
 
 # Conversations
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the conversation
+_links.related | object | 
+_links.related.events | string | URL of the activities related to the conversation
+_links.related.followers | string | URL of the teammates following the conversation
+_links.related.messages | string | URL of the list of messages in the conversation
+_links.related.comments | string | URL of the comments for the conversation
+_links.related.inboxes | string | URL of the inboxes in which the conversation appears
 id | string | Unique identifier of the conversation
 subject | string | Subject of the conversation
 status | enum (optional) | Status of the conversation
@@ -1054,14 +1064,6 @@ assignee | Teammate (optional) | Partial representation of the teammate assigned
 recipient | Recipient | Main recipient of the conversation
 tags | array | List of the tags for this conversation
 last_message | Message | List of partial representation of the messages inside the conversation
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the conversation
-_links.related | object |
-_links.related.events | string | URL of the activities related to the conversation
-_links.related.followers | string | URL of the teammates following the conversation
-_links.related.messages | string | URL of the list of messages in the conversation
-_links.related.comments | string | URL of the comments for the conversation
-_links.related.inboxes | string | URL of the inboxes in which the conversation appears
 
 A conversation is a unique thread of messages. It can appear in one or more inboxes (eg: if you receive an email on contact@ where support@ is Cced).
 
@@ -1092,77 +1094,94 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "related": {
+          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+        }
+      },
       "id": "cnv_55c8c149",
       "subject": "You broke my heart, Hubert.",
       "status": "archived",
       "assignee": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipient": {
-        "handle": "calculon@momsbot.com",
-        "role": "to",
         "_links": {
           "related": {
             "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
           }
-        }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
       },
       "tags": [
         {
-          "id": "tag_55c8c149",
-          "name": "Robots",
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tag_55c8c149",
+          "name": "Robots"
         }
       ],
       "last_message": {
+        "_links": {
+          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+          "related": {
+            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+          }
+        },
         "id": "msg_55c8c149",
         "type": "email",
         "is_inbound": true,
         "created_at": 1453770984.123,
         "blurb": "Anything less than immortality is a...",
         "author": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipients": [
           {
-            "handle": "calculon@momsbot.com",
-            "role": "to",
             "_links": {
               "related": {
                 "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
               }
-            }
+            },
+            "handle": "calculon@momsbot.com",
+            "role": "to"
           }
         ],
         "body": "Anything less than immortality is a complete waste of time.",
@@ -1175,23 +1194,7 @@ curl --include \
             "size": 10000
           }
         ],
-        "_links": {
-          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-          "related": {
-            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-          }
-        }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-        "related": {
-          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-        }
+        "metadata": {}
       }
     }
   ]
@@ -1229,77 +1232,94 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+    "related": {
+      "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+      "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+      "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+      "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+      "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+    }
+  },
   "id": "cnv_55c8c149",
   "subject": "You broke my heart, Hubert.",
   "status": "archived",
   "assignee": {
-    "id": "tea_55c8c149",
-    "email": "leela@planet-express.com",
-    "username": "leela",
-    "first_name": "Leela",
-    "last_name": "Turanga",
-    "is_admin": true,
-    "is_available": true,
     "_links": {
       "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
       "related": {
         "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
         "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
       }
-    }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
   },
   "recipient": {
-    "handle": "calculon@momsbot.com",
-    "role": "to",
     "_links": {
       "related": {
         "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
       }
-    }
+    },
+    "handle": "calculon@momsbot.com",
+    "role": "to"
   },
   "tags": [
     {
-      "id": "tag_55c8c149",
-      "name": "Robots",
       "_links": {
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
           "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tag_55c8c149",
+      "name": "Robots"
     }
   ],
   "last_message": {
+    "_links": {
+      "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+      "related": {
+        "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+      }
+    },
     "id": "msg_55c8c149",
     "type": "email",
     "is_inbound": true,
     "created_at": 1453770984.123,
     "blurb": "Anything less than immortality is a...",
     "author": {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     },
     "recipients": [
       {
-        "handle": "calculon@momsbot.com",
-        "role": "to",
         "_links": {
           "related": {
             "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
           }
-        }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
       }
     ],
     "body": "Anything less than immortality is a complete waste of time.",
@@ -1312,23 +1332,7 @@ curl --include \
         "size": 10000
       }
     ],
-    "_links": {
-      "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-      "related": {
-        "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-        "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-      }
-    }
-  },
-  "_links": {
-    "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-    "related": {
-      "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-      "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-      "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-      "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-      "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-    }
+    "metadata": {}
   }
 }
 ```
@@ -1427,11 +1431,6 @@ curl --include \
   },
   "_results": [
     {
-      "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "email",
-      "name": "Team",
-      "send_as": "team@planet-express.com",
       "_links": {
         "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
         "related": {
@@ -1439,7 +1438,12 @@ curl --include \
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
           "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
         }
-      }
+      },
+      "id": "inb_55c8c149",
+      "address": "team@planet-express.com",
+      "type": "smtp",
+      "name": "Team",
+      "send_as": "team@planet-express.com"
     }
   ]
 }
@@ -1480,20 +1484,20 @@ curl --include \
   },
   "_results": [
     {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     }
   ]
 }
@@ -1535,6 +1539,9 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/events/evt_55c8c149"
+      },
       "id": "evt_55c8c149",
       "type": "assign",
       "emitted_at": 1453770984.123,
@@ -1543,14 +1550,14 @@ curl --include \
           "type": "rule"
         },
         "data": {
+          "_links": {
+            "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+          },
           "id": "rul_55c8c149",
           "name": "Important deliveries",
           "actions": [
             "Assign to Leela Turanga"
-          ],
-          "_links": {
-            "self": "https://api2.frontapp.com/rules/rul_55c8c149"
-          }
+          ]
         }
       },
       "target": {
@@ -1558,94 +1565,111 @@ curl --include \
           "type": "teammate"
         },
         "data": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         }
       },
       "conversation": {
+        "_links": {
+          "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+          "related": {
+            "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+            "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+            "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+            "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+            "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+          }
+        },
         "id": "cnv_55c8c149",
         "subject": "You broke my heart, Hubert.",
         "status": "archived",
         "assignee": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipient": {
-          "handle": "calculon@momsbot.com",
-          "role": "to",
           "_links": {
             "related": {
               "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
             }
-          }
+          },
+          "handle": "calculon@momsbot.com",
+          "role": "to"
         },
         "tags": [
           {
-            "id": "tag_55c8c149",
-            "name": "Robots",
             "_links": {
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
                 "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
               }
-            }
+            },
+            "id": "tag_55c8c149",
+            "name": "Robots"
           }
         ],
         "last_message": {
+          "_links": {
+            "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+            "related": {
+              "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+              "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+            }
+          },
           "id": "msg_55c8c149",
           "type": "email",
           "is_inbound": true,
           "created_at": 1453770984.123,
           "blurb": "Anything less than immortality is a...",
           "author": {
-            "id": "tea_55c8c149",
-            "email": "leela@planet-express.com",
-            "username": "leela",
-            "first_name": "Leela",
-            "last_name": "Turanga",
-            "is_admin": true,
-            "is_available": true,
             "_links": {
               "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
               "related": {
                 "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
                 "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
               }
-            }
+            },
+            "id": "tea_55c8c149",
+            "email": "leela@planet-express.com",
+            "username": "leela",
+            "first_name": "Leela",
+            "last_name": "Turanga",
+            "is_admin": true,
+            "is_available": true
           },
           "recipients": [
             {
-              "handle": "calculon@momsbot.com",
-              "role": "to",
               "_links": {
                 "related": {
                   "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
                 }
-              }
+              },
+              "handle": "calculon@momsbot.com",
+              "role": "to"
             }
           ],
           "body": "Anything less than immortality is a complete waste of time.",
@@ -1658,27 +1682,8 @@ curl --include \
               "size": 10000
             }
           ],
-          "_links": {
-            "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-            "related": {
-              "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-              "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-            }
-          }
-        },
-        "_links": {
-          "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-          "related": {
-            "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-            "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-            "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-            "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-            "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-          }
+          "metadata": {}
         }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/events/evt_55c8c149"
       }
     }
   ]
@@ -1722,36 +1727,43 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+        "related": {
+          "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+          "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+        }
+      },
       "id": "msg_55c8c149",
       "type": "email",
       "is_inbound": true,
       "created_at": 1453770984.123,
       "blurb": "Anything less than immortality is a...",
       "author": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipients": [
         {
-          "handle": "calculon@momsbot.com",
-          "role": "to",
           "_links": {
             "related": {
               "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
             }
-          }
+          },
+          "handle": "calculon@momsbot.com",
+          "role": "to"
         }
       ],
       "body": "Anything less than immortality is a complete waste of time.",
@@ -1764,13 +1776,7 @@ curl --include \
           "size": 10000
         }
       ],
-      "_links": {
-        "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-        "related": {
-          "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-          "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-        }
-      }
+      "metadata": {}
     }
   ]
 }
@@ -1791,18 +1797,18 @@ conversation_id | string | Id of the requested conversation
 page | number (optional) | Number of the page requested
 
 # Comments
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the comment
+_links.related | object | 
+_links.related.conversation | string | URL of the conversation from which the comment belongs
+_links.related.mentions | string | URL of the teammates mentionned in a comment
 id | string | Unique identifier of the comment
 author | Teammate | Teammate who wrote the comment
 body | string | Content of the comment
 posted_at | number | Date at which the comment have been posted
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the comment
-_links.related | object |
-_links.related.conversation | string | URL of the conversation from which the comment belongs
-_links.related.mentions | string | URL of the teammates mentionned in a comment
 
 A comment is a private message written by a teammate visible only to the other teammates. It is never sent and cannot be shared outside of Front.
 
@@ -1831,32 +1837,32 @@ curl --include \
 
 ```json
 {
-  "id": "com_55c8c149",
-  "author": {
-    "id": "tea_55c8c149",
-    "email": "leela@planet-express.com",
-    "username": "leela",
-    "first_name": "Leela",
-    "last_name": "Turanga",
-    "is_admin": true,
-    "is_available": true,
-    "_links": {
-      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
-      "related": {
-        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
-        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
-      }
-    }
-  },
-  "body": "@bender, I thought you were supposed to be cooking for this party.",
-  "posted_at": 1453770984.123,
   "_links": {
     "self": "https://api2.frontapp.com/comments/inb_55c8c149",
     "related": {
       "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
       "mentions": "https://api2.frontapp.com/comments/com_55c8c149/mentions"
     }
-  }
+  },
+  "id": "com_55c8c149",
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
+  },
+  "body": "@bender, I thought you were supposed to be cooking for this party.",
+  "posted_at": 1453770984.123
 }
 ```
 Adds a comment to a conversation.
@@ -1903,32 +1909,32 @@ curl --include \
   },
   "_results": [
     {
-      "id": "com_55c8c149",
-      "author": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
-        "_links": {
-          "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
-          "related": {
-            "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
-            "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
-          }
-        }
-      },
-      "body": "@bender, I thought you were supposed to be cooking for this party.",
-      "posted_at": 1453770984.123,
       "_links": {
         "self": "https://api2.frontapp.com/comments/inb_55c8c149",
         "related": {
           "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
           "mentions": "https://api2.frontapp.com/comments/com_55c8c149/mentions"
         }
-      }
+      },
+      "id": "com_55c8c149",
+      "author": {
+        "_links": {
+          "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+          "related": {
+            "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+            "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+          }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
+      },
+      "body": "@bender, I thought you were supposed to be cooking for this party.",
+      "posted_at": 1453770984.123
     }
   ]
 }
@@ -1964,32 +1970,32 @@ curl --include \
 
 ```json
 {
-  "id": "com_55c8c149",
-  "author": {
-    "id": "tea_55c8c149",
-    "email": "leela@planet-express.com",
-    "username": "leela",
-    "first_name": "Leela",
-    "last_name": "Turanga",
-    "is_admin": true,
-    "is_available": true,
-    "_links": {
-      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
-      "related": {
-        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
-        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
-      }
-    }
-  },
-  "body": "@bender, I thought you were supposed to be cooking for this party.",
-  "posted_at": 1453770984.123,
   "_links": {
     "self": "https://api2.frontapp.com/comments/inb_55c8c149",
     "related": {
       "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
       "mentions": "https://api2.frontapp.com/comments/com_55c8c149/mentions"
     }
-  }
+  },
+  "id": "com_55c8c149",
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
+  },
+  "body": "@bender, I thought you were supposed to be cooking for this party.",
+  "posted_at": 1453770984.123
 }
 ```
 Fetches the information of a comment.
@@ -2028,20 +2034,20 @@ curl --include \
   },
   "_results": [
     {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     }
   ]
 }
@@ -2061,9 +2067,14 @@ Name | Type | Description
 comment_id | string | Id of the comment
 
 # Messages
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the message
+_links.related | object | 
+_links.related.conversation | string | URL of the parent conversation
+_links.related.message_replied_to | string (optional) | URL of the message which have been replied to
 id | string | Unique identifier of the message
 type | enum | Type of the message
 is_inbound | boolean | Whether or not the message has been received or sent
@@ -2075,15 +2086,32 @@ body | string | Body of the message
 text | string (optional) | Text version of the body for email messages
 attachments | array | List of files attached to the message
 metadata | object (optional) | Optional metadata about the message
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the message
-_links.related | object |
-_links.related.conversation | string | URL of the parent conversation
-_links.related.message_replied_to | string (optional) | URL of the message which have been replied to
+metadata.intercom_url | string (optional) | For `intercom` messages only. URL of the Intercom conversation the message is comming from.
+metadata.duration | number (optional) | For `truly-call` messages only. Length of the call in seconds.
+metadata.have_been_answered | boolean (optional) | For `truly-call` messages only. Whether or not the call have been answered.
+metadata.twitter_url | string (optional) | For `tweet` messages only. URL of the tweet.
+metadata.is_retweet | boolean (optional) | For `tweet` messages only. Whether or not the tweet is a retweet.
+metadata.have_been_retweeted | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been retweeted.
+metadata.have_been_favorited | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been favorited.
+metadata.thread_ref | string (optional) | For `custom` messages only. Custom reference which is used to thread messages.
+metadata.headers | object (optional) | For `custom` messages only. Custom object holding internal information.
 
 A message is a resource which can be either received or sent via an inbox. Messages are grouped by conversations.
 
 A message can be either inbound (received) or outbound (sent). You can know if a message has been received or sent thanks to the boolean `is_inbound`.
+
+Each message has a type depending on the channel it has been sent with:
+
+| Type name    | Description                        |
+|--------------|------------------------------------|
+| `email`      | Email message                      |
+| `tweet`      | Message from Twitter               |
+| `sms`        | SMS message                        |
+| `smooch`     | Message from Smooch                |
+| `facebook`   | Message from Facevook              |
+| `intercom`   | Message from Intercom              |
+| `truly-call` | Phone call from Truly              |
+| `custom`     | [Custom message](#custom-messages) |
 
 
 
@@ -2104,36 +2132,43 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+    "related": {
+      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+    }
+  },
   "id": "msg_55c8c149",
   "type": "email",
   "is_inbound": true,
   "created_at": 1453770984.123,
   "blurb": "Anything less than immortality is a...",
   "author": {
-    "id": "tea_55c8c149",
-    "email": "leela@planet-express.com",
-    "username": "leela",
-    "first_name": "Leela",
-    "last_name": "Turanga",
-    "is_admin": true,
-    "is_available": true,
     "_links": {
       "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
       "related": {
         "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
         "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
       }
-    }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
   },
   "recipients": [
     {
-      "handle": "calculon@momsbot.com",
-      "role": "to",
       "_links": {
         "related": {
           "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
         }
-      }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
     }
   ],
   "body": "Anything less than immortality is a complete waste of time.",
@@ -2146,13 +2181,7 @@ curl --include \
       "size": 10000
     }
   ],
-  "_links": {
-    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-    "related": {
-      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-    }
-  }
+  "metadata": {}
 }
 ```
 Fetches the information of a message.
@@ -2289,67 +2318,6 @@ to | array (optional) | List of the recipient handles who will receive this mess
 cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message.
 bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message
 
-## Import a message
-```shell
-
-curl --include \
-     --request POST \
-     --header "Content-Type: application/json" \
-     --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json" \
-     --data-binary "{
-  \"sender\": {
-    \"handle\": \"@calculon\",
-    \"source\": \"twitter\"
-  },
-  \"subject\": \"100th-delivery party\",
-  \"body\": \"Why am I not invited?\",
-  \"body_format\": \"html\",
-  \"metadata\": {
-    \"external_id\": \"\"
-  }
-}" \
-'https://api2.frontapp.com/inboxes/${INBOX_ID}/import'
-```
-
-```node
-
-```
-
-> Response **202**
-
-Adds a new message into an inbox.
-
-<aside class="notice">
-Imported messages and conversations will <strong>NOT</strong> be linked to any channels until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.
-</aside>
-
-
-
-### HTTP Request
-
-`POST https://api2.frontapp.com/inboxes/{inbox_id}/import`
-### Parameters
-
-
-Name | Type | Description
------|------|------------
-inbox_id | string | Id of the requested inbox
-
-### Body
-
-
-Name | Type | Description
------|------|------------
-sender | Contact handle | Sender of the message
-subject | string (optional) | Subject of the message
-body | string | Body of the message
-body_format | enum (optional) | Format of the body (default: `[object Object]`)
-metadata | object |
-metadata.external_id | string | Unique external identifier
-metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread the messages by sender
-metadata.headers | object (optional) | Optional object for you to put message related information which will be kept in Front
-
 ## Receive a custom message
 ```shell
 
@@ -2403,13 +2371,19 @@ sender.handle | string | Handle of the sender. It can be any string used to uniq
 subject | string (optional) | Subject of the message
 body | string | Body of the message
 body_format | enum (optional) | Format of the body (default: `[object Object]`)
-metadata | object (optional) | Optional metadata about the message
+metadata | object (optional) | 
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
+metadata.headers | object (optional) | Custom object where any internal information can be stored
 
 # Contacts
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the contact
+_links.related | object | 
+_links.related.notes | string | URL to list the notes associated to the contact
+_links.related.conversations | string | URL to list the URL associated to the contact
 id | string | Unique identifier of the contact
 name | string | Contact name
 description | string | Contact description
@@ -2417,11 +2391,6 @@ avatar_url | string | URL of the contact's avatar
 is_spammer | boolean | Whether or not the contact is a spammer
 links | array | A set of URL associated to the contact
 handles | array | List of the handles and sources with which the contact is reachable.
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the contact
-_links.related | object |
-_links.related.notes | string | URL to list the notes associated to the contact
-_links.related.conversations | string | URL to list the URL associated to the contact
 
 A contact is a person/entity with whom you have communicated.
 
@@ -2460,6 +2429,13 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+        "related": {
+          "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
+          "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+        }
+      },
       "id": "ctc_55c8c149",
       "name": "Calculon",
       "description": "#vip #robot #RIP",
@@ -2473,14 +2449,7 @@ curl --include \
           "handle": "@calculon",
           "source": "twitter"
         }
-      ],
-      "_links": {
-        "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
-        "related": {
-          "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-          "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
-        }
-      }
+      ]
     }
   ]
 }
@@ -2516,6 +2485,13 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+    "related": {
+      "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
+      "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+    }
+  },
   "id": "ctc_55c8c149",
   "name": "Calculon",
   "description": "#vip #robot #RIP",
@@ -2529,14 +2505,7 @@ curl --include \
       "handle": "@calculon",
       "source": "twitter"
     }
-  ],
-  "_links": {
-    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
-    "related": {
-      "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-      "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
-    }
-  }
+  ]
 }
 ```
 Fetches the information of a contact. See [resource aliases](#resource-aliases) to fetch by handle.
@@ -2638,6 +2607,13 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+    "related": {
+      "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
+      "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+    }
+  },
   "id": "ctc_55c8c149",
   "name": "Calculon",
   "description": "#vip #robot #RIP",
@@ -2651,14 +2627,7 @@ curl --include \
       "handle": "@calculon",
       "source": "twitter"
     }
-  ],
-  "_links": {
-    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
-    "related": {
-      "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-      "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
-    }
-  }
+  ]
 }
 ```
 Creates a new contact.
@@ -2734,77 +2703,94 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "related": {
+          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+        }
+      },
       "id": "cnv_55c8c149",
       "subject": "You broke my heart, Hubert.",
       "status": "archived",
       "assignee": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipient": {
-        "handle": "calculon@momsbot.com",
-        "role": "to",
         "_links": {
           "related": {
             "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
           }
-        }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
       },
       "tags": [
         {
-          "id": "tag_55c8c149",
-          "name": "Robots",
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tag_55c8c149",
+          "name": "Robots"
         }
       ],
       "last_message": {
+        "_links": {
+          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+          "related": {
+            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+          }
+        },
         "id": "msg_55c8c149",
         "type": "email",
         "is_inbound": true,
         "created_at": 1453770984.123,
         "blurb": "Anything less than immortality is a...",
         "author": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipients": [
           {
-            "handle": "calculon@momsbot.com",
-            "role": "to",
             "_links": {
               "related": {
                 "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
               }
-            }
+            },
+            "handle": "calculon@momsbot.com",
+            "role": "to"
           }
         ],
         "body": "Anything less than immortality is a complete waste of time.",
@@ -2817,23 +2803,7 @@ curl --include \
             "size": 10000
           }
         ],
-        "_links": {
-          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-          "related": {
-            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-          }
-        }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-        "related": {
-          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-        }
+        "metadata": {}
       }
     }
   ]
@@ -2856,7 +2826,7 @@ page | number (optional) | Number of the page requested
 contact_id | string | Id or alias of the requested contact
 
 # Contact handles
->
+> 
 Name | Type | Description
 -----|------|------------
 handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ...
@@ -2951,7 +2921,7 @@ handle | string | Handle used to reach the contact. Can be an email address, a t
 source | enum | Can be 'twitter', 'email' or 'phone'.
 
 # Contact notes
->
+> 
 Name | Type | Description
 -----|------|------------
 author | Teammate | Teammate who wrote the note
@@ -2983,20 +2953,20 @@ curl --include \
   "_results": [
     {
       "author": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "body": "Calculon is a celebrated actor",
       "created_at": 1453770984.123
@@ -3042,20 +3012,20 @@ curl --include \
 ```json
 {
   "author": {
-    "id": "tea_55c8c149",
-    "email": "leela@planet-express.com",
-    "username": "leela",
-    "first_name": "Leela",
-    "last_name": "Turanga",
-    "is_admin": true,
-    "is_available": true,
     "_links": {
       "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
       "related": {
         "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
         "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
       }
-    }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
   },
   "body": "Calculon is a celebrated actor",
   "created_at": 1453770984.123
@@ -3084,15 +3054,15 @@ author_id | string | ID or email of the teammate creating the comment
 body | string | Content of the note
 
 # Tags
->
+> 
 Name | Type | Description
 -----|------|------------
-id | string | Unique identifier of the tag
-name | string | Name of the tag
 _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the tag
-_links.related | object |
+_links.related | object | 
 _links.related.conversations | string | URL of the list of conversations tagged with this tag
+id | string | Unique identifier of the tag
+name | string | Name of the tag
 
 A tag is a label that can be used to classify conversations.
 
@@ -3120,14 +3090,14 @@ curl --include \
   },
   "_results": [
     {
-      "id": "tag_55c8c149",
-      "name": "Robots",
       "_links": {
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
           "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tag_55c8c149",
+      "name": "Robots"
     }
   ]
 }
@@ -3161,14 +3131,14 @@ curl --include \
 
 ```json
 {
-  "id": "tag_55c8c149",
-  "name": "Robots",
   "_links": {
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
       "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
     }
-  }
+  },
+  "id": "tag_55c8c149",
+  "name": "Robots"
 }
 ```
 Creates a new tag.
@@ -3202,14 +3172,14 @@ curl --include \
 
 ```json
 {
-  "id": "tag_55c8c149",
-  "name": "Robots",
   "_links": {
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
       "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
     }
-  }
+  },
+  "id": "tag_55c8c149",
+  "name": "Robots"
 }
 ```
 Fetches the information of a tag.
@@ -3249,77 +3219,94 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "related": {
+          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+        }
+      },
       "id": "cnv_55c8c149",
       "subject": "You broke my heart, Hubert.",
       "status": "archived",
       "assignee": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipient": {
-        "handle": "calculon@momsbot.com",
-        "role": "to",
         "_links": {
           "related": {
             "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
           }
-        }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
       },
       "tags": [
         {
-          "id": "tag_55c8c149",
-          "name": "Robots",
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tag_55c8c149",
+          "name": "Robots"
         }
       ],
       "last_message": {
+        "_links": {
+          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+          "related": {
+            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+          }
+        },
         "id": "msg_55c8c149",
         "type": "email",
         "is_inbound": true,
         "created_at": 1453770984.123,
         "blurb": "Anything less than immortality is a...",
         "author": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipients": [
           {
-            "handle": "calculon@momsbot.com",
-            "role": "to",
             "_links": {
               "related": {
                 "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
               }
-            }
+            },
+            "handle": "calculon@momsbot.com",
+            "role": "to"
           }
         ],
         "body": "Anything less than immortality is a complete waste of time.",
@@ -3332,23 +3319,7 @@ curl --include \
             "size": 10000
           }
         ],
-        "_links": {
-          "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-          "related": {
-            "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-            "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-          }
-        }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-        "related": {
-          "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-          "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-          "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-          "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-          "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-        }
+        "metadata": {}
       }
     }
   ]
@@ -3371,14 +3342,14 @@ q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 
 # Rules
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the rule
 id | string | Unique identifier of the rule
 name | string | Name of the rule
 actions | array | List of the rule's actions description
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the rule
 
 A rule is a set of conditions which will trigger automatic actions when they are met.
 
@@ -3408,14 +3379,14 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+      },
       "id": "rul_55c8c149",
       "name": "Important deliveries",
       "actions": [
         "Assign to Leela Turanga"
-      ],
-      "_links": {
-        "self": "https://api2.frontapp.com/rules/rul_55c8c149"
-      }
+      ]
     }
   ]
 }
@@ -3444,14 +3415,14 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+  },
   "id": "rul_55c8c149",
   "name": "Important deliveries",
   "actions": [
     "Assign to Leela Turanga"
-  ],
-  "_links": {
-    "self": "https://api2.frontapp.com/rules/rul_55c8c149"
-  }
+  ]
 }
 ```
 Fetches the definition of a rule.
@@ -3469,23 +3440,23 @@ Name | Type | Description
 rule_id | string | ID of the requested rule
 
 # Events
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the event
 id | string | Unique identifier of the event
 type | enum | Type of event
 emitted_at | number | Date at which the event has been emitted
 source | object | The event's source
 source._meta | object | Metadata about the resource
-source._meta.type | enum |
+source._meta.type | enum | 
 source.data | enum (optional) | The resource which triggered the event
 target | object (optional) | Partial representation (type & id) of the event's target
 target._meta | object | Metadata about the resource
-target._meta.type | enum |
+target._meta.type | enum | 
 target.data | enum (optional) | The resource which received the event
 conversation | Conversation | The conversation on which the event happened
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the event
 
 An event is created everytime something interesting is happenning in Front. You'll find in the table bellow the description of all the types of event that exist:
 
@@ -3575,6 +3546,9 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/events/evt_55c8c149"
+      },
       "id": "evt_55c8c149",
       "type": "assign",
       "emitted_at": 1453770984.123,
@@ -3583,14 +3557,14 @@ curl --include \
           "type": "rule"
         },
         "data": {
+          "_links": {
+            "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+          },
           "id": "rul_55c8c149",
           "name": "Important deliveries",
           "actions": [
             "Assign to Leela Turanga"
-          ],
-          "_links": {
-            "self": "https://api2.frontapp.com/rules/rul_55c8c149"
-          }
+          ]
         }
       },
       "target": {
@@ -3598,94 +3572,111 @@ curl --include \
           "type": "teammate"
         },
         "data": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         }
       },
       "conversation": {
+        "_links": {
+          "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+          "related": {
+            "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+            "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+            "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+            "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+            "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+          }
+        },
         "id": "cnv_55c8c149",
         "subject": "You broke my heart, Hubert.",
         "status": "archived",
         "assignee": {
-          "id": "tea_55c8c149",
-          "email": "leela@planet-express.com",
-          "username": "leela",
-          "first_name": "Leela",
-          "last_name": "Turanga",
-          "is_admin": true,
-          "is_available": true,
           "_links": {
             "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
             "related": {
               "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
               "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
             }
-          }
+          },
+          "id": "tea_55c8c149",
+          "email": "leela@planet-express.com",
+          "username": "leela",
+          "first_name": "Leela",
+          "last_name": "Turanga",
+          "is_admin": true,
+          "is_available": true
         },
         "recipient": {
-          "handle": "calculon@momsbot.com",
-          "role": "to",
           "_links": {
             "related": {
               "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
             }
-          }
+          },
+          "handle": "calculon@momsbot.com",
+          "role": "to"
         },
         "tags": [
           {
-            "id": "tag_55c8c149",
-            "name": "Robots",
             "_links": {
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
                 "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
               }
-            }
+            },
+            "id": "tag_55c8c149",
+            "name": "Robots"
           }
         ],
         "last_message": {
+          "_links": {
+            "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+            "related": {
+              "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+              "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+            }
+          },
           "id": "msg_55c8c149",
           "type": "email",
           "is_inbound": true,
           "created_at": 1453770984.123,
           "blurb": "Anything less than immortality is a...",
           "author": {
-            "id": "tea_55c8c149",
-            "email": "leela@planet-express.com",
-            "username": "leela",
-            "first_name": "Leela",
-            "last_name": "Turanga",
-            "is_admin": true,
-            "is_available": true,
             "_links": {
               "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
               "related": {
                 "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
                 "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
               }
-            }
+            },
+            "id": "tea_55c8c149",
+            "email": "leela@planet-express.com",
+            "username": "leela",
+            "first_name": "Leela",
+            "last_name": "Turanga",
+            "is_admin": true,
+            "is_available": true
           },
           "recipients": [
             {
-              "handle": "calculon@momsbot.com",
-              "role": "to",
               "_links": {
                 "related": {
                   "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
                 }
-              }
+              },
+              "handle": "calculon@momsbot.com",
+              "role": "to"
             }
           ],
           "body": "Anything less than immortality is a complete waste of time.",
@@ -3698,27 +3689,8 @@ curl --include \
               "size": 10000
             }
           ],
-          "_links": {
-            "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-            "related": {
-              "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-              "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-            }
-          }
-        },
-        "_links": {
-          "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-          "related": {
-            "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-            "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-            "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-            "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-            "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-          }
+          "metadata": {}
         }
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/events/evt_55c8c149"
       }
     }
   ]
@@ -3761,6 +3733,9 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/events/evt_55c8c149"
+  },
   "id": "evt_55c8c149",
   "type": "assign",
   "emitted_at": 1453770984.123,
@@ -3769,14 +3744,14 @@ curl --include \
       "type": "rule"
     },
     "data": {
+      "_links": {
+        "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+      },
       "id": "rul_55c8c149",
       "name": "Important deliveries",
       "actions": [
         "Assign to Leela Turanga"
-      ],
-      "_links": {
-        "self": "https://api2.frontapp.com/rules/rul_55c8c149"
-      }
+      ]
     }
   },
   "target": {
@@ -3784,94 +3759,111 @@ curl --include \
       "type": "teammate"
     },
     "data": {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     }
   },
   "conversation": {
+    "_links": {
+      "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "related": {
+        "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
+        "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
+        "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
+        "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
+        "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
+      }
+    },
     "id": "cnv_55c8c149",
     "subject": "You broke my heart, Hubert.",
     "status": "archived",
     "assignee": {
-      "id": "tea_55c8c149",
-      "email": "leela@planet-express.com",
-      "username": "leela",
-      "first_name": "Leela",
-      "last_name": "Turanga",
-      "is_admin": true,
-      "is_available": true,
       "_links": {
         "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
         "related": {
           "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
           "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
         }
-      }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
     },
     "recipient": {
-      "handle": "calculon@momsbot.com",
-      "role": "to",
       "_links": {
         "related": {
           "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
         }
-      }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
     },
     "tags": [
       {
-        "id": "tag_55c8c149",
-        "name": "Robots",
         "_links": {
           "self": "https://api2.frontapp.com/tags/tag_55c8c149",
           "related": {
             "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tag_55c8c149",
+        "name": "Robots"
       }
     ],
     "last_message": {
+      "_links": {
+        "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+        "related": {
+          "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+          "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+        }
+      },
       "id": "msg_55c8c149",
       "type": "email",
       "is_inbound": true,
       "created_at": 1453770984.123,
       "blurb": "Anything less than immortality is a...",
       "author": {
-        "id": "tea_55c8c149",
-        "email": "leela@planet-express.com",
-        "username": "leela",
-        "first_name": "Leela",
-        "last_name": "Turanga",
-        "is_admin": true,
-        "is_available": true,
         "_links": {
           "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
           "related": {
             "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
             "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
           }
-        }
+        },
+        "id": "tea_55c8c149",
+        "email": "leela@planet-express.com",
+        "username": "leela",
+        "first_name": "Leela",
+        "last_name": "Turanga",
+        "is_admin": true,
+        "is_available": true
       },
       "recipients": [
         {
-          "handle": "calculon@momsbot.com",
-          "role": "to",
           "_links": {
             "related": {
               "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
             }
-          }
+          },
+          "handle": "calculon@momsbot.com",
+          "role": "to"
         }
       ],
       "body": "Anything less than immortality is a complete waste of time.",
@@ -3884,27 +3876,8 @@ curl --include \
           "size": 10000
         }
       ],
-      "_links": {
-        "self": "https://api2.frontapp.com/messages/msg_55c8c149",
-        "related": {
-          "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-          "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
-        }
-      }
-    },
-    "_links": {
-      "self": "https://api2.frontapp.com/conversations/cnv_55c8c149",
-      "related": {
-        "events": "https://api2.frontapp.com/conversations/cnv_55c8c149/events",
-        "followers": "https://api2.frontapp.com/conversations/cnv_55c8c149/followers",
-        "messages": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages",
-        "comments": "https://api2.frontapp.com/conversations/cnv_55c8c149/comments",
-        "inboxes": "https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes"
-      }
+      "metadata": {}
     }
-  },
-  "_links": {
-    "self": "https://api2.frontapp.com/events/evt_55c8c149"
   }
 }
 ```
@@ -4078,9 +4051,11 @@ timezone | string (optional) | Name of the timezone to format the dates. If omit
 metrics | array | List of the metrics to include in the analytics
 
 # Exports
->
+> 
 Name | Type | Description
 -----|------|------------
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the export URL
 id | string | Unique identifier for the export.
 status | enum | Status of the export.
 progress | number | Number ranging from 0 to 100 corresponding to the percentage of the export processed.
@@ -4089,8 +4064,6 @@ filename | string (optional) | Name of the file of the generated export. Will be
 size | number | Size (in bytes) of the export file.
 created_at | number | Date at which the export has been created.
 query | Export to create | Query data used to generate the export.
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the export URL
 
 Front can generate exports of your data for a specific timeframe and/or specific inboxes, teammates or tags.
 
@@ -4181,6 +4154,9 @@ curl --include \
   },
   "_results": [
     {
+      "_links": {
+        "self": "https://api2.frontapp.com/exports/exp_55c8c149"
+      },
       "id": "exp_55c8c149",
       "status": "pending",
       "progress": 42,
@@ -4194,9 +4170,6 @@ curl --include \
         "start": 1428889003,
         "end": 1428889008,
         "timezone": "America/New_York"
-      },
-      "_links": {
-        "self": "https://api2.frontapp.com/exports/exp_55c8c149"
       }
     }
   ]
@@ -4233,6 +4206,9 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/exports/exp_55c8c149"
+  },
   "id": "exp_55c8c149",
   "status": "pending",
   "progress": 42,
@@ -4246,9 +4222,6 @@ curl --include \
     "start": 1428889003,
     "end": 1428889008,
     "timezone": "America/New_York"
-  },
-  "_links": {
-    "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   }
 }
 ```
@@ -4292,6 +4265,9 @@ curl --include \
 
 ```json
 {
+  "_links": {
+    "self": "https://api2.frontapp.com/exports/exp_55c8c149"
+  },
   "id": "exp_55c8c149",
   "status": "pending",
   "progress": 42,
@@ -4305,9 +4281,6 @@ curl --include \
     "start": 1428889003,
     "end": 1428889008,
     "timezone": "America/New_York"
-  },
-  "_links": {
-    "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   }
 }
 ```

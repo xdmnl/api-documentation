@@ -4,6 +4,19 @@ A message is a resource which can be either received or sent via an inbox. Messa
 
 A message can be either inbound (received) or outbound (sent). You can know if a message has been received or sent thanks to the boolean `is_inbound`.
 
+Each message has a type depending on the channel it has been sent with:
+
+| Type name    | Description                        |
+|--------------|------------------------------------|
+| `email`      | Email message                      |
+| `tweet`      | Message from Twitter               |
+| `sms`        | SMS message                        |
+| `smooch`     | Message from Smooch                |
+| `facebook`   | Message from Facevook              |
+| `intercom`   | Message from Intercom              |
+| `truly-call` | Phone call from Truly              |
+| `custom`     | [Custom message](#custom-messages) |
+
 + Parameters
     + message_id (string, required) - Id of the requested message
 
