@@ -2212,6 +2212,7 @@ curl --include \
   \"body\": \"Why is Zoidberg the only one still alone?\",
   \"text\": \"Why is Zoidberg the only one still alone?\",
   \"options\": {
+    \"tags\": [],
     \"archive\": true
   },
   \"to\": [
@@ -2253,6 +2254,7 @@ subject | string (optional) | Subject of the message for email message
 body | string | Body of the message
 text | string (optional) | Text version of the body for messages with non-text body
 options | object (optional) | Sending options
+options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created)
 options.archive | boolean (optional) | Archive the conversation right when sending the reply (default: `true`)
 to | array | List of the recipient handles who will receive this message
 cc | array (optional) | List of the recipient handles who will receive a copy of this message
@@ -2272,6 +2274,7 @@ curl --include \
   \"body\": \"Why is Zoidberg the only one still alone?\",
   \"text\": \"Why is Zoidberg the only one still alone?\",
   \"options\": {
+    \"tags\": [],
     \"archive\": true
   },
   \"channel_id\": \"cha_55c8c149\",
@@ -2312,6 +2315,7 @@ subject | string (optional) | Subject of the message for email message
 body | string | Body of the message
 text | string (optional) | Text version of the body for messages with non-text body
 options | object (optional) | Sending options
+options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created)
 options.archive | boolean (optional) | Archive the conversation right when sending the reply (default: `true`)
 channel_id | string (optional) | Channel through which to send the message. Defaults to the original conversation channel. For imported messages or messages received on multiple channels, you **MUST** specify a channel ID.
 to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message.
@@ -2374,6 +2378,87 @@ body_format | enum (optional) | Format of the body (default: `[object Object]`)
 metadata | object (optional) | 
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
 metadata.headers | object (optional) | Custom object where any internal information can be stored
+
+## Import a message
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"sender\": {
+    \"handle\": \"@calculon\",
+    \"source\": \"twitter\"
+  },
+  \"to\": [],
+  \"cc\": [],
+  \"bcc\": [],
+  \"body\": \"\",
+  \"body_format\": \"html\",
+  \"external_id\": \"\",
+  \"created_at\": 1453770984.123,
+  \"tags\": [],
+  \"metadata\": {
+    \"is_inbound\": true,
+    \"is_archived\": true
+  }
+}" \
+'https://api2.frontapp.com/inboxes/${INBOX_ID}/imported_messages'
+```
+
+```node
+
+```
+
+> Response **202**
+
+Appends a new message into an inbox.
+
+<aside class="warning">
+Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.
+</aside>
+
+
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/inboxes/{inbox_id}/imported_messages`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+inbox_id | string | Id of the inbox into which the message should be append.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+sender | Contact handle | 
+to | array (optional) | List of recipient handles who received the message.
+cc | array (optional) | List of recipient handles who received a copy of the message.
+bcc | array (optional) | List of the recipeient handles who received a blind copy of the message.
+subject | string (optional) | Subject of the message.
+body | string | Body of the message.
+body_format | enum (optional) | Format of the message body. (default: `[object Object]`)
+external_id | string | External identifier of the message. Front won't import two messages with the same external ID.
+created_at | number | Date at which the message as been sent or received.
+type | enum (optional) | Type of the message to import.
+
+    + Default: `email`
+    + Members
+        + `email`
+        + `intercom`
+
+assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation.
+tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created).
+metadata | object | 
+metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead.
+metadata.is_inbound | boolean | Whether or not the message is received (inbound) or sent (outbound) by you.
+metadata.is_archived | boolean (optional) | Whether or not the message should be directly archived once imported. (default: `true`)
 
 # Contacts
 > 

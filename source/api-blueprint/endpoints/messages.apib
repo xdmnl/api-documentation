@@ -70,3 +70,20 @@ Simulate the reception of an incoming message. This endpoint is available for [c
     + Attributes (Custom message)
 
 <!-- include(../includes/accepted_response.apib) -->
+
+### Import a message [POST /inboxes/{inbox_id}/imported_messages]
+
+Appends a new message into an inbox.
+
+<aside class="warning">
+Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.
+</aside>
+
++ Parameters
+    + inbox_id (string, required) - Id of the inbox into which the message should be append.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Message to import)
+
+<!-- include(../includes/accepted_response.apib) -->
