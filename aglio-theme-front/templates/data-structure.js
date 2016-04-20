@@ -35,11 +35,7 @@ function _renderField(field, options) {
   if (!field.required)
     formattedType += ' (optional)'
 
-  var formattedDescription = field.description;
-  if (field.default)
-    formattedDescription += ` (default: \`${field.default}\`)`;
-
-  var renderedField = `${formattedName} | ${formattedType} | ${formattedDescription}
+  var renderedField = `${formattedName} | ${formattedType} | ${field.description} ${_getDefaultValueDescription(field)}
 `;
 
   if (field.type === 'object' && field.example)
@@ -61,4 +57,17 @@ function _formatField(field) {
   };
 
   return formattedField;
+}
+
+function _getDefaultValueDescription(field) {
+  if (field.default === undefined || field.default === null)
+    return '';
+
+  var defaultValue = field.default;
+
+  if (_.isArray(defaultValue))
+    defaultValue = field.default.map(v => v.element === 'string' ? `'${v.content}'` : v.content)
+                                .join(', ');
+
+  return `(Default: \`${defaultValue}\`)`;
 }
