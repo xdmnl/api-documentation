@@ -27,7 +27,7 @@ Each message has a type depending on the channel it has been sent with:
 Fetches the information of a message.
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes (Message)
@@ -40,10 +40,10 @@ Sends a new message from a channel. It will create a new conversation.
     + channel_id (string, required) - Id or address of the channel from which to send the message
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Outbound new message)
 
-<!-- include(../includes/accepted_response.apib) -->
+:[Acceptes Response](../includes/accepted_response.apib)
 
 ### Send a reply [POST /conversations/{conversation_id}/messages]
 
@@ -53,10 +53,10 @@ Replies to a conversation by sending a message and appending it to the conversat
     + conversation_id (string, required) - Id of the conversation
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Outbound reply)
 
-<!-- include(../includes/accepted_response.apib) -->
+:[Acceptes Response](../includes/accepted_response.apib)
 
 ### Receive a custom message [POST /channels/{channel_id}/incoming_messages]
 
@@ -66,10 +66,10 @@ Simulate the reception of an incoming message. This endpoint is available for [c
     + channel_id (string, required) - Id of the requested custom channel
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Custom message)
 
-<!-- include(../includes/accepted_response.apib) -->
+:[Acceptes Response](../includes/accepted_response.apib)
 
 ### Import a message [POST /inboxes/{inbox_id}/imported_messages]
 
@@ -83,7 +83,7 @@ Imported messages will <strong>NOT</strong> be linked to any channel until a rep
     + inbox_id (string, required) - Id of the inbox into which the message should be append.
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Message to import)
 
-<!-- include(../includes/accepted_response.apib) -->
+:[Acceptes Response](../includes/accepted_response.apib)

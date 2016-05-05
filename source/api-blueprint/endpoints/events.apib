@@ -78,16 +78,16 @@ Lists all the detailed events which occured in the inboxes of your company order
 </aside>
 
 + Parameters
-    <!-- include(../includes/query_parameter.apib) -->
-    <!-- include(../includes/pagination_parameter.apib) -->
+    :[Query parameter](../includes/query_parameter.apib)
+    :[Pagination parameter](../includes/pagination_parameter.apib)
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/pagination_attribute.apib) -->
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Pagination attribute](../includes/pagination_attribute.apib)
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/events` (string, required)
         + _results (array[Event], required) - List of the events
 
@@ -96,7 +96,7 @@ Lists all the detailed events which occured in the inboxes of your company order
 Fetches the full details of an event.
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes (Event)

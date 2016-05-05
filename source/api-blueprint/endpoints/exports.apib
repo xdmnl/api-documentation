@@ -70,15 +70,15 @@ Because of this, Front will compute a **handle time** to the last message if:
 Lists all the exports generated in your company.
 
 + Parameters
-    <!-- include(../includes/pagination_parameter.apib) -->
+    :[Pagination parameter](../includes/pagination_parameter.apib)
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/pagination_attribute.apib) -->
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Pagination attribute](../includes/pagination_attribute.apib)
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/exports` (string, required)
         + _results (array[Export], required) - List of the exports created
 
@@ -87,7 +87,7 @@ Lists all the exports generated in your company.
 Fetches the information of an export.
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes (Export)
@@ -97,7 +97,7 @@ Fetches the information of an export.
 Requests the creation of a new export
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Export to create)
 
 + Response 201 (application/json)

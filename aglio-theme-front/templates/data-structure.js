@@ -63,6 +63,8 @@ function _getDefaultValueDescription(field) {
   if (field.default === undefined || field.default === null)
     return '';
 
+  if (field.type === 'enum') console.log(field);
+
   var defaultValue = field.default;
 
   if (_.isArray(defaultValue))

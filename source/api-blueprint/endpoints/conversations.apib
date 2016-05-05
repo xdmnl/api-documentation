@@ -14,16 +14,16 @@ Even if a conversation messages can have multiple recipients, the conversation r
 Lists all the conversations in your company in reverse chronological order (latest updated first).
 
 + Parameters
-    <!-- include(../includes/query_parameter.apib) -->
-    <!-- include(../includes/pagination_parameter.apib) -->
+    :[Query parameter](../includes/query_parameter.apib)
+    :[Pagination parameter](../includes/pagination_parameter.apib)
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/pagination_attribute.apib) -->
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Pagination attribute](../includes/pagination_attribute.apib)
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/conversations` (string, required)
         + _results (array[Conversation], required) - Array of the conversations
 
@@ -32,7 +32,7 @@ Lists all the conversations in your company in reverse chronological order (late
 Fetches the information of a conversation.
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes (Conversation)
@@ -49,7 +49,7 @@ Updates a conversation. You can:
 * Unarchive or restore a conversation  by sending `open` in `status`
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Conversation to update)
 
 + Response 204
@@ -62,11 +62,11 @@ Lists the inboxes in which a conversation appears.
     + conversation_id (string, required) - Id of the requested conversation
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/inboxes` (string, required)
         + _results (array[Inbox], required) - List of the conversation inboxes
 
@@ -78,11 +78,11 @@ Lists the teammates following a conversation.
     + conversation_id (string, required) - Id of the requested conversation
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/followers` (string, required)
         + _results (array[Teammate], required) - List of the conversation followers
 
@@ -91,16 +91,16 @@ Lists the teammates following a conversation.
 List of all the events that occured for a conversation in reverse chronological order (newest first).
 
 + Parameters
-     <!-- include(../includes/pagination_parameter.apib) -->
+     :[Pagination parameter](../includes/pagination_parameter.apib)
      + conversation_id (string, required) - Id of the requested conversation
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/pagination_attribute.apib) -->
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Pagination attribute](../includes/pagination_attribute.apib)
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/events` (string, required)
         + _results (array[Event], required) - List of the conversation activities
 
@@ -110,15 +110,15 @@ Lists all the messages sent or received in a conversation in reverse chronologic
 
 + Parameters
     + conversation_id (string, required) - Id of the requested conversation
-    <!-- include(../includes/pagination_parameter.apib) -->
+    :[Pagination parameter](../includes/pagination_parameter.apib)
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/pagination_attribute.apib) -->
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Pagination attribute](../includes/pagination_attribute.apib)
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/messages` (string, required)
         + _results (array[Message], required) - List of the conversation messages
 
@@ -136,7 +136,7 @@ A comment is a private message written by a teammate visible only to the other t
 Adds a comment to a conversation.
 
 + Request (application/json)
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
     + Attributes (Comment to create)
 
 + Response 201 (application/json)
@@ -147,11 +147,11 @@ Adds a comment to a conversation.
 Lists of all the comments written in a conversation in reverse chronological order (newest first).
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/comments` (string, required)
         + _results (array[Comment], required) - List of comments
 
@@ -164,7 +164,7 @@ Fetches the information of a comment.
     + comment_id (string, required) - Id of the comment
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes (Comment)
@@ -177,10 +177,10 @@ Lists the teammates mentionned in a comment.
     + comment_id (string, required) - Id of the comment
 
 + Request
-    <!-- include(../includes/request_header.apib) -->
+    :[Common request headers](../includes/request_header.apib)
 
 + Response 200 (application/json)
     + Attributes
-        <!-- include(../includes/links_attribute.apib) -->
+        :[Link attribute](../includes/links_attribute.apib)
             + self: `https://api2.frontapp.com/comments/com_55c8c149/mentions` (string, required)
         + _results (array[Teammate], required) - List of teammates

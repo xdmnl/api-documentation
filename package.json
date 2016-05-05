@@ -15,7 +15,8 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "aglio": "latest",
-    "aglio-theme-front": "file:./aglio-theme-front"
+    "aglio-theme-front": "file:./aglio-theme-front",
+    "protagonist": "^1.3.1",
+    "hercule": "^3.0.0"
   }
 }
