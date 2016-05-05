@@ -2374,7 +2374,7 @@ sender.name | string (optional) | Name of the sender
 sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender
 subject | string (optional) | Subject of the message
 body | string | Body of the message
-body_format | enum (optional) | Format of the body (default: `[object Object]`)
+body_format | enum (optional) | Format of the body (Possible values: `html`, `markdown`. Default: `markdown`)
 metadata | object (optional) | 
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
 metadata.headers | object (optional) | Custom object where any internal information can be stored
@@ -2438,21 +2438,15 @@ inbox_id | string | Id of the inbox into which the message should be append.
 Name | Type | Description
 -----|------|------------
 sender | Contact handle | 
-to | array (optional) | List of recipient handles who received the message.
+to | array | List of recipient handles who received the message.
 cc | array (optional) | List of recipient handles who received a copy of the message.
 bcc | array (optional) | List of the recipeient handles who received a blind copy of the message.
 subject | string (optional) | Subject of the message.
 body | string | Body of the message.
-body_format | enum (optional) | Format of the message body. (default: `[object Object]`)
+body_format | enum (optional) | Format of the message body. (Possible values: `html`, `markdown`. Default: `markdown`)
 external_id | string | External identifier of the message. Front won't import two messages with the same external ID.
 created_at | number | Date at which the message as been sent or received.
-type | enum (optional) | Type of the message to import.
-
-    + Default: `email`
-    + Members
-        + `email`
-        + `intercom`
-
+type | enum (optional) | Type of the message to import. (Possible values: `email`, `intercom`. Default: `email`)
 assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation.
 tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created).
 metadata | object | 

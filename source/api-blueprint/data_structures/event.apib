@@ -21,7 +21,7 @@
         + `sending_error`
 + emitted_at: `1453770984.123` (number, required) - Date at which the event has been emitted
 + source (object, required) - The event's source
-    <!-- include(../includes/meta_attribute.apib) -->
+    + _meta (object, required) - Metadata about the resource
         + type (enum[string], required)
             + Members
                 + `rule`
@@ -35,7 +35,7 @@
         + (Teammate) - Teammate which triggered the event
         + (array[Inbox]) - List of the inboxes on which the event occured
 + target (object) - Partial representation (type & id) of the event's target
-    <!-- include(../includes/meta_attribute.apib) -->
+    + _meta (object, required) - Metadata about the resource
         + type (enum[string], required)
             + Members
                 + `teammate`

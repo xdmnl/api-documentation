@@ -69,11 +69,9 @@
     + handle: `hermes_123` (string, required) - Handle of the sender. It can be any string used to uniquely identify the sender
 + subject: `Question` (string, optional) - Subject of the message
 + body: `Didn't we used to be a delivery company?` (string, required) - Body of the message
-+ body_format (enum[string], optional) - Format of the body
-    + Default: `markdown`
-    + Members
-        + `html`
-        + `markdown`
++ body_format: `markdown` (enum[string], optional, default) - Format of the message body.
+     + `html`
+     + `markdown`
 + metadata (object, optional)
     + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
     + headers (object, optional) - Custom object where any internal information can be stored
@@ -82,23 +80,19 @@
 
 + sender (Contact handle, required)
   + name (string, optional) - Name of the contact.
-+ to (array[string], optional) - List of recipient handles who received the message.
++ to (array[string], required) - List of recipient handles who received the message.
 + cc (array[string], optional) - List of recipient handles who received a copy of the message.
 + bcc (array[string], optional) - List of the recipeient handles who received a blind copy of the message.
 + subject (string, optional) - Subject of the message.
 + body (string, required) - Body of the message.
-+ body_format (enum[string], optional) - Format of the message body.
-    + Default: `markdown`
-    + Members
-        + `html`
-        + `markdown`
++ body_format: `markdown` (enum[string], optional, default) - Format of the message body.
+     + `html`
+     + `markdown`
 + external_id (string, required) - External identifier of the message. Front won't import two messages with the same external ID.
 + created_at: `1453770984.123` (number, required) - Date at which the message as been sent or received.
-+ type (enum[string], optional) - Type of the message to import.
-        + Default: `email`
-        + Members
-            + `email`
-            + `intercom`
++ type: `email` (enum[string], optional, default) - Type of the message to import.
+     + `email`
+     + `intercom`
 + assignee_id (string, optional) - ID of the teammate who will be assigned to the conversation.
 + tags (array[string], optional) - List of tag names to add to the conversation (unknown tags will automatically be created).
 + metadata (object, required)
