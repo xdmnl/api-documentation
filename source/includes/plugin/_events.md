@@ -28,23 +28,16 @@ The data object sent to the callbacks of the event contains 4 fields:
 
 ```json
 {
-  "avatar_type": "contact",
-  "class": "contact",
-  "source": "email",
-  "name": "John Doe",
+  "id": "ctc_55c8c149",
   "handle": "john.doe@frontapp.com",
-  "display_name": "John Doe",
-  "job": null,
-  "bio": null,
-  "avatar": null,
   "initials": "J",
+  "display_name": "John Doe",
+  "description": "",
+  "avatar": null,
   "color": "hsl(47,60%,70%)",
-  "inbox_alias": null,
-  "message_type": null,
-  "extra": null,
-  "links": [],
-  "num_notes": 0,
-  "role": "reply-to"
+  "source": "email",
+  "role": "reply-to",
+  "num_notes": 0
 }
 ```
 
@@ -52,39 +45,20 @@ The data object sent to the callbacks of the event contains 4 fields:
 
 ```json
 {
-  "type": "conversation",
+  "id": "cnv_55c8c149",
   "message_type": "email",
   "status": "unassigned",
-  "archived": false,
-  "trashed": false,
   "replied": false,
   "reacted": false,
-  "subject": "test again",
-  "summary": "Just testing some stuff",
-  "updated_at": 1423381104000,
   "num_messages": 1,
-  "has_attachments": false,
   "contact": {}, // Similar to the contact JSON above
+  "assignee": "Teammate-alias",
   "inboxes": ["support"],
-  "assignee": null,
   "followers": ["jane"],
   "tags": [],
-  "draft_seeds": [],
   "seen_by": ["jane"],
-  "reminders": [],
-  "messages": [], // Similar to the message JSON below
-  "drafts": [],
-  "activities": [
-    {
-      "type": "assign",
-      "class": "activity",
-      "date": 1423590415662,
-      "from": "jane",
-      "assignee": "jane"
-    }
-  ],
-  "link": "https://app.frontapp.com/api/1/noauth/open_in_front/L2luYm94ZXMvdW5pZmllZC9hbGwvb3Blbi83",
-  "active": true
+  "subject": "test again",
+  "summary": "Just testing some stuff"
 }
 ```
 
@@ -92,117 +66,23 @@ The data object sent to the callbacks of the event contains 4 fields:
 
 ```json
 {
-  "type": "email",
-  "class": "message",
-  "status": "imported",
+  "id": "msg_55c8c149",
   "ext_id": "086b97289e93b01b@frontapp.com",
-  "from": {
-    "avatar_type": "inbox",
-    "class": "inbox",
-    "source": "email",
-    "name": "Test Support",
-    "handle": "support@test.com",
-    "display_name": "Test Support",
-    "job": null,
-    "bio": null,
-    "avatar": null,
-    "initials": "T",
-    "color": "#E151E1",
-    "inbox_alias": "test_support",
-    "message_type": "email",
-    "extra": null,
-    "links": [],
-    "num_notes": 0,
-    "role": "from"
-  },
-  "recipients": [
-    {
-      "avatar_type": "inbox",
-      "class": "inbox",
-      "source": "email",
-      "name": "Test Support",
-      "handle": "support@test.com",
-      "display_name": "Test Support",
-      "job": null,
-      "bio": null,
-      "avatar": null,
-      "initials": "T",
-      "color": "#E151E1",
-      "inbox_alias": "test_support",
-      "message_type": "email",
-      "extra": null,
-      "links": [],
-      "num_notes": 0,
-      "role": "from"
-    },
-    {
-      "avatar_type": "contact",
-      "class": "contact",
-      "source": "email",
-      "name": "John Doe",
-      "handle": "john.doe@frontapp.com",
-      "display_name": "John Doe",
-      "job": null,
-      "bio": null,
-      "avatar": null,
-      "initials": "J",
-      "color": "hsl(47,60%,70%)",
-      "inbox_alias": null,
-      "message_type": null,
-      "extra": null,
-      "links": [],
-      "num_notes": 0,
-      "role": "to"
-    },
-    {
-      "avatar_type": "inbox",
-      "class": "inbox",
-      "source": "email",
-      "name": "Test Support",
-      "handle": "support@test.com",
-      "display_name": "Test Support",
-      "job": null,
-      "bio": null,
-      "avatar": null,
-      "initials": "T",
-      "color": "#E151E1",
-      "inbox_alias": "test_support",
-      "message_type": "email",
-      "extra": null,
-      "links": [],
-      "num_notes": 0,
-      "role": "reply-to"
-    }
-  ],
+  "type": "email",
+  "status": "imported",
   "date": 1422909585000,
   "inbound": false,
   "blurb": "This is a test",
-  "num_comments": 0,
-  "comments": [],
+  "recipient_opened_date": null,
   "subject": "More testing",
   "body": "This is a test", // body will only be loaded in the first message
-  "attachments": [],
-  "reply_to": {
-    "avatar_type": "inbox",
-    "class": "inbox",
-    "source": "email",
-    "name": "Test Support",
-    "handle": "support@test.com",
-    "display_name": "Test Support",
-    "job": null,
-    "bio": null,
-    "avatar": null,
-    "initials": "T",
-    "color": "#E151E1",
-    "inbox_alias": "test_support",
-    "message_type": "email",
-    "extra": null,
-    "links": [],
-    "num_notes": 0,
-    "role": "reply-to"
+  "from": {
+    // Similar to the contact JSON above
   },
-  "forwarded_by": null,
-  "recipient_opened_date": null,
-  "latest": true
+  "recipients": [
+    {
+      // Similar to the contact JSON above
+    }
+  ]
 }
 ```
