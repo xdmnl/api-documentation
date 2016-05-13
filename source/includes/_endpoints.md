@@ -3,18 +3,18 @@
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the teammate
-_links.related | object | 
-_links.related.inboxes | string | URL of the teammate's inboxes
-_links.related.conversations | string | URL of the teammate's conversation
-id | string | Unique identifier of the teammate
-email | string | Email address of the teammate
-username | string | Username of the teammate (used for "@" mentions)
-first_name | string | First name of the teammate
-last_name | string | Last name of the teammate
-is_admin | boolean | Whether or not the teammate is an admin in your company
-is_available | boolean | Whether or not the teammate is available
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the teammate 
+_links.related | object |  
+_links.related.inboxes | string | URL of the teammate's inboxes 
+_links.related.conversations | string | URL of the teammate's conversation 
+id | string | Unique identifier of the teammate 
+email | string | Email address of the teammate 
+username | string | Username of the teammate (used for "@" mentions) 
+first_name | string | First name of the teammate 
+last_name | string | Last name of the teammate 
+is_admin | boolean | Whether or not the teammate is an admin in your company 
+is_available | boolean | Whether or not the teammate is available 
 
 A teammate is a Front user, a member of your company.
 
@@ -159,11 +159,11 @@ teammate_id | string | Id or email of the requested teammate
 
 Name | Type | Description
 -----|------|------------
-username | string (optional) | New username. It must be unique and can only contains lowercase letters, numbers and underscores.
-first_name | string (optional) | New first name
-last_name | string (optional) | New last name
-is_admin | boolean (optional) | New admin status
-is_available | boolean (optional) | New availability status
+username | string (optional) | New username. It must be unique and can only contains lowercase letters, numbers and underscores. 
+first_name | string (optional) | New first name 
+last_name | string (optional) | New last name 
+is_admin | boolean (optional) | New admin status 
+is_available | boolean (optional) | New availability status 
 
 ## List teammate conversations
 ```shell
@@ -367,17 +367,17 @@ teammate_id | string | Id or email of the teammate
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the inbox
-_links.related | object | 
-_links.related.teammates | string | URL of the list of teammates that can access the inbox
-_links.related.conversations | string | URL of the list of conversations included in this inbox
-_links.related.channels | string | URL of the list of channels sending messages to this inbox
-id | string | Unique identifier for the inbox
-address | string | **DEPRECATED in favor of channel** Address receiving the messages
-type | enum | **DEPRECATED in favor of channel** Type of the inbox
-name | string | Name of the inbox
-send_as | string (optional) | **DEPRECATED in favor of channel** Address which appears as the sender for messages sent from Front
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the inbox 
+_links.related | object |  
+_links.related.teammates | string | URL of the list of teammates that can access the inbox 
+_links.related.conversations | string | URL of the list of conversations included in this inbox 
+_links.related.channels | string | URL of the list of channels sending messages to this inbox 
+id | string | Unique identifier for the inbox 
+address | string | **DEPRECATED in favor of channel** Address receiving the messages 
+type | enum | **DEPRECATED in favor of channel** Type of the inbox 
+name | string | Name of the inbox 
+send_as | string (optional) | **DEPRECATED in favor of channel** Address which appears as the sender for messages sent from Front 
 
 An inbox is a container of messages.
 
@@ -470,8 +470,8 @@ Creates a team inbox with no channel associated to it (see [Create a channel](#c
 
 Name | Type | Description
 -----|------|------------
-name | string | Name of the inbox
-teammate_ids | array (optional) | List of all the teammate ids who will have access to this inbox. If omitted, it will automatically select all the administrators in your company.
+name | string | Name of the inbox 
+teammate_ids | array (optional) | List of all the teammate ids who will have access to this inbox. If omitted, it will automatically select all the administrators in your company. 
 
 ## Get inbox
 ```shell
@@ -774,15 +774,15 @@ inbox_id | string | Id of the requested inbox
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the channel.
-_links.related | object | 
-_links.related.inbox | string | URL of the inbox to which the channel is sending messages.
-id | string | Unique identifier for the channel.
-address | string | Address receiving the messages.
-type | enum | Type of the channel.
-send_as | string (optional) | Address which appears as the sender for messages sent from Front.
-settings | object | 
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the channel. 
+_links.related | object |  
+_links.related.inbox | string | URL of the inbox to which the channel is sending messages. 
+id | string | Unique identifier for the channel. 
+address | string | Address receiving the messages. 
+type | enum | Type of the channel. 
+send_as | string (optional) | Address which appears as the sender for messages sent from Front. 
+settings | object |  
 
 A channel is a resource which can send and receive messages.
 
@@ -935,8 +935,8 @@ channel_id | string | Id of the requested channel
 
 Name | Type | Description
 -----|------|------------
-settings | object | 
-settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message.
+settings | object |  
+settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
 
 ## Create a channel
 ```shell
@@ -995,9 +995,9 @@ inbox_id | string | Id of the inbox into which the channel messages will go.
 
 Name | Type | Description
 -----|------|------------
-type | enum | Type of the channel.
-settings | object | 
-settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message.
+type | enum | Type of the channel. 
+settings | object |  
+settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
 
 ## Get channel inbox
 ```shell
@@ -1049,21 +1049,21 @@ channel_id | string | Id of the requested channel
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the conversation
-_links.related | object | 
-_links.related.events | string | URL of the activities related to the conversation
-_links.related.followers | string | URL of the teammates following the conversation
-_links.related.messages | string | URL of the list of messages in the conversation
-_links.related.comments | string | URL of the comments for the conversation
-_links.related.inboxes | string | URL of the inboxes in which the conversation appears
-id | string | Unique identifier of the conversation
-subject | string | Subject of the conversation
-status | enum (optional) | Status of the conversation
-assignee | Teammate (optional) | Partial representation of the teammate assigned to the conversation
-recipient | Recipient | Main recipient of the conversation
-tags | array | List of the tags for this conversation
-last_message | Message | List of partial representation of the messages inside the conversation
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the conversation 
+_links.related | object |  
+_links.related.events | string | URL of the activities related to the conversation 
+_links.related.followers | string | URL of the teammates following the conversation 
+_links.related.messages | string | URL of the list of messages in the conversation 
+_links.related.comments | string | URL of the comments for the conversation 
+_links.related.inboxes | string | URL of the inboxes in which the conversation appears 
+id | string | Unique identifier of the conversation 
+subject | string | Subject of the conversation 
+status | enum (optional) | Status of the conversation 
+assignee | Teammate (optional) | Partial representation of the teammate assigned to the conversation 
+recipient | Recipient | Main recipient of the conversation 
+tags | array | List of the tags for this conversation 
+last_message | Message | List of partial representation of the messages inside the conversation 
 
 A conversation is a unique thread of messages. It can appear in one or more inboxes (eg: if you receive an email on contact@ where support@ is Cced).
 
@@ -1405,9 +1405,9 @@ conversation_id | string | Id of the requested conversation
 
 Name | Type | Description
 -----|------|------------
-assignee_id | string (optional) | ID or email of the teammate to assign the conversation to. Set it to null to unassign.
-status | enum (optional) | New status of the conversation
-tags | array (optional) | List of all the tag names replacing the old conversation tags
+assignee_id | string (optional) | ID or email of the teammate to assign the conversation to. Set it to null to unassign. 
+status | enum (optional) | New status of the conversation 
+tags | array (optional) | List of all the tag names replacing the old conversation tags 
 
 ## List conversation inboxes
 ```shell
@@ -1800,15 +1800,15 @@ page | number (optional) | Number of the page requested
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the comment
-_links.related | object | 
-_links.related.conversation | string | URL of the conversation from which the comment belongs
-_links.related.mentions | string | URL of the teammates mentionned in a comment
-id | string | Unique identifier of the comment
-author | Teammate | Teammate who wrote the comment
-body | string | Content of the comment
-posted_at | number | Date at which the comment have been posted
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the comment 
+_links.related | object |  
+_links.related.conversation | string | URL of the conversation from which the comment belongs 
+_links.related.mentions | string | URL of the teammates mentionned in a comment 
+id | string | Unique identifier of the comment 
+author | Teammate | Teammate who wrote the comment 
+body | string | Content of the comment 
+posted_at | number | Date at which the comment have been posted 
 
 A comment is a private message written by a teammate visible only to the other teammates. It is never sent and cannot be shared outside of Front.
 
@@ -1884,8 +1884,8 @@ conversation_id | string | Id of the requested conversation
 
 Name | Type | Description
 -----|------|------------
-author_id | string | ID or email of the teammate creating the comment
-body | string | Content of the comment
+author_id | string | ID or email of the teammate creating the comment 
+body | string | Content of the comment 
 
 ## List conversation comments
 ```shell
@@ -2070,31 +2070,31 @@ comment_id | string | Id of the comment
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the message
-_links.related | object | 
-_links.related.conversation | string | URL of the parent conversation
-_links.related.message_replied_to | string (optional) | URL of the message which have been replied to
-id | string | Unique identifier of the message
-type | enum | Type of the message
-is_inbound | boolean | Whether or not the message has been received or sent
-created_at | number | Date at which the message as been sent or received
-blurb | string | Preview of the message body
-author | Teammate (optional) | In case of a message sent from Front by a teammate, it will include the teammate who sent it
-recipients | array | List of the message recipients
-body | string | Body of the message
-text | string (optional) | Text version of the body for email messages
-attachments | array | List of files attached to the message
-metadata | object (optional) | Optional metadata about the message
-metadata.intercom_url | string (optional) | For `intercom` messages only. URL of the Intercom conversation the message is comming from.
-metadata.duration | number (optional) | For `truly-call` messages only. Length of the call in seconds.
-metadata.have_been_answered | boolean (optional) | For `truly-call` messages only. Whether or not the call have been answered.
-metadata.twitter_url | string (optional) | For `tweet` messages only. URL of the tweet.
-metadata.is_retweet | boolean (optional) | For `tweet` messages only. Whether or not the tweet is a retweet.
-metadata.have_been_retweeted | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been retweeted.
-metadata.have_been_favorited | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been favorited.
-metadata.thread_ref | string (optional) | For `custom` messages only. Custom reference which is used to thread messages.
-metadata.headers | object (optional) | For `custom` messages only. Custom object holding internal information.
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the message 
+_links.related | object |  
+_links.related.conversation | string | URL of the parent conversation 
+_links.related.message_replied_to | string (optional) | URL of the message which have been replied to 
+id | string | Unique identifier of the message 
+type | enum | Type of the message 
+is_inbound | boolean | Whether or not the message has been received or sent 
+created_at | number | Date at which the message as been sent or received 
+blurb | string | Preview of the message body 
+author | Teammate (optional) | In case of a message sent from Front by a teammate, it will include the teammate who sent it 
+recipients | array | List of the message recipients 
+body | string | Body of the message 
+text | string (optional) | Text version of the body for email messages 
+attachments | array | List of files attached to the message 
+metadata | object (optional) | Optional metadata about the message 
+metadata.intercom_url | string (optional) | For `intercom` messages only. URL of the Intercom conversation the message is comming from. 
+metadata.duration | number (optional) | For `truly-call` messages only. Length of the call in seconds. 
+metadata.have_been_answered | boolean (optional) | For `truly-call` messages only. Whether or not the call have been answered. 
+metadata.twitter_url | string (optional) | For `tweet` messages only. URL of the tweet. 
+metadata.is_retweet | boolean (optional) | For `tweet` messages only. Whether or not the tweet is a retweet. 
+metadata.have_been_retweeted | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been retweeted. 
+metadata.have_been_favorited | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been favorited. 
+metadata.thread_ref | string (optional) | For `custom` messages only. Custom reference which is used to thread messages. 
+metadata.headers | object (optional) | For `custom` messages only. Custom object holding internal information. 
 
 A message is a resource which can be either received or sent via an inbox. Messages are grouped by conversations.
 
@@ -2249,16 +2249,16 @@ channel_id | string | Id or address of the channel from which to send the messag
 
 Name | Type | Description
 -----|------|------------
-author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent
-subject | string (optional) | Subject of the message for email message
-body | string | Body of the message
-text | string (optional) | Text version of the body for messages with non-text body
-options | object (optional) | Sending options
-options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created)
-options.archive | boolean (optional) | Archive the conversation right when sending the reply (default: `true`)
-to | array | List of the recipient handles who will receive this message
-cc | array (optional) | List of the recipient handles who will receive a copy of this message
-bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message
+author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent 
+subject | string (optional) | Subject of the message for email message 
+body | string | Body of the message 
+text | string (optional) | Text version of the body for messages with non-text body 
+options | object (optional) | Sending options 
+options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
+options.archive | boolean (optional) | Archive the conversation right when sending the reply (Default: `true`)
+to | array | List of the recipient handles who will receive this message 
+cc | array (optional) | List of the recipient handles who will receive a copy of this message 
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message 
 
 ## Send a reply
 ```shell
@@ -2310,17 +2310,17 @@ conversation_id | string | Id of the conversation
 
 Name | Type | Description
 -----|------|------------
-author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent
-subject | string (optional) | Subject of the message for email message
-body | string | Body of the message
-text | string (optional) | Text version of the body for messages with non-text body
-options | object (optional) | Sending options
-options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created)
-options.archive | boolean (optional) | Archive the conversation right when sending the reply (default: `true`)
-channel_id | string (optional) | Channel through which to send the message. Defaults to the original conversation channel. For imported messages or messages received on multiple channels, you **MUST** specify a channel ID.
-to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message.
-cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message.
-bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message
+author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent 
+subject | string (optional) | Subject of the message for email message 
+body | string | Body of the message 
+text | string (optional) | Text version of the body for messages with non-text body 
+options | object (optional) | Sending options 
+options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
+options.archive | boolean (optional) | Archive the conversation right when sending the reply (Default: `true`)
+channel_id | string (optional) | Channel through which to send the message. Defaults to the original conversation channel. For imported messages or messages received on multiple channels, you **MUST** specify a channel ID. 
+to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message. 
+cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message. 
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message 
 
 ## Receive a custom message
 ```shell
@@ -2337,7 +2337,6 @@ curl --include \
   },
   \"subject\": \"Question\",
   \"body\": \"Didn't we used to be a delivery company?\",
-  \"body_format\": \"html\",
   \"metadata\": {}
 }" \
 'https://api2.frontapp.com/channels/${CHANNEL_ID}/incoming_messages'
@@ -2368,16 +2367,16 @@ channel_id | string | Id of the requested custom channel
 
 Name | Type | Description
 -----|------|------------
-sender | object | Data of the sender
-sender.contact_id | string (optional) | ID of the contact in Front corresponding to the sender
-sender.name | string (optional) | Name of the sender
-sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender
-subject | string (optional) | Subject of the message
-body | string | Body of the message
-body_format | enum (optional) | Format of the body (Possible values: `html`, `markdown`. Default: `markdown`)
-metadata | object (optional) | 
-metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
-metadata.headers | object (optional) | Custom object where any internal information can be stored
+sender | object | Data of the sender 
+sender.contact_id | string (optional) | ID of the contact in Front corresponding to the sender 
+sender.name | string (optional) | Name of the sender 
+sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender 
+subject | string (optional) | Subject of the message 
+body | string | Body of the message 
+body_format | enum (optional) | Format of the message body. (Possible values: `html`, `markdown`. Default: `markdown`)
+metadata | object (optional) |  
+metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead 
+metadata.headers | object (optional) | Custom object where any internal information can be stored 
 
 ## Import a message
 ```shell
@@ -2396,7 +2395,6 @@ curl --include \
   \"cc\": [],
   \"bcc\": [],
   \"body\": \"\",
-  \"body_format\": \"html\",
   \"external_id\": \"\",
   \"created_at\": 1453770984.123,
   \"tags\": [],
@@ -2437,39 +2435,40 @@ inbox_id | string | Id of the inbox into which the message should be append.
 
 Name | Type | Description
 -----|------|------------
-sender | Contact handle | 
-to | array | List of recipient handles who received the message.
-cc | array (optional) | List of recipient handles who received a copy of the message.
-bcc | array (optional) | List of the recipeient handles who received a blind copy of the message.
-subject | string (optional) | Subject of the message.
-body | string | Body of the message.
+sender | Contact handle |  
+to | array | List of recipient handles who received the message. 
+cc | array (optional) | List of recipient handles who received a copy of the message. 
+bcc | array (optional) | List of the recipeient handles who received a blind copy of the message. 
+subject | string (optional) | Subject of the message. 
+body | string | Body of the message. 
 body_format | enum (optional) | Format of the message body. (Possible values: `html`, `markdown`. Default: `markdown`)
-external_id | string | External identifier of the message. Front won't import two messages with the same external ID.
-created_at | number | Date at which the message as been sent or received.
+external_id | string | External identifier of the message. Front won't import two messages with the same external ID. 
+created_at | number | Date at which the message as been sent or received. 
 type | enum (optional) | Type of the message to import. (Possible values: `email`, `intercom`. Default: `email`)
-assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation.
-tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created).
-metadata | object | 
-metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead.
-metadata.is_inbound | boolean | Whether or not the message is received (inbound) or sent (outbound) by you.
-metadata.is_archived | boolean (optional) | Whether or not the message should be directly archived once imported. (default: `true`)
+assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation. 
+tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created). 
+metadata | object |  
+metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead. 
+metadata.is_inbound | boolean | Whether or not the message is received (inbound) or sent (outbound) by you. 
+metadata.is_archived | boolean (optional) | Whether or not the message should be directly archived once imported. (Default: `true`)
 
 # Contacts
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the contact
-_links.related | object | 
-_links.related.notes | string | URL to list the notes associated to the contact
-_links.related.conversations | string | URL to list the URL associated to the contact
-id | string | Unique identifier of the contact
-name | string | Contact name
-description | string | Contact description
-avatar_url | string | URL of the contact's avatar
-is_spammer | boolean | Whether or not the contact is a spammer
-links | array | A set of URL associated to the contact
-handles | array | List of the handles and sources with which the contact is reachable.
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the contact 
+_links.related | object |  
+_links.related.notes | string | URL to list the notes associated to the contact 
+_links.related.conversations | string | URL to list the URL associated to the contact 
+id | string | Unique identifier of the contact 
+name | string | Contact name 
+description | string | Contact description 
+avatar_url | string | URL of the contact's avatar 
+is_spammer | boolean | Whether or not the contact is a spammer 
+links | array | A set of URL associated to the contact 
+handles | array | List of the handles and sources with which the contact is reachable. 
+groups | array | List of the groups the contact belongs to. 
 
 A contact is a person/entity with whom you have communicated.
 
@@ -2528,6 +2527,18 @@ curl --include \
           "handle": "@calculon",
           "source": "twitter"
         }
+      ],
+      "groups": [
+        {
+          "_links": {
+            "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
+            "related": {
+              "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+            }
+          },
+          "id": "grp_55c8c149",
+          "name": "Customers"
+        }
       ]
     }
   ]
@@ -2584,6 +2595,18 @@ curl --include \
       "handle": "@calculon",
       "source": "twitter"
     }
+  ],
+  "groups": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
+        "related": {
+          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+        }
+      },
+      "id": "grp_55c8c149",
+      "name": "Customers"
+    }
   ]
 }
 ```
@@ -2616,6 +2639,9 @@ curl --include \
   \"is_spammer\": true,
   \"links\": [
     \"http://example.com\"
+  ],
+  \"group_names\": [
+    \"Customers\"
   ]
 }" \
 'https://api2.frontapp.com/contacts/${CONTACT_ID}'
@@ -2646,11 +2672,12 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-name | string (optional) | Contact name
-description | string (optional) | Contact description
-avatar_url | string (optional) | URL of the contact's avatar
-is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer
-links | array (optional) | List of all the links of a contact
+name | string (optional) | Contact name 
+description | string (optional) | Contact description 
+avatar_url | string (optional) | URL of the contact's avatar 
+is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer 
+links | array (optional) | List of all the links of the contact 
+group_names | array (optional) | List of all the group names the contact belongs to. It will automatically create missing groups. 
 
 ## Create contact
 ```shell
@@ -2667,6 +2694,9 @@ curl --include \
   \"is_spammer\": true,
   \"links\": [
     \"http://example.com\"
+  ],
+  \"group_names\": [
+    \"Customers\"
   ],
   \"handles\": [
     {
@@ -2706,6 +2736,18 @@ curl --include \
       "handle": "@calculon",
       "source": "twitter"
     }
+  ],
+  "groups": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
+        "related": {
+          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+        }
+      },
+      "id": "grp_55c8c149",
+      "name": "Customers"
+    }
   ]
 }
 ```
@@ -2721,12 +2763,13 @@ Creates a new contact.
 
 Name | Type | Description
 -----|------|------------
-name | string (optional) | Contact name
-description | string (optional) | Contact description
-avatar_url | string (optional) | URL of the contact's avatar
-is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer
-links | array (optional) | List of all the links of a contact
-handles | array | List of the handles of a contact
+name | string (optional) | Contact name 
+description | string (optional) | Contact description 
+avatar_url | string (optional) | URL of the contact's avatar 
+is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer 
+links | array (optional) | List of all the links of the contact 
+group_names | array (optional) | List of all the group names the contact belongs to. It will automatically create missing groups. 
+handles | array | List of the contact handles 
 
 ## Delete contact
 ```shell
@@ -2904,12 +2947,255 @@ q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
 contact_id | string | Id or alias of the requested contact
 
+# Contact groups
+> 
+Name | Type | Description
+-----|------|------------
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the group 
+_links.related | object |  
+_links.related.contacts | string | URL to list of contacts in the group 
+id | string | Unique identifier of the group 
+name | string | Name of the group 
+
+
+
+## List groups
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/contact_groups'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/contact_groups"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
+        "related": {
+          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+        }
+      },
+      "id": "grp_55c8c149",
+      "name": "Customers"
+    }
+  ]
+}
+```
+Lists the groups available in your company
+
+
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/contact_groups`
+## Create group
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"name\": \"Customers\"
+}" \
+'https://api2.frontapp.com/contact_groups'
+```
+
+```node
+
+```
+
+> Response **201**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
+    "related": {
+      "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+    }
+  },
+  "id": "grp_55c8c149",
+  "name": "Customers"
+}
+```
+Creates a new contact group
+
+
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/contact_groups`
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+name | string | Name of the group 
+
+## Delete group
+```shell
+
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/contact_groups/${GROUP_ID}'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Deletes a contact group. Will **not** delete the contacts in this group.
+
+
+
+### HTTP Request
+
+`DELETE https://api2.frontapp.com/contact_groups/{group_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+group_id | string | Id of the requested group
+
+## List contacts in a group
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts?page=${PAGE}'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_pagination": {},
+  "_links": {
+    "self": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+        "related": {
+          "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
+          "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+        }
+      },
+      "id": "ctc_55c8c149",
+      "name": "Calculon",
+      "description": "#vip #robot #RIP",
+      "avatar_url": "http://example.com/calculon.jpg",
+      "is_spammer": true,
+      "links": [
+        "http://example.com"
+      ],
+      "handles": [
+        {
+          "handle": "@calculon",
+          "source": "twitter"
+        }
+      ],
+      "groups": [
+        {
+          "_links": {
+            "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
+            "related": {
+              "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+            }
+          },
+          "id": "grp_55c8c149",
+          "name": "Customers"
+        }
+      ]
+    }
+  ]
+}
+```
+Lists all the contacts belonging to the requested group.
+
+
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/contact_groups/{group_id}/contacts?page={page}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+group_id | string | Id of the requested group
+page | number (optional) | Number of the page requested
+
+## Add contacts in a group
+```shell
+
+curl --include \
+     --request POST \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Adds a list of contacts in the requested group
+
+
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/contact_groups/{group_id}/contacts`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+group_id | string | Id of the requested group
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+contact_ids | array | List of ids or aliases of the contacts to add in the requested group 
+
 # Contact handles
 > 
 Name | Type | Description
 -----|------|------------
-handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ...
-source | enum | Can be 'twitter', 'email' or 'phone'.
+handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
+source | enum | Can be 'twitter', 'email' or 'phone'. 
 
 
 
@@ -2953,8 +3239,8 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ...
-source | enum | Can be 'twitter', 'email' or 'phone'.
+handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
+source | enum | Can be 'twitter', 'email' or 'phone'. 
 
 ## Delete contact handle
 ```shell
@@ -2996,16 +3282,16 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ...
-source | enum | Can be 'twitter', 'email' or 'phone'.
+handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
+source | enum | Can be 'twitter', 'email' or 'phone'. 
 
 # Contact notes
 > 
 Name | Type | Description
 -----|------|------------
-author | Teammate | Teammate who wrote the note
-body | string | Content of the note
-created_at | number | Date at which the note have been created
+author | Teammate | Teammate who wrote the note 
+body | string | Content of the note 
+created_at | number | Date at which the note have been created 
 
 
 
@@ -3129,19 +3415,19 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-author_id | string | ID or email of the teammate creating the comment
-body | string | Content of the note
+author_id | string | ID or email of the teammate creating the comment 
+body | string | Content of the note 
 
 # Tags
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the tag
-_links.related | object | 
-_links.related.conversations | string | URL of the list of conversations tagged with this tag
-id | string | Unique identifier of the tag
-name | string | Name of the tag
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the tag 
+_links.related | object |  
+_links.related.conversations | string | URL of the list of conversations tagged with this tag 
+id | string | Unique identifier of the tag 
+name | string | Name of the tag 
 
 A tag is a label that can be used to classify conversations.
 
@@ -3232,7 +3518,7 @@ Creates a new tag.
 
 Name | Type | Description
 -----|------|------------
-name | string | Name of the tag to create
+name | string | Name of the tag to create 
 
 ## Get tag
 ```shell
@@ -3424,11 +3710,11 @@ page | number (optional) | Number of the page requested
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the rule
-id | string | Unique identifier of the rule
-name | string | Name of the rule
-actions | array | List of the rule's actions description
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the rule 
+id | string | Unique identifier of the rule 
+name | string | Name of the rule 
+actions | array | List of the rule's actions description 
 
 A rule is a set of conditions which will trigger automatic actions when they are met.
 
@@ -3522,20 +3808,20 @@ rule_id | string | ID of the requested rule
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the event
-id | string | Unique identifier of the event
-type | enum | Type of event
-emitted_at | number | Date at which the event has been emitted
-source | object | The event's source
-source._meta | object | Metadata about the resource
-source._meta.type | enum | 
-source.data | enum (optional) | The resource which triggered the event
-target | object (optional) | Partial representation (type & id) of the event's target
-target._meta | object | Metadata about the resource
-target._meta.type | enum | 
-target.data | enum (optional) | The resource which received the event
-conversation | Conversation | The conversation on which the event happened
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the event 
+id | string | Unique identifier of the event 
+type | enum | Type of event 
+emitted_at | number | Date at which the event has been emitted 
+source | object | The event's source 
+source._meta | object | Metadata about the resource 
+source._meta.type | enum |  
+source.data | enum (optional) | The resource which triggered the event 
+target | object (optional) | Partial representation (type & id) of the event's target 
+target._meta | object | Metadata about the resource 
+target._meta.type | enum |  
+target.data | enum (optional) | The resource which received the event 
+conversation | Conversation | The conversation on which the event happened 
 
 An event is created everytime something interesting is happenning in Front. You'll find in the table bellow the description of all the types of event that exist:
 
@@ -4133,16 +4419,16 @@ metrics | array | List of the metrics to include in the analytics
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the export URL
-id | string | Unique identifier for the export.
-status | enum | Status of the export.
-progress | number | Number ranging from 0 to 100 corresponding to the percentage of the export processed.
-url | string (optional) | URL of the generated export. Will be null until the status is "done".
-filename | string (optional) | Name of the file of the generated export. Will be null until the status is "done".
-size | number | Size (in bytes) of the export file.
-created_at | number | Date at which the export has been created.
-query | Export to create | Query data used to generate the export.
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the export URL 
+id | string | Unique identifier for the export. 
+status | enum | Status of the export. 
+progress | number | Number ranging from 0 to 100 corresponding to the percentage of the export processed. 
+url | string (optional) | URL of the generated export. Will be null until the status is "done". 
+filename | string (optional) | Name of the file of the generated export. Will be null until the status is "done". 
+size | number | Size (in bytes) of the export file. 
+created_at | number | Date at which the export has been created. 
+query | Export to create | Query data used to generate the export. 
 
 Front can generate exports of your data for a specific timeframe and/or specific inboxes, teammates or tags.
 
@@ -4375,9 +4661,9 @@ Requests the creation of a new export
 
 Name | Type | Description
 -----|------|------------
-inbox_id | string (optional) | ID of the inbox to export the analytics for. If omitted, the export will contain all the inboxes.
-teammate_id | string (optional) | ID of the teammate to export the analytics for. If omitted, the export will contain all the teammates.
-tag_id: `tag_55c8c149` | string (optional) | ID the tag to export the analytics for. If omitted, the export will contain all the tags.
-start | number | Start time of the data to include in the export.
-end | number | End time of the data to include in the export.
-timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC.
+inbox_id | string (optional) | ID of the inbox to export the analytics for. If omitted, the export will contain all the inboxes. 
+teammate_id | string (optional) | ID of the teammate to export the analytics for. If omitted, the export will contain all the teammates. 
+tag_id: `tag_55c8c149` | string (optional) | ID the tag to export the analytics for. If omitted, the export will contain all the tags. 
+start | number | Start time of the data to include in the export. 
+end | number | End time of the data to include in the export. 
+timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC. 
