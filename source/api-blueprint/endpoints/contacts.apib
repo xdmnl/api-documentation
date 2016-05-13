@@ -92,6 +92,80 @@ Lists all the conversations with a contact in reverse chronological order (newes
             + self: `https://api2.frontapp.com/contacts/ctc_55c8c149/conversations` (string, required)
         + _results (array[Conversation], required) - List of the contact's conversations
 
+## Contact groups [/contact_groups]
+
++ Attributes (Contact group)
+
+### List groups [GET]
+
+Lists the groups available in your company
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/contact_groups` (string, required)
+        + _results (array[Contact group], required) - List of the contacts in the requested group
+
+### Create group [POST]
+
+Creates a new contact group
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Contact group to create)
+
++ Response 201 (application/json)
+    + Attributes (Contact group)
+
+### Delete group [DELETE /contact_groups/{group_id}]
+
+Deletes a contact group. Will **not** delete the contacts in this group.
+
++ Parameters
+    + group_id (string, required) - Id of the requested group
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 204
+
+### List contacts in a group [GET /contact_groups/{group_id}/contacts{?page}]
+
+Lists all the contacts belonging to the requested group.
+
++ Parameters
+    + group_id (string, required) - Id of the requested group
+    <!-- include(../includes/pagination_parameter.apib) -->
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/pagination_attribute.apib) -->
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts` (string, required)
+        + _results (array[Contact], required) - List of the contacts in the requested group
+
+### Add contacts in a group [POST /contact_groups/{group_id}/contacts]
+
+Adds a list of contacts in the requested group
+
++ Parameters
+    + group_id (string, required) - Id of the requested group
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes
+        + contact_ids (array[string], required) - List of ids or aliases of the contacts to add in the requested group
+            + `ctc_55c8c149`
+            + `alt:email:calculon@momsbot.com`
+
++ Response 204
+
 ## Contact handles [/contacts/{contact_id}/handles]
 
 + Parameters

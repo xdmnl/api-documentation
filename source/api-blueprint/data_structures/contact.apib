@@ -13,6 +13,7 @@
 + links (array[string], required) - A set of URL associated to the contact
     + `http://example.com`
 + handles (array[Contact handle], required) - List of the handles and sources with which the contact is reachable.
++ groups (array[Contact group], required) - List of the groups the contact belongs to.
 
 ## Contact to update
 
@@ -20,13 +21,15 @@
 + description: `#vip #robot #RIP` (string, optional) - Contact description
 + avatar_url: `http://example.com/calculon.jpg` (string, optional) - URL of the contact's avatar
 + is_spammer: `true` (boolean, optional) - Whether or not the contact is marked as a spammer
-+ links (array[string], optional) - List of all the links of a contact
++ links (array[string], optional) - List of all the links of the contact
     + `http://example.com`
++ group_names (array[string], optional) - List of all the group names the contact belongs to. It will automatically create missing groups.
+    + `Customers`
 
 ## Contact to create
 
 + Include Contact to update
-* handles (array[Contact handle], required) - List of the handles of a contact
+* handles (array[Contact handle], required) - List of the contact handles
 
 ## Contact handle
 
@@ -48,3 +51,16 @@
 
 + author_id: `alt:email:leela@planet-express.com` (string, required) - ID or email of the teammate creating the comment
 + body: `Calculon is a celebrated actor` (string, required) - Content of the note
+
+## Contact group
+
+<!-- include(../includes/links_attribute.apib) -->
+    + self: `https://api2.frontapp.com/contacts/grp_55c8c149` (string, required) - URL of the group
+    + related (object, required)
+        + contacts: `https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts` (string, required) - URL to list of contacts in the group
++ id: `grp_55c8c149` (string, required) - Unique identifier of the group
++ Include Contact group to create
+
+## Contact group to create
+
++ name: `Customers` (string, required) - Name of the group
