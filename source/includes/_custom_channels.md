@@ -6,7 +6,7 @@ You can use custom channels to integrate Front with platforms that are not offic
 ## Create a custom channel
 
 * Go to Settings > Inboxes
-* Click on "Create an inbox" and choose the **Custom** type
+* Click on "Add an inbox" and choose the **Custom** type
 * Choose a name for your inbox
 * Define a callback URL
 

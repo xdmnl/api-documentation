@@ -3845,6 +3845,8 @@ An event is created everytime something interesting is happenning in Front. You'
 | `reminder`        | When a conversation is unarchived by a reminder       |
 | `out_reply`       | When areply is sent                                   |
 
+### Event preview
+
 > *Example:*
 > Event preview of a rule assigning a conversation to a teammate:
 

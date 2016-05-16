@@ -1,10 +1,12 @@
 # Webhooks
 
-A webhook allows you to be dynamically notified when something happens in Front without having to constantly poll the API.
+A webhook allows you to be automatically notified when something happens in Front without having to constantly poll the API.
+
+## Setup
 
 To create a webhook, you need to:
 
-* Make sure that the Webhook integration is active (go to Settings > Integrations > Webhooks)
+* Make sure that the Webhook integration is active (go to Settings > API & Integrations > Integrations)
 ![Activate webhooks](webhook-activation.png)
 * Create a new rule with the conditions you want (go to Settings > Rules > New rule)
 ![Create a new webhook rule](webhook-rule.png)

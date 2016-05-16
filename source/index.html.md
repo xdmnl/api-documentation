@@ -34,7 +34,7 @@ The API uses [JSON Web Token](https://tools.ietf.org/html/rfc7519) to authentica
 
 You **MUST** send the token for each request needing authentication in the **Authorization** header. The token **MUST** be preceeded by `Bearer `
 
-You can get your JSON web token directly from Front (go to Settings > API access).
+You can get your JSON web token directly from Front (go to Settings > API & Integrations > API).
 
 ## Limitations
 
