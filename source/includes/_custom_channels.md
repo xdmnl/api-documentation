@@ -67,3 +67,5 @@ See [Receive a custom message](#receive-a-custom-message) endpoint documentation
 ```
 
 Whenever a message is sent from Front (either by a rule or by a teammate), a **POST** HTTP request will be issued to the callback URL you defined. The request body will contain the data of the message sent just like if fetched it.
+
+The request body will be signed using your API secret so you can validate that it came from Front (cf: [Checkin data integrity](#checking-data-integrity)).
