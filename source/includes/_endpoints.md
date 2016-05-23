@@ -2400,7 +2400,8 @@ curl --include \
   \"tags\": [],
   \"metadata\": {
     \"is_inbound\": true,
-    \"is_archived\": true
+    \"is_archived\": true,
+    \"should_skip_rules\": true
   }
 }" \
 'https://api2.frontapp.com/inboxes/${INBOX_ID}/imported_messages'
@@ -2435,22 +2436,27 @@ inbox_id | string | Id of the inbox into which the message should be append.
 
 Name | Type | Description
 -----|------|------------
-sender | Contact handle |  
+sender | object |  
+sender.handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
+sender.source | enum | Can be 'twitter', 'email' or 'phone'. 
+sender.name | string (optional) | Name of the contact. 
+sender.author_id | string (optional) | Id of the teammate who is the author of the message. Ignored if the message is inbound. 
 to | array | List of recipient handles who received the message. 
 cc | array (optional) | List of recipient handles who received a copy of the message. 
 bcc | array (optional) | List of the recipeient handles who received a blind copy of the message. 
 subject | string (optional) | Subject of the message. 
 body | string | Body of the message. 
-body_format | enum (optional) | Format of the message body. (Possible values: `html`, `markdown`. Default: `markdown`)
+body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. (Possible values: `html`, `markdown`. Default: `markdown`)
 external_id | string | External identifier of the message. Front won't import two messages with the same external ID. 
 created_at | number | Date at which the message as been sent or received. 
-type | enum (optional) | Type of the message to import. (Possible values: `email`, `intercom`. Default: `email`)
+type | enum (optional) | Type of the message to import. (Possible values: `email`, `sms`, `intercom`. Default: `email`)
 assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation. 
 tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created). 
 metadata | object |  
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead. 
 metadata.is_inbound | boolean | Whether or not the message is received (inbound) or sent (outbound) by you. 
 metadata.is_archived | boolean (optional) | Whether or not the message should be directly archived once imported. (Default: `true`)
+metadata.should_skip_rules | boolean (optional) | Whether or not the rules should apply to this message. (Default: `true`)
 
 # Contacts
 > 
