@@ -49,7 +49,7 @@ If your custom inbox is used by <a href="https://aircall.io/features/front-integ
 
 **Step 2:** If you have one, update the script receiving the reply notification from Front to handle the [new data format](/#sending-messages).
 
-**Step 3:** In the application, go to Settings > Inboxes, select the custom inbox you want to upgrade and click on the switch to "Upgrade to the latest version"
+**Step 3:** In the application, go to Settings > Inboxes > select the inbox > select the channel you want to upgrade and click on the switch to "Upgrade to the latest version"
 
 # Webhooks
 
@@ -59,6 +59,8 @@ The new version of the webhooks uses the new data structure for [events](/#event
 
 To ensure that your data can only be read by you, we now send only the type, ID and link of the resources of an event. You can then simply send an authenticated request to the provided link to fetch the details about an event.
 
+We also now sign the webhooks so you can check the data integrity. 
+
 ## How to upgrade?
 
 > ![Upgrade webhooks](migration-guide/webhooks.png)
@@ -66,4 +68,4 @@ To ensure that your data can only be read by you, we now send only the type, ID 
 
 **Step 1:** Update the script receiving the events
 
-**Step 2:** In the application, go to Settings > Integrations > Webhooks and click on the button "Upgrade now"
+**Step 2:** In the application, go to Settings > API & Integrations > Webhooks and click on the button "Upgrade now"
