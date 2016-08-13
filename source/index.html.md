@@ -152,14 +152,15 @@ To improve the self-discoverability of our API, every resources contains a `_lin
 | `self`    | string            | URL of the resource                           |
 | `related` | object (optional) | Object listing the URL of related resources   |
 
-### Errors
+### Error
 
-When the request encounters at least one problem, the response body will contain an `_errors` array containing objects describing the errors.
+When the response is an error, its body will contain an `_error` object to describe the error.
 
 An error object looks like this:
 
 | Name      | Type      | Description                               |
 |-----------|-----------|-------------------------------------------|
-| `status`  | string    | HTTP status code applicable to the error  |
+| `status`  | number    | HTTP status code applicable to the error  |
 | `title`   | string    | Human-readable summary of the problem     |
-| `detail`  | string    | Human-readable explanation of the error   |
+| `message` | string    | Human-readable explanation of the error   |
+| `details` | array     | List of string detailing the error        |
