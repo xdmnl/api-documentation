@@ -2260,6 +2260,8 @@ curl --include \
 
 Sends a new message from a channel. It will create a new conversation.
 
+If you want to send a new message with attached files, please check [how to send attachments](#send-attachments).
+
 
 
 ### HTTP Request
@@ -2321,6 +2323,8 @@ curl --include \
 
 Replies to a conversation by sending a message and appending it to the conversation.
 
+If you want to send a reply with attached files, please check [how to send attachments](#send-attachments).
+
 
 
 ### HTTP Request
@@ -2377,6 +2381,8 @@ curl --include \
 > Response **202**
 
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
+
+If you want to receive a custom message with attached files, please check [how to send attachments](#send-attachments).
 
 
 
@@ -2442,6 +2448,8 @@ curl --include \
 > Response **202**
 
 Appends a new message into an inbox.
+
+If you want to import a message with attached files, please check [how to send attachments](#send-attachments).
 
 <aside class="warning">
 Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.

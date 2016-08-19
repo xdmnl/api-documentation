@@ -12,6 +12,7 @@ language_tabs:
 
 includes:
   - endpoints
+  - attachments
   - custom_channels
   - webhooks
 
@@ -99,6 +100,8 @@ For some requests to get a large collection of resources, you can send search cr
 ```http
 GET /conversations?q[statuses][]=deleted&q[statuses][]=assigned HTTP/1.1
 Host: api2.frontapp.com
+Accept: application/json
+Authorization: Bearer <token>
 ```
 
 ### Search criteria for conversations
@@ -112,6 +115,8 @@ Host: api2.frontapp.com
 ```http
 GET /events?q[types][]=comment&q[types][]=assign&q[after]=1453730400&q[before]=1453741200 HTTP/1.1
 Host: api2.frontapp.com
+Accept: application/json
+Authorization: Bearer <token>
 ```
 
 ### Search criteria for events
