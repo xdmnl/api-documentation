@@ -15,14 +15,14 @@ Each message has a type depending on the channel it has been sent with:
 | `facebook`   | Message from Facebook              |
 | `intercom`   | Message from Intercom              |
 | `truly-call` | Phone call from Truly              |
-| `custom`     | [Custom message](#custom-messages) |
+| `custom`     | [Custom message](#custom-channels) |
 
 + Parameters
     + message_id (string, required) - Id of the requested message
 
 + Attributes (Message)
 
-### Get  message [GET]
+### Get message [GET]
 
 Fetches the information of a message.
 
@@ -32,7 +32,7 @@ Fetches the information of a message.
 + Response 200 (application/json)
     + Attributes (Message)
 
-### Send a message [POST /channels/{channel_id}/messages]
+### Send new message [POST /channels/{channel_id}/messages]
 
 Sends a new message from a channel. It will create a new conversation.
 
@@ -45,7 +45,7 @@ Sends a new message from a channel. It will create a new conversation.
 
 <!-- include(../includes/accepted_response.apib) -->
 
-### Send a reply [POST /conversations/{conversation_id}/messages]
+### Send reply [POST /conversations/{conversation_id}/messages]
 
 Replies to a conversation by sending a message and appending it to the conversation.
 
@@ -58,9 +58,9 @@ Replies to a conversation by sending a message and appending it to the conversat
 
 <!-- include(../includes/accepted_response.apib) -->
 
-### Receive a custom message [POST /channels/{channel_id}/incoming_messages]
+### Receive custom message [POST /channels/{channel_id}/incoming_messages]
 
-Simulate the reception of an incoming message. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
+Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 + Parameters
     + channel_id (string, required) - Id of the requested custom channel
@@ -71,7 +71,7 @@ Simulate the reception of an incoming message. This endpoint is available for [c
 
 <!-- include(../includes/accepted_response.apib) -->
 
-### Import a message [POST /inboxes/{inbox_id}/imported_messages]
+### Import message [POST /inboxes/{inbox_id}/imported_messages]
 
 Appends a new message into an inbox.
 

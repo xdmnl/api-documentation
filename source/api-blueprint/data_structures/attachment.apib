@@ -1,6 +1,9 @@
 ## Attachment
 
 + filename: `attachment.jpg` (string, required) - Name of the attached file
-+ url: `http://example.com/attachment.jpg` (string, required) - URL to download the attached file
++ url: `http://api2.frontapp.com/download/fil_55c8c149` (string, required) - URL to download the attached file
 + content_type: `image/jpeg` (string, required) - Content type of the attached file
 + size: `10000` (number, required) - Size (in byte) of the attached file
++ metadata (object)
+  + is_inline: `true` (boolean, required) - Whether or not the attachment is part of the message body
+  + cid: `123456789` (string, optional) - Unique identifier used to link an attachment to where it is used in the message body

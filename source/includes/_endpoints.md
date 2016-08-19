@@ -283,9 +283,13 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://example.com/attachment.jpg",
+            "url": "http://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
-            "size": 10000
+            "size": 10000,
+            "metadata": {
+              "is_inline": true,
+              "cid": "123456789"
+            }
           }
         ],
         "metadata": {}
@@ -689,9 +693,13 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://example.com/attachment.jpg",
+            "url": "http://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
-            "size": 10000
+            "size": 10000,
+            "metadata": {
+              "is_inline": true,
+              "cid": "123456789"
+            }
           }
         ],
         "metadata": {}
@@ -1189,9 +1197,13 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://example.com/attachment.jpg",
+            "url": "http://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
-            "size": 10000
+            "size": 10000,
+            "metadata": {
+              "is_inline": true,
+              "cid": "123456789"
+            }
           }
         ],
         "metadata": {}
@@ -1327,9 +1339,13 @@ curl --include \
     "attachments": [
       {
         "filename": "attachment.jpg",
-        "url": "http://example.com/attachment.jpg",
+        "url": "http://api2.frontapp.com/download/fil_55c8c149",
         "content_type": "image/jpeg",
-        "size": 10000
+        "size": 10000,
+        "metadata": {
+          "is_inline": true,
+          "cid": "123456789"
+        }
       }
     ],
     "metadata": {}
@@ -1677,9 +1693,13 @@ curl --include \
           "attachments": [
             {
               "filename": "attachment.jpg",
-              "url": "http://example.com/attachment.jpg",
+              "url": "http://api2.frontapp.com/download/fil_55c8c149",
               "content_type": "image/jpeg",
-              "size": 10000
+              "size": 10000,
+              "metadata": {
+                "is_inline": true,
+                "cid": "123456789"
+              }
             }
           ],
           "metadata": {}
@@ -1771,9 +1791,13 @@ curl --include \
       "attachments": [
         {
           "filename": "attachment.jpg",
-          "url": "http://example.com/attachment.jpg",
+          "url": "http://api2.frontapp.com/download/fil_55c8c149",
           "content_type": "image/jpeg",
-          "size": 10000
+          "size": 10000,
+          "metadata": {
+            "is_inline": true,
+            "cid": "123456789"
+          }
         }
       ],
       "metadata": {}
@@ -2111,11 +2135,11 @@ Each message has a type depending on the channel it has been sent with:
 | `facebook`   | Message from Facebook              |
 | `intercom`   | Message from Intercom              |
 | `truly-call` | Phone call from Truly              |
-| `custom`     | [Custom message](#custom-messages) |
+| `custom`     | [Custom message](#custom-channels) |
 
 
 
-## Get  message
+## Get message
 ```shell
 
 curl --include \
@@ -2176,9 +2200,13 @@ curl --include \
   "attachments": [
     {
       "filename": "attachment.jpg",
-      "url": "http://example.com/attachment.jpg",
+      "url": "http://api2.frontapp.com/download/fil_55c8c149",
       "content_type": "image/jpeg",
-      "size": 10000
+      "size": 10000,
+      "metadata": {
+        "is_inline": true,
+        "cid": "123456789"
+      }
     }
   ],
   "metadata": {}
@@ -2198,7 +2226,7 @@ Name | Type | Description
 -----|------|------------
 message_id | string | Id of the requested message
 
-## Send a message
+## Send new message
 ```shell
 
 curl --include \
@@ -2260,7 +2288,7 @@ to | array | List of the recipient handles who will receive this message
 cc | array (optional) | List of the recipient handles who will receive a copy of this message 
 bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message 
 
-## Send a reply
+## Send reply
 ```shell
 
 curl --include \
@@ -2322,7 +2350,7 @@ to | array (optional) | List of the recipient handles who will receive this mess
 cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message. 
 bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message 
 
-## Receive a custom message
+## Receive custom message
 ```shell
 
 curl --include \
@@ -2348,7 +2376,7 @@ curl --include \
 
 > Response **202**
 
-Simulate the reception of an incoming message. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
+Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 
 
@@ -2378,7 +2406,7 @@ metadata | object (optional) |
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead 
 metadata.headers | object (optional) | Custom object where any internal information can be stored 
 
-## Import a message
+## Import message
 ```shell
 
 curl --include \
@@ -2926,9 +2954,13 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://example.com/attachment.jpg",
+            "url": "http://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
-            "size": 10000
+            "size": 10000,
+            "metadata": {
+              "is_inline": true,
+              "cid": "123456789"
+            }
           }
         ],
         "metadata": {}
@@ -3685,9 +3717,13 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://example.com/attachment.jpg",
+            "url": "http://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
-            "size": 10000
+            "size": 10000,
+            "metadata": {
+              "is_inline": true,
+              "cid": "123456789"
+            }
           }
         ],
         "metadata": {}
@@ -4057,9 +4093,13 @@ curl --include \
           "attachments": [
             {
               "filename": "attachment.jpg",
-              "url": "http://example.com/attachment.jpg",
+              "url": "http://api2.frontapp.com/download/fil_55c8c149",
               "content_type": "image/jpeg",
-              "size": 10000
+              "size": 10000,
+              "metadata": {
+                "is_inline": true,
+                "cid": "123456789"
+              }
             }
           ],
           "metadata": {}
@@ -4244,9 +4284,13 @@ curl --include \
       "attachments": [
         {
           "filename": "attachment.jpg",
-          "url": "http://example.com/attachment.jpg",
+          "url": "http://api2.frontapp.com/download/fil_55c8c149",
           "content_type": "image/jpeg",
-          "size": 10000
+          "size": 10000,
+          "metadata": {
+            "is_inline": true,
+            "cid": "123456789"
+          }
         }
       ],
       "metadata": {}
