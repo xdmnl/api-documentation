@@ -37,7 +37,7 @@
 
 ## Outbound message
 
-+ author_id: `alt:email:leela@planet-exress.com` (string, optional) - ID or email of the teammate on behalf of whom the answer is sent
++ author_id: `alt:email:leela@planet-exress.com` (string, optional) - ID of the teammate on behalf of whom the answer is sent
 + subject: `Good news everyone!` (string, optional) - Subject of the message for email message
 + body: `Why is Zoidberg the only one still alone?` (string, required) - Body of the message
 + text: `Why is Zoidberg the only one still alone?` (string, optional) - Text version of the body for messages with non-text body
@@ -81,7 +81,7 @@
 + sender (object, required)
   + Include Contact handle
   + name (string, optional) - Name of the contact.
-  + author_id (string, optional) - Id of the teammate who is the author of the message. Ignored if the message is inbound.
+  + author_id (string, optional) - ID of the teammate who is the author of the message. Ignored if the message is inbound.
 + to (array[string], required) - List of recipient handles who received the message.
 + cc (array[string], optional) - List of recipient handles who received a copy of the message.
 + bcc (array[string], optional) - List of the recipeient handles who received a blind copy of the message.

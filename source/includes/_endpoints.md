@@ -1421,7 +1421,7 @@ conversation_id | string | Id of the requested conversation
 
 Name | Type | Description
 -----|------|------------
-assignee_id | string (optional) | ID or email of the teammate to assign the conversation to. Set it to null to unassign. 
+assignee_id | string (optional) | ID of the teammate to assign the conversation to. Set it to null to unassign. 
 status | enum (optional) | New status of the conversation 
 tags | array (optional) | List of all the tag names replacing the old conversation tags 
 
@@ -1908,7 +1908,7 @@ conversation_id | string | Id of the requested conversation
 
 Name | Type | Description
 -----|------|------------
-author_id | string | ID or email of the teammate creating the comment 
+author_id | string | ID of the teammate creating the comment 
 body | string | Content of the comment 
 
 ## List conversation comments
@@ -2279,7 +2279,7 @@ channel_id | string | Id or address of the channel from which to send the messag
 
 Name | Type | Description
 -----|------|------------
-author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent 
+author_id | string (optional) | ID of the teammate on behalf of whom the answer is sent 
 subject | string (optional) | Subject of the message for email message 
 body | string | Body of the message 
 text | string (optional) | Text version of the body for messages with non-text body 
@@ -2342,7 +2342,7 @@ conversation_id | string | Id of the conversation
 
 Name | Type | Description
 -----|------|------------
-author_id | string (optional) | ID or email of the teammate on behalf of whom the answer is sent 
+author_id | string (optional) | ID of the teammate on behalf of whom the answer is sent 
 subject | string (optional) | Subject of the message for email message 
 body | string | Body of the message 
 text | string (optional) | Text version of the body for messages with non-text body 
@@ -2476,7 +2476,7 @@ sender | object |
 sender.handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
 sender.source | enum | Can be 'twitter', 'email' or 'phone'. 
 sender.name | string (optional) | Name of the contact. 
-sender.author_id | string (optional) | Id of the teammate who is the author of the message. Ignored if the message is inbound. 
+sender.author_id | string (optional) | ID of the teammate who is the author of the message. Ignored if the message is inbound. 
 to | array | List of recipient handles who received the message. 
 cc | array (optional) | List of recipient handles who received a copy of the message. 
 bcc | array (optional) | List of the recipeient handles who received a blind copy of the message. 
@@ -3461,7 +3461,7 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-author_id | string | ID or email of the teammate creating the comment 
+author_id | string | ID of the teammate creating the note 
 body | string | Content of the note 
 
 # Tags
