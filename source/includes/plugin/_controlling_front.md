@@ -36,47 +36,62 @@ Toggle the trashed flag of the currently selected conversations.
 
 ```javascript
 Front.compose({
-    to: 'someone@somewhere.com',
+    to: ['someone@somewhere.com'],
+    cc: ['copy@example.com'],
     subject: 'Optional subject',
     body: 'Optional body',
-    tags: ['tag_alias_1', 'tag_alias_2'],
-    inbox: 'inbox_alias'
+    tags: ['tag_alias_1', 'tag_alias_2']
 });
 ```
 Open a new message. Will do nothing if an inbox cannot be selected (for example, if you try to compose to a Twitter handle, but have no Twitter inbox).
 
 The **options** object accepts the following fields :
 
-* `to` is an optional recipient, that can be an email address, a phone number or a Twitter handle.
-    * `html` or `text` (optional) is the content of your message. If you have any, a signature will be appended.
+* `to` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
+* `cc` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
+* `bcc` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
+* `subject` (optional) will be used as subject for emails.
+* `body` (optional) is the content of your message. If you have any, a signature will be appended.
 * `tags` (optional) will be used to tag the conversation. Can be a list of tag aliases or a list of objects with an alias property. If omitted, no tags will be applied. Tags can be retrieved from fetchAllowedTags.
-* `inbox` is an optional inbox, retrievable from fetchInboxes. `inbox` can be either the inbox alias (String) or the inbox object (containing the `alias` property).
 
 ## Compose reply
 
 ```javascript
 Front.reply({
-    to: 'someone@somewhere.com',
-    html: 'Optional HTML body',
-    text: 'Optional text body',
+    to: ['someone@somewhere.com'],
     subject: 'Optional subject',
-    tags: ['tag_alias_1', 'tag_alias_2'],
-    send_now: false,
-    mark_archived: false
+    body: 'Optional body',
+    tags: ['tag_alias_1', 'tag_alias_2']
 }, replyAll);
 ```
 Send a reply to the latest message of the current conversation. Will do nothing unless a conversation is selected.
 
 The **options** object accepts the following fields :
 
-* `html` or `text` (optional) is the content of your message. If you have any, a signature will be appended.
+* `to` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
+* `cc` (optional) is an array of recipients, that can be an email address.
+* `bcc` (optional) is an array of recipients, that can be an email address.
+* `body` (optional) is the content of your message. If you have any, a signature will be appended.
 * `subject` (optional) will be used as subject for emails. If omitted, it will reply with the previous subject prefixed by "Re : ".
 * `tags` (optional) will be used to tag the conversation. Can be a list of tag aliases or a list of objects with an alias property. If omitted, no tags will be applied. Tags can be retrieved from fetchAllowedTags.
-* `send_now` (defaults to false) can send the reply immediately, if set to false, a composer will simply open.
-* `mark_archived` (defaults to false) will trigger a send & archive is send_now is set to true. Ignored otherwise.
-* `to` (optional) The recipient of your message. If omitted, it will automatically select the sender of the most recent message in the conversation.
 
 The `replyAll` parameter will transform a simple reply in a reply all if set to true.
+
+## Compose forward
+
+```javascript
+Front.forward({
+    to: ['someone@somewhere.com'],
+    subject: 'Optional subject',
+    body: 'Optional body'
+});
+```
+
+* `to` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
+* `cc` (optional) is an array of recipients, that can be an email address.
+* `bcc` (optional) is an array of recipients, that can be an email address.
+* `body` (optional) is the content of your message. If you have any, a signature will be appended.
+* `subject` (optional) will be used as subject for emails. If omitted, it will reply with the previous subject prefixed by "Fw : ".
 
 ## Tagging/Untagging a conversation
 
