@@ -12,7 +12,7 @@ You can use custom channels to integrate Front with platforms that are not offic
 
 ## Receive messages
 
-See [Receive a custom message](#receive-a-custom-message) endpoint documentation.
+See [Receive a custom message](#receive-custom-message) endpoint documentation.
 
 ## Sending messages
 
