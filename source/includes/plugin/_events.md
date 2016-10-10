@@ -58,7 +58,8 @@ The data object sent to the callbacks of the event contains 4 fields:
   "tags": [],
   "seen_by": ["jane"],
   "subject": "test again",
-  "summary": "Just testing some stuff"
+  "summary": "Just testing some stuff",
+  "has_draft": false
 }
 ```
 
@@ -83,6 +84,12 @@ The data object sent to the callbacks of the event contains 4 fields:
     {
       // Similar to the contact JSON above
     }
-  ]
+  ],
+  "attachments": [{
+      "uid": "1234567890",
+      "filename": "chart.jpg",
+      "content_type": "image/jpeg",
+      "size": "391970"
+  }] 
 }
 ```

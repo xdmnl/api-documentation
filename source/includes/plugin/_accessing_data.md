@@ -161,4 +161,16 @@ This call will send you the notes written for the conversation recipient.
 
 The callback's `notes` parameter will contain an array of note.
 
+## Fetch draft
+
+```javascript
+Front.fetchDraft(function (draft) {
+    console.log(draft);
+});
+```
+
+This call will send you the draft of the current conversation.
+If the conversation has no draft, the `draft` value in the callback will be `null`, else, it will look like any other message object representation. 
+
+
 

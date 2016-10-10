@@ -40,7 +40,9 @@ Front.compose({
     cc: ['copy@example.com'],
     subject: 'Optional subject',
     body: 'Optional body',
-    tags: ['tag_alias_1', 'tag_alias_2']
+    tags: ['tag_alias_1', 'tag_alias_2'],
+    attachment_uids: [],
+    hide_composer: false
 });
 ```
 Open a new message. Will do nothing if an inbox cannot be selected (for example, if you try to compose to a Twitter handle, but have no Twitter inbox).
@@ -53,6 +55,8 @@ The **options** object accepts the following fields :
 * `subject` (optional) will be used as subject for emails.
 * `body` (optional) is the content of your message. If you have any, a signature will be appended.
 * `tags` (optional) will be used to tag the conversation. Can be a list of tag aliases or a list of objects with an alias property. If omitted, no tags will be applied. Tags can be retrieved from fetchAllowedTags.
+* `attachment_uids` (optional) is an array of attachment UIDs to attach to the new draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored).
+* `hide_composer` (optional) whether or not to hide the composer for the new draft message (default to `false`).
 
 ## Compose reply
 
@@ -61,7 +65,8 @@ Front.reply({
     to: ['someone@somewhere.com'],
     subject: 'Optional subject',
     body: 'Optional body',
-    tags: ['tag_alias_1', 'tag_alias_2']
+    tags: ['tag_alias_1', 'tag_alias_2'],
+    attachment_uids: []
 }, replyAll);
 ```
 Send a reply to the latest message of the current conversation. Will do nothing unless a conversation is selected.
@@ -74,6 +79,7 @@ The **options** object accepts the following fields :
 * `body` (optional) is the content of your message. If you have any, a signature will be appended.
 * `subject` (optional) will be used as subject for emails. If omitted, it will reply with the previous subject prefixed by "Re : ".
 * `tags` (optional) will be used to tag the conversation. Can be a list of tag aliases or a list of objects with an alias property. If omitted, no tags will be applied. Tags can be retrieved from fetchAllowedTags.
+* `attachment_uids` (optional) is an array of attachment UIDs to attach to the new draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored).
 
 The `replyAll` parameter will transform a simple reply in a reply all if set to true.
 
@@ -83,7 +89,8 @@ The `replyAll` parameter will transform a simple reply in a reply all if set to 
 Front.forward({
     to: ['someone@somewhere.com'],
     subject: 'Optional subject',
-    body: 'Optional body'
+    body: 'Optional body',
+    attachment_uids: []
 });
 ```
 
@@ -92,6 +99,25 @@ Front.forward({
 * `bcc` (optional) is an array of recipients, that can be an email address.
 * `body` (optional) is the content of your message. If you have any, a signature will be appended.
 * `subject` (optional) will be used as subject for emails. If omitted, it will reply with the previous subject prefixed by "Fw : ".
+* `attachment_uids` (optional) is an array of attachment UIDs to attach to the new draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored).
+
+## Update draft
+
+```javascript
+Front.updateDraft(draft_id, {
+    recipients: {
+        to: ['email@example.com'],
+        cc: [],
+        bcc: []
+    },
+    attachment_uids: []
+}, callback);
+```
+
+Updates the draft of the current conversation. You can get the `draft_id` by calling the [`fetchDraft` method](#fetch-draft).
+
+* `recipients` (optional) object of recipients (to, cc, bcc) containing an array of recipients for each field. If present, will replace all the recipients. 
+* `attachment_uids` (optional) array of attachment UIDs to attach to the draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored). If present, will replace all the attachments.
 
 ## Tagging/Untagging a conversation
 
