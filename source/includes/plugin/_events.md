@@ -86,6 +86,7 @@ The data object sent to the callbacks of the event contains 4 fields:
     }
   ],
   "attachments": [{
+      "id": "fil_55c8c149",
       "uid": "1234567890",
       "filename": "chart.jpg",
       "content_type": "image/jpeg",
