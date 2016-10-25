@@ -4,15 +4,7 @@ A webhook allows you to be automatically notified when something happens in Fron
 
 ## Setup
 
-To create a webhook, you need to:
-
-* Make sure that the Webhook integration is active (go to Settings > API & Integrations > Integrations)
-![Activate webhooks](webhook-activation.png)
-* Create a new rule with the conditions you want (go to Settings > Rules > New rule)
-![Create a new webhook rule](webhook-rule.png)
-
-Once the rule is created, whenever the conditions are met, Front will send a **POST** HTTP request to the webhook URL you specified.
-The request body will contain the [preview data](#event-preview) corresponding to the event. You will then be able to request either the entire event data or each resources separately.
+For more information about how to enable and setup a webhook, please refer to our [help center](https://community.frontapp.com/t/x1693s/how-to-enable-and-use-the-webhooks-integration).  
 
 ## Checking data integrity
 
