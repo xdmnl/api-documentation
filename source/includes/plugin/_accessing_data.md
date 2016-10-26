@@ -69,9 +69,37 @@ Front.fetchInboxes(function (inboxes) {
 }
 ```
 
-This call will send you all the inboxes the current user can access.
+This call will send you all the inboxes accessible by the current user.
 
-The callback's `inboxes` parameter will contain an array of inbox.
+The callback's `inboxes` parameter will contain an array of inboxes.
+
+## Fetch Channels
+
+```javascript
+Front.fetchChannels(function (channels) {
+    if (!channels) return;
+
+    console.log(channels);
+});
+```
+
+> Sample JSON for a channel
+
+```json
+{
+  "id": "cha_123",
+  "type": "imap",
+  "type_name": "email",
+  "is_private": false,
+  "message_type": "email",
+  "address": "contact@company.com",
+  "send_as": "contact@company.com"
+},
+```
+
+This call will send you all the channels accessible by the current user.
+
+The callback's `channels` parameter will contain an array of channels.
 
 ## Fetch teammates
 
@@ -170,7 +198,7 @@ Front.fetchDraft(function (draft) {
 ```
 
 This call will send you the draft of the current conversation.
-If the conversation has no draft, the `draft` value in the callback will be `null`, else, it will look like any other message object representation. 
+If the conversation has no draft, the `draft` value in the callback will be `null`, else, it will look like any other message object representation.
 
 
 
