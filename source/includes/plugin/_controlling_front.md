@@ -36,6 +36,7 @@ Toggle the trashed flag of the currently selected conversations.
 
 ```javascript
 Front.compose({
+    from: 'mychannel@company.com',
     to: ['someone@somewhere.com'],
     cc: ['copy@example.com'],
     subject: 'Optional subject',
@@ -49,6 +50,7 @@ Open a new message. Will do nothing if an inbox cannot be selected (for example,
 
 The **options** object accepts the following fields :
 
+* `from` (optional) is the address of the channel that will be used to compose this message.
 * `to` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
 * `cc` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
 * `bcc` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
@@ -116,7 +118,7 @@ Front.updateDraft(draft_id, {
 
 Updates the draft of the current conversation. You can get the `draft_id` by calling the [`fetchDraft` method](#fetch-draft).
 
-* `recipients` (optional) object of recipients (to, cc, bcc) containing an array of recipients for each field. If present, will replace all the recipients. 
+* `recipients` (optional) object of recipients (to, cc, bcc) containing an array of recipients for each field. If present, will replace all the recipients.
 * `attachment_uids` (optional) array of attachment UIDs to attach to the draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored). If present, will replace all the attachments.
 
 ## Tagging/Untagging a conversation
