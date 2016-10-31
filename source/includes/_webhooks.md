@@ -1,6 +1,7 @@
 # Webhooks
 
-A webhook allows you to be automatically notified when something happens in Front without having to constantly poll the API.
+A webhook allows you to be automatically notified when something happens in Front without having to constantly poll the API.  
+For each event happening in Front, your webhook will receive a POST HTTP request with the [event preview JSON representation](#event-preview) in the request body.
 
 ## Setup
 
