@@ -79,7 +79,7 @@
 ## Message to import
 
 + sender (object, required)
-  + Include Contact handle
+  + handle: `calculon@momsbot.com` (string, required) - Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ...
   + name (string, optional) - Name of the contact.
   + author_id (string, optional) - ID of the teammate who is the author of the message. Ignored if the message is inbound.
 + to (array[string], required) - List of recipient handles who received the message.
@@ -96,6 +96,7 @@
      + `email`
      + `sms`
      + `intercom`
+     + `custom`
 + assignee_id (string, optional) - ID of the teammate who will be assigned to the conversation.
 + tags (array[string], optional) - List of tag names to add to the conversation (unknown tags will automatically be created).
 + metadata (object, required)
