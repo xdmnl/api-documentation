@@ -4,13 +4,22 @@ A contact is a person/entity with whom you have communicated.
 
 A contact has several handles to send messages to it. A handle has a source to identify which inbox can send message to this contact:
 
-| Source    | Description      | Example of handle       |
-|-----------|------------------|-------------------------|
-| `email`   | An email address | `calculon@pmomsbot.com` |
-| `phone`   | A phone number   | `+123445678900 `        |
-| `twitter` | A twitter handle | `@calculon`             |
+| Source     | Description                                                           | Example of handle       |
+|------------|-----------------------------------------------------------------------|-------------------------|
+| `email`    | An email address                                                      | `calculon@pmomsbot.com` |
+| `phone`    | A phone number                                                        | `+123445678900 `        |
+| `twitter`  | A twitter handle                                                      | `@calculon`             |
+| `facebook` | A Facebook user ID                                                    |                         |
+| `intercom` | An Intercom user ID                                                   |                         |
+| `smooch`   | A Smooch user ID                                                      |                         |
+| `custom`   | Custom handle provided in the [API endpoint](#receive-custom-message) |                         |
 
-Each pair handle/source is unique in your company. If you want to move an existing handle from one contact to an other, you need to delete it from the first one and add it to the other one.
+Each pair handle/source is unique. If you want to move an existing handle from one contact to an other, you need to delete it from the first one and add it to the other one.
+
+<aside class="notice">
+You can use a contact source/handle pair as an alias for its ID.<br>
+A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
+</aside>
 
 + Parameters
     + contact_id (string, required) - Id or alias of the requested contact
