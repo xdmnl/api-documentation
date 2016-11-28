@@ -20,6 +20,11 @@ A teammate is a Front user, a member of your company.
 
 A teammate can be available or not (determined by the boolean `is_available`). When a conversation is assigned to an unavailable teammate, to avoid it to be hidden from the other teammates, it gets unassigned automatically.
 
+<aside class="notice">
+You can use the teammate email address as an alias for its ID.<br>
+A teammate ID alias follows the pattern <code>alt:email:{email address}</code>.
+</aside>
+
 
 
 ## List team
@@ -283,7 +288,7 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://api2.frontapp.com/download/fil_55c8c149",
+            "url": "https://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
             "size": 10000,
             "metadata": {
@@ -293,7 +298,8 @@ curl --include \
           }
         ],
         "metadata": {}
-      }
+      },
+      "created_at": 1453770984.123
     }
   ]
 }
@@ -693,7 +699,7 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://api2.frontapp.com/download/fil_55c8c149",
+            "url": "https://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
             "size": 10000,
             "metadata": {
@@ -703,7 +709,8 @@ curl --include \
           }
         ],
         "metadata": {}
-      }
+      },
+      "created_at": 1453770984.123
     }
   ]
 }
@@ -848,6 +855,11 @@ curl --include \
 }
 ```
 Lists all the shared channels available in your company.
+
+<aside class="notice">
+You can use the channel address as an alias for its ID.<br>
+A channel ID alias follows the pattern <code>alt:address:{address}</code>.
+</aside>
 
 
 
@@ -1072,10 +1084,20 @@ assignee | Teammate (optional) | Partial representation of the teammate assigned
 recipient | Recipient | Main recipient of the conversation 
 tags | array | List of the tags for this conversation 
 last_message | Message | List of partial representation of the messages inside the conversation 
+created_at | number | Timestamp at which the conversation have been created. 
 
 A conversation is a unique thread of messages. It can appear in one or more inboxes (eg: if you receive an email on contact@ where support@ is Cced).
 
 Even if a conversation messages can have multiple recipients, the conversation resource will always have only one. The main recipient of a conversation can change over the time depending on each message received. It will generally be the sender of the last incomming message.
+
+### Opening a conversation in Front
+
+To open a conversation in Front you need to open the URL `https://app.frontapp.com/open/{conversation_id}`.
+
+<aside class="notice">
+You can use the conversation reference as an alias for its ID. The reference to use can be found in the response of the endpoints to create messages.<br>
+A conversation ID alias follows the pattern <code>alt:ref:{reference}</code>.
+</aside>
 
 
 
@@ -1197,7 +1219,7 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://api2.frontapp.com/download/fil_55c8c149",
+            "url": "https://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
             "size": 10000,
             "metadata": {
@@ -1207,7 +1229,8 @@ curl --include \
           }
         ],
         "metadata": {}
-      }
+      },
+      "created_at": 1453770984.123
     }
   ]
 }
@@ -1339,7 +1362,7 @@ curl --include \
     "attachments": [
       {
         "filename": "attachment.jpg",
-        "url": "http://api2.frontapp.com/download/fil_55c8c149",
+        "url": "https://api2.frontapp.com/download/fil_55c8c149",
         "content_type": "image/jpeg",
         "size": 10000,
         "metadata": {
@@ -1349,7 +1372,8 @@ curl --include \
       }
     ],
     "metadata": {}
-  }
+  },
+  "created_at": 1453770984.123
 }
 ```
 Fetches the information of a conversation.
@@ -1693,7 +1717,7 @@ curl --include \
           "attachments": [
             {
               "filename": "attachment.jpg",
-              "url": "http://api2.frontapp.com/download/fil_55c8c149",
+              "url": "https://api2.frontapp.com/download/fil_55c8c149",
               "content_type": "image/jpeg",
               "size": 10000,
               "metadata": {
@@ -1703,7 +1727,8 @@ curl --include \
             }
           ],
           "metadata": {}
-        }
+        },
+        "created_at": 1453770984.123
       }
     }
   ]
@@ -1791,7 +1816,7 @@ curl --include \
       "attachments": [
         {
           "filename": "attachment.jpg",
-          "url": "http://api2.frontapp.com/download/fil_55c8c149",
+          "url": "https://api2.frontapp.com/download/fil_55c8c149",
           "content_type": "image/jpeg",
           "size": 10000,
           "metadata": {
@@ -2134,8 +2159,19 @@ Each message has a type depending on the channel it has been sent with:
 | `smooch`     | Message from Smooch                |
 | `facebook`   | Message from Facebook              |
 | `intercom`   | Message from Intercom              |
-| `truly-call` | Phone call from Truly              |
+| `call`       | Phone call                         |
 | `custom`     | [Custom message](#custom-channels) |
+
+### Opening a message in Front
+
+To open a message in Front you need to open the URL `https://app.frontapp.com/open/{message_id}`.
+
+<aside class="notice">
+Creating messages in Front is done asynchronously: the endpoint will only validate that the message can be processed.<br>
+Because of that, the response body does not include a conversation or message ID but includes a <code>conversation_reference</code> that can be used as an alias for the conversation ID.
+
+We guarantee that the reference will refer to a conversation but we don't guarantee that the conversation already exists when you receive its reference. So the API might respond with a 404 error code if trying to use the reference before the conversation exists.
+</aside>
 
 
 
@@ -2200,7 +2236,7 @@ curl --include \
   "attachments": [
     {
       "filename": "attachment.jpg",
-      "url": "http://api2.frontapp.com/download/fil_55c8c149",
+      "url": "https://api2.frontapp.com/download/fil_55c8c149",
       "content_type": "image/jpeg",
       "size": 10000,
       "metadata": {
@@ -2213,6 +2249,11 @@ curl --include \
 }
 ```
 Fetches the information of a message.
+
+<aside class="notice">
+You can request the source of a message by setting the <code>Accept</code> header to <code>"text/plain"</code>.<br />
+Fetching the source of a message is available for email messages only.
+</aside>
 
 
 
@@ -2258,6 +2299,11 @@ curl --include \
 
 > Response **202**
 
+```
++ status: `accepted` (string, required)
++ conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the message conversation.
+
+```
 Sends a new message from a channel. It will create a new conversation.
 
 If you want to send a new message with attached files, please check [how to send attachments](#send-attachments).
@@ -2321,6 +2367,10 @@ curl --include \
 
 > Response **202**
 
+```
++ status: `accepted` (string, required)
+
+```
 Replies to a conversation by sending a message and appending it to the conversation.
 
 If you want to send a reply with attached files, please check [how to send attachments](#send-attachments).
@@ -2380,6 +2430,11 @@ curl --include \
 
 > Response **202**
 
+```
++ status: `accepted` (string, required)
++ conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the message conversation.
+
+```
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 If you want to receive a custom message with attached files, please check [how to send attachments](#send-attachments).
@@ -2407,7 +2462,7 @@ sender.name | string (optional) | Name of the sender
 sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender 
 subject | string (optional) | Subject of the message 
 body | string | Body of the message 
-body_format | enum (optional) | Format of the message body. (Possible values: `html`, `markdown`. Default: `markdown`)
+body_format | enum (optional) | Format of the message body. (Default: `'markdown'`)
 metadata | object (optional) |  
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead 
 metadata.headers | object (optional) | Custom object where any internal information can be stored 
@@ -2422,8 +2477,7 @@ curl --include \
      --header "Accept: application/json" \
      --data-binary "{
   \"sender\": {
-    \"handle\": \"@calculon\",
-    \"source\": \"twitter\"
+    \"handle\": \"calculon@momsbot.com\"
   },
   \"to\": [],
   \"cc\": [],
@@ -2447,6 +2501,11 @@ curl --include \
 
 > Response **202**
 
+```
++ status: `accepted` (string, required)
++ conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the conversation the message will be imported in.
+
+```
 Appends a new message into an inbox.
 
 If you want to import a message with attached files, please check [how to send attachments](#send-attachments).
@@ -2474,7 +2533,6 @@ Name | Type | Description
 -----|------|------------
 sender | object |  
 sender.handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
-sender.source | enum | Can be 'twitter', 'email' or 'phone'. 
 sender.name | string (optional) | Name of the contact. 
 sender.author_id | string (optional) | ID of the teammate who is the author of the message. Ignored if the message is inbound. 
 to | array | List of recipient handles who received the message. 
@@ -2482,10 +2540,10 @@ cc | array (optional) | List of recipient handles who received a copy of the mes
 bcc | array (optional) | List of the recipeient handles who received a blind copy of the message. 
 subject | string (optional) | Subject of the message. 
 body | string | Body of the message. 
-body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. (Possible values: `html`, `markdown`. Default: `markdown`)
+body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. (Default: `'markdown'`)
 external_id | string | External identifier of the message. Front won't import two messages with the same external ID. 
 created_at | number | Date at which the message as been sent or received. 
-type | enum (optional) | Type of the message to import. (Possible values: `email`, `sms`, `intercom`. Default: `email`)
+type | enum (optional) | Type of the message to import. (Default: `'email'`)
 assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation. 
 tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created). 
 metadata | object |  
@@ -2516,13 +2574,22 @@ A contact is a person/entity with whom you have communicated.
 
 A contact has several handles to send messages to it. A handle has a source to identify which inbox can send message to this contact:
 
-| Source    | Description      | Example of handle       |
-|-----------|------------------|-------------------------|
-| `email`   | An email address | `calculon@pmomsbot.com` |
-| `phone`   | A phone number   | `+123445678900 `        |
-| `twitter` | A twitter handle | `@calculon`             |
+| Source     | Description                                                           | Example of handle       |
+|------------|-----------------------------------------------------------------------|-------------------------|
+| `email`    | An email address                                                      | `calculon@pmomsbot.com` |
+| `phone`    | A phone number                                                        | `+123445678900 `        |
+| `twitter`  | A twitter handle                                                      | `@calculon`             |
+| `facebook` | A Facebook user ID                                                    |                         |
+| `intercom` | An Intercom user ID                                                   |                         |
+| `smooch`   | A Smooch user ID                                                      |                         |
+| `custom`   | Custom handle provided in the [API endpoint](#receive-custom-message) |                         |
 
-Each pair handle/source is unique in your company. If you want to move an existing handle from one contact to an other, you need to delete it from the first one and add it to the other one.
+Each pair handle/source is unique. If you want to move an existing handle from one contact to an other, you need to delete it from the first one and add it to the other one.
+
+<aside class="notice">
+You can use a contact source/handle pair as an alias for its ID.<br>
+A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
+</aside>
 
 
 
@@ -2962,7 +3029,7 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://api2.frontapp.com/download/fil_55c8c149",
+            "url": "https://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
             "size": 10000,
             "metadata": {
@@ -2972,7 +3039,8 @@ curl --include \
           }
         ],
         "metadata": {}
-      }
+      },
+      "created_at": 1453770984.123
     }
   ]
 }
@@ -3725,7 +3793,7 @@ curl --include \
         "attachments": [
           {
             "filename": "attachment.jpg",
-            "url": "http://api2.frontapp.com/download/fil_55c8c149",
+            "url": "https://api2.frontapp.com/download/fil_55c8c149",
             "content_type": "image/jpeg",
             "size": 10000,
             "metadata": {
@@ -3735,7 +3803,8 @@ curl --include \
           }
         ],
         "metadata": {}
-      }
+      },
+      "created_at": 1453770984.123
     }
   ]
 }
@@ -4101,7 +4170,7 @@ curl --include \
           "attachments": [
             {
               "filename": "attachment.jpg",
-              "url": "http://api2.frontapp.com/download/fil_55c8c149",
+              "url": "https://api2.frontapp.com/download/fil_55c8c149",
               "content_type": "image/jpeg",
               "size": 10000,
               "metadata": {
@@ -4111,7 +4180,8 @@ curl --include \
             }
           ],
           "metadata": {}
-        }
+        },
+        "created_at": 1453770984.123
       }
     }
   ]
@@ -4292,7 +4362,7 @@ curl --include \
       "attachments": [
         {
           "filename": "attachment.jpg",
-          "url": "http://api2.frontapp.com/download/fil_55c8c149",
+          "url": "https://api2.frontapp.com/download/fil_55c8c149",
           "content_type": "image/jpeg",
           "size": 10000,
           "metadata": {
@@ -4302,7 +4372,8 @@ curl --include \
         }
       ],
       "metadata": {}
-    }
+    },
+    "created_at": 1453770984.123
   }
 }
 ```
