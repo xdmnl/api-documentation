@@ -2299,10 +2299,10 @@ curl --include \
 
 > Response **202**
 
-```
-+ status: `accepted` (string, required)
-+ conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the message conversation.
-
+```json
+{
+  "conversation_reference": "3b1q41d8@frontapp.com"
+}
 ```
 Sends a new message from a channel. It will create a new conversation.
 
@@ -2367,10 +2367,6 @@ curl --include \
 
 > Response **202**
 
-```
-+ status: `accepted` (string, required)
-
-```
 Replies to a conversation by sending a message and appending it to the conversation.
 
 If you want to send a reply with attached files, please check [how to send attachments](#send-attachments).
@@ -2430,10 +2426,10 @@ curl --include \
 
 > Response **202**
 
-```
-+ status: `accepted` (string, required)
-+ conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the message conversation.
-
+```json
+{
+  "conversation_reference": "3b1q41d8@frontapp.com"
+}
 ```
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
@@ -2501,10 +2497,10 @@ curl --include \
 
 > Response **202**
 
-```
-+ status: `accepted` (string, required)
-+ conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the conversation the message will be imported in.
-
+```json
+{
+  "conversation_reference": "3b1q41d8@frontapp.com"
+}
 ```
 Appends a new message into an inbox.
 

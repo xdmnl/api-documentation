@@ -62,7 +62,7 @@ If you want to send a new message with attached files, please check [how to send
     + Attributes (Outbound new message)
 
 <!-- include(../includes/accepted_response.apib) -->
-        + conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the message conversation.
+    + Attributes (Accepted message)
 
 ### Send reply [POST /conversations/{conversation_id}/messages]
 
@@ -93,7 +93,7 @@ If you want to receive a custom message with attached files, please check [how t
     + Attributes (Custom message)
 
 <!-- include(../includes/accepted_response.apib) -->
-        + conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the message conversation.
+    + Attributes (Accepted message)
 
 ### Import message [POST /inboxes/{inbox_id}/imported_messages]
 
@@ -113,4 +113,4 @@ Imported messages will <strong>NOT</strong> be linked to any channel until a rep
     + Attributes (Message to import)
 
 <!-- include(../includes/accepted_response.apib) -->
-        + conversation_reference: `3b1q41d8@frontapp.com` (string, required) - Reference of the conversation the message will be imported in.
+    + Attributes (Accepted message)
