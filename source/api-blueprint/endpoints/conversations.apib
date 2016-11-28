@@ -4,6 +4,10 @@ A conversation is a unique thread of messages. It can appear in one or more inbo
 
 Even if a conversation messages can have multiple recipients, the conversation resource will always have only one. The main recipient of a conversation can change over the time depending on each message received. It will generally be the sender of the last incomming message.
 
+### Opening a conversation in Front
+
+To open a conversation in Front you need to open the URL `https://app.frontapp.com/open/{conversation_id}`.
+
 <aside class="notice">
 You can use the conversation reference as an alias for its ID. The reference to use can be found in the response of the endpoints to create messages.<br>
 A conversation ID alias follows the pattern <code>alt:ref:{reference}</code>.

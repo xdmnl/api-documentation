@@ -17,6 +17,10 @@ Each message has a type depending on the channel it has been sent with:
 | `call`       | Phone call                         |
 | `custom`     | [Custom message](#custom-channels) |
 
+### Opening a message in Front
+
+To open a message in Front you need to open the URL `https://app.frontapp.com/open/{message_id}`.
+
 <aside class="notice">
 Creating messages in Front is done asynchronously: the endpoint will only validate that the message can be processed.<br>
 Because of that, the response body does not include a conversation or message ID but includes a <code>conversation_reference</code> that can be used as an alias for the conversation ID.
