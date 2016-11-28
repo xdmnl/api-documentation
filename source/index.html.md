@@ -76,6 +76,7 @@ You can refer to all the resources with their IDs. Alternatively, some resources
 * [Teammates](#teammates) can be identified with their `email`.
 * [Channels](#channels) can be identified with their `address`.
 * [Contacts](#contacts) can be identified with one of their `source` and `handle`.
+* [Conversations](#conversations) can be identified with their `reference`.
 
 If you want to use an alternative alias, you **MUST** prefix it with `alt:` and the name of the value used to identify the resource.
 Examples:
@@ -84,6 +85,7 @@ Examples:
 * `alt:address:@FrontApp` for the channel with the address *@FrontApp*.
 * `alt:twitter:@leela` for the contact having the twitter handle *@leela*.
 * `alt:phone:+12345678900` for the contact having the phone number *+12345678900*.
+* `alt:ref:3b1q41d8@frontapp.com` for the conversation with the reference *3b1q41d8@frontapp.com*.
 
 ## Dates
 
