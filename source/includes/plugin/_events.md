@@ -46,6 +46,7 @@ The data object sent to the callbacks of the event contains 4 fields:
 ```json
 {
   "id": "cnv_55c8c149",
+  "link": "https://app.frontapp.com/open/cnv_55c8c149",
   "message_type": "email",
   "status": "unassigned",
   "replied": false,

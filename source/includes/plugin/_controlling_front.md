@@ -32,6 +32,16 @@ Front.toggleTrashed();
 
 Toggle the trashed flag of the currently selected conversations.
 
+## Open URL
+
+```javascript
+Front.openUrl('https://app.frontapp.com/open/cnv_55c8c149');
+```
+
+Request Front to open a URL. Using a conversation URL (cf: the field `link` in the conversation object), it lets you open a conversation. 
+
+<aside class="info">If the URL is recognized as an external URL, Front will open it in a new tab in the user's default browser.</aside> 
+
 ## Compose new message
 
 ```javascript
