@@ -15,6 +15,7 @@ includes:
   - attachments
   - custom_channels
   - webhooks
+  - oauth
 
 search: true
 ---
@@ -26,7 +27,7 @@ search: true
 ```http
 GET /teammates HTTP/1.1
 Host: api2.frontapp.com
-Authorization : Bearer <token>
+Authorization: Bearer <token>
 ```
 
 > You should replace "`<token>`" in the example above by your JSON Web Token.
