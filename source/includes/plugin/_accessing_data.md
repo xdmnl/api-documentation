@@ -36,24 +36,14 @@ Front.fetchInboxes(function (inboxes) {
 
 ```json
 {
-  "type": "imap",
   "avatar_type": "inbox",
   "class": "inbox",
-  "message_type": "email",
-  "contact_source": "email",
   "alias": "support",
   "name": "CS",
-  "address": "support@test.com",
-  "address_editable": false,
-  "send_as": "support@test.com",
   "color": "#E151E1",
   "num_new": 30,
   "num_unassigned": 30,
   "last_unassigned_date": 1423821859000,
-  "sync_status": "synced",
-  "account_status": "ok",
-  "primed": true,
-  "error_type": null,
   "participants": [
     "john"
   ],
@@ -69,7 +59,7 @@ Front.fetchInboxes(function (inboxes) {
 }
 ```
 
-This call will send you all the inboxes accessible by the current user.
+This call will send you all the inboxes accessible by the current user (private and shared).
 
 The callback's `inboxes` parameter will contain an array of inboxes.
 

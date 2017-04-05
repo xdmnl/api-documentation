@@ -17,6 +17,19 @@ Front.alert({
 
 The `Front.alert()` method displays an alert dialog with the optional specified content and an OK button.
 
+## Report
+
+```javascript
+Front.report({
+    title: 'Title of the report',
+    message: 'Body of the report'
+}, function() {
+    console.log('User closed the report');
+});
+```
+
+The `Front.report()` method displays an alert dialog with the optional specified content without any buttons.
+
 ## Confirm
 
 ```javascript
