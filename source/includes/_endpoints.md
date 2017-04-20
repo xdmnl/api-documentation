@@ -300,7 +300,7 @@ Lists the conversations assigned to a teammate in reverse chronological order (n
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/teammates/{teammate_id}/conversations?q={q}&page={page}`
+`GET https://api2.frontapp.com/teammates/{teammate_id}/conversations?q={q}&page={page}&limit={limit}`
 ### Parameters
 
 
@@ -309,6 +309,7 @@ Name | Type | Description
 teammate_id | string | Id or email of the teammate
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## List teammate inboxes
 ```shell
@@ -697,7 +698,7 @@ Lists the conversations which appear in an inbox.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/inboxes/{inbox_id}/conversations?q={q}&page={page}`
+`GET https://api2.frontapp.com/inboxes/{inbox_id}/conversations?q={q}&page={page}&limit={limit}`
 ### Parameters
 
 
@@ -706,6 +707,7 @@ Name | Type | Description
 inbox_id | string | Id of the requested inbox
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## List inbox teammates
 ```shell
@@ -1199,7 +1201,7 @@ Lists all the conversations in your company in reverse chronological order (late
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/conversations?q={q}&page={page}`
+`GET https://api2.frontapp.com/conversations?q={q}&page={page}&limit={limit}`
 ### Parameters
 
 
@@ -1207,6 +1209,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## Get conversation
 ```shell
@@ -1689,13 +1692,14 @@ List of all the events that occured for a conversation in reverse chronological 
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/conversations/{conversation_id}/events?page={page}`
+`GET https://api2.frontapp.com/conversations/{conversation_id}/events?page={page}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 conversation_id | string | Id of the requested conversation
 
 ## List conversation messages
@@ -1783,7 +1787,7 @@ Lists all the messages sent or received in a conversation in reverse chronologic
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/conversations/{conversation_id}/messages?page={page}`
+`GET https://api2.frontapp.com/conversations/{conversation_id}/messages?page={page}&limit={limit}`
 ### Parameters
 
 
@@ -1791,6 +1795,7 @@ Name | Type | Description
 -----|------|------------
 conversation_id | string | Id of the requested conversation
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 # Comments
 > 
@@ -2576,13 +2581,14 @@ List all the contacts in your company in alphabetical order.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/contacts?page={page}`
+`GET https://api2.frontapp.com/contacts?page={page}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## Get contact
 ```shell
@@ -2958,7 +2964,7 @@ Lists all the conversations with a contact in reverse chronological order (newes
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/contacts/{contact_id}/conversations?q={q}&page={page}`
+`GET https://api2.frontapp.com/contacts/{contact_id}/conversations?q={q}&page={page}&limit={limit}`
 ### Parameters
 
 
@@ -2966,6 +2972,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 contact_id | string | Id or alias of the requested contact
 
 # Contact groups
@@ -3157,7 +3164,7 @@ Lists all the contacts belonging to the requested group.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/contact_groups/{group_id}/contacts?page={page}`
+`GET https://api2.frontapp.com/contact_groups/{group_id}/contacts?page={page}&limit={limit}`
 ### Parameters
 
 
@@ -3165,6 +3172,7 @@ Name | Type | Description
 -----|------|------------
 group_id | string | Id of the requested group
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## Add contacts in a group
 ```shell
@@ -3694,7 +3702,7 @@ Lists all the conversations tagged with a specific tag.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/tags/{tag_id}/conversations?q={q}&page={page}`
+`GET https://api2.frontapp.com/tags/{tag_id}/conversations?q={q}&page={page}&limit={limit}`
 ### Parameters
 
 
@@ -3703,6 +3711,7 @@ Name | Type | Description
 tag_id | string | ID of the requested tag
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 # Rules
 > 
@@ -4068,7 +4077,7 @@ Lists all the detailed events which occured in the inboxes of your company order
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/events?q={q}&page={page}`
+`GET https://api2.frontapp.com/events?q={q}&page={page}&limit={limit}`
 ### Parameters
 
 
@@ -4076,6 +4085,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## Get event
 ```shell
@@ -4537,13 +4547,14 @@ Lists all the exports generated in your company.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/exports?page={page}`
+`GET https://api2.frontapp.com/exports?page={page}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
+limit| number (optional) | Max number of results per page (default 50)
 
 ## Get export
 ```shell

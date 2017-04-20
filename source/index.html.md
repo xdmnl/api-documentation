@@ -145,10 +145,12 @@ A response will contain at least one of the following top-level members:
 When listing a large number of resources, the API server will return a limited number of results.
 When this is the case, the JSON response will contain a field named `_pagination`.
 
-| Name      | Type              | Description               |
-|-----------|-------------------|---------------------------|
-| `prev`    | string (optional) | URL of the previous page  |
-| `next`    | string (optional) | URL of the next page      |
+| Name      | Type              | Description                       |
+|-----------|-------------------|-----------------------------------|
+| `page`    | number            | Page number for the current page  |
+| `limit`   | number            | Max number of results per page    |
+| `prev`    | string (optional) | URL of the previous page          |
+| `next`    | string (optional) | URL of the next page              |
 
 
 ### Links
