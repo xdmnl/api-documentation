@@ -25,6 +25,8 @@ You can use the teammate email address as an alias for its ID.<br>
 A teammate ID alias follows the pattern <code>alt:email:{email address}</code>.
 </aside>
 
+
+
 ## List team
 ```shell
 
@@ -67,6 +69,8 @@ curl --include \
 ```
 Lists the teammates in your company.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/teammates`
@@ -105,6 +109,8 @@ curl --include \
 ```
 Fetches the information of a teammate. See [resource aliases](#resource-aliases) to fetch by email.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/teammates/{teammate_id}`
@@ -141,6 +147,8 @@ curl --include \
 
 Updates the information of a teammate.
 
+
+
 ### HTTP Request
 
 `PATCH https://api2.frontapp.com/teammates/{teammate_id}`
@@ -168,7 +176,7 @@ is_available | boolean (optional) | New availability status
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/teammates/${TEAMMATE_ID}/conversations?q=${Q}&page=${PAGE}'
+'https://api2.frontapp.com/teammates/${TEAMMATE_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -179,7 +187,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
   },
@@ -298,6 +308,8 @@ curl --include \
 ```
 Lists the conversations assigned to a teammate in reverse chronological order (newest first).
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/teammates/{teammate_id}/conversations?q={q}&page={page}&limit={limit}`
@@ -309,7 +321,7 @@ Name | Type | Description
 teammate_id | string | Id or email of the teammate
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## List teammate inboxes
 ```shell
@@ -352,6 +364,8 @@ curl --include \
 ```
 Lists the inboxes a teammate has access to.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/teammates/{teammate_id}/inboxes`
@@ -381,6 +395,8 @@ send_as | string (optional) | **DEPRECATED in favor of channel** Address which a
 An inbox is a container of messages.
 
 Messages are sent from and received by [channels](#channels) which then post the messages into the configured inbox. An inbox can have multiple channels.
+
+
 
 ## List inboxes
 ```shell
@@ -423,6 +439,8 @@ curl --include \
 ```
 Lists all the team inboxes in your company.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/inboxes`
@@ -454,6 +472,8 @@ curl --include \
 }
 ```
 Creates a team inbox with no channel associated to it (see [Create a channel](#create-a-channel)).
+
+
 
 ### HTTP Request
 
@@ -500,6 +520,8 @@ curl --include \
 ```
 Fetches the information of an inbox.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/inboxes/{inbox_id}`
@@ -527,7 +549,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
   },
@@ -550,6 +574,8 @@ curl --include \
 ```
 Lists the channels linked to an inbox.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/inboxes/{inbox_id}/channels`
@@ -566,7 +592,7 @@ inbox_id | string | Id of the requested inbox
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/inboxes/${INBOX_ID}/conversations?q=${Q}&page=${PAGE}'
+'https://api2.frontapp.com/inboxes/${INBOX_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -577,7 +603,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations"
   },
@@ -696,6 +724,8 @@ curl --include \
 ```
 Lists the conversations which appear in an inbox.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/inboxes/{inbox_id}/conversations?q={q}&page={page}&limit={limit}`
@@ -707,7 +737,7 @@ Name | Type | Description
 inbox_id | string | Id of the requested inbox
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## List inbox teammates
 ```shell
@@ -751,6 +781,8 @@ curl --include \
 ```
 Lists the teammates who can access an inbox.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/inboxes/{inbox_id}/teammates`
@@ -790,6 +822,8 @@ Here is the list of existing channel types:
 | `intercom`  | Linked to an Intercom account.                                                             |
 | `truly`     | Linked to a truly account.                                                                 |
 | `custom`    | For messages sent and received only through the API (cf [Custom inboxes](#custom-inboxes)).|
+
+
 
 ## List channels
 ```shell
@@ -835,6 +869,8 @@ You can use the channel address as an alias for its ID.<br>
 A channel ID alias follows the pattern <code>alt:address:{address}</code>.
 </aside>
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/channels`
@@ -869,6 +905,8 @@ curl --include \
 }
 ```
 Fetches the information of a channel. See [resource aliases](#resource-aliases) to fetch by address.
+
+
 
 ### HTTP Request
 
@@ -907,6 +945,8 @@ Updates the settings of a channel.
 <aside class="notice">
 As of today, you can only update the settings of a <a href="#custom-channels">custom channel</a> with the API.
 </aside>
+
+
 
 ### HTTP Request
 
@@ -966,6 +1006,8 @@ Creates a channel linked to the requested inbox.
 As of today, you can only create a <a href="#custom-channels">custom channel</a> with the API.
 </aside>
 
+
+
 ### HTTP Request
 
 `POST https://api2.frontapp.com/inboxes/{inbox_id}/channels`
@@ -1019,6 +1061,8 @@ curl --include \
 ```
 Fetches the inbox to which the channel is linked to.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/channels/{channel_id}/inbox`
@@ -1063,13 +1107,15 @@ You can use the conversation reference as an alias for its ID. The reference to 
 A conversation ID alias follows the pattern <code>alt:ref:{reference}</code>.
 </aside>
 
+
+
 ## List conversations
 ```shell
 
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/conversations?q=${Q}&page=${PAGE}'
+'https://api2.frontapp.com/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -1080,7 +1126,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/conversations"
   },
@@ -1199,6 +1247,8 @@ curl --include \
 ```
 Lists all the conversations in your company in reverse chronological order (latest updated first).
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations?q={q}&page={page}&limit={limit}`
@@ -1209,7 +1259,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get conversation
 ```shell
@@ -1339,6 +1389,8 @@ curl --include \
 ```
 Fetches the information of a conversation.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations/{conversation_id}`
@@ -1386,6 +1438,8 @@ Updates a conversation. You can:
 * Mark a conversation as spam by sending `spam` in `status`
 
 * Unarchive or restore a conversation  by sending `open` in `status`
+
+
 
 ### HTTP Request
 
@@ -1448,6 +1502,8 @@ curl --include \
 ```
 Lists the inboxes in which a conversation appears.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations/{conversation_id}/inboxes`
@@ -1500,6 +1556,8 @@ curl --include \
 ```
 Lists the teammates following a conversation.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations/{conversation_id}/followers`
@@ -1516,7 +1574,7 @@ conversation_id | string | Id of the requested conversation
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/events?page=${PAGE}'
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/events?page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -1527,7 +1585,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/conversations/cnv_55c8c149/events"
   },
@@ -1690,6 +1750,8 @@ curl --include \
 ```
 List of all the events that occured for a conversation in reverse chronological order (newest first).
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations/{conversation_id}/events?page={page}&limit={limit}`
@@ -1699,7 +1761,7 @@ List of all the events that occured for a conversation in reverse chronological 
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 conversation_id | string | Id of the requested conversation
 
 ## List conversation messages
@@ -1708,7 +1770,7 @@ conversation_id | string | Id of the requested conversation
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/messages?page=${PAGE}'
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/messages?page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -1719,7 +1781,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages"
   },
@@ -1785,6 +1849,8 @@ curl --include \
 ```
 Lists all the messages sent or received in a conversation in reverse chronological order (newest first).
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations/{conversation_id}/messages?page={page}&limit={limit}`
@@ -1795,7 +1861,7 @@ Name | Type | Description
 -----|------|------------
 conversation_id | string | Id of the requested conversation
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Comments
 > 
@@ -1812,6 +1878,8 @@ body | string | Content of the comment
 posted_at | number | Date at which the comment have been posted 
 
 A comment is a private message written by a teammate visible only to the other teammates. It is never sent and cannot be shared outside of Front.
+
+
 
 ## Create comment
 ```shell
@@ -1865,6 +1933,8 @@ curl --include \
 }
 ```
 Adds a comment to a conversation.
+
+
 
 ### HTTP Request
 
@@ -1938,6 +2008,8 @@ curl --include \
 ```
 Lists of all the comments written in a conversation in reverse chronological order (newest first).
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/conversations/{conversation_id}/comments`
@@ -1995,6 +2067,8 @@ curl --include \
 ```
 Fetches the information of a comment.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/comments/{comment_id}`
@@ -2046,6 +2120,8 @@ curl --include \
 }
 ```
 Lists the teammates mentionned in a comment.
+
+
 
 ### HTTP Request
 
@@ -2114,6 +2190,8 @@ Because of that, the response body does not include a conversation or message ID
 
 We guarantee that the reference will refer to a conversation but we don't guarantee that the conversation already exists when you receive its reference. So the API might respond with a 404 error code if trying to use the reference before the conversation exists.
 </aside>
+
+
 
 ## Get message
 ```shell
@@ -2195,6 +2273,8 @@ You can request the source of a message by setting the <code>Accept</code> heade
 Fetching the source of a message is available for email messages only.
 </aside>
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/messages/{message_id}`
@@ -2245,6 +2325,8 @@ curl --include \
 Sends a new message from a channel. It will create a new conversation.
 
 If you want to send a new message with attached files, please check [how to send attachments](#send-attachments).
+
+
 
 ### HTTP Request
 
@@ -2307,6 +2389,8 @@ Replies to a conversation by sending a message and appending it to the conversat
 
 If you want to send a reply with attached files, please check [how to send attachments](#send-attachments).
 
+
+
 ### HTTP Request
 
 `POST https://api2.frontapp.com/conversations/{conversation_id}/messages`
@@ -2368,6 +2452,8 @@ curl --include \
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 If you want to receive a custom message with attached files, please check [how to send attachments](#send-attachments).
+
+
 
 ### HTTP Request
 
@@ -2441,6 +2527,8 @@ If you want to import a message with attached files, please check [how to send a
 <aside class="warning">
 Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.
 </aside>
+
+
 
 ### HTTP Request
 
@@ -2517,13 +2605,15 @@ You can use a contact source/handle pair as an alias for its ID.<br>
 A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
 </aside>
 
+
+
 ## List contacts
 ```shell
 
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/contacts?page=${PAGE}'
+'https://api2.frontapp.com/contacts?page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -2534,7 +2624,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/contacts"
   },
@@ -2579,6 +2671,8 @@ curl --include \
 ```
 List all the contacts in your company in alphabetical order.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/contacts?page={page}&limit={limit}`
@@ -2588,7 +2682,7 @@ List all the contacts in your company in alphabetical order.
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get contact
 ```shell
@@ -2644,6 +2738,8 @@ curl --include \
 ```
 Fetches the information of a contact. See [resource aliases](#resource-aliases) to fetch by handle.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/contacts/{contact_id}`
@@ -2684,6 +2780,8 @@ curl --include \
 > Response **204**
 
 Updates a contact information.
+
+
 
 ### HTTP Request
 
@@ -2781,6 +2879,8 @@ curl --include \
 ```
 Creates a new contact.
 
+
+
 ### HTTP Request
 
 `POST https://api2.frontapp.com/contacts`
@@ -2816,6 +2916,8 @@ curl --include \
 
 Deletes a contact.
 
+
+
 ### HTTP Request
 
 `DELETE https://api2.frontapp.com/contacts/{contact_id}`
@@ -2832,7 +2934,7 @@ contact_id | string | Id or alias of the requested contact
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/contacts/${CONTACT_ID}/conversations?q=${Q}&page=${PAGE}'
+'https://api2.frontapp.com/contacts/${CONTACT_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -2843,7 +2945,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
   },
@@ -2962,6 +3066,8 @@ curl --include \
 ```
 Lists all the conversations with a contact in reverse chronological order (newest first).
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/contacts/{contact_id}/conversations?q={q}&page={page}&limit={limit}`
@@ -2972,7 +3078,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 contact_id | string | Id or alias of the requested contact
 
 # Contact groups
@@ -3024,6 +3130,8 @@ curl --include \
 ```
 Lists the groups available in your company
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/contact_groups`
@@ -3061,6 +3169,8 @@ curl --include \
 ```
 Creates a new contact group
 
+
+
 ### HTTP Request
 
 `POST https://api2.frontapp.com/contact_groups`
@@ -3090,6 +3200,8 @@ curl --include \
 
 Deletes a contact group. Will **not** delete the contacts in this group.
 
+
+
 ### HTTP Request
 
 `DELETE https://api2.frontapp.com/contact_groups/{group_id}`
@@ -3106,7 +3218,7 @@ group_id | string | Id of the requested group
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts?page=${PAGE}'
+'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts?page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -3117,7 +3229,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
   },
@@ -3162,6 +3276,8 @@ curl --include \
 ```
 Lists all the contacts belonging to the requested group.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/contact_groups/{group_id}/contacts?page={page}&limit={limit}`
@@ -3172,7 +3288,7 @@ Name | Type | Description
 -----|------|------------
 group_id | string | Id of the requested group
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Add contacts in a group
 ```shell
@@ -3191,6 +3307,8 @@ curl --include \
 > Response **204**
 
 Adds a list of contacts in the requested group
+
+
 
 ### HTTP Request
 
@@ -3241,6 +3359,8 @@ curl --include \
 
 Adds a new handle/source to a contact.
 
+
+
 ### HTTP Request
 
 `POST https://api2.frontapp.com/contacts/{contact_id}/handles`
@@ -3281,6 +3401,8 @@ curl --include \
 > Response **204**
 
 Removes a handle/source from a contact.
+
+
 
 ### HTTP Request
 
@@ -3356,6 +3478,8 @@ curl --include \
 ```
 Lists the notes added to a contact.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/contacts/{contact_id}/notes`
@@ -3411,6 +3535,8 @@ curl --include \
 ```
 Adds a new note to a contact.
 
+
+
 ### HTTP Request
 
 `POST https://api2.frontapp.com/contacts/{contact_id}/notes`
@@ -3441,6 +3567,8 @@ id | string | Unique identifier of the tag
 name | string | Name of the tag 
 
 A tag is a label that can be used to classify conversations.
+
+
 
 ## List tags
 ```shell
@@ -3478,6 +3606,8 @@ curl --include \
 ```
 Lists all the tags available in your company.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/tags`
@@ -3514,6 +3644,8 @@ curl --include \
 }
 ```
 Creates a new tag.
+
+
 
 ### HTTP Request
 
@@ -3554,6 +3686,8 @@ curl --include \
 ```
 Fetches the information of a tag.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/tags/{tag_id}`
@@ -3570,7 +3704,7 @@ tag_id | string | ID of the requested tag
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/tags/${TAG_ID}/conversations?q=${Q}&page=${PAGE}'
+'https://api2.frontapp.com/tags/${TAG_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -3581,7 +3715,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
   },
@@ -3700,6 +3836,8 @@ curl --include \
 ```
 Lists all the conversations tagged with a specific tag.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/tags/{tag_id}/conversations?q={q}&page={page}&limit={limit}`
@@ -3711,7 +3849,7 @@ Name | Type | Description
 tag_id | string | ID of the requested tag
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Rules
 > 
@@ -3726,6 +3864,8 @@ actions | array | List of the rule's actions description
 A rule is a set of conditions which will trigger automatic actions when they are met.
 
 Since the set of conditions and actions associated to a rule can be quite complicated, the API exposes a human readable version of those.
+
+
 
 ## List rules
 ```shell
@@ -3763,6 +3903,8 @@ curl --include \
 ```
 Lists all the shared rules in your company. Individual rules are currently not accessible with the API.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/rules`
@@ -3794,6 +3936,8 @@ curl --include \
 }
 ```
 Fetches the definition of a rule.
+
+
 
 ### HTTP Request
 
@@ -3890,13 +4034,15 @@ As the callback URL you provided is public, you should not blindly trust any inc
 An event preview has the exact same structure as the full event except that its `source`, `target` and `conversation` only contain an ID, a link to the resource itself and a type.
 You can then either request the detailed event or each resources separately by following their respective `_links`.
 
+
+
 ## List events
 ```shell
 
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/events?q=${Q}&page=${PAGE}'
+'https://api2.frontapp.com/events?q=${Q}&page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -3907,7 +4053,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/events"
   },
@@ -4075,6 +4223,8 @@ Lists all the detailed events which occured in the inboxes of your company order
   We recommend the use of `before` search parameter to ensure that the events in each page won't change over the time (see <a href="#search-criteria-for-events">Search criteria for events</a>).
 </aside>
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/events?q={q}&page={page}&limit={limit}`
@@ -4085,7 +4235,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get event
 ```shell
@@ -4259,6 +4409,8 @@ curl --include \
 ```
 Fetches the full details of an event.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/events/{event_id}`
@@ -4328,6 +4480,8 @@ Each metrics can be either:
 Each metrics contains the value for the requested time period (in the field named `v`) as well as the value for the previous period (in the field named `p`).
 
 Depending on the date range you request the analytics, it can take some time to process it. This is why you might need to send multiple requests to get the results. To help you estimate the remaining time, the server response will contain a `progress` field containing a number ranging from 0 to 100 which isthe percentage of the analytics processed.
+
+
 
 ## Get analytics
 ```shell
@@ -4404,6 +4558,8 @@ curl --include \
 }
 ```
 Fetches the metrics correspondig to the parameters.
+
+
 
 ### HTTP Request
 
@@ -4499,13 +4655,15 @@ Because of this, Front will compute a **handle time** to the last message if:
 
 * the conversation is inactive for **4 days**.
 
+
+
 ## List exports
 ```shell
 
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/exports?page=${PAGE}'
+'https://api2.frontapp.com/exports?page=${PAGE}&limit=${LIMIT}'
 ```
 
 ```node
@@ -4516,7 +4674,9 @@ curl --include \
 
 ```json
 {
-  "_pagination": {},
+  "_pagination": {
+    "limit": 50
+  },
   "_links": {
     "self": "https://api2.frontapp.com/exports"
   },
@@ -4526,7 +4686,7 @@ curl --include \
         "self": "https://api2.frontapp.com/exports/exp_55c8c149"
       },
       "id": "exp_55c8c149",
-      "status": "running",
+      "status": "pending",
       "progress": 42,
       "url": "http://exports.frontapp.com/planet-express/export.csv",
       "filename": "export.csv",
@@ -4545,6 +4705,8 @@ curl --include \
 ```
 Lists all the exports generated in your company.
 
+
+
 ### HTTP Request
 
 `GET https://api2.frontapp.com/exports?page={page}&limit={limit}`
@@ -4554,7 +4716,7 @@ Lists all the exports generated in your company.
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50, maximum 100)
+limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get export
 ```shell
@@ -4577,7 +4739,7 @@ curl --include \
     "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   },
   "id": "exp_55c8c149",
-  "status": "running",
+  "status": "pending",
   "progress": 42,
   "url": "http://exports.frontapp.com/planet-express/export.csv",
   "filename": "export.csv",
@@ -4593,6 +4755,8 @@ curl --include \
 }
 ```
 Fetches the information of an export.
+
+
 
 ### HTTP Request
 
@@ -4634,7 +4798,7 @@ curl --include \
     "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   },
   "id": "exp_55c8c149",
-  "status": "running",
+  "status": "pending",
   "progress": 42,
   "url": "http://exports.frontapp.com/planet-express/export.csv",
   "filename": "export.csv",
@@ -4650,6 +4814,8 @@ curl --include \
 }
 ```
 Requests the creation of a new export
+
+
 
 ### HTTP Request
 
