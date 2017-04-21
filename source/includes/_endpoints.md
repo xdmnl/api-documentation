@@ -309,7 +309,7 @@ Name | Type | Description
 teammate_id | string | Id or email of the teammate
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## List teammate inboxes
 ```shell
@@ -707,7 +707,7 @@ Name | Type | Description
 inbox_id | string | Id of the requested inbox
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## List inbox teammates
 ```shell
@@ -1209,7 +1209,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get conversation
 ```shell
@@ -1699,7 +1699,7 @@ List of all the events that occured for a conversation in reverse chronological 
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 conversation_id | string | Id of the requested conversation
 
 ## List conversation messages
@@ -1795,7 +1795,7 @@ Name | Type | Description
 -----|------|------------
 conversation_id | string | Id of the requested conversation
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Comments
 > 
@@ -2588,7 +2588,7 @@ List all the contacts in your company in alphabetical order.
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get contact
 ```shell
@@ -2972,7 +2972,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 contact_id | string | Id or alias of the requested contact
 
 # Contact groups
@@ -3172,7 +3172,7 @@ Name | Type | Description
 -----|------|------------
 group_id | string | Id of the requested group
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Add contacts in a group
 ```shell
@@ -3711,7 +3711,7 @@ Name | Type | Description
 tag_id | string | ID of the requested tag
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Rules
 > 
@@ -4085,7 +4085,7 @@ Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get event
 ```shell
@@ -4554,7 +4554,7 @@ Lists all the exports generated in your company.
 Name | Type | Description
 -----|------|------------
 page | number (optional) | Number of the page requested
-limit| number (optional) | Max number of results per page (default 50)
+limit| number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get export
 ```shell
