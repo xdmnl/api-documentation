@@ -4550,7 +4550,7 @@ curl --include \
         "self": "https://api2.frontapp.com/exports/exp_55c8c149"
       },
       "id": "exp_55c8c149",
-      "status": "running",
+      "status": "pending",
       "progress": 42,
       "url": "http://exports.frontapp.com/planet-express/export.csv",
       "filename": "export.csv",
@@ -4562,7 +4562,7 @@ curl --include \
         "start": 1428889003,
         "end": 1428889008,
         "timezone": "America/New_York",
-        "full_export": true
+        "should_export_events": false
       }
     }
   ]
@@ -4602,7 +4602,7 @@ curl --include \
     "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   },
   "id": "exp_55c8c149",
-  "status": "running",
+  "status": "pending",
   "progress": 42,
   "url": "http://exports.frontapp.com/planet-express/export.csv",
   "filename": "export.csv",
@@ -4644,7 +4644,7 @@ curl --include \
   \"start\": 1428889003,
   \"end\": 1428889008,
   \"timezone\": \"America/New_York\",
-  \"full_export\": true
+  \"should_export_events\": false
 }" \
 'https://api2.frontapp.com/exports'
 ```
@@ -4661,7 +4661,7 @@ curl --include \
     "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   },
   "id": "exp_55c8c149",
-  "status": "running",
+  "status": "pending",
   "progress": 42,
   "url": "http://exports.frontapp.com/planet-express/export.csv",
   "filename": "export.csv",
@@ -4693,4 +4693,4 @@ tag_id: `tag_55c8c149` | string (optional) | ID the tag to export the analytics 
 start | number | Start time of the data to include in the export. 
 end | number | End time of the data to include in the export. 
 timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC. 
-full_export | boolean (optional) | Whether to include activities with the export. If omitted, the export will only contain messages. 
+should_export_events | boolean (optional) | Whether to export all the events or  only messages. Default to `false`. 
