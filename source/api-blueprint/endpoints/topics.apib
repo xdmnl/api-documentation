@@ -1,0 +1,27 @@
+## Topics [/topics/{topic_id}]
+
+A topic is a specific kind of tag that links to an external platform.
+
++ Parameters
+    + topic_id (string, required) - ID of the requested topic
+
++ Attributes (Topic)
+
+### List topic conversations [GET /topics/{topic_id}/conversations{?q,page,limit}]
+
+Lists all the conversations linked to a specific topic.
+
++ Parameters
+    + topic_id (string, required) - ID of the requested topic
+    <!-- include(../includes/query_parameter.apib) -->
+    <!-- include(../includes/pagination_parameter.apib) -->
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/pagination_attribute.apib) -->
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/tags/tag_55c8c149/conversations` (string, required)
+        + _results (array[Conversation], required) - List of the topic's conversations
