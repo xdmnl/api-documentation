@@ -11,6 +11,8 @@ Even though all the API is designed to work with JSON, some endpoints supports f
 
 ## Send multipart request
 
+> Example of a HTTP request to send a new message with an attachment
+
 ```http
 POST /channels/{channel_id}/messages HTTP/1.1
 Host: api2.frontapp.com
@@ -43,6 +45,22 @@ Content-Type: image/jpeg
 Content-Disposition: form-data; name="options[archive]"
 
 true
+------RandomBoundaryString--
+```
+
+> Example of a HTTP request to update the avatar of a contact
+
+```http
+PATCH /contacts/{contact_id} HTTP/1.1
+Host: api2.frontapp.com
+Authorization: Bearer <token>
+Content-Type: multipart/form-data; boundary=----RandomBoundaryString
+
+------RandomBoundaryString
+Content-Disposition: form-data; name="avatar"; filename="your-avatar.png"
+Content-Type: image/png
+
+<binary data>
 ------RandomBoundaryString--
 ```
 
