@@ -2298,6 +2298,7 @@ curl --include \
   \"subject\": \"Good news everyone!\",
   \"body\": \"Why is Zoidberg the only one still alone?\",
   \"text\": \"Why is Zoidberg the only one still alone?\",
+  \"attachments\": [],
   \"options\": {
     \"tags\": [],
     \"archive\": true
@@ -2324,7 +2325,7 @@ curl --include \
 ```
 Sends a new message from a channel. It will create a new conversation.
 
-If you want to send a new message with attached files, please check [how to send attachments](#send-attachments).
+If you want to send a new message with attached files, please check [how to send multipart request](#send-multipart-request).
 
 
 
@@ -2347,6 +2348,7 @@ author_id | string (optional) | ID of the teammate on behalf of whom the answer 
 subject | string (optional) | Subject of the message for email message 
 body | string | Body of the message 
 text | string (optional) | Text version of the body for messages with non-text body 
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 options | object (optional) | Sending options 
 options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
 options.archive | boolean (optional) | Archive the conversation right when sending the reply (Default: `true`)
@@ -2367,6 +2369,7 @@ curl --include \
   \"subject\": \"Good news everyone!\",
   \"body\": \"Why is Zoidberg the only one still alone?\",
   \"text\": \"Why is Zoidberg the only one still alone?\",
+  \"attachments\": [],
   \"options\": {
     \"tags\": [],
     \"archive\": true
@@ -2387,7 +2390,7 @@ curl --include \
 
 Replies to a conversation by sending a message and appending it to the conversation.
 
-If you want to send a reply with attached files, please check [how to send attachments](#send-attachments).
+If you want to send a reply with attached files, please check [how to send multipart request](#send-multipart-request).
 
 
 
@@ -2410,6 +2413,7 @@ author_id | string (optional) | ID of the teammate on behalf of whom the answer 
 subject | string (optional) | Subject of the message for email message 
 body | string | Body of the message 
 text | string (optional) | Text version of the body for messages with non-text body 
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 options | object (optional) | Sending options 
 options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
 options.archive | boolean (optional) | Archive the conversation right when sending the reply (Default: `true`)
@@ -2433,6 +2437,7 @@ curl --include \
   },
   \"subject\": \"Question\",
   \"body\": \"Didn't we used to be a delivery company?\",
+  \"attachments\": [],
   \"metadata\": {}
 }" \
 'https://api2.frontapp.com/channels/${CHANNEL_ID}/incoming_messages'
@@ -2451,7 +2456,7 @@ curl --include \
 ```
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
-If you want to receive a custom message with attached files, please check [how to send attachments](#send-attachments).
+If you want to receive a custom message with attached files, please check [how to send multipart request](#send-multipart-request).
 
 
 
@@ -2477,6 +2482,7 @@ sender.handle | string | Handle of the sender. It can be any string used to uniq
 subject | string (optional) | Subject of the message 
 body | string | Body of the message 
 body_format | enum (optional) | Format of the message body. (Default: `'markdown'`)
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 metadata | object (optional) |  
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead 
 metadata.headers | object (optional) | Custom object where any internal information can be stored 
@@ -2500,6 +2506,7 @@ curl --include \
   \"external_id\": \"\",
   \"created_at\": 1453770984.123,
   \"tags\": [],
+  \"attachments\": [],
   \"metadata\": {
     \"is_inbound\": true,
     \"is_archived\": true,
@@ -2522,7 +2529,7 @@ curl --include \
 ```
 Appends a new message into an inbox.
 
-If you want to import a message with attached files, please check [how to send attachments](#send-attachments).
+If you want to import a message with attached files, please check [how to send multipart request](#send-multipart-request).
 
 <aside class="warning">
 Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.
@@ -2560,6 +2567,7 @@ created_at | number | Date at which the message as been sent or received.
 type | enum (optional) | Type of the message to import. (Default: `'email'`)
 assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation. 
 tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created). 
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 metadata | object |  
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead. 
 metadata.is_inbound | boolean | Whether or not the message is received (inbound) or sent (outbound) by you. 
@@ -2750,7 +2758,7 @@ Name | Type | Description
 -----|------|------------
 contact_id | string | Id or alias of the requested contact
 
-## Update a contact
+## Update contact
 ```shell
 
 curl --include \
@@ -2761,7 +2769,6 @@ curl --include \
      --data-binary "{
   \"name\": \"Calculon\",
   \"description\": \"#vip #robot #RIP\",
-  \"avatar_url\": \"http://example.com/calculon.jpg\",
   \"is_spammer\": true,
   \"links\": [
     \"http://example.com\"
@@ -2780,6 +2787,8 @@ curl --include \
 > Response **204**
 
 Updates a contact information.
+
+If you want to update a contact's avatar, please check [how to send multipart request](#send-multipart-request).
 
 
 
@@ -2800,7 +2809,7 @@ Name | Type | Description
 -----|------|------------
 name | string (optional) | Contact name 
 description | string (optional) | Contact description 
-avatar_url | string (optional) | URL of the contact's avatar 
+avatar | string (optional) | Binary data of the image to use as the contact avatar. Available only for [multipart request](#send-multipart-request). 
 is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer 
 links | array (optional) | List of all the links of the contact 
 group_names | array (optional) | List of all the group names the contact belongs to. It will automatically create missing groups. 
@@ -2816,7 +2825,6 @@ curl --include \
      --data-binary "{
   \"name\": \"Calculon\",
   \"description\": \"#vip #robot #RIP\",
-  \"avatar_url\": \"http://example.com/calculon.jpg\",
   \"is_spammer\": true,
   \"links\": [
     \"http://example.com\"
@@ -2879,6 +2887,8 @@ curl --include \
 ```
 Creates a new contact.
 
+If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
+
 
 
 ### HTTP Request
@@ -2891,7 +2901,7 @@ Name | Type | Description
 -----|------|------------
 name | string (optional) | Contact name 
 description | string (optional) | Contact description 
-avatar_url | string (optional) | URL of the contact's avatar 
+avatar | string (optional) | Binary data of the image to use as the contact avatar. Available only for [multipart request](#send-multipart-request). 
 is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer 
 links | array (optional) | List of all the links of the contact 
 group_names | array (optional) | List of all the group names the contact belongs to. It will automatically create missing groups. 

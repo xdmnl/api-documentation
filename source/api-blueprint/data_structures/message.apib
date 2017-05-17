@@ -41,7 +41,7 @@
 + subject: `Good news everyone!` (string, optional) - Subject of the message for email message
 + body: `Why is Zoidberg the only one still alone?` (string, required) - Body of the message
 + text: `Why is Zoidberg the only one still alone?` (string, optional) - Text version of the body for messages with non-text body
-+ attachments: (array[string], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
++ attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
 + options (object, optional) - Sending options
     + tags (array[string], optional) - List of tag names to add to the conversation (unknown tags will automatically be created)
     + archive: `true` (boolean, optional) - Archive the conversation right when sending the reply
@@ -73,7 +73,7 @@
 + body_format: `markdown` (enum[string], optional, default) - Format of the message body.
      + `html`
      + `markdown`
-+ attachments: (array[string], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
++ attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
 + metadata (object, optional)
     + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
     + headers (object, optional) - Custom object where any internal information can be stored
@@ -101,7 +101,7 @@
      + `custom`
 + assignee_id (string, optional) - ID of the teammate who will be assigned to the conversation.
 + tags (array[string], optional) - List of tag names to add to the conversation (unknown tags will automatically be created).
-+ attachments: (array[string], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
++ attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
 + metadata (object, required)
     + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead.
     + is_inbound: `true` (boolean, required) - Whether or not the message is received (inbound) or sent (outbound) by you.
