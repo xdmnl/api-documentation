@@ -3898,7 +3898,7 @@ curl --include \
     "limit": 50
   },
   "_links": {
-    "self": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+    "self": "https://api2.frontapp.com/topics/top_55c8c149/conversations"
   },
   "_results": [
     {
