@@ -13,6 +13,7 @@ language_tabs:
 includes:
   - endpoints
   - attachments
+  - file_upload
   - custom_channels
   - webhooks
   - oauth
@@ -34,9 +35,26 @@ Authorization: Bearer <token>
 
 The API uses [JSON Web Token](https://tools.ietf.org/html/rfc7519) to authenticate its user.
 
-You **MUST** send the token for each request needing authentication in the **Authorization** header. The token **MUST** be preceeded by `Bearer `
+You **MUST** send the token for each request in the **Authorization** header. The token **MUST** be preceeded by `Bearer `
 
 You can get your JSON web token directly from Front (go to Settings > API & Integrations > API).
+
+## Content type
+
+```http
+POST /channels/{channel_id}/messages HTTP/1.1
+Host: api2.frontapp.com
+Authorization: Bearer <token>
+Accept: application/json
+Content-Type: application/json
+
+{}
+```
+
+The API is designed to communicate with your server using JSON. All responses coming from the API will send data in a valid JSON object.
+If you need to send data to the API, your request **SHOULD** set the `Content-Type` HTTP header to `application/json`.
+
+Some endpoints also support multipart requests for file upload. For more details about it, please check our [multipart request](#multipart) documentation.
 
 ## Limitations
 
