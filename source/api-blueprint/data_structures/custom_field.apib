@@ -1,0 +1,18 @@
+## Custom field
+
+<!-- include(../includes/links_attribute.apib) -->
+    + self: `https://api2.frontapp.com/conversations/fld_55c8c149` (string, required) - URL of the custom field
++ id: `fld_55c8c149` (string, required) - Unique identifier of the custom field
++ name: `job_title` (string, required) - Name of the custom field
++ description: `Job title` (string, required) - Description of the custom field
++ type (enum[string], required) - Type of the custom field
+    + Members
+        + `string`
+        + `boolean`
+        + `datetime`
+        + `number`
+
+## Custom field to update
+
++ name: `job_title` (string, optional) - The name of the custom field. This name will be used in the custom field attribute key of the contact.
++ description: `Job title` (string, optional) - The description of the custom field.

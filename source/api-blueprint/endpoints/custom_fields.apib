@@ -1,0 +1,26 @@
+## Custom fields [/custom_fields/{custom_field_id}]
+
+A custom field defines the name and type for an extra field of a contact. Only listing all fields and updating the name and/or the description of a custom field is allowed. If you need a custom field to change its type, you need to create a new one with the correct type, as we validate the value of a custom field based on its type.
+
+### List custom fields [GET /custom_fields]
+
+List all the custom fields in your company.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/custom_fields` (string, required)
+        + _results (array[Custom field], required) - Array of the custom fields
+
+### Update a custom field [PATCH]
+
+Updates the name and/or description of a custom field.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Custom field to update)
+
++ Response 204

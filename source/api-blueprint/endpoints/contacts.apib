@@ -71,12 +71,18 @@ Creates a new contact.
 
 If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
 
+<aside class="notice">
+    Validation is performed on custom field attributes on contacts.
+    Datetime custom fields should be sent as a timestamp, in seconds.
+</aside>
+
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->
     + Attributes (Contact to create, required)
 
 + Response 201 (application/json)
     + Attributes (Contact)
+
 
 ### Delete contact [DELETE]
 
