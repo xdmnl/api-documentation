@@ -2295,6 +2295,7 @@ curl --include \
      --header "Accept: application/json" \
      --data-binary "{
   \"author_id\": \"alt:email:leela@planet-exress.com\",
+  \"sender_name\": \"Leela\",
   \"subject\": \"Good news everyone!\",
   \"body\": \"Why is Zoidberg the only one still alone?\",
   \"text\": \"Why is Zoidberg the only one still alone?\",
@@ -2345,6 +2346,7 @@ channel_id | string | Id or address of the channel from which to send the messag
 Name | Type | Description
 -----|------|------------
 author_id | string (optional) | ID of the teammate on behalf of whom the answer is sent 
+sender_name | string (optional) | Name used for the sender info of the message 
 subject | string (optional) | Subject of the message for email message 
 body | string | Body of the message 
 text | string (optional) | Text version of the body for messages with non-text body 
@@ -2366,6 +2368,7 @@ curl --include \
      --header "Accept: application/json" \
      --data-binary "{
   \"author_id\": \"alt:email:leela@planet-exress.com\",
+  \"sender_name\": \"Leela\",
   \"subject\": \"Good news everyone!\",
   \"body\": \"Why is Zoidberg the only one still alone?\",
   \"text\": \"Why is Zoidberg the only one still alone?\",
@@ -2410,6 +2413,7 @@ conversation_id | string | Id of the conversation
 Name | Type | Description
 -----|------|------------
 author_id | string (optional) | ID of the teammate on behalf of whom the answer is sent 
+sender_name | string (optional) | Name used for the sender info of the message 
 subject | string (optional) | Subject of the message for email message 
 body | string | Body of the message 
 text | string (optional) | Text version of the body for messages with non-text body 
