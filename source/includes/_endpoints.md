@@ -2133,6 +2133,88 @@ Name | Type | Description
 -----|------|------------
 comment_id | string | Id of the comment
 
+# Custom fields
+
+A custom field defines the name and type for an extra field of a contact. Only listing all fields and updating the name and/or the description of a custom field is allowed. If you need a custom field to change its type, you need to create a new one with the correct type, as we validate the value of a custom field based on its type.
+
+
+
+## List custom fields
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/custom_fields'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/custom_fields"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/conversations/fld_55c8c149"
+      },
+      "id": "fld_55c8c149",
+      "name": "job_title",
+      "description": "Job title",
+      "type": "string"
+    }
+  ]
+}
+```
+List all the custom fields in your company.
+
+
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/custom_fields`
+## Update a custom field
+```shell
+
+curl --include \
+     --request PATCH \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"name\": \"job_title\",
+  \"description\": \"Job title\"
+}" \
+'https://api2.frontapp.com/custom_fields/${CUSTOM_FIELD_ID}'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Updates the name and/or description of a custom field.
+
+
+
+### HTTP Request
+
+`PATCH https://api2.frontapp.com/custom_fields/{custom_field_id}`
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+name | string (optional) | The name of the custom field. This name will be used in the custom field attribute key of the contact. 
+description | string (optional) | The description of the custom field. 
+
 # Messages
 > 
 Name | Type | Description
@@ -2595,6 +2677,9 @@ is_spammer | boolean | Whether or not the contact is a spammer
 links | array | A set of URL associated to the contact 
 handles | array | List of the handles and sources with which the contact is reachable. 
 groups | array | List of the groups the contact belongs to. 
+custom_fields | object |  
+custom_fields.job title | string |  
+custom_fields.custom field name | string |  
 
 A contact is a person/entity with whom you have communicated.
 
@@ -2676,7 +2761,11 @@ curl --include \
           "id": "grp_55c8c149",
           "name": "Customers"
         }
-      ]
+      ],
+      "custom_fields": {
+        "job title": "engineer",
+        "custom field name": "your value"
+      }
     }
   ]
 }
@@ -2745,7 +2834,11 @@ curl --include \
       "id": "grp_55c8c149",
       "name": "Customers"
     }
-  ]
+  ],
+  "custom_fields": {
+    "job title": "engineer",
+    "custom field name": "your value"
+  }
 }
 ```
 Fetches the information of a contact. See [resource aliases](#resource-aliases) to fetch by handle.
@@ -2779,7 +2872,11 @@ curl --include \
   ],
   \"group_names\": [
     \"Customers\"
-  ]
+  ],
+  \"custom_fields\": {
+    \"job title\": \"engineer\",
+    \"custom field name\": \"your value\"
+  }
 }" \
 'https://api2.frontapp.com/contacts/${CONTACT_ID}'
 ```
@@ -2817,6 +2914,9 @@ avatar | string (optional) | Binary data of the image to use as the contact avat
 is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer 
 links | array (optional) | List of all the links of the contact 
 group_names | array (optional) | List of all the group names the contact belongs to. It will automatically create missing groups. 
+custom_fields | object (optional) | Custom field attributes for this contact. Leave empty if you do not wish to update the attributes. Not sending existing attributes will automatically remove them. 
+custom_fields.job title | string | A custom field name defined in your company custom fields 
+custom_fields.custom field name | string | A custom field name defined in your company custom fields 
 
 ## Create contact
 ```shell
@@ -2836,6 +2936,10 @@ curl --include \
   \"group_names\": [
     \"Customers\"
   ],
+  \"custom_fields\": {
+    \"job title\": \"engineer\",
+    \"custom field name\": \"your value\"
+  },
   \"handles\": [
     {
       \"handle\": \"@calculon\",
@@ -2886,12 +2990,21 @@ curl --include \
       "id": "grp_55c8c149",
       "name": "Customers"
     }
-  ]
+  ],
+  "custom_fields": {
+    "job title": "engineer",
+    "custom field name": "your value"
+  }
 }
 ```
 Creates a new contact.
 
 If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
+
+<aside class="notice">
+    Validation is performed on custom field attributes on contacts.
+    Datetime custom fields should be sent as a timestamp, in seconds.
+</aside>
 
 
 
@@ -2909,6 +3022,9 @@ avatar | string (optional) | Binary data of the image to use as the contact avat
 is_spammer | boolean (optional) | Whether or not the contact is marked as a spammer 
 links | array (optional) | List of all the links of the contact 
 group_names | array (optional) | List of all the group names the contact belongs to. It will automatically create missing groups. 
+custom_fields | object (optional) | Custom field attributes for this contact. Leave empty if you do not wish to update the attributes. Not sending existing attributes will automatically remove them. 
+custom_fields.job title | string | A custom field name defined in your company custom fields 
+custom_fields.custom field name | string | A custom field name defined in your company custom fields 
 handles | array | List of the contact handles 
 
 ## Delete contact
@@ -3283,7 +3399,11 @@ curl --include \
           "id": "grp_55c8c149",
           "name": "Customers"
         }
-      ]
+      ],
+      "custom_fields": {
+        "job title": "engineer",
+        "custom field name": "your value"
+      }
     }
   ]
 }
