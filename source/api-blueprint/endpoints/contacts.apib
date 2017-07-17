@@ -26,7 +26,7 @@ A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
 
 + Attributes (Contact)
 
-### List contacts [GET /contacts{?page,limit}]
+### List contacts [GET /contacts{?page_token,limit}]
 
 List all the contacts in your company in alphabetical order.
 
@@ -93,7 +93,7 @@ Deletes a contact.
 
 + Response 204 (application/json)
 
-### List contact conversations [GET /contacts/{contact_id}/conversations{?q,page,limit}]
+### List contact conversations [GET /contacts/{contact_id}/conversations{?q,page_token,limit}]
 
 Lists all the conversations with a contact in reverse chronological order (newest first).
 
@@ -151,7 +151,7 @@ Deletes a contact group. Will **not** delete the contacts in this group.
 
 + Response 204
 
-### List contacts in a group [GET /contact_groups/{group_id}/contacts{?page,limit}]
+### List contacts in a group [GET /contact_groups/{group_id}/contacts{?page_token,limit}]
 
 Lists all the contacts belonging to the requested group.
 

@@ -165,7 +165,6 @@ When this is the case, the JSON response will contain a field named `_pagination
 
 | Name      | Type              | Description                       |
 |-----------|-------------------|-----------------------------------|
-| `limit`   | number            | Max number of results per page    |
 | `prev`    | string (optional) | URL of the previous page          |
 | `next`    | string (optional) | URL of the next page              |
 

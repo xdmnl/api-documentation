@@ -18,7 +18,7 @@ A conversation ID alias follows the pattern <code>alt:ref:{reference}</code>.
 
 + Attributes (Conversation)
 
-### List conversations [GET /conversations{?q,page,limit}]
+### List conversations [GET /conversations{?q,page_token,limit}]
 
 Lists all the conversations in your company in reverse chronological order (latest updated first).
 
@@ -95,7 +95,7 @@ Lists the teammates following a conversation.
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/followers` (string, required)
         + _results (array[Teammate], required) - List of the conversation followers
 
-### List conversation events [GET /conversations/{conversation_id}/events{?page,limit}]
+### List conversation events [GET /conversations/{conversation_id}/events{?page_token,limit}]
 
 List of all the events that occured for a conversation in reverse chronological order (newest first).
 
@@ -113,7 +113,7 @@ List of all the events that occured for a conversation in reverse chronological 
             + self: `https://api2.frontapp.com/conversations/cnv_55c8c149/events` (string, required)
         + _results (array[Event], required) - List of the conversation activities
 
-### List conversation messages [GET /conversations/{conversation_id}/messages{?page,limit}]
+### List conversation messages [GET /conversations/{conversation_id}/messages{?page_token,limit}]
 
 Lists all the messages sent or received in a conversation in reverse chronological order (newest first).
 

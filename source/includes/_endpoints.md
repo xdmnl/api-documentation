@@ -176,7 +176,7 @@ is_available | boolean (optional) | New availability status
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/teammates/${TEAMMATE_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/teammates/${TEAMMATE_ID}/conversations?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -187,9 +187,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
   },
@@ -312,7 +310,7 @@ Lists the conversations assigned to a teammate in reverse chronological order (n
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/teammates/{teammate_id}/conversations?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/teammates/{teammate_id}/conversations?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
@@ -320,7 +318,7 @@ Name | Type | Description
 -----|------|------------
 teammate_id | string | Id or email of the teammate
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## List teammate inboxes
@@ -549,9 +547,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
   },
@@ -592,7 +588,7 @@ inbox_id | string | Id of the requested inbox
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/inboxes/${INBOX_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/inboxes/${INBOX_ID}/conversations?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -603,9 +599,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations"
   },
@@ -728,7 +722,7 @@ Lists the conversations which appear in an inbox.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/inboxes/{inbox_id}/conversations?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/inboxes/{inbox_id}/conversations?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
@@ -736,7 +730,7 @@ Name | Type | Description
 -----|------|------------
 inbox_id | string | Id of the requested inbox
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## List inbox teammates
@@ -1115,7 +1109,7 @@ A conversation ID alias follows the pattern <code>alt:ref:{reference}</code>.
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/conversations?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -1126,9 +1120,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/conversations"
   },
@@ -1251,14 +1243,14 @@ Lists all the conversations in your company in reverse chronological order (late
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/conversations?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/conversations?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get conversation
@@ -1574,7 +1566,7 @@ conversation_id | string | Id of the requested conversation
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/events?page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/events?page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -1585,9 +1577,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/conversations/cnv_55c8c149/events"
   },
@@ -1754,13 +1744,13 @@ List of all the events that occured for a conversation in reverse chronological 
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/conversations/{conversation_id}/events?page={page}&limit={limit}`
+`GET https://api2.frontapp.com/conversations/{conversation_id}/events?page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 conversation_id | string | Id of the requested conversation
 
@@ -1770,7 +1760,7 @@ conversation_id | string | Id of the requested conversation
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/messages?page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/messages?page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -1781,9 +1771,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/conversations/cnv_55c8c149/messages"
   },
@@ -1853,14 +1841,14 @@ Lists all the messages sent or received in a conversation in reverse chronologic
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/conversations/{conversation_id}/messages?page={page}&limit={limit}`
+`GET https://api2.frontapp.com/conversations/{conversation_id}/messages?page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 conversation_id | string | Id of the requested conversation
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Comments
@@ -2710,7 +2698,7 @@ A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/contacts?page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/contacts?page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -2721,9 +2709,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/contacts"
   },
@@ -2776,13 +2762,13 @@ List all the contacts in your company in alphabetical order.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/contacts?page={page}&limit={limit}`
+`GET https://api2.frontapp.com/contacts?page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get contact
@@ -3064,7 +3050,7 @@ contact_id | string | Id or alias of the requested contact
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/contacts/${CONTACT_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/contacts/${CONTACT_ID}/conversations?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -3075,9 +3061,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
   },
@@ -3200,14 +3184,14 @@ Lists all the conversations with a contact in reverse chronological order (newes
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/contacts/{contact_id}/conversations?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/contacts/{contact_id}/conversations?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 contact_id | string | Id or alias of the requested contact
 
@@ -3348,7 +3332,7 @@ group_id | string | Id of the requested group
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts?page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts?page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -3359,9 +3343,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
   },
@@ -3414,14 +3396,14 @@ Lists all the contacts belonging to the requested group.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/contact_groups/{group_id}/contacts?page={page}&limit={limit}`
+`GET https://api2.frontapp.com/contact_groups/{group_id}/contacts?page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 group_id | string | Id of the requested group
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Add contacts in a group
@@ -3838,7 +3820,7 @@ tag_id | string | ID of the requested tag
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/tags/${TAG_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/tags/${TAG_ID}/conversations?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -3849,9 +3831,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
   },
@@ -3974,7 +3954,7 @@ Lists all the conversations tagged with a specific tag.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/tags/{tag_id}/conversations?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/tags/{tag_id}/conversations?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
@@ -3982,7 +3962,7 @@ Name | Type | Description
 -----|------|------------
 tag_id | string | ID of the requested tag
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Topics
@@ -4007,7 +3987,7 @@ A topic is a specific kind of tag that links to an external platform.
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/topics/${TOPIC_ID}/conversations?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/topics/${TOPIC_ID}/conversations?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -4018,9 +3998,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/topics/top_55c8c149/conversations"
   },
@@ -4143,7 +4121,7 @@ Lists all the conversations linked to a specific topic.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/topics/{topic_id}/conversations?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/topics/{topic_id}/conversations?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
@@ -4151,7 +4129,7 @@ Name | Type | Description
 -----|------|------------
 topic_id | string | ID of the requested topic
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 # Rules
@@ -4345,7 +4323,7 @@ You can then either request the detailed event or each resources separately by f
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/events?q=${Q}&page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/events?q=${Q}&page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -4356,9 +4334,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/events"
   },
@@ -4530,14 +4506,14 @@ Lists all the detailed events which occured in the inboxes of your company order
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/events?q={q}&page={page}&limit={limit}`
+`GET https://api2.frontapp.com/events?q={q}&page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
 q | object (optional) | Search query. See Search Parameters
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get event
@@ -4966,7 +4942,7 @@ Because of this, Front will compute a **handle time** to the last message if:
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/exports?page=${PAGE}&limit=${LIMIT}'
+'https://api2.frontapp.com/exports?page_token=${PAGE_TOKEN}&limit=${LIMIT}'
 ```
 
 ```node
@@ -4977,9 +4953,7 @@ curl --include \
 
 ```json
 {
-  "_pagination": {
-    "limit": 50
-  },
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/exports"
   },
@@ -5013,13 +4987,13 @@ Lists all the exports generated in your company.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/exports?page={page}&limit={limit}`
+`GET https://api2.frontapp.com/exports?page_token={page_token}&limit={limit}`
 ### Parameters
 
 
 Name | Type | Description
 -----|------|------------
-page | number (optional) | Number of the page requested
+page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
 ## Get export
