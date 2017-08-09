@@ -3814,6 +3814,37 @@ Name | Type | Description
 -----|------|------------
 tag_id | string | ID of the requested tag
 
+## Delete tag
+```shell
+
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/tags/${TAG_ID}'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Deletes a tag.
+
+
+
+### HTTP Request
+
+`DELETE https://api2.frontapp.com/tags/{tag_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+tag_id | string | ID of the requested tag
+
 ## List tag conversations
 ```shell
 

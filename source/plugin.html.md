@@ -35,7 +35,7 @@ Front supports **plugins**. A plugin is a small web application that can communi
 <script src="https://dl.frontapp.com/libs/frontjs.min.js"></script>
 ```
 
-To create a new plugin, go to Settings > API & integrations > Plugins ans click on "Add a plugin":
+To create a new plugin, go to > Plugins & API > Plugins ans click on "Add a plugin":
 
 ![Add a new plugin](plugin-settings.png)
 
