@@ -41,6 +41,15 @@ Fetches the information of a tag.
 + Response 200 (application/json)
     + Attributes (Tag)
 
+### Delete tag [DELETE]
+
+Deletes a tag.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 204 (application/json)
+
 ### List tag conversations [GET /tags/{tag_id}/conversations{?q,page_token,limit}]
 
 Lists all the conversations tagged with a specific tag.
