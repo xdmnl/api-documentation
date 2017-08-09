@@ -27,4 +27,4 @@ Each requests we send to your webhook URLs will contain an `X-Front-Signature` h
 
 To validate that the data came from Front, you need to calculate the base64 encoded HMAC hash of the request body using sha1 algorithm and your API secret as the key. If the value matches the signature in the header, you can be sure the request was sent from Front.
 
-**You can get your API secret by going to Settings > API & Integrations > API.**
+**You can get your API secret by going to Settings > Plugins & API > API.**
