@@ -2256,12 +2256,10 @@ To open a message in Front you need to open the URL `https://app.frontapp.com/op
 
 <aside class="notice">
 Creating messages in Front is done asynchronously: the endpoint will only validate that the message can be processed.<br>
-Because of that, the response body does not include a conversation or message ID but includes a <code>conversation_reference</code> that can be used as an alias for the conversation ID.
+Because of that, the response body does not include a conversation or message ID but includes aliases for them: a <code>conversation_reference</code> that can be used in place of the conversation ID, and a <code>message_uid</code> that can be used in place of the message ID.<br>
 
-We guarantee that the reference will refer to a conversation but we don't guarantee that the conversation already exists when you receive its reference. So the API might respond with a 404 error code if trying to use the reference before the conversation exists.
+We guarantee that an alias will refer to its conversation or message but we don't guarantee that the object already exists when you receive its alias. So the API might respond with a 404 error code if trying to use a reference or UID before the conversation or message exists.
 </aside>
-
-
 
 ## Get message
 ```shell
@@ -2339,11 +2337,14 @@ curl --include \
 Fetches the information of a message.
 
 <aside class="notice">
+You can use the message UID as an alias for its ID. The UID to use can be found in the response of the endpoints to create messages.<br>
+A message ID alias follows the pattern <code>alt:uid:{message_uid}</code>.
+</aside>
+
+<aside class="notice">
 You can request the source of a message by setting the <code>Accept</code> header to <code>"text/plain"</code>.<br />
 Fetching the source of a message is available for email messages only.
 </aside>
-
-
 
 ### HTTP Request
 
@@ -2391,14 +2392,13 @@ curl --include \
 
 ```json
 {
-  "conversation_reference": "3b1q41d8@frontapp.com"
+  "conversation_reference": "3b1q41d8@frontapp.com",
+  "message_uid": "72525e10fe48f75717aae0b381ee8000"
 }
 ```
 Sends a new message from a channel. It will create a new conversation.
 
 If you want to send a new message with attached files, please check [how to send multipart request](#send-multipart-request).
-
-
 
 ### HTTP Request
 
@@ -2461,11 +2461,14 @@ curl --include \
 
 > Response **202**
 
+```json
+{
+  "message_uid": "72525e10fe48f75717aae0b381ee8000"
+}
+```
 Replies to a conversation by sending a message and appending it to the conversation.
 
 If you want to send a reply with attached files, please check [how to send multipart request](#send-multipart-request).
-
-
 
 ### HTTP Request
 
@@ -2525,14 +2528,13 @@ curl --include \
 
 ```json
 {
-  "conversation_reference": "3b1q41d8@frontapp.com"
+  "conversation_reference": "3b1q41d8@frontapp.com",
+  "message_uid": "72525e10fe48f75717aae0b381ee8000"
 }
 ```
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 If you want to receive a custom message with attached files, please check [how to send multipart request](#send-multipart-request).
-
-
 
 ### HTTP Request
 
@@ -2598,7 +2600,8 @@ curl --include \
 
 ```json
 {
-  "conversation_reference": "3b1q41d8@frontapp.com"
+  "conversation_reference": "3b1q41d8@frontapp.com",
+  "message_uid": "72525e10fe48f75717aae0b381ee8000"
 }
 ```
 Appends a new message into an inbox.
@@ -4994,7 +4997,7 @@ curl --include \
         "self": "https://api2.frontapp.com/exports/exp_55c8c149"
       },
       "id": "exp_55c8c149",
-      "status": "pending",
+      "status": "running",
       "progress": 42,
       "url": "http://exports.frontapp.com/planet-express/export.csv",
       "filename": "export.csv",
@@ -5048,7 +5051,7 @@ curl --include \
     "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   },
   "id": "exp_55c8c149",
-  "status": "pending",
+  "status": "running",
   "progress": 42,
   "url": "http://exports.frontapp.com/planet-express/export.csv",
   "filename": "export.csv",
@@ -5109,7 +5112,7 @@ curl --include \
     "self": "https://api2.frontapp.com/exports/exp_55c8c149"
   },
   "id": "exp_55c8c149",
-  "status": "pending",
+  "status": "running",
   "progress": 42,
   "url": "http://exports.frontapp.com/planet-express/export.csv",
   "filename": "export.csv",
