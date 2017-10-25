@@ -51,7 +51,6 @@ Front.compose({
     cc: ['copy@example.com'],
     subject: 'Optional subject',
     body: 'Optional body',
-    tags: ['tag_alias_1', 'tag_alias_2'],
     attachment_uids: [],
     hide_composer: false
 });
@@ -66,7 +65,6 @@ The **options** object accepts the following fields :
 * `bcc` (optional) is an array of recipients, that can be an email address, a phone number or a Twitter handle.
 * `subject` (optional) will be used as subject for emails.
 * `body` (optional) is the content of your message. If you have any, a signature will be appended.
-* `tags` (optional) will be used to tag the conversation. Can be a list of tag aliases or a list of objects with an alias property. If omitted, no tags will be applied. Tags can be retrieved from fetchAllowedTags.
 * `attachment_uids` (optional) is an array of attachment UIDs to attach to the new draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored).
 * `hide_composer` (optional) whether or not to hide the composer for the new draft message (default to `false`).
 
@@ -77,7 +75,6 @@ Front.reply({
     to: ['someone@somewhere.com'],
     subject: 'Optional subject',
     body: 'Optional body',
-    tags: ['tag_alias_1', 'tag_alias_2'],
     attachment_uids: []
 }, replyAll);
 ```
@@ -90,7 +87,6 @@ The **options** object accepts the following fields :
 * `bcc` (optional) is an array of recipients, that can be an email address.
 * `body` (optional) is the content of your message. If you have any, a signature will be appended.
 * `subject` (optional) will be used as subject for emails. If omitted, it will reply with the previous subject prefixed by "Re : ".
-* `tags` (optional) will be used to tag the conversation. Can be a list of tag aliases or a list of objects with an alias property. If omitted, no tags will be applied. Tags can be retrieved from fetchAllowedTags.
 * `attachment_uids` (optional) is an array of attachment UIDs to attach to the new draft. UIDs can be found in the messages of the current selected conversation (UIDs not found in the conversation will be ignored).
 
 The `replyAll` parameter will transform a simple reply in a reply all if set to true.
