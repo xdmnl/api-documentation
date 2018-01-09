@@ -28,7 +28,7 @@ The data object sent to the callbacks of the event contains 4 fields:
 
 ```json
 {
-  "id": "ctc_55c8c149",
+  "id": "crd_55c8c149",
   "handle": "john.doe@frontapp.com",
   "initials": "J",
   "display_name": "John Doe",

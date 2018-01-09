@@ -54,7 +54,7 @@ See [Receive a custom message](#receive-custom-message) endpoint documentation.
       "role": "to",
       "_links": {
         "related": {
-          "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
         }
       }
     }

@@ -10,6 +10,10 @@ toc_footers:
 
 # API
 
+## 01/06/2018 - Contact IDs
+* [API] Exposed contact IDs have changed.  
+Old IDs are still available but not exposed anymore. If you store IDs on your side and want to update your data, you can fetch the contact using the old ID and use its new ID.
+
 ## 10/05/2016 - Plugin draft
 
 * [Plugin SDK] Support the copy of attachments when composing a draft (new, reply or forward)

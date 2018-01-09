@@ -225,7 +225,7 @@ curl --include \
       "recipient": {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -276,7 +276,7 @@ curl --include \
           {
             "_links": {
               "related": {
-                "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
               }
             },
             "handle": "calculon@momsbot.com",
@@ -637,7 +637,7 @@ curl --include \
       "recipient": {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -688,7 +688,7 @@ curl --include \
           {
             "_links": {
               "related": {
-                "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
               }
             },
             "handle": "calculon@momsbot.com",
@@ -1158,7 +1158,7 @@ curl --include \
       "recipient": {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -1209,7 +1209,7 @@ curl --include \
           {
             "_links": {
               "related": {
-                "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
               }
             },
             "handle": "calculon@momsbot.com",
@@ -1302,7 +1302,7 @@ curl --include \
   "recipient": {
     "_links": {
       "related": {
-        "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+        "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
       }
     },
     "handle": "calculon@momsbot.com",
@@ -1353,7 +1353,7 @@ curl --include \
       {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -1658,7 +1658,7 @@ curl --include \
         "recipient": {
           "_links": {
             "related": {
-              "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+              "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
             }
           },
           "handle": "calculon@momsbot.com",
@@ -1709,7 +1709,7 @@ curl --include \
             {
               "_links": {
                 "related": {
-                  "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                  "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
                 }
               },
               "handle": "calculon@momsbot.com",
@@ -1809,7 +1809,7 @@ curl --include \
         {
           "_links": {
             "related": {
-              "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+              "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
             }
           },
           "handle": "calculon@momsbot.com",
@@ -2312,7 +2312,7 @@ curl --include \
     {
       "_links": {
         "related": {
-          "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
         }
       },
       "handle": "calculon@momsbot.com",
@@ -2716,13 +2716,13 @@ curl --include \
   "_results": [
     {
       "_links": {
-        "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+        "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
         "related": {
-          "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-          "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+          "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
+          "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
         }
       },
-      "id": "ctc_55c8c149",
+      "id": "crd_55c8c149",
       "name": "Calculon",
       "description": "#vip #robot #RIP",
       "avatar_url": "http://example.com/calculon.jpg",
@@ -2789,13 +2789,13 @@ curl --include \
 ```json
 {
   "_links": {
-    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+    "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
     "related": {
-      "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-      "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+      "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
+      "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
     }
   },
-  "id": "ctc_55c8c149",
+  "id": "crd_55c8c149",
   "name": "Calculon",
   "description": "#vip #robot #RIP",
   "avatar_url": "http://example.com/calculon.jpg",
@@ -2945,13 +2945,13 @@ curl --include \
 ```json
 {
   "_links": {
-    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+    "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
     "related": {
-      "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-      "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+      "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
+      "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
     }
   },
-  "id": "ctc_55c8c149",
+  "id": "crd_55c8c149",
   "name": "Calculon",
   "description": "#vip #robot #RIP",
   "avatar_url": "http://example.com/calculon.jpg",
@@ -3063,7 +3063,7 @@ curl --include \
 {
   "_pagination": {},
   "_links": {
-    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+    "self": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
   },
   "_results": [
     {
@@ -3099,7 +3099,7 @@ curl --include \
       "recipient": {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -3150,7 +3150,7 @@ curl --include \
           {
             "_links": {
               "related": {
-                "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
               }
             },
             "handle": "calculon@momsbot.com",
@@ -3350,13 +3350,13 @@ curl --include \
   "_results": [
     {
       "_links": {
-        "self": "https://api2.frontapp.com/contacts/ctc_55c8c149",
+        "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
         "related": {
-          "notes": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes",
-          "conversations": "https://api2.frontapp.com/contacts/ctc_55c8c149/conversations"
+          "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
+          "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
         }
       },
-      "id": "ctc_55c8c149",
+      "id": "crd_55c8c149",
       "name": "Calculon",
       "description": "#vip #robot #RIP",
       "avatar_url": "http://example.com/calculon.jpg",
@@ -3566,7 +3566,7 @@ curl --include \
 ```json
 {
   "_links": {
-    "self": "https://api2.frontapp.com/contacts/ctc_55c8c149/notes"
+    "self": "https://api2.frontapp.com/contacts/crd_55c8c149/notes"
   },
   "_results": [
     {
@@ -3900,7 +3900,7 @@ curl --include \
       "recipient": {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -3951,7 +3951,7 @@ curl --include \
           {
             "_links": {
               "related": {
-                "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
               }
             },
             "handle": "calculon@momsbot.com",
@@ -4067,7 +4067,7 @@ curl --include \
       "recipient": {
         "_links": {
           "related": {
-            "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
           }
         },
         "handle": "calculon@momsbot.com",
@@ -4118,7 +4118,7 @@ curl --include \
           {
             "_links": {
               "related": {
-                "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
               }
             },
             "handle": "calculon@momsbot.com",
@@ -4446,7 +4446,7 @@ curl --include \
         "recipient": {
           "_links": {
             "related": {
-              "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+              "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
             }
           },
           "handle": "calculon@momsbot.com",
@@ -4497,7 +4497,7 @@ curl --include \
             {
               "_links": {
                 "related": {
-                  "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+                  "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
                 }
               },
               "handle": "calculon@momsbot.com",
@@ -4639,7 +4639,7 @@ curl --include \
     "recipient": {
       "_links": {
         "related": {
-          "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
         }
       },
       "handle": "calculon@momsbot.com",
@@ -4690,7 +4690,7 @@ curl --include \
         {
           "_links": {
             "related": {
-              "contact": "https://api2.frontapp.com/contacts/ctc_55c8c149"
+              "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
             }
           },
           "handle": "calculon@momsbot.com",
