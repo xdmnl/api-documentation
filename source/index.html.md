@@ -54,7 +54,7 @@ Content-Type: application/json
 The API is designed to communicate with your server using JSON. All responses coming from the API will send data in a valid JSON object.
 If you need to send data to the API, your request **SHOULD** set the `Content-Type` HTTP header to `application/json`.
 
-Some endpoints also support multipart requests for file upload. For more details about it, please check our [multipart request](#multipart) documentation.
+Some endpoints also support multipart requests for file upload. For more details about it, please check our [multipart request](#send-multipart-request) documentation.
 
 ## Limitations
 
@@ -156,7 +156,7 @@ A response will contain at least one of the following top-level members:
 
 * `_pagination`: An object containing pagination information.
 * `_links`: An object containing the resource links for self-discoverability.
-* `_errors`: An array of [error objects](#errors).
+* `_error`: An array of [error objects](#error).
 
 ### Pagination
 
