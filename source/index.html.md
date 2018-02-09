@@ -148,6 +148,13 @@ Authorization: Bearer <token>
 | `before` | number (optional) | Timestamp of the max date of the events you want to list |
 | `after`  | number (optional) | Timestamp of the min date of the events you want to list |
 
+### Search criteria for contacts
+
+| Name             | Type              | Description                                  |
+|------------------|-------------------|----------------------------------------------|
+| `updated_before` | number (optional) | Timestamp of the max date of the last update |
+| `updated_after`  | number (optional) | Timestamp of the min date of the last update |
+
 ## Response body structure
 
 A JSON object will be at the root of every responses body. When requesting a resource collections, the collection will be encapsulated in a `_results` field.

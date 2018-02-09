@@ -10,6 +10,11 @@ toc_footers:
 
 # API
 
+## 08/02/2018 - Contact list
+* [API] Add support to filter by date of last update
+* [API] Add support to sort by date of creation or last update
+* [API] Add `updated_at` field to contact representation object
+
 ## 01/06/2018 - Contact IDs
 * [API] Exposed contact IDs have changed.  
 Old IDs are still available but not exposed anymore. If you store IDs on your side and want to update your data, you can fetch the contact using the old ID and use its new ID.

@@ -26,12 +26,15 @@ A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
 
 + Attributes (Contact)
 
-### List contacts [GET /contacts{?page_token,limit}]
+### List contacts [GET /contacts{?q,page_token,limit,sort_by,sort_order}]
 
-List all the contacts in your company in alphabetical order.
+List the contacts in your company.
 
 + Parameters
+    <!-- include(../includes/query_parameter.apib) -->
     <!-- include(../includes/pagination_parameter.apib) -->
+    + sort_by (string, optional) - Field to use to sort the contacts.
+    + sort_order (string, optional) - Order by which the results should be sorted. Accepted values are `desc` or `asc` (Defaults to `desc`)
 
 + Request
     <!-- include(../includes/request_header.apib) -->
