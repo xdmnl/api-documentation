@@ -10,7 +10,11 @@ toc_footers:
 
 # API
 
-## 08/02/2018 - Contact list
+## 02/16/2018 - Contact handle deletion
+* [API] Fix deletion of contact handles
+* [API] Add `force` field to contact handle deletion endpoint
+
+## 02/08/2018 - Contact list
 * [API] Add support to filter by date of last update
 * [API] Add support to sort by date of creation or last update
 * [API] Add `updated_at` field to contact representation object

@@ -3418,6 +3418,12 @@ curl --include \
 
 Removes a handle/source from a contact.
 
+If the handle is the last handle of the contact, the API will return a 400 HTTP status code error.
+
+<aside class="warning">
+Setting <code>force</code> to true will delete the contact if the handle to delete is the last one of the contact.
+</aside>
+
 ### HTTP Request
 
 `DELETE https://api2.frontapp.com/contacts/{contact_id}/handles`
@@ -3435,6 +3441,7 @@ Name | Type | Description
 -----|------|------------
 handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
 source | enum | Can be 'twitter', 'email' or 'phone'. 
+force | boolean (optional) | Force the deletetion of the contact if the handle is the last one (Defaults to `false`) 
 
 # Contact notes
 > 

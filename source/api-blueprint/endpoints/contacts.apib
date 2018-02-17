@@ -206,9 +206,15 @@ Adds a new handle/source to a contact.
 
 Removes a handle/source from a contact.
 
+If the handle is the last handle of the contact, the API will return a 400 HTTP status code error.
+
+<aside class="warning">
+Setting <code>force</code> to true will delete the contact if the handle to delete is the last one of the contact.
+</aside>
+
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->
-    + Attributes (Contact handle)
+    + Attributes (Contact handle to delete)
 
 + Response 204
 
