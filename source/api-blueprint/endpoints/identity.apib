@@ -1,0 +1,15 @@
+## Token Identity [/me]
+
+### Get token identity [GET]
+
+Fetches the details of the API token
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/me` (string, required)
+        + id: `cmp_55c8c149` (string, required) - ID of the company the token has been issued for.
+        + name: `Planet express` (string, required) - Name of the company the token has been issued for.

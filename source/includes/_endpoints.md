@@ -1,4 +1,141 @@
 
+# Token Identity
+
+
+
+## Get token identity
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/me'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/me"
+  },
+  "id": "cmp_55c8c149",
+  "name": "Planet express"
+}
+```
+
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/me`
+# Teams
+
+
+
+## List teams
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/teams'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/teams"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/teams/tim_55c8c149"
+      },
+      "id": "tim_55c8c149",
+      "name": "Delivery"
+    }
+  ]
+}
+```
+List the teams in your company.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/teams`
+## Get team
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/teams/${TEAM_ID}'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/teams/tim_55c8c149"
+  },
+  "id": "tim_55c8c149",
+  "name": "Delivery",
+  "inboxes": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
+        "related": {
+          "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
+          "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
+          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
+        }
+      },
+      "id": "inb_55c8c149",
+      "address": "team@planet-express.com",
+      "type": "smtp",
+      "name": "Team",
+      "send_as": "team@planet-express.com"
+    }
+  ],
+  "members": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+        "related": {
+          "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+          "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+        }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true
+    }
+  ]
+}
+```
+Fetches the details of a team.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/teams/{team_id}`
 # Teammates
 > 
 Name | Type | Description
@@ -3892,7 +4029,7 @@ Name | Type | Description
 _links | object | See [Response body Structure - Links](#links) 
 _links.self | string | URL of the topic 
 _links.related | object |  
-_links.related.conversations | string | URL of the list of conversations associated to this topictag 
+_links.related.conversations | string | URL of the list of conversations associated to this topic 
 id | string | Unique identifier of the topic 
 name | string | Name of the topic 
 url | string | URL of the topic 

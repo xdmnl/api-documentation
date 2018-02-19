@@ -10,6 +10,12 @@ toc_footers:
 
 # API
 
+## 02/18/2018 - Teams
+* [API] Add /teams endpoints
+* [API] Add /me endpoint
+* [API] Update endpoints to create resources in a specific team
+* [API] Fix enforcing access restriction to private resources
+
 ## 02/16/2018 - Contact handle deletion
 * [API] Fix deletion of contact handles
 * [API] Add `force` field to contact handle deletion endpoint

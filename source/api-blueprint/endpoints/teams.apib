@@ -1,0 +1,24 @@
+## Teams [/teams/{team_id}]
+
+### List teams [GET /teams]
+
+List the teams in your company.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/teams` (string, required)
+        + _results (array[Team], required) - List of teams accessible by the token
+
+### Get team [GET]
+
+Fetches the details of a team.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes (Team details)
