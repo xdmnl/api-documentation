@@ -27,7 +27,7 @@ curl --include \
   "name": "Planet express"
 }
 ```
-
+Fetches the details of the API token
 
 ### HTTP Request
 
@@ -601,7 +601,8 @@ Creates a team inbox with no channel associated to it (see [Create a channel](#c
 Name | Type | Description
 -----|------|------------
 name | string | Name of the inbox 
-teammate_ids | array (optional) | List of all the teammate ids who will have access to this inbox. If omitted, it will automatically select all the administrators in your company. 
+team_id: `tim_55c8c149` | string (optional) | ID of the team in which to create the inbox (Defaults to the first team created) 
+teammate_ids | array (optional) | List of all the teammate ids who will have access to this inbox. If omitted, it will automatically select all the team administrators. 
 
 ## Get inbox
 ```shell
@@ -3064,6 +3065,7 @@ custom_fields | object (optional) | Custom field attributes for this contact. Le
 custom_fields.job title | string | A custom field name defined in your company custom fields 
 custom_fields.custom field name | string | A custom field name defined in your company custom fields 
 handles | array | List of the contact handles 
+team_id: `tim_55c8c149` | string (optional) | ID of the team in which to create the contact (Defaults to the first team created) 
 
 ## Delete contact
 ```shell
@@ -3253,6 +3255,7 @@ _links.related | object |
 _links.related.contacts | string | URL to list of contacts in the group 
 id | string | Unique identifier of the group 
 name | string | Name of the group 
+team_id: `tim_55c8c149` | string (optional) | ID of the team in which to create the contact group (Defaults to the first team created) 
 
 
 
@@ -3338,6 +3341,7 @@ Creates a new contact group
 Name | Type | Description
 -----|------|------------
 name | string | Name of the group 
+team_id: `tim_55c8c149` | string (optional) | ID of the team in which to create the contact group (Defaults to the first team created) 
 
 ## Delete group
 ```shell
@@ -3804,6 +3808,7 @@ Creates a new tag.
 Name | Type | Description
 -----|------|------------
 name | string | Name of the tag to create 
+team_id: `tim_55c8c149` | string (optional) | ID of the team in which to create the tag (Defaults to the first team created) 
 
 ## Get tag
 ```shell
@@ -4807,7 +4812,7 @@ Depending on the date range you request the analytics, it can take some time to 
 curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
-'https://api2.frontapp.com/analytics/?inbox_ids=${INBOX_IDS}&tag_ids=${TAG_IDS}&start=${START}&end=${END}&timezone=${TIMEZONE}&metrics=${METRICS}'
+'https://api2.frontapp.com/analytics/?inbox_ids=${INBOX_IDS}&tag_ids=${TAG_IDS}&team_id=${TEAM_ID}&start=${START}&end=${END}&timezone=${TIMEZONE}&metrics=${METRICS}'
 ```
 
 ```node
@@ -4879,7 +4884,7 @@ Fetches the metrics correspondig to the parameters.
 
 ### HTTP Request
 
-`GET https://api2.frontapp.com/analytics/?inbox_ids={inbox_ids}&tag_ids={tag_ids}&start={start}&end={end}&timezone={timezone}&metrics={metrics}`
+`GET https://api2.frontapp.com/analytics/?inbox_ids={inbox_ids}&tag_ids={tag_ids}&team_id={team_id}&start={start}&end={end}&timezone={timezone}&metrics={metrics}`
 ### Parameters
 
 
@@ -5142,3 +5147,4 @@ start | number | Start time of the data to include in the export.
 end | number | End time of the data to include in the export. 
 timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC. 
 should_export_events | boolean (optional) | Whether to export all the events or  only messages. Default to `false`. 
+team_id: `tim_55c8c149` | string (optional) | ID of the team in which to create the export (Will be created to the first team created) 
