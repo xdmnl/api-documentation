@@ -127,9 +127,9 @@ Authorization: Bearer <token>
 
 ### Search criteria for conversations
 
-| Name       | Type             | Description                                                 |
-|------------|------------------|-------------------------------------------------------------|
-| `statuses` | array (optional) | List of the statuses of the conversations you want to list  |
+| Name       | Type             | Description                                                                                                               |
+|------------|------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `statuses` | array (optional) | List of the statuses of the conversations you want to list. <br>Can be 'assigned', 'unassigned', 'archived' or 'deleted'  |
 
 > Fetch all comment and assign events between Jan 25th, 2016 at 2:00 pm and January 25th, 2016 at 5:00 pm:
 
