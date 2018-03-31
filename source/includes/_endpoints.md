@@ -1123,50 +1123,6 @@ type | enum | Type of the channel.
 settings | object |  
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
 
-## Get channel inbox
-```shell
-
-curl --include \
-     --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json" \
-'https://api2.frontapp.com/channels/${CHANNEL_ID}/inbox'
-```
-
-```node
-
-```
-
-> Response **200**
-
-```json
-{
-  "_links": {
-    "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
-    "related": {
-      "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
-      "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-      "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
-    }
-  },
-  "id": "inb_55c8c149",
-  "address": "team@planet-express.com",
-  "type": "smtp",
-  "name": "Team",
-  "send_as": "team@planet-express.com"
-}
-```
-Fetches the inbox to which the channel is linked to.
-
-### HTTP Request
-
-`GET https://api2.frontapp.com/channels/{channel_id}/inbox`
-### Parameters
-
-
-Name | Type | Description
------|------|------------
-channel_id | string | Id of the requested channel
-
 # Conversations
 > 
 Name | Type | Description
