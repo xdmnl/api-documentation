@@ -13,6 +13,7 @@ toc_footers:
 ## 03/30/2018
 * [API] Deprecate `teammate_id` field when generating an export
 * [API] Deprecate endpoint to get the inbox of a channel
+* [API] Deprecate `team_id` field for creation endpoints
 
 ## 02/18/2018 - Teams
 * [API] Add /teams endpoints
