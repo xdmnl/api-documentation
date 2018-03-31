@@ -5011,7 +5011,6 @@ curl --include \
       "created_at": 1453770984.123,
       "query": {
         "inbox_id": "alt:address:team@planet-express.com",
-        "teammate_id": "alt:email:fry@planet-express.com",
         "start": 1428889003,
         "end": 1428889008,
         "timezone": "America/New_York",
@@ -5063,7 +5062,6 @@ curl --include \
   "created_at": 1453770984.123,
   "query": {
     "inbox_id": "alt:address:team@planet-express.com",
-    "teammate_id": "alt:email:fry@planet-express.com",
     "start": 1428889003,
     "end": 1428889008,
     "timezone": "America/New_York",
@@ -5093,7 +5091,6 @@ curl --include \
      --header "Accept: application/json" \
      --data-binary "{
   \"inbox_id\": \"alt:address:team@planet-express.com\",
-  \"teammate_id\": \"alt:email:fry@planet-express.com\",
   \"start\": 1428889003,
   \"end\": 1428889008,
   \"timezone\": \"America/New_York\",
@@ -5122,7 +5119,6 @@ curl --include \
   "created_at": 1453770984.123,
   "query": {
     "inbox_id": "alt:address:team@planet-express.com",
-    "teammate_id": "alt:email:fry@planet-express.com",
     "start": 1428889003,
     "end": 1428889008,
     "timezone": "America/New_York",
@@ -5141,7 +5137,6 @@ Requests the creation of a new export
 Name | Type | Description
 -----|------|------------
 inbox_id | string (optional) | ID of the inbox to export the analytics for. If omitted, the export will contain all the inboxes. 
-teammate_id | string (optional) | ID of the teammate to export the analytics for. If omitted, the export will contain all the teammates. 
 tag_id: `tag_55c8c149` | string (optional) | ID the tag to export the analytics for. If omitted, the export will contain all the tags. 
 start | number | Start time of the data to include in the export. 
 end | number | End time of the data to include in the export. 
