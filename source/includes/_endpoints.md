@@ -2568,7 +2568,7 @@ sender.name | string (optional) | Name of the sender
 sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender 
 subject | string (optional) | Subject of the message 
 body | string | Body of the message 
-body_format | enum (optional) | Format of the message body. (Default: `'markdown'`)
+body_format | enum (optional) | Format of the message body. Can be `'markdown'` (default), `'html'`
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 metadata | object (optional) |  
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead 
@@ -2646,7 +2646,7 @@ cc | array (optional) | List of recipient handles who received a copy of the mes
 bcc | array (optional) | List of the recipeient handles who received a blind copy of the message. 
 subject | string (optional) | Subject of the message. 
 body | string | Body of the message. 
-body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. (Default: `'markdown'`)
+body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. Can be `'markdown'` (default), `'html'`
 external_id | string | External identifier of the message. Front won't import two messages with the same external ID. 
 created_at | number | Date at which the message as been sent or received. 
 type | enum (optional) | Type of the message to import. (Default: `'email'`)
