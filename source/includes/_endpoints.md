@@ -2571,7 +2571,7 @@ body | string | Body of the message
 body_format | enum (optional) | Format of the message body. Can be `'markdown'` (default), `'html'`
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 metadata | object (optional) |  
-metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead 
+metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead 
 metadata.headers | object (optional) | Custom object where any internal information can be stored 
 
 ## Import message
@@ -2654,7 +2654,7 @@ assignee_id | string (optional) | ID of the teammate who will be assigned to the
 tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created). 
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 metadata | object |  
-metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead. 
+metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead. 
 metadata.is_inbound | boolean | Whether or not the message is received (inbound) or sent (outbound) by you. 
 metadata.is_archived | boolean (optional) | Whether or not the message should be directly archived once imported. (Default: `true`)
 metadata.should_skip_rules | boolean (optional) | Whether or not the rules should apply to this message. (Default: `true`)
