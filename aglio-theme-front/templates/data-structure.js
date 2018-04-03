@@ -35,7 +35,7 @@ function _renderField(field, options) {
   if (!field.required)
     formattedType += ' (optional)'
 
-  var renderedField = `${formattedName} | ${formattedType} | ${field.description} ${_getDefaultValueDescription(field)}
+  var renderedField = `${formattedName} | ${formattedType} | ${field.description} ${(_getSamplesDescription(field) + ' ' + _getDefaultValueDescription(field)).trim()}
 `;
 
   if (field.type === 'object' && field.example)
@@ -53,6 +53,7 @@ function _formatField(field) {
     required   : isRequired,
     type       : field.content.value.element,
     default    : field.content.value.attributes ? field.content.value.attributes.default : null,
+    samples    : field.content.value.attributes ? field.content.value.attributes.samples : null,
     example    : field.content.value.content
   };
 
@@ -66,8 +67,22 @@ function _getDefaultValueDescription(field) {
   var defaultValue = field.default;
 
   if (_.isArray(defaultValue))
-    defaultValue = field.default.map(v => v.element === 'string' ? `'${v.content}'` : v.content)
-                                .join(', ');
+    defaultValue = field.default.map(formatAttribute).join(', ');
 
   return `(Default: \`${defaultValue}\`)`;
+}
+
+function _getSamplesDescription(field) {
+  if (!field.samples)
+    return '';
+
+  const sampleValues = field.samples[0].map(sample => {
+    return `\`${formatAttribute(sample)}\``;
+  }).join(', ');
+
+  return `Can be one of: ${sampleValues}.`;
+}
+
+function formatAttribute(attr) {
+  return attr.element === 'string' ? `'${attr.content}'` : attr.content;
 }
