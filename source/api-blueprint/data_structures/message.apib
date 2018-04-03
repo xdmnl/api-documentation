@@ -76,7 +76,7 @@
      + `markdown`
 + attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
 + metadata (object, optional)
-    + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead
+    + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead
     + headers (object, optional) - Custom object where any internal information can be stored
 
 ## Message to import
@@ -104,7 +104,7 @@
 + tags (array[string], optional) - List of tag names to add to the conversation (unknown tags will automatically be created).
 + attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
 + metadata (object, required)
-    + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you ommit this field, we'll thread by sender instead.
+    + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead.
     + is_inbound: `true` (boolean, required) - Whether or not the message is received (inbound) or sent (outbound) by you.
     + is_archived: `true` (boolean, optional) - Whether or not the message should be directly archived once imported.
         + Default: `true`
