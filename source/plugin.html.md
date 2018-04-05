@@ -4,6 +4,7 @@ title: Front Plugin API Reference
 toc_footers:
   - <a href='https://github.com/frontapp/frontapp.github.io/'>Plugin example</a>
   - <a href='/'>API reference</a>
+  - <a href='chat.html'>Chat widget API documentation</a>
   - <a href='changelog.html'>Changelog</a>
   - <a href='mailto:api@frontapp.com'>Contact us</a>
 
