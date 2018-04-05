@@ -2568,7 +2568,7 @@ sender.name | string (optional) | Name of the sender
 sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender 
 subject | string (optional) | Subject of the message 
 body | string | Body of the message 
-body_format | enum (optional) | Format of the message body. Can be `'markdown'` (default), `'html'`
+body_format | enum (optional) | Format of the message body. Can be one of: `'html'`, `'markdown'`. (Default: `'markdown'`)
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 metadata | object (optional) |  
 metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead 
@@ -2646,10 +2646,10 @@ cc | array (optional) | List of recipient handles who received a copy of the mes
 bcc | array (optional) | List of the recipeient handles who received a blind copy of the message. 
 subject | string (optional) | Subject of the message. 
 body | string | Body of the message. 
-body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. Can be `'markdown'` (default), `'html'`
+body_format | enum (optional) | Format of the message body. Ignored if the message type is not `email`. Can be one of: `'html'`, `'markdown'`. (Default: `'markdown'`)
 external_id | string | External identifier of the message. Front won't import two messages with the same external ID. 
 created_at | number | Date at which the message as been sent or received. 
-type | enum (optional) | Type of the message to import. (Default: `'email'`)
+type | enum (optional) | Type of the message to import. Can be one of: `'email'`, `'sms'`, `'intercom'`, `'custom'`. (Default: `'email'`)
 assignee_id | string (optional) | ID of the teammate who will be assigned to the conversation. 
 tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created). 
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
@@ -4855,7 +4855,7 @@ Name | Type | Description
 _links | object | See [Response body Structure - Links](#links) 
 _links.self | string | URL of the export URL 
 id | string | Unique identifier for the export. 
-status | enum | Status of the export. 
+status | enum | Status of the export. Can be one of: `'running'`, `'pending'`, `'done'`, `'failed'`. (Default: `'running'`)
 progress | number | Number ranging from 0 to 100 corresponding to the percentage of the export processed. 
 url | string (optional) | URL of the generated export. Will be null until the status is "done". 
 filename | string (optional) | Name of the file of the generated export. Will be null until the status is "done". 

@@ -3,10 +3,11 @@
 <!-- include(../includes/links_attribute.apib) -->
     + self: `https://api2.frontapp.com/exports/exp_55c8c149` (string, required) - URL of the export URL
 + id: `exp_55c8c149` (string, required) - Unique identifier for the export.
-+ status: `running` (enum, required) - Status of the export.
-    + `pending`
-    + `done`
-    + `failed`
++ status: `running` (enum[string], required, default) - Status of the export.
+     + `running`
+     + `pending`
+     + `done`
+     + `failed`
 + progress: `42` (number, required) - Number ranging from 0 to 100 corresponding to the percentage of the export processed.
 + url: `http://exports.frontapp.com/planet-express/export.csv` (string, optional) - URL of the generated export. Will be null until the status is "done".
 + filename: `export.csv` (string, optional) - Name of the file of the generated export. Will be null until the status is "done".
