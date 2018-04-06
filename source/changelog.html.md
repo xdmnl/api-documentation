@@ -8,46 +8,74 @@ toc_footers:
 
 ---
 
-# API
+# Front API change log
 
-## 03/30/2018
-* [API] Deprecate `teammate_id` field when generating an export
-* [API] Deprecate endpoint to get the inbox of a channel
-* [API] Deprecate `team_id` field for creation endpoints
+The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
-## 02/18/2018 - Teams
-* [API] Add /teams endpoints
-* [API] Add /me endpoint
-* [API] Update endpoints to create resources in a specific team
-* [API] Fix enforcing access restriction to private resources
+## 2018-03-30
 
-## 02/16/2018 - Contact handle deletion
-* [API] Fix deletion of contact handles
-* [API] Add `force` field to contact handle deletion endpoint
+### Deprecated
+* Deprecate `teammate_id` field when generating an export
+* Deprecate endpoint to get the inbox of a channel
+* Deprecate `team_id` field for creation endpoints
 
-## 02/08/2018 - Contact list
-* [API] Add support to filter by date of last update
-* [API] Add support to sort by date of creation or last update
-* [API] Add `updated_at` field to contact representation object
+### Changed 
+* Updated Changelog format to follow [https://keepachangelog.com](https://keepachangelog.com)
+* Add the ability to access individual resources
 
-## 01/06/2018 - Contact IDs
-* [API] Exposed contact IDs have changed.  
+## 2018-02-18 - Teams
+
+### Added
+* Add endpoint to list the teams
+* Add endpoint to fetch a team
+* Add endpoint to have details about the token
+* Update endpoints to create resources in a specific team using `team_id` field
+
+### Fixed
+* Fix enforcing access restriction to fetching private resources
+
+## 2018-02-16 - Contact handle deletion
+
+### Added
+* Add `force` field to force the deletion of a contact handle
+
+### Fixed
+* Fix deletion of contact handles
+
+## 2018-02-08 - Contact list
+
+### Added
+* Filter contacts list by date of last update
+* Sort contacts list by date of creation or last update
+* Add `updated_at` field to contact representation object
+
+## 2018-01-06 - Contact IDs
+
+### Changed
+* Exposed contact IDs have changed.  
 Old IDs are still available but not exposed anymore. If you store IDs on your side and want to update your data, you can fetch the contact using the old ID and use its new ID.
 
-## 10/05/2016 - Plugin draft
+## 2016-08-19 - Attachments
 
-* [Plugin SDK] Support the copy of attachments when composing a draft (new, reply or forward)
-* [Plugin SDK] Add a method to fetch the draft of the current conversation
-* [Plugin SDK] Add a method to update a draft recipients and/or attachments
-* [Plugin SDK] Add the `attachments` array to the message representation object
-* [Plugin SDK] Add the `has_draft` boolean to the conversation representation object
+### Added
+* Attachments now include metadata (`is_inline` & `cid`)
+* Support of sending messages with attachments with a `multipart/form-data` request
 
-## 08/19/2016 - Attachments
+## 2016-03-07 - API v2
 
-* [API] Add metadata (`is_inline` & `cid`) to attachments
-* [API] Support of sending messages with attachments with a `multipart/form-data` request
+### Added
+* Release of the API v2
 
-## 03/07/2016 - API v2
+### Deprecated
+* Deprecation of the API v1
 
-* [API] Release of the API v2
-* [API] Deprecation of the API v1
+# Plugin SDK
+
+## 10/05/2016 - Drafts
+
+### Added
+* Support the copy of attachments when composing a draft (new, reply or forward)
+* Add a method to fetch the draft of the current conversation
+* Add a method to update a draft recipients and/or attachments
+* Add the `attachments` array to the message representation object
+* Add the `has_draft` boolean to the conversation representation object
