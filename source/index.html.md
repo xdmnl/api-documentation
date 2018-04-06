@@ -8,7 +8,7 @@ toc_footers:
   - <a href='changelog.html'>Changelog</a>
   - <a href='mailto:api@frontapp.com'>Contact us</a>
 
-language_tabs:
+language_tabs: # must be one of https://git.io/vQNgJ
   - shell
 
 includes:
