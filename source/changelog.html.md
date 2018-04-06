@@ -18,6 +18,7 @@ The change log is the history of updates released. Front is committed in not bre
 * Deprecate `teammate_id` field when generating an export
 * Deprecate endpoint to get the inbox of a channel
 * Deprecate `team_id` field for creation endpoints
+* Deprecate `address`, `send_as` and `type` inbox fields
 
 ### Changed 
 * Updated Changelog format to follow [https://keepachangelog.com](https://keepachangelog.com)

@@ -17,17 +17,4 @@
         + conversations: `https://api2.frontapp.com/inboxes/inb_55c8c149/conversations` (string, required) - URL of the list of conversations included in this inbox
         + channels: `https://api2.frontapp.com/inboxes/inb_55c8c149/channels` (string, required) - URL of the list of channels sending messages to this inbox
 + id: `inb_55c8c149` (string, required) - Unique identifier for the inbox
-+ address: `team@planet-express.com` (string, required) - **DEPRECATED in favor of channel** Address receiving the messages
-+ type (enum[string], required) - **DEPRECATED in favor of channel** Type of the inbox
-    + Members
-        + `smtp`
-        + `imap`
-        + `twilio`
-        + `twitter`
-        + `facebook`
-        + `smooch`
-        + `intercom`
-        + `truly`
-        + `custom`
 + name: `Team` (string, required) - Name of the inbox
-+ send_as: `team@planet-express.com` (string, optional) - **DEPRECATED in favor of channel** Address which appears as the sender for messages sent from Front
