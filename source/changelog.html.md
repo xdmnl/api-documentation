@@ -33,6 +33,8 @@ The change log is the history of updates released. Front is committed in not bre
 ### Changed 
 * Updated Changelog format to follow [https://keepachangelog.com](https://keepachangelog.com)
 * Add the ability to access individual resources
+* Add `is_private` boolean field to differentiate between individual and shared resources
+* Add `owner` related link to identify the owner (either a team or a teammate) of a resource
 
 ## 2018-02-18 - Teams
 

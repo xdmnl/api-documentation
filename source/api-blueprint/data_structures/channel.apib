@@ -4,6 +4,7 @@
     + self: `https://api2.frontapp.com/channels/cha_55c8c149` (string, required) - URL of the channel.
     + related (object, required)
         + inbox: `https://api2.frontapp.com/channels/cha_55c8c149/inbox` (string, required) - URL of the inbox to which the channel is sending messages.
+        + owner: `https://api2.frontapp.com/teams/tim_55c8c149` (string, required) - URL of the team of teammate of the channel
 + id: `cha_55c8c149` (string, required) - Unique identifier for the channel.
 + address: `team@planet-express.com` (string, required) - Address receiving the messages.
 + type (enum[string], required) - Type of the channel.
@@ -19,6 +20,7 @@
         + `custom`
 + send_as: `team@planet-express.com` (string, optional) - Address which appears as the sender for messages sent from Front.
 + settings (object, required)
++ is_private: `false` (boolean, required) - Whether or not the channel is individual
 
 ## Channel settings
 
