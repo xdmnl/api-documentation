@@ -9,7 +9,11 @@ A tag is a label that can be used to classify conversations.
 
 ### List tags [GET /tags]
 
-Lists all the tags available in your company.
+Lists all the tags.
+
+<aside class="notice">
+You can list the tags of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/tags</code> or <code>/teams/{team_id}/tags</code>.
+</aside>
 
 + Request
     <!-- include(../includes/request_header.apib) -->
@@ -22,7 +26,11 @@ Lists all the tags available in your company.
 
 ### Create tag [POST /tags]
 
-Creates a new tag.
+Creates a new tag in the default team.
+
+<aside class="notice">
+You can create a tag for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/tags</code> or <code>/teams/{team_id}/tags</code>.
+</aside>
 
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->

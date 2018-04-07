@@ -28,7 +28,11 @@ A contact ID alias follows the pattern <code>alt:{source}:{handle}</code>.
 
 ### List contacts [GET /contacts{?q,page_token,limit,sort_by,sort_order}]
 
-List the contacts in your company.
+List all the contacts.
+
+<aside class="notice">
+You can list the contacts of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contacts</code> or <code>/teams/{team_id}/contacts</code>.
+</aside>
 
 + Parameters
     <!-- include(../includes/query_parameter.apib) -->
@@ -70,14 +74,14 @@ If you want to update a contact's avatar, please check [how to send multipart re
 
 ### Create contact [POST /contacts]
 
-Creates a new contact.
-
-If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
+Creates a new contact for the default team.
 
 <aside class="notice">
-    Validation is performed on custom field attributes on contacts.
-    Datetime custom fields should be sent as a timestamp, in seconds.
+You can create a contact for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contacts</code> or <code>/teams/{team_id}/contacts</code>.
 </aside>
+
+If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
+If your request includes custom field attributes, datetime fields **MUST** be sent as a timestamp, in secods.
 
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->
@@ -120,7 +124,11 @@ Lists all the conversations with a contact in reverse chronological order (most 
 
 ### List groups [GET]
 
-Lists the groups available in your company
+Lists all the contact groups.
+
+<aside class="notice">
+You can list the contact groups of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contact_groups</code> or <code>/teams/{team_id}/contact_groups</code>.
+</aside>
 
 + Request
     <!-- include(../includes/request_header.apib) -->
@@ -133,7 +141,11 @@ Lists the groups available in your company
 
 ### Create group [POST]
 
-Creates a new contact group
+Creates a new contact group in the default team.
+
+<aside class="notice">
+You can create a contact group for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contact_groups</code> or <code>/teams/{team_id}/contact_groups</code>.
+</aside>
 
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->

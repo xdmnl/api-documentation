@@ -11,7 +11,11 @@ Since the set of conditions and actions associated to a rule can be quite compli
 
 ### List rules [GET /rules]
 
-Lists all the shared rules in your company. Individual rules are currently not accessible with the API.
+Lists all the rules.
+
+<aside class="notice">
+You can list the rules of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/rules</code> or <code>/teams/{team_id}/rules</code>.
+</aside>
 
 + Request
     <!-- include(../includes/request_header.apib) -->

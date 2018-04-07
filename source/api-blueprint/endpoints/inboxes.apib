@@ -11,7 +11,11 @@ Messages are sent from and received by [channels](#channels) which then post the
 
 ### List inboxes [GET /inboxes]
 
-Lists all the team inboxes in your company.
+Lists all the inboxes.
+
+<aside class="notice">
+You can list the inboxes of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/inboxes</code> or <code>/teams/{team_id}/inboxes</code>.
+</aside>
 
 + Request
     <!-- include(../includes/request_header.apib) -->
@@ -24,7 +28,11 @@ Lists all the team inboxes in your company.
 
 ### Create an inbox [POST /inboxes]
 
-Creates a team inbox with no channel associated to it (see [Create a channel](#create-a-channel)).
+Creates a team inbox with no channel associated to it (see [Create a channel](#create-a-channel)) in the default team.
+
+<aside class="notice">
+You can create an inbox for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/inboxes</code> or <code>/teams/{team_id}/inboxes</code>.
+</aside>
 
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->

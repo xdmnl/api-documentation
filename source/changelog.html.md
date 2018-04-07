@@ -12,7 +12,17 @@ toc_footers:
 
 The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
-## 2018-03-30
+## 2018-03-30 - Individual resources
+
+### Added
+* Add endpoints to list and create contact in a specific team or for a specific teammate
+* Add endpoints to list and create contact group in a specific team or for a specific teammate
+* Add endpoints to list channels in a specific team or for a specific teammate
+* Add endpoints to list and create inbox in a specific team or for a specific teammate
+* Add endpoints to list and create tag in a specific team or for a specific teammate
+* Add endpoints to list rules in a specific team or for a specific teammate
+* Add endpoint to create an export for a specific team
+* Add endpoint to generate analytics for a specific team
 
 ### Deprecated
 * Deprecate `teammate_id` field when generating an export
