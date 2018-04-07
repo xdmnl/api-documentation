@@ -101,14 +101,13 @@ curl --include \
         "related": {
           "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
+          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "smtp",
       "name": "Team",
-      "send_as": "team@planet-express.com"
+      "is_private": false
     }
   ],
   "members": [
@@ -365,11 +364,13 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
-              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
-          "name": "Robots"
+          "name": "Robots",
+          "is_private": false
         }
       ],
       "last_message": {
@@ -428,7 +429,8 @@ curl --include \
         ],
         "metadata": {}
       },
-      "created_at": 1453770984.123
+      "created_at": 1453770984.123,
+      "is_private": false
     }
   ]
 }
@@ -475,14 +477,13 @@ curl --include \
         "related": {
           "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
+          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "smtp",
       "name": "Team",
-      "send_as": "team@planet-express.com"
+      "is_private": false
     }
   ]
 }
@@ -509,11 +510,10 @@ _links.related | object |
 _links.related.teammates | string | URL of the list of teammates that can access the inbox 
 _links.related.conversations | string | URL of the list of conversations included in this inbox 
 _links.related.channels | string | URL of the list of channels sending messages to this inbox 
+_links.related.owner | string | URL of the team of teammate of the inbox 
 id | string | Unique identifier for the inbox 
-address | string | **DEPRECATED in favor of channel** Address receiving the messages 
-type | enum | **DEPRECATED in favor of channel** Type of the inbox 
 name | string | Name of the inbox 
-send_as | string (optional) | **DEPRECATED in favor of channel** Address which appears as the sender for messages sent from Front 
+is_private | boolean | Whether or not the inbox is individual 
 
 An inbox is a container of messages.
 
@@ -546,19 +546,22 @@ curl --include \
         "related": {
           "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
+          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "smtp",
       "name": "Team",
-      "send_as": "team@planet-express.com"
+      "is_private": false
     }
   ]
 }
 ```
-Lists all the team inboxes in your company.
+Lists all the inboxes.
+
+<aside class="notice">
+You can list the inboxes of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/inboxes</code> or <code>/teams/{team_id}/inboxes</code>.
+</aside>
 
 ### HTTP Request
 
@@ -590,7 +593,11 @@ curl --include \
   "name": "Delivery support"
 }
 ```
-Creates a team inbox with no channel associated to it (see [Create a channel](#create-a-channel)).
+Creates a team inbox with no channel associated to it (see [Create a channel](#create-a-channel)) in the default team.
+
+<aside class="notice">
+You can create an inbox for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/inboxes</code> or <code>/teams/{team_id}/inboxes</code>.
+</aside>
 
 ### HTTP Request
 
@@ -625,14 +632,13 @@ curl --include \
     "related": {
       "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
       "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-      "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
+      "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "inb_55c8c149",
-  "address": "team@planet-express.com",
-  "type": "smtp",
   "name": "Team",
-  "send_as": "team@planet-express.com"
+  "is_private": false
 }
 ```
 Fetches the information of an inbox.
@@ -673,14 +679,16 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/channels/cha_55c8c149",
         "related": {
-          "inbox": "https://api2.frontapp.com/channels/cha_55c8c149/inbox"
+          "inbox": "https://api2.frontapp.com/channels/cha_55c8c149/inbox",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "cha_55c8c149",
       "address": "team@planet-express.com",
       "type": "smtp",
       "send_as": "team@planet-express.com",
-      "settings": {}
+      "settings": {},
+      "is_private": false
     }
   ]
 }
@@ -763,11 +771,13 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
-              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
-          "name": "Robots"
+          "name": "Robots",
+          "is_private": false
         }
       ],
       "last_message": {
@@ -826,7 +836,8 @@ curl --include \
         ],
         "metadata": {}
       },
-      "created_at": 1453770984.123
+      "created_at": 1453770984.123,
+      "is_private": false
     }
   ]
 }
@@ -906,11 +917,13 @@ _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the channel. 
 _links.related | object |  
 _links.related.inbox | string | URL of the inbox to which the channel is sending messages. 
+_links.related.owner | string | URL of the team of teammate of the channel 
 id | string | Unique identifier for the channel. 
 address | string | Address receiving the messages. 
 type | enum | Type of the channel. 
 send_as | string (optional) | Address which appears as the sender for messages sent from Front. 
 settings | object |  
+is_private | boolean | Whether or not the channel is individual 
 
 A channel is a resource which can send and receive messages.
 
@@ -953,23 +966,24 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/channels/cha_55c8c149",
         "related": {
-          "inbox": "https://api2.frontapp.com/channels/cha_55c8c149/inbox"
+          "inbox": "https://api2.frontapp.com/channels/cha_55c8c149/inbox",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "cha_55c8c149",
       "address": "team@planet-express.com",
       "type": "smtp",
       "send_as": "team@planet-express.com",
-      "settings": {}
+      "settings": {},
+      "is_private": false
     }
   ]
 }
 ```
-Lists all the shared channels available in your company.
+Lists all the channels.
 
 <aside class="notice">
-You can use the channel address as an alias for its ID.<br>
-A channel ID alias follows the pattern <code>alt:address:{address}</code>.
+You can list the channels of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/channels</code> or <code>/teams/{team_id}/channels</code>.
 </aside>
 
 ### HTTP Request
@@ -995,14 +1009,16 @@ curl --include \
   "_links": {
     "self": "https://api2.frontapp.com/channels/cha_55c8c149",
     "related": {
-      "inbox": "https://api2.frontapp.com/channels/cha_55c8c149/inbox"
+      "inbox": "https://api2.frontapp.com/channels/cha_55c8c149/inbox",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "cha_55c8c149",
   "address": "team@planet-express.com",
   "type": "smtp",
   "send_as": "team@planet-express.com",
-  "settings": {}
+  "settings": {},
+  "is_private": false
 }
 ```
 Fetches the information of a channel. See [resource aliases](#resource-aliases) to fetch by address.
@@ -1142,6 +1158,7 @@ recipient | Recipient | Main recipient of the conversation
 tags | array | List of the tags for this conversation 
 last_message | Message | List of partial representation of the messages inside the conversation 
 created_at | number | Timestamp at which the conversation have been created. 
+is_private | boolean | Whether or not the conversation is private 
 
 A conversation is a unique thread of messages. It can appear in one or more inboxes (eg: if you receive an email on contact@ where support@ is Cced).
 
@@ -1222,11 +1239,13 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
-              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
-          "name": "Robots"
+          "name": "Robots",
+          "is_private": false
         }
       ],
       "last_message": {
@@ -1285,7 +1304,8 @@ curl --include \
         ],
         "metadata": {}
       },
-      "created_at": 1453770984.123
+      "created_at": 1453770984.123,
+      "is_private": false
     }
   ]
 }
@@ -1364,11 +1384,13 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
-          "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+          "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "tag_55c8c149",
-      "name": "Robots"
+      "name": "Robots",
+      "is_private": false
     }
   ],
   "last_message": {
@@ -1427,7 +1449,8 @@ curl --include \
     ],
     "metadata": {}
   },
-  "created_at": 1453770984.123
+  "created_at": 1453770984.123,
+  "is_private": false
 }
 ```
 Fetches the information of a conversation.
@@ -1527,14 +1550,13 @@ curl --include \
         "related": {
           "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
           "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels"
+          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "inb_55c8c149",
-      "address": "team@planet-express.com",
-      "type": "smtp",
       "name": "Team",
-      "send_as": "team@planet-express.com"
+      "is_private": false
     }
   ]
 }
@@ -1638,13 +1660,17 @@ curl --include \
         },
         "data": {
           "_links": {
-            "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+            "self": "https://api2.frontapp.com/rules/rul_55c8c149",
+            "related": {
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+            }
           },
           "id": "rul_55c8c149",
           "name": "Important deliveries",
           "actions": [
             "Assign to Leela Turanga"
-          ]
+          ],
+          "is_private": false
         }
       },
       "target": {
@@ -1712,11 +1738,13 @@ curl --include \
             "_links": {
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
-                "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+                "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+                "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
               }
             },
             "id": "tag_55c8c149",
-            "name": "Robots"
+            "name": "Robots",
+            "is_private": false
           }
         ],
         "last_message": {
@@ -1775,7 +1803,8 @@ curl --include \
           ],
           "metadata": {}
         },
-        "created_at": 1453770984.123
+        "created_at": 1453770984.123,
+        "is_private": false
       }
     }
   ]
@@ -2668,6 +2697,7 @@ _links.self | string | URL of the contact
 _links.related | object |  
 _links.related.notes | string | URL to list the notes associated to the contact 
 _links.related.conversations | string | URL to list the URL associated to the contact 
+_links.related.owner | string | URL of the team or teammate of the contact 
 id | string | Unique identifier of the contact 
 name | string | Contact name 
 description | string | Contact description 
@@ -2680,6 +2710,7 @@ updated_at | number (optional) | Timestamp of the last update
 custom_fields | object |  
 custom_fields.job title | string |  
 custom_fields.custom field name | string |  
+is_private | boolean | Whether or not the contact is individual 
 
 A contact is a person/entity with whom you have communicated.
 
@@ -2729,7 +2760,8 @@ curl --include \
         "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
         "related": {
           "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
-          "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
+          "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "crd_55c8c149",
@@ -2751,23 +2783,30 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
             "related": {
-              "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+              "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "grp_55c8c149",
-          "name": "Customers"
+          "name": "Customers",
+          "is_private": false
         }
       ],
       "updated_at": 0,
       "custom_fields": {
         "job title": "engineer",
         "custom field name": "your value"
-      }
+      },
+      "is_private": false
     }
   ]
 }
 ```
-List the contacts in your company.
+List all the contacts.
+
+<aside class="notice">
+You can list the contacts of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contacts</code> or <code>/teams/{team_id}/contacts</code>.
+</aside>
 
 ### HTTP Request
 
@@ -2804,7 +2843,8 @@ curl --include \
     "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
     "related": {
       "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
-      "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
+      "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "crd_55c8c149",
@@ -2826,18 +2866,21 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
         "related": {
-          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "grp_55c8c149",
-      "name": "Customers"
+      "name": "Customers",
+      "is_private": false
     }
   ],
   "updated_at": 0,
   "custom_fields": {
     "job title": "engineer",
     "custom field name": "your value"
-  }
+  },
+  "is_private": false
 }
 ```
 Fetches the information of a contact. See [resource aliases](#resource-aliases) to fetch by handle.
@@ -2957,7 +3000,8 @@ curl --include \
     "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
     "related": {
       "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
-      "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
+      "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "crd_55c8c149",
@@ -2979,28 +3023,31 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
         "related": {
-          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "grp_55c8c149",
-      "name": "Customers"
+      "name": "Customers",
+      "is_private": false
     }
   ],
   "updated_at": 0,
   "custom_fields": {
     "job title": "engineer",
     "custom field name": "your value"
-  }
+  },
+  "is_private": false
 }
 ```
-Creates a new contact.
-
-If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
+Creates a new contact for the default team.
 
 <aside class="notice">
-    Validation is performed on custom field attributes on contacts.
-    Datetime custom fields should be sent as a timestamp, in seconds.
+You can create a contact for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contacts</code> or <code>/teams/{team_id}/contacts</code>.
 </aside>
+
+If you want to create a contact with an avatar, please check [how to send multipart request](#send-multipart-request).
+If your request includes custom field attributes, datetime fields **MUST** be sent as a timestamp, in secods.
 
 ### HTTP Request
 
@@ -3116,11 +3163,13 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
-              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
-          "name": "Robots"
+          "name": "Robots",
+          "is_private": false
         }
       ],
       "last_message": {
@@ -3179,7 +3228,8 @@ curl --include \
         ],
         "metadata": {}
       },
-      "created_at": 1453770984.123
+      "created_at": 1453770984.123,
+      "is_private": false
     }
   ]
 }
@@ -3207,8 +3257,10 @@ _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the group 
 _links.related | object |  
 _links.related.contacts | string | URL to list of contacts in the group 
+_links.related.owner | string | URL of the team or teammate of the contact group 
 id | string | Unique identifier of the group 
 name | string | Name of the group 
+is_private | boolean | Whether or not the contact is individual 
 
 
 
@@ -3237,16 +3289,22 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
         "related": {
-          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+          "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "grp_55c8c149",
-      "name": "Customers"
+      "name": "Customers",
+      "is_private": false
     }
   ]
 }
 ```
-Lists the groups available in your company
+Lists all the contact groups.
+
+<aside class="notice">
+You can list the contact groups of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contact_groups</code> or <code>/teams/{team_id}/contact_groups</code>.
+</aside>
 
 ### HTTP Request
 
@@ -3276,14 +3334,20 @@ curl --include \
   "_links": {
     "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
     "related": {
-      "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+      "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "grp_55c8c149",
-  "name": "Customers"
+  "name": "Customers",
+  "is_private": false
 }
 ```
-Creates a new contact group
+Creates a new contact group in the default team.
+
+<aside class="notice">
+You can create a contact group for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/contact_groups</code> or <code>/teams/{team_id}/contact_groups</code>.
+</aside>
 
 ### HTTP Request
 
@@ -3351,7 +3415,8 @@ curl --include \
         "self": "https://api2.frontapp.com/contacts/crd_55c8c149",
         "related": {
           "notes": "https://api2.frontapp.com/contacts/crd_55c8c149/notes",
-          "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations"
+          "conversations": "https://api2.frontapp.com/contacts/crd_55c8c149/conversations",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "crd_55c8c149",
@@ -3373,18 +3438,21 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/contacts/grp_55c8c149",
             "related": {
-              "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts"
+              "contacts": "https://api2.frontapp.com/contact_groups/grp_55c8c149/contacts",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "grp_55c8c149",
-          "name": "Customers"
+          "name": "Customers",
+          "is_private": false
         }
       ],
       "updated_at": 0,
       "custom_fields": {
         "job title": "engineer",
         "custom field name": "your value"
-      }
+      },
+      "is_private": false
     }
   ]
 }
@@ -3673,8 +3741,10 @@ _links | object | See [Response body Structure - Links](#links)
 _links.self | string | URL of the tag 
 _links.related | object |  
 _links.related.conversations | string | URL of the list of conversations tagged with this tag 
+_links.related.owner | string | URL of the team or teammate of the tag 
 id | string | Unique identifier of the tag 
 name | string | Name of the tag 
+is_private | boolean | Whether or not the tag is individual 
 
 A tag is a label that can be used to classify conversations.
 
@@ -3703,16 +3773,22 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
-          "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+          "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "tag_55c8c149",
-      "name": "Robots"
+      "name": "Robots",
+      "is_private": false
     }
   ]
 }
 ```
-Lists all the tags available in your company.
+Lists all the tags.
+
+<aside class="notice">
+You can list the tags of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/tags</code> or <code>/teams/{team_id}/tags</code>.
+</aside>
 
 ### HTTP Request
 
@@ -3742,14 +3818,20 @@ curl --include \
   "_links": {
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
-      "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+      "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "tag_55c8c149",
-  "name": "Robots"
+  "name": "Robots",
+  "is_private": false
 }
 ```
-Creates a new tag.
+Creates a new tag in the default team.
+
+<aside class="notice">
+You can create a tag for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/tags</code> or <code>/teams/{team_id}/tags</code>.
+</aside>
 
 ### HTTP Request
 
@@ -3781,11 +3863,13 @@ curl --include \
   "_links": {
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
-      "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+      "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "tag_55c8c149",
-  "name": "Robots"
+  "name": "Robots",
+  "is_private": false
 }
 ```
 Fetches the information of a tag.
@@ -3895,11 +3979,13 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
-              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
-          "name": "Robots"
+          "name": "Robots",
+          "is_private": false
         }
       ],
       "last_message": {
@@ -3958,7 +4044,8 @@ curl --include \
         ],
         "metadata": {}
       },
-      "created_at": 1453770984.123
+      "created_at": 1453770984.123,
+      "is_private": false
     }
   ]
 }
@@ -4058,11 +4145,13 @@ curl --include \
           "_links": {
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
-              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+              "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
-          "name": "Robots"
+          "name": "Robots",
+          "is_private": false
         }
       ],
       "last_message": {
@@ -4121,7 +4210,8 @@ curl --include \
         ],
         "metadata": {}
       },
-      "created_at": 1453770984.123
+      "created_at": 1453770984.123,
+      "is_private": false
     }
   ]
 }
@@ -4147,9 +4237,12 @@ Name | Type | Description
 -----|------|------------
 _links | object | See [Response body Structure - Links](#links) 
 _links.self | string | URL of the rule 
+_links.related | object |  
+_links.related.owner | string | URL of the team of teammate for which the rule is defined 
 id | string | Unique identifier of the rule 
 name | string | Name of the rule 
 actions | array | List of the rule's actions description 
+is_private | boolean | Whether or not the rule is individual 
 
 A rule is a set of conditions which will trigger automatic actions when they are met.
 
@@ -4178,18 +4271,26 @@ curl --include \
   "_results": [
     {
       "_links": {
-        "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+        "self": "https://api2.frontapp.com/rules/rul_55c8c149",
+        "related": {
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+        }
       },
       "id": "rul_55c8c149",
       "name": "Important deliveries",
       "actions": [
         "Assign to Leela Turanga"
-      ]
+      ],
+      "is_private": false
     }
   ]
 }
 ```
-Lists all the shared rules in your company. Individual rules are currently not accessible with the API.
+Lists all the rules.
+
+<aside class="notice">
+You can list the rules of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/rules</code> or <code>/teams/{team_id}/rules</code>.
+</aside>
 
 ### HTTP Request
 
@@ -4212,13 +4313,17 @@ curl --include \
 ```json
 {
   "_links": {
-    "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+    "self": "https://api2.frontapp.com/rules/rul_55c8c149",
+    "related": {
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+    }
   },
   "id": "rul_55c8c149",
   "name": "Important deliveries",
   "actions": [
     "Assign to Leela Turanga"
-  ]
+  ],
+  "is_private": false
 }
 ```
 Fetches the definition of a rule.
@@ -4353,13 +4458,17 @@ curl --include \
         },
         "data": {
           "_links": {
-            "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+            "self": "https://api2.frontapp.com/rules/rul_55c8c149",
+            "related": {
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+            }
           },
           "id": "rul_55c8c149",
           "name": "Important deliveries",
           "actions": [
             "Assign to Leela Turanga"
-          ]
+          ],
+          "is_private": false
         }
       },
       "target": {
@@ -4427,11 +4536,13 @@ curl --include \
             "_links": {
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
-                "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+                "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+                "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
               }
             },
             "id": "tag_55c8c149",
-            "name": "Robots"
+            "name": "Robots",
+            "is_private": false
           }
         ],
         "last_message": {
@@ -4490,7 +4601,8 @@ curl --include \
           ],
           "metadata": {}
         },
-        "created_at": 1453770984.123
+        "created_at": 1453770984.123,
+        "is_private": false
       }
     }
   ]
@@ -4544,13 +4656,17 @@ curl --include \
     },
     "data": {
       "_links": {
-        "self": "https://api2.frontapp.com/rules/rul_55c8c149"
+        "self": "https://api2.frontapp.com/rules/rul_55c8c149",
+        "related": {
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+        }
       },
       "id": "rul_55c8c149",
       "name": "Important deliveries",
       "actions": [
         "Assign to Leela Turanga"
-      ]
+      ],
+      "is_private": false
     }
   },
   "target": {
@@ -4618,11 +4734,13 @@ curl --include \
         "_links": {
           "self": "https://api2.frontapp.com/tags/tag_55c8c149",
           "related": {
-            "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations"
+            "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+            "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
           }
         },
         "id": "tag_55c8c149",
-        "name": "Robots"
+        "name": "Robots",
+        "is_private": false
       }
     ],
     "last_message": {
@@ -4681,7 +4799,8 @@ curl --include \
       ],
       "metadata": {}
     },
-    "created_at": 1453770984.123
+    "created_at": 1453770984.123,
+    "is_private": false
   }
 }
 ```
@@ -4832,6 +4951,10 @@ curl --include \
 }
 ```
 Fetches the metrics correspondig to the parameters.
+
+<aside class="notice">
+You can fetch the anaytics of a specific team by using the endpoint <code>/teams/{team_id}/analytics</code>.
+</aside>
 
 ### HTTP Request
 
@@ -5077,7 +5200,11 @@ curl --include \
   }
 }
 ```
-Requests the creation of a new export
+Create a new export in the default team.
+
+<aside class="notice">
+You can create a new export in a specific team by using the endpoint <code>/teams/{team_id}/exports</code>.
+</aside>
 
 ### HTTP Request
 
