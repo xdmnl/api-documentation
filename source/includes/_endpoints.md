@@ -2308,9 +2308,9 @@ To open a message in Front you need to open the URL `https://app.frontapp.com/op
 
 <aside class="notice">
 Creating messages in Front is done asynchronously: the endpoint will only validate that the message can be processed.<br>
-Because of that, the response body does not include a conversation or message ID but includes a <code>conversation_reference</code> that can be used as an alias for the conversation ID.
+Because of that, the response body does not include a message ID but a <code>message_uid</code> that can be used as an alias for the message ID.
 
-We guarantee that the reference will refer to a conversation but we don't guarantee that the conversation already exists when you receive its reference. So the API might respond with a 404 error code if trying to use the reference before the conversation exists.
+We guarantee that the UID will refer to a message but we don't guarantee that the message already exists when you receive its reference. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
 </aside>
 
 ## Get message
@@ -2439,7 +2439,7 @@ curl --include \
 
 ```json
 {
-  "conversation_reference": "3b1q41d8@frontapp.com"
+  "message_uid": "3b1q41d8"
 }
 ```
 Sends a new message from a channel. It will create a new conversation.
@@ -2569,7 +2569,7 @@ curl --include \
 
 ```json
 {
-  "conversation_reference": "3b1q41d8@frontapp.com"
+  "message_uid": "3b1q41d8"
 }
 ```
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
@@ -2640,7 +2640,7 @@ curl --include \
 
 ```json
 {
-  "conversation_reference": "3b1q41d8@frontapp.com"
+  "message_uid": "3b1q41d8"
 }
 ```
 Appends a new message into an inbox.

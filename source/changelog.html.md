@@ -12,6 +12,14 @@ toc_footers:
 
 The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2018-04-18 - Asynchronous message creation reference
+
+### Added
+* Add `message_uid` in the response of asynchronous message creation endpoints (replace `conversation_reference`).
+
+### Deprecated
+* Deprecate `conversation_reference` from the response of asynchronous message creation endpoints (replaced by `message_uid`).
+
 ## 2018-03-30 - Individual resources
 
 ### Added
@@ -30,7 +38,7 @@ The change log is the history of updates released. Front is committed in not bre
 * Deprecate `team_id` field for creation endpoints
 * Deprecate `address`, `send_as` and `type` inbox fields
 
-### Changed 
+### Changed
 * Updated Changelog format to follow [https://keepachangelog.com](https://keepachangelog.com)
 * Add the ability to access individual resources
 * Add `is_private` boolean field to differentiate between individual and shared resources
@@ -65,7 +73,7 @@ The change log is the history of updates released. Front is committed in not bre
 ## 2018-01-06 - Contact IDs
 
 ### Changed
-* Exposed contact IDs have changed.  
+* Exposed contact IDs have changed.
 Old IDs are still available but not exposed anymore. If you store IDs on your side and want to update your data, you can fetch the contact using the old ID and use its new ID.
 
 ## 2016-08-19 - Attachments
