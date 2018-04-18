@@ -38,20 +38,20 @@ You can use `shutdown` to remove the chat from your page after starting it. The 
   FrontChat('shutdown');
 ```
 
-## FrontChat('open')
+## FrontChat('show')
 
 This will open the main FrontChat messenger panel.
 
 ```javascript
-  FrontChat('open');
+  FrontChat('show');
 ```
 
-## FrontChat('close')
+## FrontChat('hide')
 
 This will close the main FrontChat messenger panel. If `useDefaultLauncher` was set to false, the launcher will not appear.
 
 ```javascript
-  FrontChat('close');
+  FrontChat('hide');
 ```
 
 ## FrontChat('onUnreadChange', handler)
