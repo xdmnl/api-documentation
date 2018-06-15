@@ -17,6 +17,8 @@
         + `truly-call`
         + `custom`
 + is_inbound: `true` (boolean, required) - Whether or not the message has been received or sent
++ is_draft: `false` (boolean, required) - Whether or not the message is a draft
++ error_type: (string, optional) - Type of the error when the draft failed to be sent
 + created_at: `1453770984.123` (number, required) - Date at which the message as been sent or received
 + blurb: `Anything less than immortality is a...` (string, required) - Preview of the message body
 + author (Teammate, optional) - In case of a message sent from Front by a teammate, it will include the teammate who sent it

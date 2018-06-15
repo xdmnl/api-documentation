@@ -12,6 +12,12 @@ toc_footers:
 
 The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2018-06-15 - Message status
+
+### Added
+* Add the boolean `is_draft` in the message representation to make the distinction between messages still in draft mode and messages that have been sent or received.
+* Add the string `error_type` in the message representation to expose the type of error that caused a draft to fail to send.
+
 ## 2018-04-18 - Asynchronous message creation reference
 
 ### Added
