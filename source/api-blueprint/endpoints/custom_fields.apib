@@ -2,6 +2,15 @@
 
 A custom field defines the name and type for an extra field of a contact. Only listing all fields and updating the name and/or the description of a custom field is allowed. If you need a custom field to change its type, you need to create a new one with the correct type, as we validate the value of a custom field based on its type.
 
+Each custom field has a specified data type. Ensure the data you submit when updating a custom field's value is formatted correctly:
+
+| Type     | Example      | Description               |
+|----------|--------------|---------------------------|
+| String   | "London, UK" | String values             |
+| Boolean  | true         | Boolean true/false values |
+| Number   | 90           | Integers                  |
+| Datetime | 1525417200   | Epoch timestamp           |
+
 ### List custom fields [GET /custom_fields]
 
 List all the custom fields in your company.
