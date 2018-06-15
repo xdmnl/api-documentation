@@ -15,7 +15,7 @@ Front.on('panel_visible', function (visible) {
 });
 ```
 
-Every time the current conversation changes, an event is sent to our library.
+Every time the current conversation changes (for example, when you click a new conversation in the list), an event is sent to our library.
 
 The data object sent to the callbacks of the event contains 4 fields:
 
@@ -92,6 +92,6 @@ The data object sent to the callbacks of the event contains 4 fields:
       "filename": "chart.jpg",
       "content_type": "image/jpeg",
       "size": "391970"
-  }] 
+  }]
 }
 ```
