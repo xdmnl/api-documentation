@@ -22,7 +22,7 @@ By default, the chat launcher will become visible immediately after the page loa
 
 ```javascript
   FrontChat('init', {
-    useDefaultLauncher: false
+    useDefaultLauncher: false // optional
   });
 ```
 
@@ -63,4 +63,38 @@ It will return an `unbind` function that you can call to unregister the handler.
 
 ```javascript
   const unbind = FrontChat('onUnreadChange', handler);
+```
+
+## FrontChat('identity', options)
+
+If the visitor of your website or app is signed in, you can forward their identity to the Front Chat. It will appear as the conversation recipient in Front. You will need to pass a secure `userHash`.
+
+```javascript
+  FrontChat('identity', {
+    email: 'leela@planet-express.com',
+    name: 'Leela Turanga' // optional
+    userHash: '<generated using the verification secret>',
+  });
+```
+
+### Identity verification
+
+The mandatory user hash guarantees that users are who they claim to be. Otherwise, a user could manually run JavaScript commands to impersonate another one and view their conversations.
+
+You can configure Front Chat to accept both anonymous and identified users. If a user has submitted their email address, "[Unverified]" will appear in the conversation subject. You can also completely disable anonymous users to avoid any confusion.
+
+### Computing the user hash
+
+Front Chat uses a server-side generated [HMAC (hash based message authentication code)](https://en.wikipedia.org/wiki/HMAC) with SHA-256. The identity verification will fail unless a user hash is provided.
+
+To compute a user hash, you will first need to retrieve your identity secret, which is available in your Front settings. Go to Settings > Inboxes > Your chat inbox > Your chat channel and expand the section "Verify logged-in user identity":
+
+![Plugin authentication](chat-verified-settings.png)
+
+Then, the user hash `HMAC_SHA256(secret, userEmail)`. For example, with node.js:
+
+```javascript
+const crypto = require('crypto');
+const hmac = crypto.createHmac('sha256', verificationSecret);
+const userHash = hmac.update(userEmail).digest('hex');
 ```
