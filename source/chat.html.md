@@ -30,6 +30,19 @@ If you don't call the `init` method, `useDefaultLauncher` will be true by defaul
 
 Note: You can only call `init` once.
 
+You can optionally pass the identity of the user in the `init` call (see `FrontChat('identity', …)` below):
+
+```javascript
+  FrontChat('init', {
+    useDefaultLauncher: false,
+    email: 'leela@planet-express.com',
+    name: 'Leela Turanga' // optional
+    userHash: '<generated using the verification secret>',
+  });
+```
+
+This is equivalent to an `init` call followed by an `identity` call.
+
 ## FrontChat('shutdown')
 
 You can use `shutdown` to remove the chat from your page after starting it. The chat will disappear from the page until `init` is called again (or the page is reloaded).
