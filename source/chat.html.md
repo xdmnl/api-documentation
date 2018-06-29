@@ -18,19 +18,17 @@ Once the chat is installed on your website, the `FrontChat` JavaScript object wi
 
 ## FrontChat('init', options)
 
-By default, the chat launcher will become visible immediately after the page loads. This is not always desirable if you want to use an alternative button or delay when the chat becomes available.
-
 ```javascript
   FrontChat('init', {
     useDefaultLauncher: false // optional
   });
 ```
 
-If you don't call the `init` method, `useDefaultLauncher` will be true by default.
+By default, the chat launcher will become visible immediately after the page loads. This is not always desirable if you want to use an alternative button or delay when the chat becomes available. If you don't call the `init` method, `useDefaultLauncher` will be true by default.
 
 Note: You can only call `init` once.
 
-You can optionally pass the identity of the user in the `init` call (see `FrontChat('identity', …)` below):
+### Init and identity
 
 ```javascript
   FrontChat('init', {
@@ -41,46 +39,44 @@ You can optionally pass the identity of the user in the `init` call (see `FrontC
   });
 ```
 
-This is equivalent to an `init` call followed by an `identity` call.
+You can optionally pass the identity of the user in the `init` call (see `FrontChat('identity', …)` below). This is equivalent to an `init` call followed by an `identity` call.
 
 ## FrontChat('shutdown')
-
-You can use `shutdown` to remove the chat from your page after starting it. The chat will disappear from the page until `init` is called again (or the page is reloaded).
 
 ```javascript
   FrontChat('shutdown');
 ```
 
-## FrontChat('show')
+You can use `shutdown` to remove the chat from your page after starting it. The chat will disappear from the page until `init` is called again (or the page is reloaded).
 
-This will open the main FrontChat messenger panel.
+## FrontChat('show')
 
 ```javascript
   FrontChat('show');
 ```
 
-## FrontChat('hide')
+This will open the main FrontChat messenger panel.
 
-This will close the main FrontChat messenger panel. If `useDefaultLauncher` was set to false, the launcher will not appear.
+## FrontChat('hide')
 
 ```javascript
   FrontChat('hide');
 ```
 
+This will close the main FrontChat messenger panel. If `useDefaultLauncher` was set to false, the launcher will not appear.
+
 ## FrontChat('onUnreadChange', handler)
+
+```javascript
+  const unbind = FrontChat('onUnreadChange', handler);
+```
 
 This method allows you to register a function (the `handler`) that will be called when the current number of unread messages changes.
 The `handler` is expected to be a function that will receive as first parameter an object like `{unread_count: 1}`. The handler will always be called immediately to pass an initial value.
 
 It will return an `unbind` function that you can call to unregister the handler.
 
-```javascript
-  const unbind = FrontChat('onUnreadChange', handler);
-```
-
 ## FrontChat('identity', options)
-
-If the visitor of your website or app is signed in, you can forward their identity to the Front Chat. It will appear as the conversation recipient in Front. You will need to pass a secure `userHash`.
 
 ```javascript
   FrontChat('identity', {
@@ -90,6 +86,8 @@ If the visitor of your website or app is signed in, you can forward their identi
   });
 ```
 
+If the visitor of your website or app is signed in, you can forward their identity to the Front Chat. It will appear as the conversation recipient in Front. You will need to pass a secure `userHash`.
+
 ### Identity verification
 
 The mandatory user hash guarantees that users are who they claim to be. Otherwise, a user could manually run JavaScript commands to impersonate another one and view their conversations.
@@ -98,16 +96,16 @@ You can configure Front Chat to accept both anonymous and identified users. If a
 
 ### Computing the user hash
 
-Front Chat uses a server-side generated [HMAC (hash based message authentication code)](https://en.wikipedia.org/wiki/HMAC) with SHA-256. The identity verification will fail unless a user hash is provided.
-
-To compute a user hash, you will first need to retrieve your identity secret, which is available in your Front settings. Go to Settings > Inboxes > Your chat inbox > Your chat channel and expand the section "Verify logged-in user identity":
-
-![Plugin authentication](chat-verified-settings.png)
-
-Then, the user hash `HMAC_SHA256(secret, userEmail)`. For example, with node.js:
-
 ```javascript
+// computing a user hash based on HMAC-SHA256
+// node.js example
 const crypto = require('crypto');
 const hmac = crypto.createHmac('sha256', verificationSecret);
 const userHash = hmac.update(userEmail).digest('hex');
 ```
+
+Front Chat uses a server-side generated [HMAC (hash based message authentication code)](https://en.wikipedia.org/wiki/HMAC) with SHA-256. The identity verification will fail unless a user hash is provided.
+
+To compute a user hash, you will first need to retrieve your identity secret, which is available in your Front settings. Go to Settings > Inboxes > (Your chat inbox) > (Your chat channel) and expand the section "Verify logged-in user identity":
+
+![Plugin authentication](chat-verified-settings.png)
