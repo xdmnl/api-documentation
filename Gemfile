@@ -9,5 +9,5 @@ gem "middleman-sprockets", "~> 4.1.0"
 gem 'rouge', '~> 2.0.5'
 gem 'redcarpet', '~> 3.4.0'
 gem 'nokogiri', '~> 1.6.8'
-gem 'middleman-s3_sync'
+gem 'middleman-s3_sync', git: 'https://github.com/fredjean/middleman-s3_sync.git', ref: '32f98ac'
 gem 'mime-types'
