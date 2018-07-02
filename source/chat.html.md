@@ -34,8 +34,8 @@ Note: You can only call `init` once.
   FrontChat('init', {
     useDefaultLauncher: false,
     email: 'leela@planet-express.com',
-    name: 'Leela Turanga' // optional
-    userHash: '<generated using the verification secret>',
+    name: 'Leela Turanga', // optional
+    userHash: '<generated using the verification secret>'
   });
 ```
 
@@ -81,8 +81,8 @@ It will return an `unbind` function that you can call to unregister the handler.
 ```javascript
   FrontChat('identity', {
     email: 'leela@planet-express.com',
-    name: 'Leela Turanga' // optional
-    userHash: '<generated using the verification secret>',
+    name: 'Leela Turanga', // optional
+    userHash: '<generated using the verification secret>'
   });
 ```
 
