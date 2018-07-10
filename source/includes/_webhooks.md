@@ -18,7 +18,7 @@ function validateFrontSignature(data, signature) {
                      .update(JSON.stringify(data))
                      .digest('base64');
 
-   return hash === signature;
+   return crypto.timingSafeEqual(Buffer.from(hash), Buffer.from(signature));
 }
 ```
 
