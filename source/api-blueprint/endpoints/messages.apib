@@ -21,13 +21,6 @@ Each message has a type depending on the channel it has been sent with:
 
 To open a message in Front you need to open the URL `https://app.frontapp.com/open/{message_id}`.
 
-<aside class="notice">
-Creating messages in Front is done asynchronously: the endpoint will only validate that the message can be processed.<br>
-Because of that, the response body does not include a message ID but a <code>message_uid</code> that can be used as an alias for the message ID.
-
-We guarantee that the UID will refer to a message but we don't guarantee that the message already exists when you receive its reference. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
-</aside>
-
 + Parameters
     + message_id (string, required) - Id of the requested message
 
@@ -62,7 +55,7 @@ If you want to send a new message with attached files, please check [how to send
     + Attributes (Outbound new message)
 
 <!-- include(../includes/accepted_response.apib) -->
-    + Attributes (Accepted message)
+    + Attributes (Draft)
 
 ### Send reply [POST /conversations/{conversation_id}/messages]
 
@@ -78,12 +71,20 @@ If you want to send a reply with attached files, please check [how to send multi
     + Attributes (Outbound reply)
 
 <!-- include(../includes/accepted_response.apib) -->
+    + Attributes (Draft)
 
 ### Receive custom message [POST /channels/{channel_id}/incoming_messages]
 
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 If you want to receive a custom message with attached files, please check [how to send multipart request](#send-multipart-request).
+
+<aside class="notice">
+Receiving a message in Front is done asynchronously. <br>
+The endpoint will only validate the payload and will return a <code>message_uid</code> that can be used as an alias for the message ID (<code>alt:uid:{message_uid}</code>.
+<br><br>
+We guarantee that the UID will refer to a message but we don't guarantee that the message already exists. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
+</aside>
 
 + Parameters
     + channel_id (string, required) - Id of the requested custom channel
@@ -100,6 +101,13 @@ If you want to receive a custom message with attached files, please check [how t
 Appends a new message into an inbox.
 
 If you want to import a message with attached files, please check [how to send multipart request](#send-multipart-request).
+
+<aside class="notice">
+Importing a message in Front is done asynchronously. <br>
+The endpoint will only validate the payload and will return a <code>message_uid</code> that can be used as an alias for the message ID (<code>alt:uid:{message_uid}</code>.
+<br><br>
+We guarantee that the UID will refer to a message but we don't guarantee that the message already exists. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
+</aside>
 
 <aside class="warning">
 Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.

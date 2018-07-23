@@ -12,6 +12,14 @@ toc_footers:
 
 The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2018-06-15 - Sending messages
+
+### Added
+* Endpoints to send a message (`POST /channels/:channel_id/messages` and `POST /conversations/:conversation_id/messages`) are now replying with the draft that will be sent.
+
+### Deprecated
+* Deprecate `message_uid` from the response of sent message.
+
 ## 2018-06-15 - Message status
 
 ### Added

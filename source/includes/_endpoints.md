@@ -1170,11 +1170,6 @@ Even if a conversation messages can have multiple recipients, the conversation r
 
 To open a conversation in Front you need to open the URL `https://app.frontapp.com/open/{conversation_id}`.
 
-<aside class="notice">
-You can use the conversation reference as an alias for its ID. The reference to use can be found in the response of the endpoints to create messages.<br>
-A conversation ID alias follows the pattern <code>alt:ref:{reference}</code>.
-</aside>
-
 ## List conversations
 ```shell
 
@@ -2323,13 +2318,6 @@ Each message has a type depending on the channel it has been sent with:
 
 To open a message in Front you need to open the URL `https://app.frontapp.com/open/{message_id}`.
 
-<aside class="notice">
-Creating messages in Front is done asynchronously: the endpoint will only validate that the message can be processed.<br>
-Because of that, the response body does not include a message ID but a <code>message_uid</code> that can be used as an alias for the message ID.
-
-We guarantee that the UID will refer to a message but we don't guarantee that the message already exists when you receive its reference. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
-</aside>
-
 ## Get message
 ```shell
 
@@ -2457,7 +2445,50 @@ curl --include \
 
 ```json
 {
-  "message_uid": "3b1q41d8"
+  "_links": {
+    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+    "related": {
+      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+    }
+  },
+  "id": "msg_55c8c149",
+  "type": "email",
+  "created_at": 1453770984.123,
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
+  },
+  "recipients": [
+    {
+      "_links": {
+        "related": {
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
+        }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
+    }
+  ],
+  "metadata": {},
+  "is_inbound": false,
+  "is_draft": true,
+  "blurb": "Why is Zoidberg the only one still...",
+  "body": "Why is Zoidberg the only one still alone?",
+  "text": "Why is Zoidberg the only one still alone?",
+  "attachments": []
 }
 ```
 Sends a new message from a channel. It will create a new conversation.
@@ -2525,6 +2556,54 @@ curl --include \
 
 > Response **202**
 
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+    "related": {
+      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+    }
+  },
+  "id": "msg_55c8c149",
+  "type": "email",
+  "created_at": 1453770984.123,
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true
+  },
+  "recipients": [
+    {
+      "_links": {
+        "related": {
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
+        }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
+    }
+  ],
+  "metadata": {},
+  "is_inbound": false,
+  "is_draft": true,
+  "blurb": "Why is Zoidberg the only one still...",
+  "body": "Why is Zoidberg the only one still alone?",
+  "text": "Why is Zoidberg the only one still alone?",
+  "attachments": []
+}
+```
 Replies to a conversation by sending a message and appending it to the conversation.
 
 If you want to send a reply with attached files, please check [how to send multipart request](#send-multipart-request).
@@ -2593,6 +2672,13 @@ curl --include \
 Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
 
 If you want to receive a custom message with attached files, please check [how to send multipart request](#send-multipart-request).
+
+<aside class="notice">
+Receiving a message in Front is done asynchronously. <br>
+The endpoint will only validate the payload and will return a <code>message_uid</code> that can be used as an alias for the message ID (<code>alt:uid:{message_uid}</code>.
+<br><br>
+We guarantee that the UID will refer to a message but we don't guarantee that the message already exists. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
+</aside>
 
 ### HTTP Request
 
@@ -2664,6 +2750,13 @@ curl --include \
 Appends a new message into an inbox.
 
 If you want to import a message with attached files, please check [how to send multipart request](#send-multipart-request).
+
+<aside class="notice">
+Importing a message in Front is done asynchronously. <br>
+The endpoint will only validate the payload and will return a <code>message_uid</code> that can be used as an alias for the message ID (<code>alt:uid:{message_uid}</code>.
+<br><br>
+We guarantee that the UID will refer to a message but we don't guarantee that the message already exists. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
+</aside>
 
 <aside class="warning">
 Imported messages will <strong>NOT</strong> be linked to any channel until a reply is sent. When replying to a conversation with no channels, you <strong>MUST</strong> choose from which channel to send the message.
