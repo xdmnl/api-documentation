@@ -107,3 +107,5 @@ Front Chat uses a server-side generated [HMAC (hash based message authentication
 To compute a user hash, you will first need to retrieve your identity secret, which is available in your Front settings. Go to Settings > Inboxes > (Your chat inbox) > (Your chat channel) and expand the section "Verify logged-in user identity":
 
 ![Plugin authentication](chat-verified-settings.png)
+
+Important: the verification secret must remain private and must not appear in your frontend source code. The user hash must be computed in your backend, without disclosing the secret.
