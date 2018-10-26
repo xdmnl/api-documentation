@@ -12,7 +12,12 @@ toc_footers:
 
 The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
-## 2018-06-15 - Sending messages
+## 2018-10-25 - Validation of tags limited to specific inboxes
+
+### Added
+* Endpoints to send a message (`POST /channels/:channel_id/messages` and `POST /conversations/:conversation_id/messages`) are now validating that the tags can be applied depending on the inbox(es) of the message.
+
+## 2018-07-23 - Sending messages
 
 ### Added
 * Endpoints to send a message (`POST /channels/:channel_id/messages` and `POST /conversations/:conversation_id/messages`) are now replying with the draft that will be sent.
