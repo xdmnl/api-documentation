@@ -3589,7 +3589,11 @@ limit | number (optional) | Max number of results per page (default 50, maximum 
 curl --include \
      --request POST \
      --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json"
+     --header "Accept: application/json" \
+     --header "Content-Type: application/json" \
+     --data-binary "{
+  \"contact_ids\": [\"crd_123\", \"crd_456\"]
+}" \
 'https://api2.frontapp.com/contact_groups/${GROUP_ID}/contacts'
 ```
 
