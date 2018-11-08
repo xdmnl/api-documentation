@@ -2,7 +2,7 @@
 title: Front API Reference
 
 toc_footers:
-  - <a href='https://frontapp.com/signup'>Create a Front account</a>
+  - <a href='https://frontapp.com/signup?affiliate=developers'>Create a developer account</a>
   - <a href='plugin.html'>Plugin API documentation</a>
   - <a href='chat.html'>Chat widget API documentation</a>
   - <a href='changelog.html'>Changelog</a>
@@ -23,6 +23,10 @@ search: true
 ---
 
 # Introduction
+
+## Getting started
+
+You can create a new developer account by registering [at this link](https://frontapp.com/signup?affiliate=developers).
 
 ## Authentication
 
