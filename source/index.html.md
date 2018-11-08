@@ -2,7 +2,7 @@
 title: Front API Reference
 
 toc_footers:
-  - <a href='https://frontapp.com/signup'>Create a Front account</a>
+  - <a href='https://frontapp.com/signup?affiliate=developers'>Create a Front account</a>
   - <a href='plugin.html'>Plugin API documentation</a>
   - <a href='chat.html'>Chat widget API documentation</a>
   - <a href='changelog.html'>Changelog</a>
