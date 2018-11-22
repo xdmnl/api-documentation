@@ -9,6 +9,8 @@ Front's OAuth implementation only supports the [authorization code grant type](h
 
 An access token will expire an hour after it has been issued. Upon expiration, a new access token can be requested by using the refresh token.
 
+**Effective June 1, 2019 we will enforce `access_token` expiration**
+
 ## 1. Request authorization
 
 ```http
@@ -75,6 +77,8 @@ Your request **MUST** be authentified with [Basic authentication](https://tools.
 Front OAuth server response will include the API token in the `access_token` param.
 
 Please store the `refresh_token` securely, as it is required to obtain a new `access_token`. A refresh token will expire six months after it has been issued. A `refresh_token` is automatically refreshed when it is about to expire, when requesting a new `access_token` in the next step.
+
+**Effective June 1, 2019 we will enforce `access_token` expiration**
 
 ### Parameters
 
