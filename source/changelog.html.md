@@ -12,6 +12,11 @@ toc_footers:
 
 The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2018-11-29 -
+
+### Deprecated
+* Deprecate `GET /teammates/:teammate_id/inboxes` endpoint to list the inboxes a teammate has access to.
+
 ## 2018-10-25 - Validation of tags limited to specific inboxes
 
 ### Added

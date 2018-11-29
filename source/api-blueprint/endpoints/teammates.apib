@@ -65,19 +65,3 @@ Lists the conversations assigned to a teammate in reverse chronological order (m
         <!-- include(../includes/links_attribute.apib) -->
             + self: `https://api2.frontapp.com/teammates/tea_55c8c149/conversations` (string, required)
         + _results (array[Conversation], required) - List of the teammate's conversations
-
-### List teammate inboxes [GET /teammates/{teammate_id}/inboxes]
-
-Lists the inboxes a teammate has access to.
-
-+ Parameters
-    + teammate_id (string, required) - Id or email of the teammate
-
-+ Request
-    <!-- include(../includes/request_header.apib) -->
-
-+ Response 200 (application/json)
-    + Attributes
-        <!-- include(../includes/links_attribute.apib) -->
-            + self: `https://api2.frontapp.com/teammates/tea_55c8c149/inboxes` (string, required)
-        + _results (array[Inbox], required) - List of the teammate's inboxes
