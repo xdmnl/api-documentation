@@ -451,56 +451,6 @@ q | object (optional) | Search query. See Search Parameters
 page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
 
-## List teammate inboxes
-```shell
-
-curl --include \
-     --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json" \
-'https://api2.frontapp.com/teammates/${TEAMMATE_ID}/inboxes'
-```
-
-```node
-
-```
-
-> Response **200**
-
-```json
-{
-  "_links": {
-    "self": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes"
-  },
-  "_results": [
-    {
-      "_links": {
-        "self": "https://api2.frontapp.com/inboxes/inb_55c8c149",
-        "related": {
-          "teammates": "https://api2.frontapp.com/inboxes/inb_55c8c149/teammates",
-          "conversations": "https://api2.frontapp.com/inboxes/inb_55c8c149/conversations",
-          "channels": "https://api2.frontapp.com/inboxes/inb_55c8c149/channels",
-          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
-        }
-      },
-      "id": "inb_55c8c149",
-      "name": "Team",
-      "is_private": false
-    }
-  ]
-}
-```
-Lists the inboxes a teammate has access to.
-
-### HTTP Request
-
-`GET https://api2.frontapp.com/teammates/{teammate_id}/inboxes`
-### Parameters
-
-
-Name | Type | Description
------|------|------------
-teammate_id | string | Id or email of the teammate
-
 # Inboxes
 > 
 Name | Type | Description
@@ -5122,21 +5072,29 @@ Exports are formatted as a [CSV](https://en.wikipedia.org/wiki/Comma-separated_v
 
 Below is table of the field names & descriptions that will be included in the export.
 
-| Name              | Desctiption                                                                                                                                       |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| Message ID        | Internal Front ID of the message                                                                                                                  |
-| Conversation ID   | Internal Front ID of the entire conversation                                                                                                      |
-| Direction         | Either `Inbound` or `Outbound`                                                                                                                    |
-| Status            | Status of the conversation: `unassigned`, `assigned`, `archived`, or `trashed`.                                                                   |
-| Inbox             | Name of the inbox where the message was initially sent. If the message appeared in multiple inboxes, it will appear multiple times.               |
-| Message Date      | `YYYY-MM-DD HH:mm:ss` format, in the requested timezone.                                                                                          |
-| Response time     | Duration (in seconds) between an inbound message and the next outbound message in the same conversation.                                          |
-| Handle time       | Total duration (in seconds) that a contact was kept waiting for a reply from the team during an assignment. Metric is calculated per assignment.  |
-| Assignee          | Username of the assignee, if any                                                                                                                  |
-| Contact name      | Contact's first & last name                                                                                                                       |
-| Contact handle    | Contact's email address, twitter handle, or phone number - depending on the source of the message.                                                |
-| Extract           | Sample of the message                                                                                                                             |
-| Tags              | Tags attached to the conversation.                                                                                                                |
+| Name                | Desctiption                                                                                                                                       |
+|---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| Message ID          | *(deprecated)* Internal Front ID of the message                                                                                                   |
+| Conversation ID     | *(deprecated)* Internal Front ID of the entire conversation                                                                                       |
+| Segment             | Segment of the conversation                                                                                                                       |
+| Direction           | Either `Inbound` or `Outbound`                                                                                                                    |
+| Status              | Status of the conversation: `unassigned`, `assigned`, `archived`, or `trashed`                                                                    |
+| Inbox               | Name of the inbox where the message was initially sent. If the message appeared in multiple inboxes, it will appear multiple times.               |
+| Message Date        | `YYYY-MM-DD HH:mm:ss` format, in the requested timezone                                                                                           |
+| Reaction time       | Time (in seconds) taken to respond or reassign a conversation                                                                                     |
+| Resolution time     | Total duration (in seconds) that a contact was kept waiting for a reply from the team during a conversation segment                               |
+| Response time       | Duration (in seconds) between an inbound message and the next outbound message in the same conversation                                           |
+| Assignee            | Username of the assignee, if any                                                                                                                  |
+| Author              | Username of the teammate who replied to the email                                                                                                 |
+| Contact name        | Contact's first & last name                                                                                                                       |
+| Contact handle      | Contact's email address, twitter handle, or phone number - depending on the source of the message                                                 |
+| To                  | Email address of the recipient                                                                                                                    |
+| Cc                  | Email address of those CC'ed on the email                                                                                                         |
+| Bcc                 | Email address of those BCC'ed on the email                                                                                                        |
+| Extract             | Sample of the message                                                                                                                             |
+| Tags                | Tags attached to the conversation                                                                                                                 |
+| Message API ID      | ID of the message used in the API                                                                                                                 |
+| Conversation API ID | ID of the conversation used in the API                                                                                                            |
 
 **Timezone**
 
