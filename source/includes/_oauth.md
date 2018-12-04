@@ -5,15 +5,7 @@ OAuth 2.0 is a protocol that lets external applications request authorization to
 Each OAuth application is assigned a unique Client ID and Client Secret which will be used in the authorization flow. The Client Secret should **never** be shared.  
 If you want to create an OAuth application, please contact us on <a href="mailto:api@frontapp.com">api@frontapp.com</a> to get your credentials.
 
-Front's OAuth implementation only supports the [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1) which define a flow to get a temporary authorization token which can then be exchanged to get an API and refresh token.
-
-An access token will expire an hour after it has been issued. Upon expiration, a new access token can be requested by using the refresh token.
-
-When developing your integration, please programmatically account for the case that the `access_token` must be refreshed with the `refresh_token` upon `access_token` expiration. When requesting resources with an expired `access_token`, Front's OAuth server response will return a `401` error status code, denoting that the `access_token` has expired.
-
-**Newly created OAuth Applications will have `access_token` expiration enforced.**
-
-**Additionally, effective June 1, 2019, `access_token` expiration will be enforced for existing OAuth Applications**
+Front's OAuth implementation only supports the [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1) which defines a flow to get a temporary authorization token which can then be exchanged to get an API and refresh token.
 
 ## 1. Request authorization
 
@@ -81,11 +73,7 @@ Your request **MUST** be authenticated with [Basic authentication](https://tools
 
 Front OAuth server response will include two tokens (the API token in the `access_token` param and the refresh token in the `refresh_token` param) and the `access_token` expiration time in the `expires_at` param.
 
-The `access_token` will expire after 1 hour, so please store the `refresh_token` securely, as it is required to obtain a new `access_token`. A refresh token will expire six months after it has been issued. A `refresh_token` is automatically refreshed when it is about to expire, when requesting a new `access_token` in the next step.
-
-**Newly created OAuth Applications will have `access_token` expiration enforced.**
-
-**Additionally, effective June 1, 2019, `access_token` expiration will be enforced for existing OAuth Applications**
+Please store the `refresh_token` securely, as it is required to obtain a new `access_token` in the next step.
 
 ### Parameters
 
