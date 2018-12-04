@@ -3,9 +3,9 @@
 OAuth 2.0 is a protocol that lets external applications request authorization to API access in a secure way.
 
 Each OAuth application is assigned a unique Client ID and Client Secret which will be used in the authorization flow. The Client Secret should **never** be shared.  
-If you want to create an OAuth application, please contact us on api@frontapp.com to get your credentials.
+If you want to create an OAuth application, please contact us on <a href="mailto:api@frontapp.com">api@frontapp.com</a> to get your credentials.
 
-Front's OAuth implementation only supports the [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1) which define a flow to get a temporary authorization token which can then be exchanged to get an API token.
+Front's OAuth implementation only supports the [authorization code grant type](https://tools.ietf.org/html/rfc6749#section-4.1) which defines a flow to get a temporary authorization token which can then be exchanged to get an API and refresh token.
 
 ## 1. Request authorization
 
@@ -60,16 +60,20 @@ Authorization: Basic <your_basic_credentials>
 
 ```json
 {
-    "access_token": "",
-    "token_type": "Bearer"
+    "access_token" : "",
+    "refresh_token": "",
+    "expires_at"   : "",
+    "token_type"   : "Bearer"
 }
 ```
 
 Once your application receive the temporary authorization code, you need to exchanged it for an API token by sending a POST HTTP request to `https://app.frontapp.com/oauth/token`.
 
-Your request **MUST** be authentified with [Basic authentication](https://tools.ietf.org/html/rfc2617#section-2) using your OAuth application Client ID and Client Secret.
+Your request **MUST** be authenticated with [Basic authentication](https://tools.ietf.org/html/rfc2617#section-2) using your OAuth application Client ID and Client Secret.
 
-Front OAuth server response will include the API token in the `access_token` param.
+Front OAuth server response will include two tokens (the API token in the `access_token` param and the refresh token in the `refresh_token` param) and the `access_token` expiration time in the `expires_at` param.
+
+Please store the `refresh_token` securely, as it is required to obtain a new `access_token` in the next step.
 
 ### Parameters
 
@@ -78,3 +82,41 @@ Front OAuth server response will include the API token in the `access_token` par
 | code         | string            | The temporary authorization code received in step 2.                               |
 | redirect_uri | string            | The URL in your application where users will be redirected after authorization.    |
 | grant_type   | string            | The grant type used to get the authorization code. Needs to be `authorization_code`|
+
+## 4. Use Refresh Token to obtain new tokens
+
+```http
+POST /oauth/token HTTP/1.1
+Host: app.frontapp.com
+Authorization: Basic <your_basic_credentials>
+```
+
+> Response **200**
+
+```json
+{
+    "access_token" : "",
+    "refresh_token": "",
+    "expires_at"   : "",
+    "token_type"   : "Bearer"
+}
+```
+
+When the `access_token` from Step 3 has expired after an hour, it will need be be refreshed to continue usage. When requesting resources with an expired `access_token`, Front's OAuth server response will return a `401` error status code, denoting that the `access_token` has expired.
+
+Similar to Step 3, your request **MUST** be authenticated with [Basic authentication](https://tools.ietf.org/html/rfc2617#section-2) using your OAuth application Client ID and Client Secret. 
+
+To obtain a new `access_token`, send a POST request to `/oauth/token` with the `refresh_token` acquired in Step 3 and `grant_type` set to `refresh_token`.
+
+Front OAuth server response will include two tokens (the new API token in the `access_token` param and **the same, or new** `refresh_token` in the `refresh_token` param) and the `access_token` expiration time in the `expires_at` param.
+
+When a `refresh_token` is about to expire, it will automatically be refreshed by Front's OAuth server. No implemenation is required on your end to receive a new `refresh_token`. 
+
+Please securely store the `refresh_token` from this step, as this `refresh_token` will be **automatically** refreshed when necessary. Otherwise, the `refresh_token` from Step 3 will expire in six months and the OAuth flow will start from Step 1 again.
+
+### Parameters
+
+| Name          | Type              | Description                                                                        |
+|---------------|-------------------|------------------------------------------------------------------------------------|
+| refresh_token | string            | The refresh token recieved in step 3.                                              |
+| grant_type    | string            | The grant type used to get the authorization code. Needs to be `refresh_token`     |
