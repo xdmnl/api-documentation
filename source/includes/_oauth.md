@@ -102,7 +102,9 @@ Authorization: Basic <your_basic_credentials>
 }
 ```
 
-When the `access_token` from Step 3 has expired after an hour, it will need be be refreshed to continue usage. Similar to Step 3, your request **MUST** be authenticated with [Basic authentication](https://tools.ietf.org/html/rfc2617#section-2) using your OAuth application Client ID and Client Secret. 
+When the `access_token` from Step 3 has expired after an hour, it will need be be refreshed to continue usage. When requesting resources with an expired `access_token`, Front's OAuth server response will return a `401` error status code, denoting that the `access_token` has expired.
+
+Similar to Step 3, your request **MUST** be authenticated with [Basic authentication](https://tools.ietf.org/html/rfc2617#section-2) using your OAuth application Client ID and Client Secret. 
 
 To obtain a new `access_token`, send a POST request to `/oauth/token` with the `refresh_token` acquired in Step 3 and `grant_type` set to `refresh_token`.
 
