@@ -11,7 +11,9 @@ An access token will expire an hour after it has been issued. Upon expiration, a
 
 When developing your integration, please programmatically account for the case that the `access_token` must be refreshed with the `refresh_token` upon `access_token` expiration. When requesting resources with an expired `access_token`, Front's OAuth server response will return a `401` error status code, denoting that the `access_token` has expired.
 
-**Newly created OAuth Applications will have `access_token` expiration enforced. Additionally, effective June 1, 2019, we will enforce `access_token` expiration for existing OAuth Applications**
+**Newly created OAuth Applications will have `access_token` expiration enforced.**
+
+**Additionally, effective June 1, 2019, `access_token` expiration will be enforced for existing OAuth Applications**
 
 ## 1. Request authorization
 
@@ -81,7 +83,9 @@ Front OAuth server response will include two tokens (the API token in the `acces
 
 The `access_token` will expire after 1 hour, so please store the `refresh_token` securely, as it is required to obtain a new `access_token`. A refresh token will expire six months after it has been issued. A `refresh_token` is automatically refreshed when it is about to expire, when requesting a new `access_token` in the next step.
 
-**Newly created OAuth Applications will have `access_token` expiration enforced. Additionally, effective June 1, 2019, we will enforce `access_token` expiration for existing OAuth Applications**
+**Newly created OAuth Applications will have `access_token` expiration enforced.**
+
+**Additionally, effective June 1, 2019, `access_token` expiration will be enforced for existing OAuth Applications**
 
 ### Parameters
 
