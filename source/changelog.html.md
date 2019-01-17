@@ -8,11 +8,19 @@ toc_footers:
 
 ---
 
-# Front API change log
+# Front API changelog
 
-The change log is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
+The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
-## 2018-11-29 -
+## 2019-01-16
+
+## Added
+* Teammate representation now includes `is_blocked` to know if an account has been blocked.
+
+### Fixed
+* Mentionning a teammate using the endpoint to send a comment now properly give them access to the conversation.
+
+## 2018-11-29 - Endpoint deprecation
 
 ### Deprecated
 * Deprecate `GET /teammates/:teammate_id/inboxes` endpoint to list the inboxes a teammate has access to.

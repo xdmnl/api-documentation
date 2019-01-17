@@ -125,7 +125,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     }
   ]
 }
@@ -151,6 +152,7 @@ first_name | string | First name of the teammate
 last_name | string | Last name of the teammate 
 is_admin | boolean | Whether or not the teammate is an admin in your company 
 is_available | boolean | Whether or not the teammate is available 
+is_blocked | boolean | Whether or not the teammate account has been blocked 
 
 A teammate is a Front user, a member of your company.
 
@@ -196,7 +198,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     }
   ]
 }
@@ -236,7 +239,8 @@ curl --include \
   "first_name": "Leela",
   "last_name": "Turanga",
   "is_admin": true,
-  "is_available": true
+  "is_available": true,
+  "is_blocked": false
 }
 ```
 Fetches the information of a teammate. See [resource aliases](#resource-aliases) to fetch by email.
@@ -348,7 +352,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipient": {
         "_links": {
@@ -401,7 +406,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipients": [
           {
@@ -706,7 +712,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipient": {
         "_links": {
@@ -759,7 +766,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipients": [
           {
@@ -844,7 +852,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     }
   ]
 }
@@ -1170,7 +1179,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipient": {
         "_links": {
@@ -1223,7 +1233,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipients": [
           {
@@ -1316,7 +1327,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "recipient": {
     "_links": {
@@ -1369,7 +1381,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     },
     "recipients": [
       {
@@ -1557,7 +1570,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     }
   ]
 }
@@ -1640,7 +1654,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         }
       },
       "conversation": {
@@ -1671,7 +1686,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipient": {
           "_links": {
@@ -1724,7 +1740,8 @@ curl --include \
             "first_name": "Leela",
             "last_name": "Turanga",
             "is_admin": true,
-            "is_available": true
+            "is_available": true,
+            "is_blocked": false
           },
           "recipients": [
             {
@@ -1824,7 +1841,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipients": [
         {
@@ -1931,7 +1949,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "body": "@bender, I thought you were supposed to be cooking for this party.",
   "posted_at": 1453770984.123
@@ -2001,7 +2020,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "body": "@bender, I thought you were supposed to be cooking for this party.",
       "posted_at": 1453770984.123
@@ -2060,7 +2080,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "body": "@bender, I thought you were supposed to be cooking for this party.",
   "posted_at": 1453770984.123
@@ -2113,7 +2134,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     }
   ]
 }
@@ -2312,7 +2334,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "recipients": [
     {
@@ -2419,7 +2442,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "recipients": [
     {
@@ -2532,7 +2556,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "recipients": [
     {
@@ -3208,7 +3233,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipient": {
         "_links": {
@@ -3261,7 +3287,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipients": [
           {
@@ -3712,7 +3739,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "body": "Calculon is a celebrated actor",
       "created_at": 1453770984.123
@@ -3769,7 +3797,8 @@ curl --include \
     "first_name": "Leela",
     "last_name": "Turanga",
     "is_admin": true,
-    "is_available": true
+    "is_available": true,
+    "is_blocked": false
   },
   "body": "Calculon is a celebrated actor",
   "created_at": 1453770984.123
@@ -4025,7 +4054,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipient": {
         "_links": {
@@ -4078,7 +4108,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipients": [
           {
@@ -4192,7 +4223,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipient": {
         "_links": {
@@ -4245,7 +4277,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipients": [
           {
@@ -4553,7 +4586,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         }
       },
       "conversation": {
@@ -4584,7 +4618,8 @@ curl --include \
           "first_name": "Leela",
           "last_name": "Turanga",
           "is_admin": true,
-          "is_available": true
+          "is_available": true,
+          "is_blocked": false
         },
         "recipient": {
           "_links": {
@@ -4637,7 +4672,8 @@ curl --include \
             "first_name": "Leela",
             "last_name": "Turanga",
             "is_admin": true,
-            "is_available": true
+            "is_available": true,
+            "is_blocked": false
           },
           "recipients": [
             {
@@ -4752,7 +4788,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     }
   },
   "conversation": {
@@ -4783,7 +4820,8 @@ curl --include \
       "first_name": "Leela",
       "last_name": "Turanga",
       "is_admin": true,
-      "is_available": true
+      "is_available": true,
+      "is_blocked": false
     },
     "recipient": {
       "_links": {
@@ -4836,7 +4874,8 @@ curl --include \
         "first_name": "Leela",
         "last_name": "Turanga",
         "is_admin": true,
-        "is_available": true
+        "is_available": true,
+        "is_blocked": false
       },
       "recipients": [
         {
