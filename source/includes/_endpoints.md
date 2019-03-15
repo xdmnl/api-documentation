@@ -3839,6 +3839,7 @@ _links.self | string | URL of the tag
 _links.related | object |
 _links.related.conversations | string | URL of the list of conversations tagged with this tag
 _links.related.owner | string | URL of the team or teammate of the tag
+_links.related.parent_tag | string | URL of the parent tag
 id | string | Unique identifier of the tag
 name | string | Name of the tag
 is_private | boolean | Whether or not the tag is individual
