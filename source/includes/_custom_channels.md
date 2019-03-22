@@ -9,6 +9,8 @@ You can use custom channels to integrate Front with platforms that are not offic
 * Click on "Add an inbox" and choose the **Custom** type
 * Choose a name for your inbox
 * Define a callback URL
+* Define the contact type, reply mode and compose mode for the custom channel. 
+  * The contact type can only be set on channel creation.
 
 ## Receive messages
 
