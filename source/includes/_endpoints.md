@@ -1007,6 +1007,7 @@ curl --include \
      --data-binary "{
   \"settings\": {
     \"webhook_url\": \"http://example.com\",
+    \"reply_mode\": \"unsupported\",
     \"compose_mode\": \"normal\",
     \"contact_type\": \"email\"
   }
@@ -1026,6 +1027,8 @@ Updates the settings of a channel.
 As of today, you can only update the settings of a <a href="#custom-channels">custom channel</a> with the API.
 </aside>
 
+`reply_mode` can be one of: `same channel` or `unsupported`. (Default: `unsupported`)
+
 ### HTTP Request
 
 `PATCH https://api2.frontapp.com/channels/{channel_id}`
@@ -1043,7 +1046,7 @@ Name | Type | Description
 -----|------|------------
 settings | object |  
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
-settings.reply_mode: `same_channel` | enum (optional) | How the channel can be used to reply to a message 
+settings.reply_mode | enum (optional) | How the channel can be used to reply to a message. 
 settings.compose_mode | enum (optional) | Gives users ability to compose new messages from this channel. Can be one of: `normal` or `unsupported`. (Default: `unsupported`) 
 settings.contact_type | enum (optional) | Contact type the channel uses. It can only be set on channel creation. Can be one of: `custom`, `email` or `phone`. (Default: `custom`) 
 
@@ -1059,6 +1062,7 @@ curl --include \
   \"type\": \"custom\",
   \"settings\": {
     \"webhook_url\": \"http://example.com\",
+    \"reply_mode\": \"unsupported\",
     \"compose_mode\": \"normal\",
     \"contact_type\": \"email\"
   }
@@ -1080,6 +1084,7 @@ curl --include \
   "sendAs": "dw0a0b7aeg36cb56",
   "settings": {
     "webhook_url": "http://example.com",
+    "reply_mode": "unsupported",
     "compose_mode": "normal",
     "contact_type": "email"
   }
@@ -1090,6 +1095,8 @@ Creates a channel linked to the requested inbox.
 <aside class="notice">
 As of today, you can only create a <a href="#custom-channels">custom channel</a> with the API.
 </aside>
+
+`reply_mode` can be one of: `same channel` or `unsupported`. (Default: `unsupported`)
 
 ### HTTP Request
 
@@ -1109,7 +1116,7 @@ Name | Type | Description
 type | enum | Type of the channel. 
 settings | object |  
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
-settings.reply_mode: `same_channel` | enum (optional) | How the channel can be used to reply to a message 
+settings.reply_mode | enum (optional) | How the channel can be used to reply to a message. 
 settings.compose_mode | enum (optional) | Gives users ability to compose new messages from this channel. Can be one of: `normal` or `unsupported`. (Default: `unsupported`) 
 settings.contact_type | enum (optional) | Contact type the channel uses. It can only be set on channel creation. Can be one of: `custom`, `email` or `phone`. (Default: `custom`) 
 
