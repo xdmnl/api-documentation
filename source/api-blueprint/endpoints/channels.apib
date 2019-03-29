@@ -56,6 +56,8 @@ Updates the settings of a channel.
 As of today, you can only update the settings of a <a href="#custom-channels">custom channel</a> with the API.
 </aside>
 
+`reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
+
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->
     + Attributes (Channel settings)
@@ -69,6 +71,8 @@ Creates a channel linked to the requested inbox.
 <aside class="notice">
 As of today, you can only create a <a href="#custom-channels">custom channel</a> with the API.
 </aside>
+
+`reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
 
 + Parameters
     + inbox_id (string, required) - Id of the inbox into which the channel messages will go.
