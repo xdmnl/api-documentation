@@ -370,8 +370,7 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-              "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
@@ -732,8 +731,7 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-              "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
@@ -894,17 +892,17 @@ A channel is a resource which can send and receive messages.
 
 Here is the list of existing channel types:
 
-| Type        | Description                                                                                  |
-|-------------|----------------------------------------------------------------------------------------------|
-| `smtp`      | For emails managed via SMTP.                                                                 |
-| `imap`      | For emails managed via IMAP.                                                                 |
-| `twilio`    | Linked to a Twilio account.                                                                  |
-| `twitter`   | Linked to a Twitter account.                                                                 |
-| `facebook`  | Linked to a Facebook page.                                                                   |
-| `smooch`    | Linked to a Smooch account.                                                                  |
-| `intercom`  | Linked to an Intercom account.                                                               |
-| `truly`     | Linked to a truly account.                                                                   |
-| `custom`    | For messages sent and received only through the API (cf [Custom channels](#custom-channels)).|
+| Type        | Description                                                                                |
+|-------------|--------------------------------------------------------------------------------------------|
+| `smtp`      | For emails managed via SMTP.                                                               |
+| `imap`      | For emails managed via IMAP.                                                               |
+| `twilio`    | Linked to a Twilio account.                                                                |
+| `twitter`   | Linked to a Twitter account.                                                               |
+| `facebook`  | Linked to a Facebook page.                                                                 |
+| `smooch`    | Linked to a Smooch account.                                                                |
+| `intercom`  | Linked to an Intercom account.                                                             |
+| `truly`     | Linked to a truly account.                                                                 |
+| `custom`    | For messages sent and received only through the API (cf [Custom inboxes](#custom-inboxes)).|
 
 ## List channels
 ```shell
@@ -998,7 +996,7 @@ Name | Type | Description
 -----|------|------------
 channel_id | string | Id of the requested channel
 
-## Update a channel settings
+## Update a channel
 ```shell
 
 curl --include \
@@ -1007,12 +1005,7 @@ curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
      --data-binary "{
-  \"settings\": {
-    \"webhook_url\": \"http://example.com\",
-    \"reply_mode\": \"unsupported\",
-    \"compose_mode\": \"normal\",
-    \"contact_type\": \"email\"
-  }
+  \"name\": \"My channel\"
 }" \
 'https://api2.frontapp.com/channels/${CHANNEL_ID}'
 ```
@@ -1046,11 +1039,8 @@ channel_id | string | Id of the requested channel
 
 Name | Type | Description
 -----|------|------------
-settings | object |  
-settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
-settings.reply_mode | enum (optional) | How the channel can be used to reply to a message. 
-settings.compose_mode | enum (optional) | Grants ability to compose new messages from this channel (`normal`) or prevents composing new messages (`unsupported`). Can be one of: `normal` or `unsupported`. (Default: `unsupported`) 
-settings.contact_type | enum (optional) | Contact type the channel uses. It can only be set on channel creation. Can be one of: `custom`, `email` or `phone`. (Default: `custom`) 
+name | string (optional) | Name of the channel. 
+settings | object (optional) | Settings to replace. 
 
 ## Create a channel
 ```shell
@@ -1061,6 +1051,7 @@ curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
      --data-binary "{
+  \"name\": \"My channel\",
   \"type\": \"custom\",
   \"settings\": {
     \"webhook_url\": \"http://example.com\",
@@ -1081,6 +1072,7 @@ curl --include \
 ```json
 {
   "id": "cha_55c8c149",
+  "name": "My channel",
   "type": "custom",
   "address": "dw0a0b7aeg36cb56",
   "sendAs": "dw0a0b7aeg36cb56",
@@ -1115,6 +1107,7 @@ inbox_id | string | Id of the inbox into which the channel messages will go.
 
 Name | Type | Description
 -----|------|------------
+name | string (optional) | Name of the channel. 
 type | enum | Type of the channel. 
 settings | object |  
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
@@ -1220,8 +1213,7 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-              "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
@@ -1370,8 +1362,7 @@ curl --include \
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
           "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-          "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-          "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "tag_55c8c149",
@@ -1731,8 +1722,7 @@ curl --include \
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
                 "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-                "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-                "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+                "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
               }
             },
             "id": "tag_55c8c149",
@@ -2521,7 +2511,7 @@ text | string (optional) | Text version of the body for messages with non-text b
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 options | object (optional) | Sending options 
 options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
-options.archive | boolean (optional) | Archive the conversation right when sending the reply (Default: `true`)
+options.archive | boolean (optional) | Archive the conversation right when sending the message (Default: `true`)
 to | array | List of the recipient handles who will receive this message 
 cc | array (optional) | List of the recipient handles who will receive a copy of this message 
 bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message 
@@ -2635,7 +2625,7 @@ text | string (optional) | Text version of the body for messages with non-text b
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 options | object (optional) | Sending options 
 options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
-options.archive | boolean (optional) | Archive the conversation right when sending the reply (Default: `true`)
+options.archive | boolean (optional) | Archive the conversation right when sending the message (Default: `true`)
 channel_id | string (optional) | Channel through which to send the message. Defaults to the original conversation channel. For imported messages or messages received on multiple channels, you **MUST** specify a channel ID. 
 to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message. 
 cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message. 
@@ -3280,8 +3270,7 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-              "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
@@ -3859,18 +3848,33 @@ body | string | Content of the note
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links)
-_links.self | string | URL of the tag
-_links.related | object |
-_links.related.conversations | string | URL of the list of conversations tagged with this tag
-_links.related.owner | string | URL of the team or teammate of the tag
-_links.related.parent_tag | string | URL of the parent tag
-id | string | Unique identifier of the tag
-name | string | Name of the tag
-highlight | string | Highlight color/emoji of the tag
-is_private | boolean | Whether or not the tag is individual
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the tag 
+_links.related | object |  
+_links.related.conversations | string | URL of the list of conversations tagged with this tag 
+_links.related.owner | string | URL of the team or teammate of the tag 
+_links.related.parent_tag | string (optional) | URL of the parent tag 
+id | string | Unique identifier of the tag 
+name | string | Name of the tag 
+highlight | enum | Highlight color of the tag. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `blue`, `blue` or `purple`. 
+is_private | boolean | Whether or not the tag is individual 
 
 A tag is a label that can be used to classify conversations.
+
+A tag has an optional `highlight` field which represents the color to highlight the tag with in Front.  
+Supported values for highlight colors are:
+
+| Color Preview                                      | Color value  |
+|----------------------------------------------------|--------------|
+| ![#](https://placehold.it/15/9b9c9e/000000?text=+) | `grey`       |
+| ![#](https://placehold.it/15/ff338f/000000?text=+) | `pink`       |
+| ![#](https://placehold.it/15/ff4433/000000?text=+) | `red`        |
+| ![#](https://placehold.it/15/ff901a/000000?text=+) | `orange`     |
+| ![#](https://placehold.it/15/facc25/000000?text=+) | `yellow`     |
+| ![#](https://placehold.it/15/14cc52/000000?text=+) | `green`      |
+| ![#](https://placehold.it/15/2bd5ff/000000?text=+) | `light-blue` |
+| ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
+| ![#](https://placehold.it/15/a238ff/000000?text=+) | `purple`     |
 
 ## List tags
 ```shell
@@ -3898,8 +3902,7 @@ curl --include \
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
           "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-          "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-          "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
         }
       },
       "id": "tag_55c8c149",
@@ -3928,7 +3931,8 @@ curl --include \
      --header "Authorization: Bearer {your_token}" \
      --header "Accept: application/json" \
      --data-binary "{
-  \"name\": \"Robots\"
+  \"name\": \"Robots\",
+  \"highlight\": \"blue\"
 }" \
 'https://api2.frontapp.com/tags'
 ```
@@ -3945,12 +3949,12 @@ curl --include \
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
       "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-      "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-      "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "tag_55c8c149",
   "name": "Robots",
+  "highlight": "blue",
   "is_private": false
 }
 ```
@@ -3968,66 +3972,8 @@ You can create a tag for a specific teammate or team by using the endpoints <cod
 
 Name | Type | Description
 -----|------|------------
-name | string | Name of the tag to create 
-
-## Update tag
-```shell
-
-curl --include \
-     --request PATCH \
-     --header "Content-Type: application/json" \
-     --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json" \
-     --data-binary "{
-  \"name\": \"Robots\",
-  \"highlight\": \"blue\"
-}" \
-'https://api2.frontapp.com/tags/${TAG_ID}'
-```
-
-```node
-
-```
-
-> Response **204**
-
-Updates the name and highlight color information of a tag. You can:
-
-* Update the name of a tag by sending `name`
-
-* Update the highlight color of the tag by sending `highlight`
-
-Accepted values for highlight colors are:
-
-| Color Preview                                      | Color value  |
-|----------------------------------------------------|--------------|
-| ![#](https://placehold.it/15/9b9c9e/000000?text=+) | `grey`       |
-| ![#](https://placehold.it/15/ff338f/000000?text=+) | `pink`       |
-| ![#](https://placehold.it/15/ff4433/000000?text=+) | `red`        |
-| ![#](https://placehold.it/15/ff901a/000000?text=+) | `orange`     |
-| ![#](https://placehold.it/15/facc25/000000?text=+) | `yellow`     |
-| ![#](https://placehold.it/15/14cc52/000000?text=+) | `green`      |
-| ![#](https://placehold.it/15/2bd5ff/000000?text=+) | `light-blue` |
-| ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
-| ![#](https://placehold.it/15/a238ff/000000?text=+) | `purple`     |
-
-### HTTP Request
-
-`PATCH https://api2.frontapp.com/tags/{tag_id}`
-### Parameters
-
-
-Name | Type | Description
------|------|------------
-tag_id | string | ID of the requested tag
-
-### Body
-
-
-Name | Type | Description
------|------|------------
-name | string (optional) | New tag name
-highlight | string (optional) | New highlight color. Set to `null` to remove highlighting
+name | string | Name of the tag to create. 
+highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `blue`, `blue` or `purple`. 
 
 ## Get tag
 ```shell
@@ -4050,8 +3996,7 @@ curl --include \
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
       "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-      "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-      "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
     }
   },
   "id": "tag_55c8c149",
@@ -4071,6 +4016,47 @@ Fetches the information of a tag.
 Name | Type | Description
 -----|------|------------
 tag_id | string | ID of the requested tag
+
+## Update tag
+```shell
+
+curl --include \
+     --request PATCH \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"name\": \"Robots\",
+  \"highlight\": \"blue\"
+}" \
+'https://api2.frontapp.com/tags/${TAG_ID}'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Updates a tag.
+
+### HTTP Request
+
+`PATCH https://api2.frontapp.com/tags/{tag_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+tag_id | string | ID of the requested tag
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+name | string (optional) | Name of the tag to create. 
+highlight | string (optional) | Color to highlight the tag with. . Set to `null` to remove highlighting. 
 
 ## Delete tag
 ```shell
@@ -4169,8 +4155,7 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-              "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
@@ -4340,8 +4325,7 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-              "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
             }
           },
           "id": "tag_55c8c149",
@@ -4737,8 +4721,7 @@ curl --include \
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
                 "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-                "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-                "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+                "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
               }
             },
             "id": "tag_55c8c149",
@@ -4941,8 +4924,7 @@ curl --include \
           "self": "https://api2.frontapp.com/tags/tag_55c8c149",
           "related": {
             "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-            "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
-            "parent_tag": "https://api2.frontapp.com/tags/tag_1ab23cd4"
+            "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
           }
         },
         "id": "tag_55c8c149",
