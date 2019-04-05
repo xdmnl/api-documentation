@@ -894,17 +894,17 @@ A channel is a resource which can send and receive messages.
 
 Here is the list of existing channel types:
 
-| Type        | Description                                                                                |
-|-------------|--------------------------------------------------------------------------------------------|
-| `smtp`      | For emails managed via SMTP.                                                               |
-| `imap`      | For emails managed via IMAP.                                                               |
-| `twilio`    | Linked to a Twilio account.                                                                |
-| `twitter`   | Linked to a Twitter account.                                                               |
-| `facebook`  | Linked to a Facebook page.                                                                 |
-| `smooch`    | Linked to a Smooch account.                                                                |
-| `intercom`  | Linked to an Intercom account.                                                             |
-| `truly`     | Linked to a truly account.                                                                 |
-| `custom`    | For messages sent and received only through the API (cf [Custom inboxes](#custom-inboxes)).|
+| Type        | Description                                                                                  |
+|-------------|----------------------------------------------------------------------------------------------|
+| `smtp`      | For emails managed via SMTP.                                                                 |
+| `imap`      | For emails managed via IMAP.                                                                 |
+| `twilio`    | Linked to a Twilio account.                                                                  |
+| `twitter`   | Linked to a Twitter account.                                                                 |
+| `facebook`  | Linked to a Facebook page.                                                                   |
+| `smooch`    | Linked to a Smooch account.                                                                  |
+| `intercom`  | Linked to an Intercom account.                                                               |
+| `truly`     | Linked to a truly account.                                                                   |
+| `custom`    | For messages sent and received only through the API (cf [Custom channels](#custom-channels)).|
 
 ## List channels
 ```shell
