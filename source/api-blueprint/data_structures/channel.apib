@@ -32,6 +32,7 @@
 
 ## Channel to create
 
++ name: `My channel` (string, optional) - Name of the channel.
 + type (enum[string], required) - Type of the channel.
     + Members
         + `custom`
@@ -44,3 +45,7 @@
 + address: `dw0a0b7aeg36cb56` - Address receiving the messages.
 + sendAs: `dw0a0b7aeg36cb56` - Address which appears as the sender for messages sent from Front.
 + Include Channel settings
+
+## Channel to update
++ name: `My channel` (string, optional) - Name of the channel.
++ settings (object, optional) - Settings to replace.
