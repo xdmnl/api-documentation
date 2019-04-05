@@ -12,11 +12,17 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
-## 2019-04-05 - Tag PATCH route
+## 2019-04-05 - Channel & tag endpoints updates
 
 ### Added
-* `PATCH /tags/:tag_id` route to update the name and highlight color of Tags
-* Tag representation now includes `highlight` to show if that Tag is highlighted
+* `PATCH /tags/:tag_id` route to update the name and highlight color of Tags.
+* Tag representation now includes `highlight` to show if that Tag is highlighted.
+
+### Changed
+* `POST /channels/:channel_id` and `PATCH /channels/:channel_id` supports the optional `name` field to control the name of a channel from the API.
+
+### Fixed
+* Documentation wording / typos. 
 
 ## 2019-01-16 - Teammate endpoint updates
 
