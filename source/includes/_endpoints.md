@@ -376,6 +376,7 @@ curl --include \
           },
           "id": "tag_55c8c149",
           "name": "Robots",
+          "highlight": "blue",
           "is_private": false
         }
       ],
@@ -737,6 +738,7 @@ curl --include \
           },
           "id": "tag_55c8c149",
           "name": "Robots",
+          "highlight": "blue",
           "is_private": false
         }
       ],
@@ -1224,6 +1226,7 @@ curl --include \
           },
           "id": "tag_55c8c149",
           "name": "Robots",
+          "highlight": "blue",
           "is_private": false
         }
       ],
@@ -1373,6 +1376,7 @@ curl --include \
       },
       "id": "tag_55c8c149",
       "name": "Robots",
+      "highlight": "blue",
       "is_private": false
     }
   ],
@@ -1733,6 +1737,7 @@ curl --include \
             },
             "id": "tag_55c8c149",
             "name": "Robots",
+            "highlight": "blue",
             "is_private": false
           }
         ],
@@ -3281,6 +3286,7 @@ curl --include \
           },
           "id": "tag_55c8c149",
           "name": "Robots",
+          "highlight": "blue",
           "is_private": false
         }
       ],
@@ -3853,15 +3859,16 @@ body | string | Content of the note
 > 
 Name | Type | Description
 -----|------|------------
-_links | object | See [Response body Structure - Links](#links) 
-_links.self | string | URL of the tag 
-_links.related | object |  
-_links.related.conversations | string | URL of the list of conversations tagged with this tag 
-_links.related.owner | string | URL of the team or teammate of the tag 
-_links.related.parent_tag: `https://api2.frontapp.com/tags/tag_1ab23cd4` | string | URL of the parent tag 
-id | string | Unique identifier of the tag 
-name | string | Name of the tag 
-is_private | boolean | Whether or not the tag is individual 
+_links | object | See [Response body Structure - Links](#links)
+_links.self | string | URL of the tag
+_links.related | object |
+_links.related.conversations | string | URL of the list of conversations tagged with this tag
+_links.related.owner | string | URL of the team or teammate of the tag
+_links.related.parent_tag | string | URL of the parent tag
+id | string | Unique identifier of the tag
+name | string | Name of the tag
+highlight | string | Highlight color/emoji of the tag
+is_private | boolean | Whether or not the tag is individual
 
 A tag is a label that can be used to classify conversations.
 
@@ -3897,6 +3904,7 @@ curl --include \
       },
       "id": "tag_55c8c149",
       "name": "Robots",
+      "highlight": "blue",
       "is_private": false
     }
   ]
@@ -3962,6 +3970,65 @@ Name | Type | Description
 -----|------|------------
 name | string | Name of the tag to create 
 
+## Update tag
+```shell
+
+curl --include \
+     --request PATCH \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"name\": \"Robots\",
+  \"highlight\": \"blue\"
+}" \
+'https://api2.frontapp.com/tags/${TAG_ID}'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Updates the name and highlight color information of a tag. You can:
+
+* Update the name of a tag by sending `name`
+
+* Update the highlight color of the tag by sending `highlight`
+
+Accepted values for highlight colors are:
+
+| Color Preview                                      | Color value  |
+|----------------------------------------------------|--------------|
+| ![#](https://placehold.it/15/9b9c9e/000000?text=+) | `grey`       |
+| ![#](https://placehold.it/15/ff338f/000000?text=+) | `pink`       |
+| ![#](https://placehold.it/15/ff4433/000000?text=+) | `red`        |
+| ![#](https://placehold.it/15/ff901a/000000?text=+) | `orange`     |
+| ![#](https://placehold.it/15/facc25/000000?text=+) | `yellow`     |
+| ![#](https://placehold.it/15/14cc52/000000?text=+) | `green`      |
+| ![#](https://placehold.it/15/2bd5ff/000000?text=+) | `light-blue` |
+| ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
+| ![#](https://placehold.it/15/a238ff/000000?text=+) | `purple`     |
+
+### HTTP Request
+
+`PATCH https://api2.frontapp.com/tags/{tag_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+tag_id | string | ID of the requested tag
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+name | string (optional) | New tag name
+highlight | string (optional) | New highlight color. Set to `null` to remove highlighting
+
 ## Get tag
 ```shell
 
@@ -3989,6 +4056,7 @@ curl --include \
   },
   "id": "tag_55c8c149",
   "name": "Robots",
+  "highlight": "blue",
   "is_private": false
 }
 ```
@@ -4107,6 +4175,7 @@ curl --include \
           },
           "id": "tag_55c8c149",
           "name": "Robots",
+          "highlight": "blue",
           "is_private": false
         }
       ],
@@ -4277,6 +4346,7 @@ curl --include \
           },
           "id": "tag_55c8c149",
           "name": "Robots",
+          "highlight": "blue",
           "is_private": false
         }
       ],
@@ -4673,6 +4743,7 @@ curl --include \
             },
             "id": "tag_55c8c149",
             "name": "Robots",
+            "highlight": "blue",
             "is_private": false
           }
         ],
@@ -4876,6 +4947,7 @@ curl --include \
         },
         "id": "tag_55c8c149",
         "name": "Robots",
+        "highlight": "blue",
         "is_private": false
       }
     ],
