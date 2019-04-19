@@ -1473,7 +1473,7 @@ Updates a conversation. You can:
 
 * Assign or unassign a conversation by sending an `assignee_id`
 
-* Update the tags of a conversation by sending an array `tags` containing the names of the all the tag of a conversation (unknown tags will be automatically created)
+* Update the tags of a conversation by sending an array `tags` containing the names of the all the tags of a conversation (unknown tags will be automatically created)
 
 * Archive a conversation by sending `archived` in `status`
 
@@ -1482,6 +1482,14 @@ Updates a conversation. You can:
 * Mark a conversation as spam by sending `spam` in `status`
 
 * Unarchive or restore a conversation  by sending `open` in `status`
+
+<aside class="notice">
+The array of tags submitted when updating a conversation will be the full list of tags this conversation will be tagged with.
+<ul>
+<li>When adding a tag to a conversation, it is important to include all tags this conversation is currently tagged with in the array in order to ensure that conversation retains those existing tags.</li>
+<li>If you submit an empty tag array, that will clear all tags from the conversation.</li>
+</ul>
+</aside>
 
 ### HTTP Request
 
