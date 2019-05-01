@@ -5428,8 +5428,16 @@ Name | Type | Description
 _links | object | See [Response body Structure - Links](#links) 
 _links.self | string | URL of the response 
 id | string | Unique identifier of the response 
+name | string | Name of the repsonse 
+subject | string | Subject of the repsonse 
+body | string | Body of the response 
+attachments | array (optional) | List of files attached to the response 
+created_at | number (optional) | Timestamp of response creation 
+updated_at | number (optional) | Timestamp of the last update 
 
-A response is .
+A response is predetermined answer to common questions. They allow you to respond faster to inbound messages, and lessen the repetitive nature of replying to frequently asked questions.
+
+Front allows individual and team canned responses. Individual canned responses are visible to only you, and team canned responses can be visible to your teammates on a per inbox level.
 
 ## List Responses
 ```shell
@@ -5448,6 +5456,7 @@ curl --include \
 
 ```json
 {
+  "_pagination": {},
   "_links": {
     "self": "https://api2.frontapp.com/responses"
   },
@@ -5456,7 +5465,24 @@ curl --include \
       "_links": {
         "self": "https://api2.frontapp.com/responses/rsp_42"
       },
-      "id": "rsp_42"
+      "id": "rsp_42",
+      "name": "My canned response",
+      "subject": "Dogs in here",
+      "body": "I heard there were dogs in here.",
+      "attachments": [
+        {
+          "filename": "attachment.jpg",
+          "url": "https://api2.frontapp.com/download/fil_55c8c149",
+          "content_type": "image/jpeg",
+          "size": 10000,
+          "metadata": {
+            "is_inline": true,
+            "cid": "123456789"
+          }
+        }
+      ],
+      "created_at": 0,
+      "updated_at": 0
     }
   ]
 }
@@ -5486,7 +5512,24 @@ curl --include \
   "_links": {
     "self": "https://api2.frontapp.com/responses/rsp_42"
   },
-  "id": "rsp_42"
+  "id": "rsp_42",
+  "name": "My canned response",
+  "subject": "Dogs in here",
+  "body": "I heard there were dogs in here.",
+  "attachments": [
+    {
+      "filename": "attachment.jpg",
+      "url": "https://api2.frontapp.com/download/fil_55c8c149",
+      "content_type": "image/jpeg",
+      "size": 10000,
+      "metadata": {
+        "is_inline": true,
+        "cid": "123456789"
+      }
+    }
+  ],
+  "created_at": 0,
+  "updated_at": 0
 }
 ```
 Fetches the information of a response.
