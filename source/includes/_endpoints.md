@@ -5420,3 +5420,83 @@ start | number | Start time of the data to include in the export.
 end | number | End time of the data to include in the export. 
 timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC. 
 should_export_events | boolean (optional) | Whether to export all the events or  only messages. Default to `false`. 
+
+# Responses
+> 
+Name | Type | Description
+-----|------|------------
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the response 
+id | string | Unique identifier of the response 
+
+A response is .
+
+## List Responses
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/responses'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/responses"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/responses/rsp_42"
+      },
+      "id": "rsp_42"
+    }
+  ]
+}
+```
+Lists the responses in your company.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/responses`
+## Get response
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/responses/${RESPONSE_ID}'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/responses/rsp_42"
+  },
+  "id": "rsp_42"
+}
+```
+Fetches the information of a response.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/responses/{response_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+response_id | string | Id the requested response
