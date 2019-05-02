@@ -267,7 +267,6 @@ curl --include \
   \"username\": \"bender\",
   \"first_name\": \"Bender\",
   \"last_name\": \"Rodriguez\",
-  \"is_admin\": true,
   \"is_available\": false
 }" \
 'https://api2.frontapp.com/teammates/${TEAMMATE_ID}'
@@ -299,7 +298,6 @@ Name | Type | Description
 username | string (optional) | New username. It must be unique and can only contains lowercase letters, numbers and underscores. 
 first_name | string (optional) | New first name 
 last_name | string (optional) | New last name 
-is_admin | boolean (optional) | New admin status 
 is_available | boolean (optional) | New availability status 
 
 ## List teammate conversations
@@ -4056,7 +4054,7 @@ tag_id | string | ID of the requested tag
 Name | Type | Description
 -----|------|------------
 name | string (optional) | Name of the tag to create. 
-highlight | string (optional) | Color to highlight the tag with. . Set to `null` to remove highlighting. 
+highlight | string (optional) | Color to highlight the tag with. Set to `null` to remove highlighting. 
 
 ## Delete tag
 ```shell
@@ -5435,7 +5433,7 @@ attachments | array (optional) | List of files attached to the response
 created_at | number (optional) | Timestamp of response creation 
 updated_at | number (optional) | Timestamp of the last update 
 
-A response is predetermined answer to common questions. They allow you to respond faster to inbound messages, and lessen the repetitive nature of replying to frequently asked questions.
+Responses are predetermined answer to common questions. They allow you to respond faster to inbound messages, and lessen the repetitive nature of replying to frequently asked questions.
 
 Front allows individual and team canned responses. Individual canned responses are visible to only you, and team canned responses can be visible to your teammates on a per inbox level.
 
@@ -5532,7 +5530,7 @@ curl --include \
   "updated_at": 0
 }
 ```
-Fetches the information of a response.
+Fetches the information of an individual response.
 
 ### HTTP Request
 
