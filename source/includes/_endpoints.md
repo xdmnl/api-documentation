@@ -267,7 +267,6 @@ curl --include \
   \"username\": \"bender\",
   \"first_name\": \"Bender\",
   \"last_name\": \"Rodriguez\",
-  \"is_admin\": true,
   \"is_available\": false
 }" \
 'https://api2.frontapp.com/teammates/${TEAMMATE_ID}'
@@ -299,7 +298,6 @@ Name | Type | Description
 username | string (optional) | New username. It must be unique and can only contains lowercase letters, numbers and underscores. 
 first_name | string (optional) | New first name 
 last_name | string (optional) | New last name 
-is_admin | boolean (optional) | New admin status 
 is_available | boolean (optional) | New availability status 
 
 ## List teammate conversations
@@ -4056,7 +4054,7 @@ tag_id | string | ID of the requested tag
 Name | Type | Description
 -----|------|------------
 name | string (optional) | Name of the tag to create. 
-highlight | string (optional) | Color to highlight the tag with. . Set to `null` to remove highlighting. 
+highlight | string (optional) | Color to highlight the tag with. Set to `null` to remove highlighting. 
 
 ## Delete tag
 ```shell
@@ -5420,3 +5418,126 @@ start | number | Start time of the data to include in the export.
 end | number | End time of the data to include in the export. 
 timezone | string (optional) | Name of the timezone to format the dates. If omitted, the export will use UTC. 
 should_export_events | boolean (optional) | Whether to export all the events or  only messages. Default to `false`. 
+
+# Responses
+> 
+Name | Type | Description
+-----|------|------------
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the response 
+id | string | Unique identifier of the response 
+name | string | Name of the repsonse 
+subject | string | Subject of the repsonse 
+body | string | Body of the response 
+attachments | array (optional) | List of files attached to the response 
+created_at | number (optional) | Timestamp of response creation 
+updated_at | number (optional) | Timestamp of the last update 
+
+Responses are predetermined answer to common questions. They allow you to respond faster to inbound messages, and lessen the repetitive nature of replying to frequently asked questions.
+
+Front allows individual and team canned responses. Individual canned responses are visible to only you, and team canned responses can be visible to your teammates on a per inbox level.
+
+## List Responses
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/responses'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_pagination": {},
+  "_links": {
+    "self": "https://api2.frontapp.com/responses"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/responses/rsp_42"
+      },
+      "id": "rsp_42",
+      "name": "My canned response",
+      "subject": "Dogs in here",
+      "body": "I heard there were dogs in here.",
+      "attachments": [
+        {
+          "filename": "attachment.jpg",
+          "url": "https://api2.frontapp.com/download/fil_55c8c149",
+          "content_type": "image/jpeg",
+          "size": 10000,
+          "metadata": {
+            "is_inline": true,
+            "cid": "123456789"
+          }
+        }
+      ],
+      "created_at": 0,
+      "updated_at": 0
+    }
+  ]
+}
+```
+Lists the responses in your company.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/responses`
+## Get response
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/responses/${RESPONSE_ID}'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/responses/rsp_42"
+  },
+  "id": "rsp_42",
+  "name": "My canned response",
+  "subject": "Dogs in here",
+  "body": "I heard there were dogs in here.",
+  "attachments": [
+    {
+      "filename": "attachment.jpg",
+      "url": "https://api2.frontapp.com/download/fil_55c8c149",
+      "content_type": "image/jpeg",
+      "size": 10000,
+      "metadata": {
+        "is_inline": true,
+        "cid": "123456789"
+      }
+    }
+  ],
+  "created_at": 0,
+  "updated_at": 0
+}
+```
+Fetches the information of an individual response.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/responses/{response_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+response_id | string | Id the requested response

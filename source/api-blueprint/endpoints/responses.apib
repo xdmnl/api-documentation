@@ -1,0 +1,34 @@
+## Responses [/responses/{response_id}]
+
+Responses are predetermined answer to common questions. They allow you to respond faster to inbound messages, and lessen the repetitive nature of replying to frequently asked questions.
+
+Front allows individual and team canned responses. Individual canned responses are visible to only you, and team canned responses can be visible to your teammates on a per inbox level.
+
++ Parameters
+    + response_id (string, required) - Id the requested response
+
++ Attributes (Response)
+
+### List Responses [GET /responses]
+
+Lists the responses in your company.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/pagination_attribute.apib) -->
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/responses` (string, required)
+        + _results (array[Response], required) - List of all the responses in your company
+
+### Get response [GET]
+
+Fetches the information of an individual response.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes (Response, required)
