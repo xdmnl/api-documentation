@@ -5,11 +5,14 @@
     + related (object, required)
         + conversations: `https://api2.frontapp.com/tags/tag_55c8c149/conversations` (string, required) - URL of the list of conversations tagged with this tag
         + owner: `https://api2.frontapp.com/teams/tim_55c8c149` (string, required) - URL of the team or teammate of the tag
-        + parent_tag (string, optional) - URL of the parent tag
+        + parent_tag: `https://api2.frontapp.com/tags/tag_55c8c140` (string, optional) - URL of the parent tag
+        + children: `https://api2.frontapp.com/tags/tag_55c8c149/children` (string, optional) - URL of the list of the tag's child tags
 + id: `tag_55c8c149` (string, required) - Unique identifier of the tag
 + name: `Robots` (string, required) - Name of the tag
 + highlight: `blue` (enum, required) - Highlight color of the tag. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `blue`, `blue` or `purple`.
 + is_private: `false` (boolean, required) - Whether or not the tag is individual
++ created_at (number) - Timestamp of tag create creation
++ updated_at (number) - Timestamp of the last tag update
 
 ## Tag to create
 
@@ -19,4 +22,4 @@
 ## Tag to update
 + name: `Robots` (string, optional) - Name of the tag to create.
 + highlight: `blue` (string, optional) - Color to highlight the tag with. Set to `null` to remove highlighting.
-
++ parent_tag_id: `tag_55c8c148` (string, optional) - ID of the parent of this tag. Set to `null` to remove the parent tag.

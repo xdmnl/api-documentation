@@ -12,6 +12,22 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-05-10 - Tag & Conversation endpoints updates
+
+### Added
+* `GET /responses` route to list all canned answers
+* `GET /responses/:response_id` route to list a specific canned answer
+* `GET /tags/:tag_id/children` route to list all children of the provided tag.
+* `POST /tags/:tag_id/children` route to create a child for the provided tag.
+
+### Changed
+* `PATCH /tags/:tag_id` route to update the parent tag.
+* Added fields `updated_at`, `created_at` to the Tag response body
+* Added field `children` to the Tag `_links`
+
+### Deprecated
+* Deprecate `tag` from `PATCH /conversations/:conversation_id`. Please use `tag_ids` instead.
+
 ## 2019-04-05 - Channel & tag endpoints updates
 
 ### Added
