@@ -46,7 +46,7 @@ Fetches the information of a conversation.
 Updates a conversation. You can:
 
 * Assign or unassign a conversation by sending an `assignee_id`
-* Update the tags of a conversation by sending an array `tags` containing the names of the all the tag of a conversation (unknown tags will be automatically created)
+* Update the tags of a conversation by sending an array of tag IDs, `tag_ids`. An empty array will remove all tags.
 * Archive a conversation by sending `archived` in `status`
 * Delete a conversation by sending `deleted` in `status`
 * Mark a conversation as spam by sending `spam` in `status`

@@ -368,13 +368,16 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+              "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
             }
           },
           "id": "tag_55c8c149",
           "name": "Robots",
           "highlight": "blue",
-          "is_private": false
+          "is_private": false,
+          "created_at": 0,
+          "updated_at": 0
         }
       ],
       "last_message": {
@@ -729,13 +732,16 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+              "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
             }
           },
           "id": "tag_55c8c149",
           "name": "Robots",
           "highlight": "blue",
-          "is_private": false
+          "is_private": false,
+          "created_at": 0,
+          "updated_at": 0
         }
       ],
       "last_message": {
@@ -1211,13 +1217,16 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+              "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
             }
           },
           "id": "tag_55c8c149",
           "name": "Robots",
           "highlight": "blue",
-          "is_private": false
+          "is_private": false,
+          "created_at": 0,
+          "updated_at": 0
         }
       ],
       "last_message": {
@@ -1360,13 +1369,16 @@ curl --include \
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
           "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+          "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
         }
       },
       "id": "tag_55c8c149",
       "name": "Robots",
       "highlight": "blue",
-      "is_private": false
+      "is_private": false,
+      "created_at": 0,
+      "updated_at": 0
     }
   ],
   "last_message": {
@@ -1454,8 +1466,9 @@ curl --include \
      --data-binary "{
   \"assignee_id\": \"alt:email:fry@planet-express.com\",
   \"status\": \"archived\",
-  \"tags\": [
-    \"time travel\"
+  \"tag_ids\": [
+    \"tag_55c8c148\",
+    \"tag_55c8c149\"
   ]
 }" \
 'https://api2.frontapp.com/conversations/${CONVERSATION_ID}'
@@ -1471,7 +1484,7 @@ Updates a conversation. You can:
 
 * Assign or unassign a conversation by sending an `assignee_id`
 
-* Update the tags of a conversation by sending an array `tags` containing the names of the all the tag of a conversation (unknown tags will be automatically created)
+* Update the tags of a conversation by sending an array of tag IDs, `tag_ids`. An empty array will remove all tags.
 
 * Archive a conversation by sending `archived` in `status`
 
@@ -1499,7 +1512,7 @@ Name | Type | Description
 assignee_id | string (optional) | ID of the teammate to assign the conversation to. Set it to null to unassign. 
 inbox_id: `inb_128yew` | string (optional) | ID of the inbox to move the conversation to. 
 status | enum (optional) | New status of the conversation 
-tags | array (optional) | List of all the tag names replacing the old conversation tags 
+tag_ids | array (optional) | List of all the tag IDs replacing the old conversation tags 
 
 ## List conversation inboxes
 ```shell
@@ -1720,13 +1733,16 @@ curl --include \
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
                 "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-                "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+                "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+                "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
               }
             },
             "id": "tag_55c8c149",
             "name": "Robots",
             "highlight": "blue",
-            "is_private": false
+            "is_private": false,
+            "created_at": 0,
+            "updated_at": 0
           }
         ],
         "last_message": {
@@ -3268,13 +3284,16 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+              "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
             }
           },
           "id": "tag_55c8c149",
           "name": "Robots",
           "highlight": "blue",
-          "is_private": false
+          "is_private": false,
+          "created_at": 0,
+          "updated_at": 0
         }
       ],
       "last_message": {
@@ -3851,11 +3870,14 @@ _links.self | string | URL of the tag
 _links.related | object |  
 _links.related.conversations | string | URL of the list of conversations tagged with this tag 
 _links.related.owner | string | URL of the team or teammate of the tag 
-_links.related.parent_tag | string (optional) | URL of the parent tag 
+_links.related.parent_tag: `https://api2.frontapp.com/tags/tag_55c8c140` | string (optional) | URL of the parent tag 
+_links.related.children | string (optional) | URL of the list of the tag's child tags 
 id | string | Unique identifier of the tag 
 name | string | Name of the tag 
 highlight | enum | Highlight color of the tag. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `blue`, `blue` or `purple`. 
 is_private | boolean | Whether or not the tag is individual 
+created_at | number (optional) | Timestamp of tag create creation 
+updated_at | number (optional) | Timestamp of the last tag update 
 
 A tag is a label that can be used to classify conversations.
 
@@ -3873,6 +3895,8 @@ Supported values for highlight colors are:
 | ![#](https://placehold.it/15/2bd5ff/000000?text=+) | `light-blue` |
 | ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
 | ![#](https://placehold.it/15/a238ff/000000?text=+) | `purple`     |
+
+Tags can have a parent - child relationship with other tags.
 
 ## List tags
 ```shell
@@ -3900,13 +3924,16 @@ curl --include \
         "self": "https://api2.frontapp.com/tags/tag_55c8c149",
         "related": {
           "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+          "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
         }
       },
       "id": "tag_55c8c149",
       "name": "Robots",
       "highlight": "blue",
-      "is_private": false
+      "is_private": false,
+      "created_at": 0,
+      "updated_at": 0
     }
   ]
 }
@@ -3947,19 +3974,24 @@ curl --include \
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
       "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+      "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
     }
   },
   "id": "tag_55c8c149",
   "name": "Robots",
   "highlight": "blue",
-  "is_private": false
+  "is_private": false,
+  "created_at": 0,
+  "updated_at": 0
 }
 ```
 Creates a new tag in the default team.
 
 <aside class="notice">
 You can create a tag for a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/tags</code> or <code>/teams/{team_id}/tags</code>.
+<br>
+You can create a child tag for a specific tag by using the endpoint <code>/tags/{tag_id}/children</code>.
 </aside>
 
 ### HTTP Request
@@ -3994,13 +4026,16 @@ curl --include \
     "self": "https://api2.frontapp.com/tags/tag_55c8c149",
     "related": {
       "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+      "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
     }
   },
   "id": "tag_55c8c149",
   "name": "Robots",
   "highlight": "blue",
-  "is_private": false
+  "is_private": false,
+  "created_at": 0,
+  "updated_at": 0
 }
 ```
 Fetches the information of a tag.
@@ -4025,7 +4060,8 @@ curl --include \
      --header "Accept: application/json" \
      --data-binary "{
   \"name\": \"Robots\",
-  \"highlight\": \"blue\"
+  \"highlight\": \"blue\",
+  \"parent_tag_id\": \"tag_55c8c148\"
 }" \
 'https://api2.frontapp.com/tags/${TAG_ID}'
 ```
@@ -4055,6 +4091,7 @@ Name | Type | Description
 -----|------|------------
 name | string (optional) | Name of the tag to create. 
 highlight | string (optional) | Color to highlight the tag with. Set to `null` to remove highlighting. 
+parent_tag_id | string (optional) | ID of the parent of this tag. Set to `null` to remove the parent tag. 
 
 ## Delete tag
 ```shell
@@ -4153,13 +4190,16 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+              "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
             }
           },
           "id": "tag_55c8c149",
           "name": "Robots",
           "highlight": "blue",
-          "is_private": false
+          "is_private": false,
+          "created_at": 0,
+          "updated_at": 0
         }
       ],
       "last_message": {
@@ -4240,6 +4280,117 @@ tag_id | string | ID of the requested tag
 q | object (optional) | Search query. See Search Parameters
 page_token | string (optional) | Token to use to request the next page
 limit | number (optional) | Max number of results per page (default 50, maximum 100)
+
+## List tag children
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/tags/${TAG_ID}/children'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/tags/tag_55c8c149/children"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/tags/tag_55c8c149",
+        "related": {
+          "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+          "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
+        }
+      },
+      "id": "tag_55c8c149",
+      "name": "Robots",
+      "highlight": "blue",
+      "is_private": false,
+      "created_at": 0,
+      "updated_at": 0
+    }
+  ]
+}
+```
+Lists the first level of children of the requested tag.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/tags/{tag_id}/children`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+tag_id | string | ID of the requested tag
+
+## Create child tag
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"name\": \"Robots\",
+  \"highlight\": \"blue\"
+}" \
+'https://api2.frontapp.com/tags/${TAG_ID}/children'
+```
+
+```node
+
+```
+
+> Response **201**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/tags/tag_55c8c149",
+    "related": {
+      "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+      "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
+    }
+  },
+  "id": "tag_55c8c149",
+  "name": "Robots",
+  "highlight": "blue",
+  "is_private": false,
+  "created_at": 0,
+  "updated_at": 0
+}
+```
+Creates a new child tag for the given tag.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/tags/{tag_id}/children`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+tag_id | string | ID of the requested tag
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+name | string | Name of the tag to create. 
+highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `blue`, `blue` or `purple`. 
 
 # Topics
 > 
@@ -4323,13 +4474,16 @@ curl --include \
             "self": "https://api2.frontapp.com/tags/tag_55c8c149",
             "related": {
               "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-              "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+              "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+              "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
             }
           },
           "id": "tag_55c8c149",
           "name": "Robots",
           "highlight": "blue",
-          "is_private": false
+          "is_private": false,
+          "created_at": 0,
+          "updated_at": 0
         }
       ],
       "last_message": {
@@ -4719,13 +4873,16 @@ curl --include \
               "self": "https://api2.frontapp.com/tags/tag_55c8c149",
               "related": {
                 "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-                "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+                "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+                "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
               }
             },
             "id": "tag_55c8c149",
             "name": "Robots",
             "highlight": "blue",
-            "is_private": false
+            "is_private": false,
+            "created_at": 0,
+            "updated_at": 0
           }
         ],
         "last_message": {
@@ -4922,13 +5079,16 @@ curl --include \
           "self": "https://api2.frontapp.com/tags/tag_55c8c149",
           "related": {
             "conversations": "https://api2.frontapp.com/tags/tag_55c8c149/conversations",
-            "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+            "owner": "https://api2.frontapp.com/teams/tim_55c8c149",
+            "children": "https://api2.frontapp.com/tags/tag_55c8c149/children"
           }
         },
         "id": "tag_55c8c149",
         "name": "Robots",
         "highlight": "blue",
-        "is_private": false
+        "is_private": false,
+        "created_at": 0,
+        "updated_at": 0
       }
     ],
     "last_message": {
