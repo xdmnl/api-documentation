@@ -1484,7 +1484,7 @@ Updates a conversation. You can:
 
 * Assign or unassign a conversation by sending an `assignee_id`
 
-* Update the tags of a conversation by sending an array of tag IDs `tag_ids`. An empty array will remove all tags.
+* Update the tags of a conversation by sending an array of tag IDs, `tag_ids`. An empty array will remove all tags.
 
 * Archive a conversation by sending `archived` in `status`
 
@@ -1512,7 +1512,7 @@ Name | Type | Description
 assignee_id | string (optional) | ID of the teammate to assign the conversation to. Set it to null to unassign. 
 inbox_id: `inb_128yew` | string (optional) | ID of the inbox to move the conversation to. 
 status | enum (optional) | New status of the conversation 
-tag_ids | array (optional) | List of all the tag ids replacing the old conversation tags 
+tag_ids | array (optional) | List of all the tag IDs replacing the old conversation tags 
 
 ## List conversation inboxes
 ```shell

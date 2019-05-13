@@ -16,7 +16,7 @@ The changelog is the history of updates released. Front is committed in not brea
 
 ### Added
 * `GET /responses` route to list all canned answers
-* `GET /responses/:response_id` route to list a specific canned answer
+* `GET /responses/:response_id` route to fetch a specific canned answer
 * `GET /tags/:tag_id/children` route to list all children of the provided tag.
 * `POST /tags/:tag_id/children` route to create a child for the provided tag.
 
