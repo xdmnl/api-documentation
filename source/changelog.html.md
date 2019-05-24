@@ -17,6 +17,11 @@ The changelog is the history of updates released. Front is committed in not brea
 ### Changed
 * Additional rate limiting on resource intensive routes to better protect Front's infrastructure. Please see 'Rate Limiting' for more details.
 
+## 2019-05-24 - Conversation endpoints updates
+
+### Added
+* `PUT /conversations/:conversation_id/assignee` route to update the assignee of the provided conversation. 
+
 ## 2019-05-10 - Tag & Conversation endpoints updates
 
 ### Added

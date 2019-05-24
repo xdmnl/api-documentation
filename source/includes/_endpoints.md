@@ -1514,6 +1514,47 @@ inbox_id: `inb_128yew` | string (optional) | ID of the inbox to move the convers
 status | enum (optional) | New status of the conversation 
 tag_ids | array (optional) | List of all the tag IDs replacing the old conversation tags 
 
+## Update conversation assignee
+```shell
+
+curl --include \
+     --request PUT \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"assignee_id\": \"null\"
+}" \
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/assignee'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Updates a conversation's assignee.
+
+* Assign or unassign a conversation by sending an `assignee_id`
+
+### HTTP Request
+
+`PUT https://api2.frontapp.com/conversations/{conversation_id}/assignee`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+conversation_id | string | Id of the requested conversation
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+assignee_id | string | ID of the teammate to assign the conversation to. Set it to null to unassign. 
+
 ## List conversation inboxes
 ```shell
 

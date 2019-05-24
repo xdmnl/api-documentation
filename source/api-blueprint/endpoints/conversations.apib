@@ -58,6 +58,18 @@ Updates a conversation. You can:
 
 + Response 204
 
+### Update conversation assignee [PUT /conversations/{conversation_id}/assignee]
+
+Updates a conversation's assignee.
+
+* Assign or unassign a conversation by sending an `assignee_id`
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Conversation to put)
+
++ Response 204
+
 ### List conversation inboxes [GET /conversations/{conversation_id}/inboxes]
 
 Lists the inboxes in which a conversation appears.
