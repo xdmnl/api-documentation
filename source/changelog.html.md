@@ -12,6 +12,11 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-05-24 - Rate Limiter Updates
+
+### Changed
+* Additional rate limiting on resource intensive routes to better protect Front's infrastructure. Please see 'Rate Limiting' for more details.
+
 ## 2019-05-10 - Tag & Conversation endpoints updates
 
 ### Added
