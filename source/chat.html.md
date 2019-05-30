@@ -92,6 +92,10 @@ The mandatory user hash guarantees that users are who they claim to be. Otherwis
 
 You can configure Front Chat to accept both anonymous and identified users. If a user has submitted their email address, "[Unverified]" will appear in the conversation subject. You can also completely disable anonymous users to avoid any confusion.
 
+The value of the `email` field should be a valid email address. This value is used in Front to associate a new or existing contact with a conversation they start via Chat:
+
+![Plugin authentication](chat-conversation.png)
+
 ### Computing the user hash
 
 ```javascript
