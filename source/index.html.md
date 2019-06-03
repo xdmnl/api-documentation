@@ -65,14 +65,14 @@ Some endpoints also support multipart requests for file upload. For more details
 
 ### Rate limiting
 
-By default, the API is limited to 120 requests in 60 seconds. If you need more, just ask us and we will consider raising your quota.
+By default, the API is limited to 100 requests in 60 seconds. If you need more, please <a href='mailto:api@frontapp.com'>contact us</a>.
 Every response will contains three headers related to the rate-limiting:
 
 > Example of a response to a request exceeding the rate limit. The client should wait 20s before resending the request.
 
 ```http
 HTTP/1.1 429 Too Many Requests
-X-RateLimit-Limit: 120
+X-RateLimit-Limit: 100
 X-RateLimit-Remaining: 0
 X-RateLimit-Reset: 1454450858
 Retry-After: 20
@@ -86,6 +86,15 @@ Retry-After: 20
 
 
 When the rate limit is exceeded, the server will respond with a [**429 Too Many Requests**](https://tools.ietf.org/html/rfc6585#section-4) HTTP code with the header `Retry-After` to tell you how many seconds you need to wait before you can retry the request.
+
+### Additional Rate limiting
+Some resource intensive routes are subject to additional rate limiting to prevent strain on Front's infrastructure. This additional rate limit has a short TTL and only prevents sudden bursts of requests. The limit will depend on the resources needed to fulfill the request.
+
+Such routes have the header `X-Front-Tier`. If you are rate limited for such a route, you will receive the header `Retry-After`, even though `X-RateLimit-Remaining` may be greater than 0. This is because the limits do not affect each other.
+
+Please wait `Retry-After` seconds before safely retrying the request.
+
+If you experience any difficulties, please <a href='mailto:api@frontapp.com'>contact us</a>.
 
 ### Individual resources
 
