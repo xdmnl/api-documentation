@@ -985,9 +985,9 @@ curl --include \
 
 > Response **204**
 
-Adds teammates to an inbox.  This request requires the `provisioning` scope.
+Adds teammates to an inbox.  The selected teammates must not already have access to the inbox and must be in the team that owns the inbox.  Teammates cannot be added to private inboxes.
 
-The selected teammates must not already have access to the inbox and must be in the team that owns the inbox.
+This request requires the `provisioning` scope in the JSON Web Token.
 
 ### HTTP Request
 
@@ -1029,9 +1029,9 @@ curl --include \
 
 > Response **204**
 
-Removes teammates from a team.  This request requires the `provisioning` scope.
+Removes teammates from a team.  Selected teammates must currently have access to the inbox to be removed.  Teammates cannot be removed from private inboxes.
 
-Selected teammates must currently have access to the inbox to be removed.
+This request requires the `provisioning` scope in the JSON Web Token.
 
 ### HTTP Request
 
@@ -1041,7 +1041,7 @@ Selected teammates must currently have access to the inbox to be removed.
 
 Name | Type | Description
 -----|------|------------
-inbox_id | string | Id of the requested inbox
+inbox_id | string | Id of the inbox to remove the teammate(s) from.
 
 ### Body
 
