@@ -22,3 +22,31 @@ Fetches the details of a team.
 
 + Response 200 (application/json)
     + Attributes (Team details)
+
+### Add teammates[POST /teams/{team_id}/teammates]
+
+Adds teammates to a team as a member.  This request requires the `provisioning` scope.
+
++ Parameters
+    + team_id (string, required) - Id of the team to add the teammate(s) to.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Teammates to provision)
+
++ Response 204
+
+### Remove teammates [DELETE /teams/{team_id}/teammates]
+
+Removes teammates from a team.  This request requires the `provisioning` scope.  Removing teammates will also remove them from inboxes owned by the team.
+
+Admins cannot be cannot be removed from the team.
+
++ Parameters
+    + team_id (string, required) - Id of the team to remove the teammate(s) from.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Teammates to provision)
+
++ Response 204
