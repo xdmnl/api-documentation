@@ -102,9 +102,9 @@ Lists the teammates who can access an inbox.
 
 ### Add teammates [POST /inboxes/{inbox_id}/teammates]
 
-Adds teammates to an inbox.  This request requires the `provisioning` scope.
+Adds teammates to an inbox.  The selected teammates must not already have access to the inbox and must be in the team that owns the inbox.  Teammates cannot be added to private inboxes.
 
-The selected teammates must not already have access to the inbox and must be in the team that owns the inbox.
+This request requires the `provisioning` scope in the JSON Web Token.
 
 + Parameters
     + inbox_id (string, required) - Id of the inbox to add the teammate(s) to.
@@ -117,12 +117,12 @@ The selected teammates must not already have access to the inbox and must be in 
 
 ### Remove teammates [DELETE /inboxes/{inbox_id}/teammates]
 
-Removes teammates from a team.  This request requires the `provisioning` scope.
+Removes teammates from a team.  Selected teammates must currently have access to the inbox to be removed.  Teammates cannot be removed from private inboxes.
 
-Selected teammates must currently have access to the inbox to be removed.
+This request requires the `provisioning` scope in the JSON Web Token.
 
 + Parameters
-    + team_id (string, required) - Id of the team to remove the teammate(s) from.
+    + inbox_id (string, required) - Id of the inbox to remove the teammate(s) from.
 
 + Request (application/json)
     <!-- include(../includes/request_header.apib) -->

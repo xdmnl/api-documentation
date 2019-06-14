@@ -12,6 +12,17 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-06-14 - Rate Limiter Updates
+
+### Changed
+* Added new scope, provisioning, which allows users to add/remove teammates from inboxes and teams through the API.
+
+### Added
+* `POST /inboxes/:inbox_id/teammates` route to add teammates to an inbox.
+* `DELETE /inboxes/:inbox_id/teammates` route to remove teammates from an inbox.
+* `POST /teams/:team_id/teammates` route to add teammates to a team.
+* `DELETE /teams/:team_id/teammates` route to remove teammates from an inbox.
+
 ## 2019-06-03 - Rate Limiter Updates
 
 ### Changed
