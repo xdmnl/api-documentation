@@ -12,7 +12,7 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
-## 2019-06-17 - Rate Limiter Updates
+## 2019-06-17 - Teammate Provisioning Endpoints
 
 ### Changed
 * Added new scope, provisioning, which allows users to add/remove teammates from inboxes and teams through the API.
