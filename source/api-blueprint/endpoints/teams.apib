@@ -25,7 +25,9 @@ Fetches the details of a team.
 
 ### Add teammates[POST /teams/{team_id}/teammates]
 
-Adds teammates to a team as a member.  This request requires the `provisioning` scope.
+Adds teammates to a team as a member.
+
+This request requires the `provisioning` scope in the JSON Web Token.
 
 + Parameters
     + team_id (string, required) - Id of the team to add the teammate(s) to.
@@ -38,9 +40,9 @@ Adds teammates to a team as a member.  This request requires the `provisioning` 
 
 ### Remove teammates [DELETE /teams/{team_id}/teammates]
 
-Removes teammates from a team.  This request requires the `provisioning` scope.  Removing teammates will also remove them from inboxes owned by the team.
+Removes teammates from a team.  Removing teammates will also remove them from inboxes owned by the team.  Admins cannot be cannot be removed from the team.
 
-Admins cannot be cannot be removed from the team.
+This request requires the `provisioning` scope in the JSON Web Token.
 
 + Parameters
     + team_id (string, required) - Id of the team to remove the teammate(s) from.
