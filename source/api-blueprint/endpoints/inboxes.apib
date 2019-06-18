@@ -99,3 +99,33 @@ Lists the teammates who can access an inbox.
         <!-- include(../includes/links_attribute.apib) -->
             + self: `https://api2.frontapp.com/inboxes/inb_55c8c149/teammates` (string, required)
         + _results (array[Teammate], required) - List of teammates
+
+### Add teammates [POST /inboxes/{inbox_id}/teammates]
+
+Adds teammates to an inbox.  The selected teammates must not already have access to the inbox and must be in the team that owns the inbox.  Teammates cannot be added to private inboxes.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
++ Parameters
+    + inbox_id (string, required) - Id of the inbox to add the teammate(s) to.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Teammates to provision)
+
++ Response 204
+
+### Remove teammates [DELETE /inboxes/{inbox_id}/teammates]
+
+Removes teammates from a team.  Selected teammates must currently have access to the inbox to be removed.  Teammates cannot be removed from private inboxes.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
++ Parameters
+    + inbox_id (string, required) - Id of the inbox to remove the teammate(s) from.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Teammates to provision)
+
++ Response 204

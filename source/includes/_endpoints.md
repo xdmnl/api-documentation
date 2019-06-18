@@ -136,6 +136,92 @@ Fetches the details of a team.
 ### HTTP Request
 
 `GET https://api2.frontapp.com/teams/{team_id}`
+## Add teammates
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"teammate_ids\": [
+    \"tea_1\",
+    \"tea_2\"
+  ]
+}" \
+'https://api2.frontapp.com/teams/${TEAM_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Adds teammates to a team as a member.  This request requires the `provisioning` scope.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/teams/{team_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+team_id | string | Id of the team to add the teammate(s) to.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+teammate_ids | array | List of all the teammate ids to add to the team. 
+
+## Remove teammates
+```shell
+
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"teammate_ids\": [
+    \"tea_1\",
+    \"tea_2\"
+  ]
+}" \
+'https://api2.frontapp.com/teams/${TEAM_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Removes teammates from a team.  This request requires the `provisioning` scope.  Removing teammates will also remove them from inboxes owned by the team.
+
+Admins cannot be cannot be removed from the team.
+
+### HTTP Request
+
+`DELETE https://api2.frontapp.com/teams/{team_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+team_id | string | Id of the team to remove the teammate(s) from.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+teammate_ids | array | List of all the teammate ids to add to the team. 
+
 # Teammates
 > 
 Name | Type | Description
@@ -875,6 +961,94 @@ Lists the teammates who can access an inbox.
 Name | Type | Description
 -----|------|------------
 inbox_id | string | Id of the requested inbox
+
+## Add teammates
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"teammate_ids\": [
+    \"tea_1\",
+    \"tea_2\"
+  ]
+}" \
+'https://api2.frontapp.com/inboxes/${INBOX_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Adds teammates to an inbox.  The selected teammates must not already have access to the inbox and must be in the team that owns the inbox.  Teammates cannot be added to private inboxes.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/inboxes/{inbox_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+inbox_id | string | Id of the inbox to add the teammate(s) to.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+teammate_ids | array | List of all the teammate ids to add to the team. 
+
+## Remove teammates
+```shell
+
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"teammate_ids\": [
+    \"tea_1\",
+    \"tea_2\"
+  ]
+}" \
+'https://api2.frontapp.com/inboxes/${INBOX_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Removes teammates from a team.  Selected teammates must currently have access to the inbox to be removed.  Teammates cannot be removed from private inboxes.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
+### HTTP Request
+
+`DELETE https://api2.frontapp.com/inboxes/{inbox_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+inbox_id | string | Id of the inbox to remove the teammate(s) from.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+teammate_ids | array | List of all the teammate ids to add to the team. 
 
 # Channels
 > 
