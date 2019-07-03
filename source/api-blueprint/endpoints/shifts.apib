@@ -1,0 +1,131 @@
+## Shifts [/shifts/{shift_id}]
+
+A shift represents an interval of time repeated over 1 or more days in a week.
+
+Shifts are assigned 1 or more teammates, whose availability status is automatically handled by Front every time a shift starts or ends.
+
+Supported values for colors are:
+
+| Color Preview                                      | Color value  |
+|----------------------------------------------------|--------------|
+| ![#](https://placehold.it/15/3e3e40/000000?text=+) | `black`      |
+| ![#](https://placehold.it/15/9b9c9e/000000?text=+) | `grey`       |
+| ![#](https://placehold.it/15/ea67bd/000000?text=+) | `pink`       |
+| ![#](https://placehold.it/15/9235e4/000000?text=+) | `purple`     |
+| ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
+| ![#](https://placehold.it/15/15acc0/000000?text=+) | `teal`       |
+| ![#](https://placehold.it/15/10aa40/000000?text=+) | `green`      |
+| ![#](https://placehold.it/15/e3b51e/000000?text=+) | `yellow`     |
+| ![#](https://placehold.it/15/f2830b/000000?text=+) | `orange`     |
+| ![#](https://placehold.it/15/e9483a/000000?text=+) | `red`        |
+
+### Shifts Intervals
+
+Every shift can define maximum one contiguous time interval per day of week (1 day minimum required).
+
+| Name      | Type              | Description                                   |
+|-----------|-------------------|-----------------------------------------------|
+| `mon`     | ShiftInterval     | Time interval for monday                      |
+| `tue`     | ShiftInterval     | Time interval for tuesday                     |
+| `wed`     | ShiftInterval     | Time interval for wednesday                   |
+| `thu`     | ShiftInterval     | Time interval for thursday                    |
+| `fri`     | ShiftInterval     | Time interval for friday                      |
+| `sat`     | ShiftInterval     | Time interval for saturday                    |
+| `sun`     | ShiftInterval     | Time interval for sunday                      |
+
+Where a ShiftInterval is defined as :
+
+| Name      | Type              | Description                                   |
+|-----------|-------------------|-----------------------------------------------|
+| `start`   | string            | A 24h time, e.g '13:45'                       |
+| `end`     | string            | A 24h time, e.g '13:45'                       |
+
++ Attributes (Shift)
+
+### List shifts [GET /shifts]
+
+Lists all the shifts.
+
+<aside class="notice">
+You can list the shifts of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/shifts</code> or <code>/teams/{team_id}/shifts</code>.
+</aside>
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/shifts` (string, required)
+        + _results (array[Shift], required) - List of all your shifts
+
+### Create a shift [POST /teams/{team_id}/shifts]
+
+Creates a shift for a team.
+
++ Parameters
+    + team_id (string, required) - Id of the team to create the shift for
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Shift to create)
+
++ Response 201 (application/json)
+    + Attributes (Shift)
+
+### Get shift [GET]
+
+Fetches the information of a shift.
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes (Shift)
+
+### List shift teammates [GET /shifts/{shift_id}/teammates]
+
+Lists the teammates who are assigned to a shift.
+
++ Parameters
+    + shift_id (string, required) - Id of the requested shift
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+    + Attributes
+        <!-- include(../includes/links_attribute.apib) -->
+            + self: `https://api2.frontapp.com/shifts/shf_15d4q255/teammates` (string, required)
+        + _results (array[Teammate], required) - List of teammates
+
+### Add teammates [POST /shifts/{shift_id}/teammates]
+
+Adds teammates to a shift.  The selected teammates must be in the team that owns the shift.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
+
++ Parameters
+    + shift_id (string, required) - Id of the shift to add the teammate(s) to.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Teammates to provision)
+
++ Response 204
+
+### Remove teammates [DELETE /shifts/{shift_id}/teammates]
+
+Removes teammates from a shift. Selected teammates must currently be assigned to the shift to  be removed.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
++ Parameters
+    + shift_id (string, required) - Id of the shift to remove the teammate(s) from.
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Teammates to provision)
+
++ Response 204
