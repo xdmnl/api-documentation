@@ -19,9 +19,15 @@ Supported values for colors are:
 | ![#](https://placehold.it/15/f2830b/000000?text=+) | `orange`     |
 | ![#](https://placehold.it/15/e9483a/000000?text=+) | `red`        |
 
+### Shifts timezones
+
+The intervals of time defined for shifts must always define in which timezone they take effect.  
+A list of possible time zone values is maintained at the [IANA Time Zone Database](https://www.iana.org/time-zones).
+
 ### Shifts Intervals
 
-Every shift can define maximum one contiguous time interval per day of week (1 day minimum required).
+Every shift can define zero or one contiguous time interval per day of week.  
+An interval has to be defined for at least one day of the week.
 
 | Name      | Type              | Description                                   |
 |-----------|-------------------|-----------------------------------------------|
@@ -62,6 +68,8 @@ You can list the shifts of a specific teammate or team by using the endpoints <c
 ### Create a shift [POST /teams/{team_id}/shifts]
 
 Creates a shift for a team.
+
+This request requires the `provisioning` scope in the JSON Web Token.
 
 + Parameters
     + team_id (string, required) - Id of the team to create the shift for
