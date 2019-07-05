@@ -12,6 +12,11 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-07-03 - Shifts Endpoints
+
+### Added
+* Add endpoints to list, create and update shifts for a specific team
+
 ## 2019-06-17 - Teammate Provisioning Endpoints
 
 ### Changed

@@ -1,0 +1,23 @@
+
+## Shift to create
+
++ name: `Night shift` (string, required) - Name of the shift
++ color: `red` (enum, required) - Color of the shift. Can be one of `black`, `grey`, `pink`, `purple`, `blue`, `teal`, `green`, `yellow`, `orange`, `red`
++ timezone: `Etc/UTC` (Timezone, required) - A timezone name as defined in the IANA tz database.
++ times (ShiftIntervals, required) - The shift intervals per day of the week [Shift - intervals](#shifts-intervals)
++ teammate_ids (array[string], required) - List of all the teammate ids who will be part of this shift.
+
+## Shift
+
+<!-- include(../includes/links_attribute.apib) -->
+    + self: `https://api2.frontapp.com/shifts/shf_15d4q255` (string, required) - URL of the shift
+    + related (object, required)
+        + teammates: `https://api2.frontapp.com/shifts/shf_15d4q255/teammates` (string, required) - URL of the list of teammates that are assigned to the shift
+        + owner: `https://api2.frontapp.com/teams/tim_55c8c149` (string, required) - URL of the team this shift belongs to
++ id: `shf_15d4q255` (string, required) - Unique identifier for the shift
++ name: `Night shift` (string, required) - Name of the shift
++ color: `red` (enum, required) - Color of the shift. Can be one of `black`, `grey`, `pink`, `purple`, `blue`, `teal`, `green`, `yellow`, `orange`, `red`
++ timezone: `Etc/UTC` (Timezone, required) - A timezone name as defined in the IANA tz database.
++ times (ShiftIntervals, required) - The shift intervals per day of the week [Shift - intervals](#shifts-intervals)
++ created_at (number) - Timestamp of shift creation
++ updated_at (number) - Timestamp of the last shift update

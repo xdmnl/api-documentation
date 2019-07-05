@@ -159,7 +159,9 @@ curl --include \
 
 > Response **204**
 
-Adds teammates to a team as a member.  This request requires the `provisioning` scope.
+Adds teammates to a team as a member.
+
+This request requires the `provisioning` scope in the JSON Web Token.
 
 ### HTTP Request
 
@@ -201,9 +203,9 @@ curl --include \
 
 > Response **204**
 
-Removes teammates from a team.  This request requires the `provisioning` scope.  Removing teammates will also remove them from inboxes owned by the team.
+Removes teammates from a team.  Removing teammates will also remove them from inboxes owned by the team.  Admins cannot be cannot be removed from the team.
 
-Admins cannot be cannot be removed from the team.
+This request requires the `provisioning` scope in the JSON Web Token.
 
 ### HTTP Request
 
@@ -5916,3 +5918,429 @@ Fetches the information of an individual response.
 Name | Type | Description
 -----|------|------------
 response_id | string | Id the requested response
+
+# Shifts
+> 
+Name | Type | Description
+-----|------|------------
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the shift 
+_links.related | object |  
+_links.related.teammates | string | URL of the list of teammates that are assigned to the shift 
+_links.related.owner | string | URL of the team this shift belongs to 
+id | string | Unique identifier for the shift 
+name | string | Name of the shift 
+color | enum | Color of the shift. Can be one of `black`, `grey`, `pink`, `purple`, `blue`, `teal`, `green`, `yellow`, `orange`, `red` 
+timezone | Timezone | A timezone name as defined in the IANA tz database. 
+times | ShiftIntervals | The shift intervals per day of the week [Shift - intervals](#shifts-intervals) 
+created_at | number (optional) | Timestamp of shift creation 
+updated_at | number (optional) | Timestamp of the last shift update 
+
+A shift represents an interval of time repeated over 1 or more days in a week.
+
+Shifts are assigned 1 or more teammates, whose availability status is automatically handled by Front every time a shift starts or ends.
+
+Supported values for colors are:
+
+| Color Preview                                      | Color value  |
+|----------------------------------------------------|--------------|
+| ![#](https://placehold.it/15/3e3e40/000000?text=+) | `black`      |
+| ![#](https://placehold.it/15/9b9c9e/000000?text=+) | `grey`       |
+| ![#](https://placehold.it/15/ea67bd/000000?text=+) | `pink`       |
+| ![#](https://placehold.it/15/9235e4/000000?text=+) | `purple`     |
+| ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
+| ![#](https://placehold.it/15/15acc0/000000?text=+) | `teal`       |
+| ![#](https://placehold.it/15/10aa40/000000?text=+) | `green`      |
+| ![#](https://placehold.it/15/e3b51e/000000?text=+) | `yellow`     |
+| ![#](https://placehold.it/15/f2830b/000000?text=+) | `orange`     |
+| ![#](https://placehold.it/15/e9483a/000000?text=+) | `red`        |
+
+### Shifts timezones
+
+The intervals of time defined for shifts must always define in which timezone they take effect.  
+A list of possible time zone values is maintained at the [IANA Time Zone Database](https://www.iana.org/time-zones).
+
+### Shifts Intervals
+
+Every shift can define zero or one contiguous time interval per day of week.  
+An interval has to be defined for at least one day of the week.
+
+| Name      | Type              | Description                                   |
+|-----------|-------------------|-----------------------------------------------|
+| `mon`     | ShiftInterval     | Time interval for monday                      |
+| `tue`     | ShiftInterval     | Time interval for tuesday                     |
+| `wed`     | ShiftInterval     | Time interval for wednesday                   |
+| `thu`     | ShiftInterval     | Time interval for thursday                    |
+| `fri`     | ShiftInterval     | Time interval for friday                      |
+| `sat`     | ShiftInterval     | Time interval for saturday                    |
+| `sun`     | ShiftInterval     | Time interval for sunday                      |
+
+Where a ShiftInterval is defined as :
+
+| Name      | Type              | Description                                   |
+|-----------|-------------------|-----------------------------------------------|
+| `start`   | string            | A 24h time, e.g '13:45'                       |
+| `end`     | string            | A 24h time, e.g '13:45'                       |
+
+## List shifts
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/shifts'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/shifts"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/shifts/shf_15d4q255",
+        "related": {
+          "teammates": "https://api2.frontapp.com/shifts/shf_15d4q255/teammates",
+          "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+        }
+      },
+      "id": "shf_15d4q255",
+      "name": "Night shift",
+      "color": "red",
+      "timezone": "Etc/UTC",
+      "times": {
+        "mon": {
+          "start": "09:00",
+          "end": "17:00"
+        },
+        "tue": {
+          "start": "09:00",
+          "end": "17:00"
+        },
+        "wed": {
+          "start": "09:00",
+          "end": "17:00"
+        },
+        "thu": {
+          "start": "09:00",
+          "end": "17:00"
+        }
+      },
+      "created_at": 0,
+      "updated_at": 0
+    }
+  ]
+}
+```
+Lists all the shifts.
+
+<aside class="notice">
+You can list the shifts of a specific teammate or team by using the endpoints <code>/teammates/{teammate_id}/shifts</code> or <code>/teams/{team_id}/shifts</code>.
+</aside>
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/shifts`
+## Create a shift
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"name\": \"Night shift\",
+  \"color\": \"red\",
+  \"timezone\": \"Etc/UTC\",
+  \"times\": {
+    \"mon\": {
+      \"start\": \"09:00\",
+      \"end\": \"17:00\"
+    },
+    \"tue\": {
+      \"start\": \"09:00\",
+      \"end\": \"17:00\"
+    },
+    \"wed\": {
+      \"start\": \"09:00\",
+      \"end\": \"17:00\"
+    },
+    \"thu\": {
+      \"start\": \"09:00\",
+      \"end\": \"17:00\"
+    }
+  },
+  \"teammate_ids\": []
+}" \
+'https://api2.frontapp.com/teams/${TEAM_ID}/shifts'
+```
+
+```node
+
+```
+
+> Response **201**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/shifts/shf_15d4q255",
+    "related": {
+      "teammates": "https://api2.frontapp.com/shifts/shf_15d4q255/teammates",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+    }
+  },
+  "id": "shf_15d4q255",
+  "name": "Night shift",
+  "color": "red",
+  "timezone": "Etc/UTC",
+  "times": {
+    "mon": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "tue": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "wed": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "thu": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  "created_at": 0,
+  "updated_at": 0
+}
+```
+Creates a shift for a team.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/teams/{team_id}/shifts`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+team_id | string | Id of the team to create the shift for
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+name | string | Name of the shift 
+color | enum | Color of the shift. Can be one of `black`, `grey`, `pink`, `purple`, `blue`, `teal`, `green`, `yellow`, `orange`, `red` 
+timezone | Timezone | A timezone name as defined in the IANA tz database. 
+times | ShiftIntervals | The shift intervals per day of the week [Shift - intervals](#shifts-intervals) 
+teammate_ids | array | List of all the teammate ids who will be part of this shift. 
+
+## Get shift
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/shifts/${SHIFT_ID}'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/shifts/shf_15d4q255",
+    "related": {
+      "teammates": "https://api2.frontapp.com/shifts/shf_15d4q255/teammates",
+      "owner": "https://api2.frontapp.com/teams/tim_55c8c149"
+    }
+  },
+  "id": "shf_15d4q255",
+  "name": "Night shift",
+  "color": "red",
+  "timezone": "Etc/UTC",
+  "times": {
+    "mon": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "tue": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "wed": {
+      "start": "09:00",
+      "end": "17:00"
+    },
+    "thu": {
+      "start": "09:00",
+      "end": "17:00"
+    }
+  },
+  "created_at": 0,
+  "updated_at": 0
+}
+```
+Fetches the information of a shift.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/shifts/{shift_id}`
+## List shift teammates
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/shifts/${SHIFT_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/shifts/shf_15d4q255/teammates"
+  },
+  "_results": [
+    {
+      "_links": {
+        "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+        "related": {
+          "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+          "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+        }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true,
+      "is_blocked": false
+    }
+  ]
+}
+```
+Lists the teammates who are assigned to a shift.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/shifts/{shift_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+shift_id | string | Id of the requested shift
+
+## Add teammates
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"teammate_ids\": [
+    \"tea_1\",
+    \"tea_2\"
+  ]
+}" \
+'https://api2.frontapp.com/shifts/${SHIFT_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Adds teammates to a shift.  The selected teammates must be in the team that owns the shift.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/shifts/{shift_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+shift_id | string | Id of the shift to add the teammate(s) to.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+teammate_ids | array | List of all the teammate ids to add to the team. 
+
+## Remove teammates
+```shell
+
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"teammate_ids\": [
+    \"tea_1\",
+    \"tea_2\"
+  ]
+}" \
+'https://api2.frontapp.com/shifts/${SHIFT_ID}/teammates'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Removes teammates from a shift. Selected teammates must currently be assigned to the shift to  be removed.
+
+This request requires the `provisioning` scope in the JSON Web Token.
+
+### HTTP Request
+
+`DELETE https://api2.frontapp.com/shifts/{shift_id}/teammates`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+shift_id | string | Id of the shift to remove the teammate(s) from.
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+teammate_ids | array | List of all the teammate ids to add to the team. 
