@@ -3003,7 +3003,7 @@ inbox_id | string | Id of the inbox into which the message should be append.
 Name | Type | Description
 -----|------|------------
 sender | object |  
-sender.handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
+sender.handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, custom handle ... 
 sender.name | string (optional) | Name of the contact. 
 sender.author_id | string (optional) | ID of the teammate who is the author of the message. Ignored if the message is inbound. 
 to | array | List of recipient handles who received the message. 
@@ -3853,8 +3853,8 @@ contact_ids | array | List of ids or aliases of the contacts to add in the reque
 > 
 Name | Type | Description
 -----|------|------------
-handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
-source | enum | Can be 'twitter', 'email' or 'phone'. 
+handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, custom handle ... 
+source | enum | Can be 'twitter', 'email', 'phone' or 'custom'. 
 
 
 
@@ -3896,8 +3896,8 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
-source | enum | Can be 'twitter', 'email' or 'phone'. 
+handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, custom handle ... 
+source | enum | Can be 'twitter', 'email', 'phone' or 'custom'. 
 
 ## Delete contact handle
 ```shell
@@ -3943,8 +3943,8 @@ contact_id | string | Id or alias of the requested contact
 
 Name | Type | Description
 -----|------|------------
-handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, ... 
-source | enum | Can be 'twitter', 'email' or 'phone'. 
+handle | string | Handle used to reach the contact. Can be an email address, a twitter, handle, a phone number, custom handle ... 
+source | enum | Can be 'twitter', 'email', 'phone' or 'custom'. 
 force | boolean (optional) | Force the deletetion of the contact if the handle is the last one (Defaults to `false`) 
 
 # Contact notes
