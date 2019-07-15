@@ -28,6 +28,8 @@ search: true
 
 You can create a new developer account by registering [at this link](https://frontapp.com/signup?affiliate=developers).
 
+If you are already a Front customer, read our [How to create and revoke API tokens](https://help.frontapp.com/t/36dsxd/how-to-create-and-revoke-api-tokens) guide for information on how to generate an API token, and get started with Front's API.
+
 ## Authentication
 
 ```http
