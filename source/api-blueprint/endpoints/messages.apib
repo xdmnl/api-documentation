@@ -10,12 +10,20 @@ Each message has a type depending on the channel it has been sent with:
 |--------------|------------------------------------|
 | `email`      | Email message                      |
 | `tweet`      | Message from Twitter               |
+| `tweet_dm`   | Direct Message from Twitter        |
 | `sms`        | SMS message                        |
 | `smooch`     | Message from Smooch                |
 | `facebook`   | Message from Facebook              |
 | `intercom`   | Message from Intercom              |
 | `call`       | Phone call                         |
 | `custom`     | [Custom message](#custom-channels) |
+
+<aside class="notice">
+In order to comply with <a href="https://developer.twitter.com/en/developer-terms/policy#f-be-a-good-partner-to-twitter">Twitter's API Terms & Conditions</a>, Twitter content is not distributed through Front API.<br>
+The fields <code>blurb</code>, <code>body</code>, <code>text</code> as well as recipients' <code>handle</code> are replaced by the string <code>[REDACTED]</code> for messages of type <code>tweet</code> or <code>tweet_dm</code> only.
+<br><br>
+For those messages, the payload includes the field <code>metadata.external_id</code> containing the ID of the original Tweet or Twitter Direct Message that can be used to fetch its content from the Twitter API directly.
+</aside>
 
 ### Opening a message in Front
 

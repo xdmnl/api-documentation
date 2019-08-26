@@ -12,6 +12,11 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-08-28 - Twitter API terms & condition compliance
+
+### Changed
+* [BREAKING] Redact Twitter content from the payload of messages of type `tweet` or `tweet_dm`. This includes (`blurb`, `text`, `body` and each recipients' `handle`).
+
 ## 2019-07-03 - Shifts Endpoints
 
 ### Added
