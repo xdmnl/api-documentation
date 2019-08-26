@@ -192,4 +192,4 @@ A topic is an external link attached to your conversation. It has a type, a name
 Front.setPanelWidth(400);
 ```
 
-The plugin initially appears with a width of 300px. However, you can request more space very easily:
+The plugin initially appears with a width of 270px. However, you can request more space very easily:
