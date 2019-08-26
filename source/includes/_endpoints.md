@@ -1031,7 +1031,7 @@ curl --include \
 
 > Response **204**
 
-Removes teammates from a team.  Selected teammates must currently have access to the inbox to be removed.  Teammates cannot be removed from private inboxes.
+Removes teammates from a team inbox.  Selected teammates must currently have access to the inbox to be removed.  Teammates cannot be removed from private inboxes.
 
 This request requires the `provisioning` scope in the JSON Web Token.
 
