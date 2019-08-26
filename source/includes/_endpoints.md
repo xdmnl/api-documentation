@@ -4099,7 +4099,7 @@ _links.related.parent_tag: `https://api2.frontapp.com/tags/tag_55c8c140` | strin
 _links.related.children | string (optional) | URL of the list of the tag's child tags 
 id | string | Unique identifier of the tag 
 name | string | Name of the tag 
-highlight | enum | Highlight color of the tag. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `teal`, `blue` or `purple`. 
+highlight | enum | Highlight color of the tag. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `light-blue`, `blue` or `purple`. 
 is_private | boolean | Whether or not the tag is individual 
 created_at | number (optional) | Timestamp of tag create creation 
 updated_at | number (optional) | Timestamp of the last tag update 
@@ -4228,7 +4228,7 @@ You can create a child tag for a specific tag by using the endpoint <code>/tags/
 Name | Type | Description
 -----|------|------------
 name | string | Name of the tag to create. 
-highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `teal`, `blue` or `purple`. 
+highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `light-blue`, `blue` or `purple`. 
 
 ## Get tag
 ```shell
@@ -4615,7 +4615,7 @@ tag_id | string | ID of the requested tag
 Name | Type | Description
 -----|------|------------
 name | string | Name of the tag to create. 
-highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `teal`, `blue` or `purple`. 
+highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `light-blue`, `blue` or `purple`. 
 
 # Topics
 > 
