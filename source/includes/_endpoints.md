@@ -4096,6 +4096,7 @@ is_private | boolean | Whether or not the tag is individual
 created_at | number (optional) | Timestamp of tag create creation 
 updated_at | number (optional) | Timestamp of the last tag update 
 
+
 A tag is a label that can be used to classify conversations.
 
 A tag has an optional `highlight` field which represents the color to highlight the tag with in Front.  
@@ -4109,7 +4110,7 @@ Supported values for highlight colors are:
 | ![#](https://placehold.it/15/ff901a/000000?text=+) | `orange`     |
 | ![#](https://placehold.it/15/facc25/000000?text=+) | `yellow`     |
 | ![#](https://placehold.it/15/14cc52/000000?text=+) | `green`      |
-| ![#](https://placehold.it/15/2bd5ff/000000?text=+) | `light-blue` |
+| ![#](https://placehold.it/15/2bd5ff/000000?text=+) | `teal`       |
 | ![#](https://placehold.it/15/367fee/000000?text=+) | `blue`       |
 | ![#](https://placehold.it/15/a238ff/000000?text=+) | `purple`     |
 
@@ -4219,8 +4220,8 @@ You can create a child tag for a specific tag by using the endpoint <code>/tags/
 
 Name | Type | Description
 -----|------|------------
-name | string | Name of the tag to create. 
-highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `blue`, `blue` or `purple`. 
+name | string | Name of the tag to create.
+highlight | enum (optional) | Color to highlight the tag with. Can be one of: `grey`, `pink`, `red`, `orange`, `yellow`, `green`, `teal`, `blue` or `purple`.
 
 ## Get tag
 ```shell
