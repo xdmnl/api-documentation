@@ -12,6 +12,11 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-08-28 - Export endpoints
+
+### Fixed
+* Generating export for a specific tag.
+
 ## 2019-08-28 - Twitter API terms & condition compliance
 
 ### Changed
