@@ -12,6 +12,14 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-09-17 - Resource IDs in custom plugin API.
+
+### Changed
+* Added the conversation fields `assignee_id`, `follower_ids`, `inbox_ids`, `tag_ids` containing the IDs of related resources.
+
+### Deprecated
+* Deprecate conversation fields `inboxes`, `followers`, `assignee` and `tags` containing the alias of related resources. Use equivalent `_id` fields instead.
+
 ## 2019-09-09 - Export endpoints
 
 ### Fixed
