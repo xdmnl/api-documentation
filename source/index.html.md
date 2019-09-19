@@ -67,7 +67,8 @@ Some endpoints also support multipart requests for file upload. For more details
 
 ### Rate limiting
 
-By default, the API is limited to 100 requests in 60 seconds. If you need more, please <a href='mailto:api@frontapp.com'>contact us</a>.
+By default, the API is limited to 100 requests in 60 seconds. If you need to increase your API rate limit, your team admins can upgrade your access  by purchasing the "Raise API limit" add-on via your Settings > Billing page.
+
 Every response will contains three headers related to the rate-limiting:
 
 > Example of a response to a request exceeding the rate limit. The client should wait 20s before resending the request.
