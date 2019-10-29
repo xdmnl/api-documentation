@@ -1267,10 +1267,16 @@ curl --include \
 Creates a channel linked to the requested inbox.
 
 <aside class="notice">
-As of today, you can only create a <a href="#custom-channels">custom channel</a> with the API.
+As of today, you can create either a <a href="#custom-channels">custom channel</a> or a SMTP channel with the API.
 </aside>
 
-`reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
+For `smtp` type channels, we will create an unvalidated SMTP channel.
+
+* In the response body, `address` is the **forwarding address**. To complete the SMTP validation process, [add the forwarding address to your email provider's settings](https://help.frontapp.com/t/632v5z/switch-from-gmailo365-to-smtp-forwarding).
+
+For `custom` type channels:
+
+* `reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
 
 ### HTTP Request
 
@@ -1289,7 +1295,8 @@ Name | Type | Description
 -----|------|------------
 name | string (optional) | Name of the channel. 
 type | enum | Type of the channel. 
-settings | object |  
+send_as | string (optional) | Required for only for `smtp` channels. Address of your SMTP mailbox. 
+settings | object (optional) | Required only for `custom` channels. 
 settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
 settings.reply_mode | enum (optional) | How the channel can be used to reply to a message. 
 settings.compose_mode | enum (optional) | Grants ability to compose new messages from this channel (`normal`) or prevents composing new messages (`unsupported`). Can be one of: `normal` or `unsupported`. (Default: `unsupported`) 

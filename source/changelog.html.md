@@ -12,6 +12,11 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-10-29 - Create SMTP channel.
+
+### Changed
+* Added the ability to create an unvalidated SMTP channel via `POST /inboxes/{inbox_id}/channels`
+
 ## 2019-09-17 - Resource IDs in custom plugin API.
 
 ### Changed
