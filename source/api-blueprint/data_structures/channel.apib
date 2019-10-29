@@ -24,7 +24,7 @@
 
 ## Channel settings
 
-+ settings (object, optional) - Required only for `custom` channels.
++ settings (object, required)
   + webhook_url: `http://example.com` (string, optional) - `custom` type only. URL to which will be sent the replies of a custom message.
   + reply_mode: `unsupported` (enum, optional) - How the channel can be used to reply to a message.
   + compose_mode: `normal` (enum, optional) - Grants ability to compose new messages from this channel (`normal`) or prevents composing new messages (`unsupported`). Can be one of: `normal` or `unsupported`. (Default: `unsupported`)
@@ -36,16 +36,13 @@
 + type (enum[string], required) - Type of the channel.
     + Members
         + `custom`
-        + `smtp`
-+ send_as (string, optional) - Required for only for `smtp` channels. Address of your SMTP mailbox.
-
 + Include Channel settings
 
 ## Channel created
 
 + id: `cha_55c8c149` (string, required) - Unique identifier for the channel.
 + Include Channel to create
-+ address: `dw0a0b7aeg36cb56` - Address receiving the messages. Is the forwarding address for SMTP channels.
++ address: `dw0a0b7aeg36cb56` - Address receiving the messages.
 + sendAs: `dw0a0b7aeg36cb56` - Address which appears as the sender for messages sent from Front.
 + Include Channel settings
 
