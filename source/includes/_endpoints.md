@@ -1270,7 +1270,7 @@ Creates a channel linked to the requested inbox.
 As of today, you can create either a <a href="#custom-channels">custom channel</a> or a SMTP channel with the API.
 </aside>
 
-For `smtp` type channels, we will create an unvalidated SMTP channel.
+For `smtp` type channels, we will create an **unvalidated** SMTP channel.
 
 * In the response body returned, `address` is the **forwarding address**.
 
