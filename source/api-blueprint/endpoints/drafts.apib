@@ -1,6 +1,6 @@
 ## Drafts [/drafts]
 
-A draft is a message resource which has not been sent to the recipient. 
+A draft is a message which has not been sent to the recipient. 
 
 Drafts can be created as a new conversation, or as a reply to an existing conversation.
 
@@ -31,7 +31,7 @@ Retrieve a list of drafts in the conversation.
 + Response 200 (application/json)
   + Attributes (array[Draft response])
 
-### Create a new draft as a conversation [POST /channels/{channel_id}/drafts]
+### Creating a new draft as a new conversation [POST /channels/{channel_id}/drafts]
 
 Creates a draft message which is the first message of a new conversation.
 
@@ -49,7 +49,7 @@ If you want to create a new draft with attached files, please check [how to send
 
 ### Create a new draft as a reply [POST /conversations/{conversation_id}/drafts]
 
-Creates a new draft as a reply to a conversation.
+Creates a new draft as a reply to the **last message in the conversation**.
 
 If you want to create a new draft reply with attached files, please check [how to send multipart request](#send-multipart-request). 
 

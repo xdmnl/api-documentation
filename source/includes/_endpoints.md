@@ -2508,7 +2508,7 @@ body | string | Body of the draft
 text | string (optional) | Text version of the body for email messages 
 attachments | array | List of files attached to the draft 
 
-A draft is a message resource which has not been sent to the recipient.
+A draft is a message which has not been sent to the recipient.
 
 Drafts can be created as a new conversation, or as a reply to an existing conversation.
 
@@ -2612,7 +2612,7 @@ Name | Type | Description
 -----|------|------------
 conversation_id | string | Id of the conversation for which to fetch drafts from
 
-## Create a new draft as a conversation
+## Creating a new draft as a new conversation
 ```shell
 
 curl --include \
@@ -2812,7 +2812,7 @@ curl --include \
   ]
 }
 ```
-Creates a new draft as a reply to a conversation.
+Creates a new draft as a reply to the **last message in the conversation**.
 
 If you want to create a new draft reply with attached files, please check [how to send multipart request](#send-multipart-request).
 
@@ -3016,6 +3016,7 @@ type | enum | Type of the message
 is_inbound | boolean | Whether or not the message has been received or sent 
 is_draft | boolean | Whether or not the message is a draft 
 error_type | string (optional) | Type of the error when the draft failed to be sent 
+version | string (optional) | The current version of the message in Front 
 created_at | number | Date at which the message as been sent or received 
 blurb | string | Preview of the message body 
 author | Teammate (optional) | In case of a message sent from Front by a teammate, it will include the teammate who sent it 
