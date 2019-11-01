@@ -2840,7 +2840,7 @@ conversation_id | string | Id of the conversation to create a reply as a draft
 
 Name | Type | Description
 -----|------|------------
-channel_id | string | ID, or address of the channel from which to modify the draft 
+channel_id | string | ID, or address of the channel from which the draft will be sent 
 author_id | string | ID of the teammate on behalf of whom the draft will be created 
 to | array (optional) | List of recipient handles who will receive the message once the draft is sent 
 cc | array (optional) | List of recipient handles who will receive a copy of the message once the draft is sent 
@@ -2959,7 +2959,7 @@ draft_id | string | ID of the draft to edit
 Name | Type | Description
 -----|------|------------
 version | string | Version of the draft 
-channel_id | string | ID, or address of the channel from which to modify the draft 
+channel_id | string | ID, or address of the channel from which the draft will be sent 
 author_id | string | ID of the teammate on behalf of whom the draft will be created 
 to | array (optional) | List of recipient handles who will receive the message once the draft is sent 
 cc | array (optional) | List of recipient handles who will receive a copy of the message once the draft is sent 
