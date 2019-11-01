@@ -1,0 +1,47 @@
+## Draft response
+
+<!-- include(../includes/links_attribute.apib) -->
+    + self: `https://api2.frontapp.com/messages/msg_55c8c149` (string, required) - URL of the draft message
+    + related (object, required)
+        + conversation: `https://api2.frontapp.com/conversations/cnv_55c8c149` (string, required) - URL of the parent conversation
+        + message_replied_to: `https://api2.frontapp.com/messages/msg_1ab23cd4` (string, optional) - URL of the draft which have been replied to
++ id: `msg_55c8c149` (string, required) - Unique identifier of the draft 
++ type (enum[string], required) - Type of the draft
+    + Members
+        + `email`
+        + `tweet`
+        + `sms`
+        + `smooch`
+        + `facebook`
+        + `intercom`
+        + `truly-call`
+        + `custom`
++ is_draft: `true` (boolean, required) - Whether or not the message is a draft
++ version: `df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe` - Version of the draft
++ created_at: `1453770984.123` (number, required) - Date at which the draft has been created
++ blurb: `Anything less than immortality is a...` (string, required) - Preview of the drafted message body
++ author (Teammate, optional) -Teammate on behalf the draft is created by
++ recipients (array[Recipient], required) - List of the draft message recipients
++ body: `Anything less than immortality is a complete waste of time.` (string, required) - Body of the draft
++ text: `Anything less than immortality is a complete waste of time.` (string, optional) - Text version of the body for email messages
++ attachments (array[Attachment], required) - List of files attached to the draft
+
+## Outbound draft
++ author_id: `alt:email:leela@planet-express.com` (string, required) - ID of the teammate on behalf of whom the draft will be created 
++ to: `calculon@momsbot.com` (array[string], optional) - List of recipient handles who will receive the message once the draft is sent
++ cc (array[string], optional) - List of recipient handles who will receive a copy of the message once the draft is sent
++ bcc (array[string], optional) - List of the recipient handles who will receive a blind copy of the message once the draft is sent
++ subject (string, optional) - Subject of the draft.
++ body: `Why is Zoidberg the only one still alone?` (string, required) - Body of the draft.
++ attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
+
+## Outbound draft reply
++ `channel_id`: `cha_55c8c149` (string, required) - ID, or address of the channel from which to modify the draft
++ Include Outbound draft
+
+## Edit draft
++ version: `df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe` (string, required) - Version of the draft
++ Include Outbound draft reply
+
+## Delete draft
++ version: `df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe` (string, required) - Version of the draft

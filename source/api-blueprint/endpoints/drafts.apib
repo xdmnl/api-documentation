@@ -1,0 +1,101 @@
+## Drafts [/drafts]
+
+A draft is a message resource which has not been sent to the recipient. 
+
+Drafts can be created as a new conversation, or as a reply to an existing conversation.
+
+### Notes on Versioning
+
+For **editing** and **deleting** drafts, a `version` value must be included in the request body in order to safely update the draft within Front.
+
+The **version** value is a token which indicates that the content of the request is in context with a state of the draft at a point in time. 
+
+If the `version` value of the draft sent in the request and the `version` of the draft in Front do not match, then an HTTP error response code of **409/Conflict** will be returned.
+This is a response with indication that a new version of the draft is available.
+
+To obtain the latest version of a draft in a conversation, perform a `GET /conversations/{conversation_id}/drafts` request to retrieve the list of current drafts associated 
+with a conversation.
+
++ Attributes (Draft response)
+
+### List drafts within a conversation [GET /conversations/{conversation_id}/drafts]
+
+Retrieve a list of drafts in the conversation.
+
++ Parameters
+  + conversation_id (string, required) - Id of the conversation for which to fetch drafts from
+
++ Request
+    <!-- include(../includes/request_header.apib) -->
+
++ Response 200 (application/json)
+  + Attributes (array[Draft response])
+
+### Create a new draft as a conversation [POST /channels/{channel_id}/drafts]
+
+Creates a draft message which is the first message of a new conversation.
+
+If you want to create a new draft with attached files, please check [how to send multipart request](#send-multipart-request). 
+
++ Parameters
+  + channel_id (string, required) - Id, or address of the channel from which to create the draft
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Outbound draft)
+
++ Response 200 (application/json)
+  + Attributes (Draft response)
+
+### Create a new draft as a reply [POST /conversations/{conversation_id}/drafts]
+
+Creates a new draft as a reply to a conversation.
+
+If you want to create a new draft reply with attached files, please check [how to send multipart request](#send-multipart-request). 
+
++ Parameters
+  + conversation_id (string, required) - Id of the conversation to create a reply as a draft
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Outbound draft reply)
+
++ Response 200 (application/json)
+  + Attributes (Draft response)
+
+### Edit an existing draft [PATCH /drafts/{draft_id}]
+
+Edits an existing draft. The `version` property is required to be sent within the request. 
+
+The **version** value belonging to the message is maintained in Front to track the most recent content of the message. 
+
+See [Notes on Versioning](#notes-on-versioning) for more information on the `version` value.
+
++ Parameters
+  + draft_id (string, required) - ID of the draft to edit
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Edit draft)
+
++ Response 200 (application/json)
+  + Attributes (Draft response)
+
+
+### Delete a draft [DELETE /drafts/{draft_id}]
+
+Deletes a draft message.
+
+A **version** is required to be sent with the request, and must match the version of the draft in Front. 
+
+See [Notes on Versioning](#notes-on-versioning) for more information on the `version` value.
+
++ Parameters
+
+  + draft_id (string, required) - Id of the message draft to Delete
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Delete draft)
+
++ Response 204
