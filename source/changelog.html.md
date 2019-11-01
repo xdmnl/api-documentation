@@ -21,6 +21,11 @@ The changelog is the history of updates released. Front is committed in not brea
 * `PATCH /drafts/{draft_id}` - Edits a draft
 * `DELETE /drafts/{draft_id}` - Deletes a draft
 
+## 2019-10-29 - Create SMTP channel.
+
+### Changed
+* Added the ability to create an unvalidated SMTP channel via `POST /inboxes/{inbox_id}/channels`
+
 ## 2019-09-17 - Resource IDs in custom plugin API.
 
 ### Changed
