@@ -2496,6 +2496,537 @@ Name | Type | Description
 name | string (optional) | The name of the custom field. This name will be used in the custom field attribute key of the contact. 
 description | string (optional) | The description of the custom field. 
 
+# Drafts
+> 
+Name | Type | Description
+-----|------|------------
+_links | object | See [Response body Structure - Links](#links) 
+_links.self | string | URL of the message 
+_links.related | object |  
+_links.related.conversation | string | URL of the parent conversation 
+_links.related.message_replied_to | string (optional) | URL of the message which have been replied to 
+id | string | Unique identifier of the message 
+type | enum | Type of the message 
+is_inbound | boolean | Whether or not the message has been received or sent 
+is_draft | boolean | Whether or not the message is a draft 
+error_type | string (optional) | Type of the error when the draft failed to be sent 
+version | string (optional) | The current version of the message in Front 
+created_at | number | Date at which the message as been sent or received 
+blurb | string | Preview of the message body 
+author | Teammate (optional) | In case of a message sent from Front by a teammate, it will include the teammate who sent it 
+recipients | array | List of the message recipients 
+body | string | Body of the message 
+text | string (optional) | Text version of the body for email messages 
+attachments | array | List of files attached to the message 
+metadata | object (optional) | Optional metadata about the message 
+metadata.intercom_url | string (optional) | For `intercom` messages only. URL of the Intercom conversation the message is comming from. 
+metadata.duration | number (optional) | For `truly-call` messages only. Length of the call in seconds. 
+metadata.have_been_answered | boolean (optional) | For `truly-call` messages only. Whether or not the call have been answered. 
+metadata.twitter_url | string (optional) | For `tweet` messages only. URL of the tweet. 
+metadata.is_retweet | boolean (optional) | For `tweet` messages only. Whether or not the tweet is a retweet. 
+metadata.have_been_retweeted | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been retweeted. 
+metadata.have_been_favorited | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been favorited. 
+metadata.thread_ref | string (optional) | For `custom` messages only. Custom reference which is used to thread messages. 
+metadata.headers | object (optional) | For `custom` messages only. Custom object holding internal information. 
+
+A draft is a message which has not been sent to the recipient.
+
+Drafts can be created as a new conversation, or as a reply to an existing conversation.
+
+### Notes on Versioning
+
+For **editing** and **deleting** drafts, a `version` value must be included in the request body in order to safely update the draft within Front.
+
+The **version** value is a token which indicates that the content of the request is in context with a state of the draft at a point in time.
+
+If the `version` value of the draft sent in the request and the `version` of the draft in Front do not match, then an HTTP error response code of **409/Conflict** will be returned.
+This is a response with indication that a new version of the draft is available.
+
+To obtain the latest version of a draft in a conversation, using the `message_id`, perform a `GET /messages/{message_id}` request to retrieve information relating to the message. 
+The `version` will be included if it is a draft.
+
+## List drafts within a conversation
+```shell
+
+curl --include \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/drafts'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+[
+  {
+    "_links": {
+      "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+      "related": {
+        "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+        "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+      }
+    },
+    "id": "msg_55c8c149",
+    "type": "email",
+    "is_inbound": true,
+    "is_draft": false,
+    "created_at": 1453770984.123,
+    "blurb": "Anything less than immortality is a...",
+    "author": {
+      "_links": {
+        "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+        "related": {
+          "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+          "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+        }
+      },
+      "id": "tea_55c8c149",
+      "email": "leela@planet-express.com",
+      "username": "leela",
+      "first_name": "Leela",
+      "last_name": "Turanga",
+      "is_admin": true,
+      "is_available": true,
+      "is_blocked": false
+    },
+    "recipients": [
+      {
+        "_links": {
+          "related": {
+            "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
+          }
+        },
+        "handle": "calculon@momsbot.com",
+        "role": "to"
+      }
+    ],
+    "body": "Anything less than immortality is a complete waste of time.",
+    "text": "Anything less than immortality is a complete waste of time.",
+    "attachments": [
+      {
+        "filename": "attachment.jpg",
+        "url": "https://api2.frontapp.com/download/fil_55c8c149",
+        "content_type": "image/jpeg",
+        "size": 10000,
+        "metadata": {
+          "is_inline": true,
+          "cid": "123456789"
+        }
+      }
+    ],
+    "metadata": {}
+  }
+]
+```
+Retrieve a list of drafts in the conversation.
+
+### HTTP Request
+
+`GET https://api2.frontapp.com/conversations/{conversation_id}/drafts`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+conversation_id | string | Id of the conversation for which to fetch drafts from
+
+## Creating a new draft as a new conversation
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"author_id\": \"alt:email:leela@planet-express.com\",
+  \"to\": [
+    \"calculon@momsbot.com\"
+  ],
+  \"cc\": [],
+  \"bcc\": [],
+  \"body\": \"Why is Zoidberg the only one still alone?\",
+  \"attachments\": []
+}" \
+'https://api2.frontapp.com/channels/${CHANNEL_ID}/drafts'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+    "related": {
+      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+    }
+  },
+  "id": "msg_55c8c149",
+  "type": "email",
+  "is_inbound": true,
+  "is_draft": false,
+  "created_at": 1453770984.123,
+  "blurb": "Anything less than immortality is a...",
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true,
+    "is_blocked": false
+  },
+  "recipients": [
+    {
+      "_links": {
+        "related": {
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
+        }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
+    }
+  ],
+  "body": "Anything less than immortality is a complete waste of time.",
+  "text": "Anything less than immortality is a complete waste of time.",
+  "attachments": [
+    {
+      "filename": "attachment.jpg",
+      "url": "https://api2.frontapp.com/download/fil_55c8c149",
+      "content_type": "image/jpeg",
+      "size": 10000,
+      "metadata": {
+        "is_inline": true,
+        "cid": "123456789"
+      }
+    }
+  ],
+  "metadata": {}
+}
+```
+Creates a draft message which is the first message of a new conversation.
+
+If you want to create a new draft with attached files, please check [how to send multipart request](#send-multipart-request).
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/channels/{channel_id}/drafts`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+channel_id | string | ID, or address of the channel from which to create the draft
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+author_id | string | ID of the teammate on behalf of whom the draft will be created 
+to | array (optional) | List of recipient handles who will receive the message once the draft is sent 
+cc | array (optional) | List of recipient handles who will receive a copy of the message once the draft is sent 
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of the message once the draft is sent 
+subject | string (optional) | Subject of the draft. 
+body | string | Body of the draft. 
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
+
+## Create a new draft as a reply
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"channel_id\": \"cha_55c8c149\",
+  \"author_id\": \"alt:email:leela@planet-express.com\",
+  \"to\": [
+    \"calculon@momsbot.com\"
+  ],
+  \"cc\": [],
+  \"bcc\": [],
+  \"body\": \"Why is Zoidberg the only one still alone?\",
+  \"attachments\": []
+}" \
+'https://api2.frontapp.com/conversations/${CONVERSATION_ID}/drafts'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+    "related": {
+      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+    }
+  },
+  "id": "msg_55c8c149",
+  "type": "email",
+  "is_inbound": true,
+  "is_draft": false,
+  "created_at": 1453770984.123,
+  "blurb": "Anything less than immortality is a...",
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true,
+    "is_blocked": false
+  },
+  "recipients": [
+    {
+      "_links": {
+        "related": {
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
+        }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
+    }
+  ],
+  "body": "Anything less than immortality is a complete waste of time.",
+  "text": "Anything less than immortality is a complete waste of time.",
+  "attachments": [
+    {
+      "filename": "attachment.jpg",
+      "url": "https://api2.frontapp.com/download/fil_55c8c149",
+      "content_type": "image/jpeg",
+      "size": 10000,
+      "metadata": {
+        "is_inline": true,
+        "cid": "123456789"
+      }
+    }
+  ],
+  "metadata": {}
+}
+```
+Creates a new draft as a reply to the **last message in the conversation**.
+
+If you want to create a new draft reply with attached files, please check [how to send multipart request](#send-multipart-request).
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/conversations/{conversation_id}/drafts`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+conversation_id | string | ID of the conversation to create a reply as a draft
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+channel_id | string | ID, or address of the channel from which the draft will be sent 
+author_id | string | ID of the teammate on behalf of whom the draft will be created 
+to | array (optional) | List of recipient handles who will receive the message once the draft is sent 
+cc | array (optional) | List of recipient handles who will receive a copy of the message once the draft is sent 
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of the message once the draft is sent 
+subject | string (optional) | Subject of the draft. 
+body | string | Body of the draft. 
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
+
+## Edit an existing draft
+```shell
+
+curl --include \
+     --request PATCH \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"version\": \"df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe\",
+  \"channel_id\": \"cha_55c8c149\",
+  \"author_id\": \"alt:email:leela@planet-express.com\",
+  \"to\": [
+    \"calculon@momsbot.com\"
+  ],
+  \"cc\": [],
+  \"bcc\": [],
+  \"body\": \"Why is Zoidberg the only one still alone?\",
+  \"attachments\": []
+}" \
+'https://api2.frontapp.com/drafts/${DRAFT_ID}'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "_links": {
+    "self": "https://api2.frontapp.com/messages/msg_55c8c149",
+    "related": {
+      "conversation": "https://api2.frontapp.com/conversations/cnv_55c8c149",
+      "message_replied_to": "https://api2.frontapp.com/messages/msg_1ab23cd4"
+    }
+  },
+  "id": "msg_55c8c149",
+  "type": "email",
+  "is_inbound": true,
+  "is_draft": false,
+  "created_at": 1453770984.123,
+  "blurb": "Anything less than immortality is a...",
+  "author": {
+    "_links": {
+      "self": "https://api2.frontapp.com/teammates/tea_55c8c149",
+      "related": {
+        "inboxes": "https://api2.frontapp.com/teammates/tea_55c8c149/inboxes",
+        "conversations": "https://api2.frontapp.com/teammates/tea_55c8c149/conversations"
+      }
+    },
+    "id": "tea_55c8c149",
+    "email": "leela@planet-express.com",
+    "username": "leela",
+    "first_name": "Leela",
+    "last_name": "Turanga",
+    "is_admin": true,
+    "is_available": true,
+    "is_blocked": false
+  },
+  "recipients": [
+    {
+      "_links": {
+        "related": {
+          "contact": "https://api2.frontapp.com/contacts/crd_55c8c149"
+        }
+      },
+      "handle": "calculon@momsbot.com",
+      "role": "to"
+    }
+  ],
+  "body": "Anything less than immortality is a complete waste of time.",
+  "text": "Anything less than immortality is a complete waste of time.",
+  "attachments": [
+    {
+      "filename": "attachment.jpg",
+      "url": "https://api2.frontapp.com/download/fil_55c8c149",
+      "content_type": "image/jpeg",
+      "size": 10000,
+      "metadata": {
+        "is_inline": true,
+        "cid": "123456789"
+      }
+    }
+  ],
+  "metadata": {}
+}
+```
+Edits an existing draft. The `version` property is required to be sent within the request.
+
+The **version** value belonging to the message is maintained in Front to track the most recent content of the message.
+
+See [Notes on Versioning](#notes-on-versioning) for more information on the `version` value.
+
+### HTTP Request
+
+`PATCH https://api2.frontapp.com/drafts/{draft_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+draft_id | string | ID of the draft to edit
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+version | string | Version of the draft 
+channel_id | string | ID, or address of the channel from which the draft will be sent 
+author_id | string | ID of the teammate on behalf of whom the draft will be created 
+to | array (optional) | List of recipient handles who will receive the message once the draft is sent 
+cc | array (optional) | List of recipient handles who will receive a copy of the message once the draft is sent 
+bcc | array (optional) | List of the recipient handles who will receive a blind copy of the message once the draft is sent 
+subject | string (optional) | Subject of the draft. 
+body | string | Body of the draft. 
+attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
+
+## Delete a draft
+```shell
+
+curl --include \
+     --request DELETE \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"version\": \"df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe\"
+}" \
+'https://api2.frontapp.com/drafts/${DRAFT_ID}'
+```
+
+```node
+
+```
+
+> Response **204**
+
+Deletes a draft message.
+
+A **version** is required to be sent with the request, and must match the version of the draft in Front.
+
+See [Notes on Versioning](#notes-on-versioning) for more information on the `version` value.
+
+### HTTP Request
+
+`DELETE https://api2.frontapp.com/drafts/{draft_id}`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+draft_id | string | Id of the message draft to Delete
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+version | string | Version of the draft 
+
 # Messages
 > 
 Name | Type | Description
@@ -2510,6 +3041,7 @@ type | enum | Type of the message
 is_inbound | boolean | Whether or not the message has been received or sent 
 is_draft | boolean | Whether or not the message is a draft 
 error_type | string (optional) | Type of the error when the draft failed to be sent 
+version | string (optional) | The current version of the message in Front 
 created_at | number | Date at which the message as been sent or received 
 blurb | string | Preview of the message body 
 author | Teammate (optional) | In case of a message sent from Front by a teammate, it will include the teammate who sent it 

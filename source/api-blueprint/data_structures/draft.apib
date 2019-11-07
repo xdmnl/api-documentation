@@ -1,0 +1,19 @@
+## Draft request
++ author_id: `alt:email:leela@planet-express.com` (string, required) - ID of the teammate on behalf of whom the draft will be created 
++ to: `calculon@momsbot.com` (array[string], optional) - List of recipient handles who will receive the message once the draft is sent
++ cc (array[string], optional) - List of recipient handles who will receive a copy of the message once the draft is sent
++ bcc (array[string], optional) - List of the recipient handles who will receive a blind copy of the message once the draft is sent
++ subject (string, optional) - Subject of the draft.
++ body: `Why is Zoidberg the only one still alone?` (string, required) - Body of the draft.
++ attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
+
+## Draft reply
++ `channel_id`: `cha_55c8c149` (string, required) - ID, or address of the channel from which the draft will be sent
++ Include Draft request
+
+## Edit draft
++ version: `df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe` (string, required) - Version of the draft
++ Include Draft reply
+
+## Delete draft
++ version: `df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe` (string, required) - Version of the draft

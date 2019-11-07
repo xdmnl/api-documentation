@@ -12,6 +12,15 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-11-01 - Drafts API
+
+### Added
+* `GET /conversations/{conversation_id}/drafts` - Listing drafts within a conversation
+* `POST /channels/{channel_id}/drafts` - Creating a draft as a 
+* `POST /conversations/{conversation_id}/drafts/{draft_id}` - Create a draft as a reply to a conversation
+* `PATCH /drafts/{draft_id}` - Edits a draft
+* `DELETE /drafts/{draft_id}` - Deletes a draft
+
 ## 2019-10-29 - Create SMTP channel.
 
 ### Changed
