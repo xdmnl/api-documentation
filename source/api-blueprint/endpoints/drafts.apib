@@ -16,7 +16,7 @@ This is a response with indication that a new version of the draft is available.
 To obtain the latest version of a draft in a conversation, using the `message_id`, perform a `GET /messages/{message_id}` request to retrieve information relating to the message. 
 The `version` will be included if it is a draft.
 
-+ Attributes (Draft response)
++ Attributes (Message)
 
 ### List drafts within a conversation [GET /conversations/{conversation_id}/drafts]
 
@@ -29,7 +29,7 @@ Retrieve a list of drafts in the conversation.
     <!-- include(../includes/request_header.apib) -->
 
 + Response 200 (application/json)
-  + Attributes (array[Draft response])
+  + Attributes (array[Message])
 
 ### Creating a new draft as a new conversation [POST /channels/{channel_id}/drafts]
 
@@ -45,7 +45,7 @@ If you want to create a new draft with attached files, please check [how to send
     + Attributes (Draft request)
 
 + Response 200 (application/json)
-  + Attributes (Draft response)
+  + Attributes (Message)
 
 ### Create a new draft as a reply [POST /conversations/{conversation_id}/drafts]
 
@@ -61,7 +61,7 @@ If you want to create a new draft reply with attached files, please check [how t
     + Attributes (Draft reply)
 
 + Response 200 (application/json)
-  + Attributes (Draft response)
+  + Attributes (Message)
 
 ### Edit an existing draft [PATCH /drafts/{draft_id}]
 
@@ -79,7 +79,7 @@ See [Notes on Versioning](#notes-on-versioning) for more information on the `ver
     + Attributes (Edit draft)
 
 + Response 200 (application/json)
-  + Attributes (Draft response)
+  + Attributes (Message)
 
 
 ### Delete a draft [DELETE /drafts/{draft_id}]

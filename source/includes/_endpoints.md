@@ -2501,21 +2501,33 @@ description | string (optional) | The description of the custom field.
 Name | Type | Description
 -----|------|------------
 _links | object | See [Response body Structure - Links](#links) 
-_links.self | string | URL of the draft message 
+_links.self | string | URL of the message 
 _links.related | object |  
 _links.related.conversation | string | URL of the parent conversation 
-_links.related.message_replied_to | string (optional) | URL of the draft which have been replied to 
-id | string | Unique identifier of the draft 
-type | enum | Type of the draft 
+_links.related.message_replied_to | string (optional) | URL of the message which have been replied to 
+id | string | Unique identifier of the message 
+type | enum | Type of the message 
+is_inbound | boolean | Whether or not the message has been received or sent 
 is_draft | boolean | Whether or not the message is a draft 
-version | string (optional) | Version of the draft 
-created_at | number | Date at which the draft has been created 
-blurb | string | Preview of the drafted message body 
-author | Teammate (optional) | Teammate on behalf the draft is created by 
-recipients | array | List of the draft message recipients 
-body | string | Body of the draft 
+error_type | string (optional) | Type of the error when the draft failed to be sent 
+version | string (optional) | The current version of the message in Front 
+created_at | number | Date at which the message as been sent or received 
+blurb | string | Preview of the message body 
+author | Teammate (optional) | In case of a message sent from Front by a teammate, it will include the teammate who sent it 
+recipients | array | List of the message recipients 
+body | string | Body of the message 
 text | string (optional) | Text version of the body for email messages 
-attachments | array | List of files attached to the draft 
+attachments | array | List of files attached to the message 
+metadata | object (optional) | Optional metadata about the message 
+metadata.intercom_url | string (optional) | For `intercom` messages only. URL of the Intercom conversation the message is comming from. 
+metadata.duration | number (optional) | For `truly-call` messages only. Length of the call in seconds. 
+metadata.have_been_answered | boolean (optional) | For `truly-call` messages only. Whether or not the call have been answered. 
+metadata.twitter_url | string (optional) | For `tweet` messages only. URL of the tweet. 
+metadata.is_retweet | boolean (optional) | For `tweet` messages only. Whether or not the tweet is a retweet. 
+metadata.have_been_retweeted | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been retweeted. 
+metadata.have_been_favorited | boolean (optional) | For `tweet` messages only. Whether or not the tweet have been favorited. 
+metadata.thread_ref | string (optional) | For `custom` messages only. Custom reference which is used to thread messages. 
+metadata.headers | object (optional) | For `custom` messages only. Custom object holding internal information. 
 
 A draft is a message which has not been sent to the recipient.
 
@@ -2560,8 +2572,8 @@ curl --include \
     },
     "id": "msg_55c8c149",
     "type": "email",
-    "is_draft": true,
-    "version": "df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe",
+    "is_inbound": true,
+    "is_draft": false,
     "created_at": 1453770984.123,
     "blurb": "Anything less than immortality is a...",
     "author": {
@@ -2605,7 +2617,8 @@ curl --include \
           "cid": "123456789"
         }
       }
-    ]
+    ],
+    "metadata": {}
   }
 ]
 ```
@@ -2659,8 +2672,8 @@ curl --include \
   },
   "id": "msg_55c8c149",
   "type": "email",
-  "is_draft": true,
-  "version": "df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe",
+  "is_inbound": true,
+  "is_draft": false,
   "created_at": 1453770984.123,
   "blurb": "Anything less than immortality is a...",
   "author": {
@@ -2704,7 +2717,8 @@ curl --include \
         "cid": "123456789"
       }
     }
-  ]
+  ],
+  "metadata": {}
 }
 ```
 Creates a draft message which is the first message of a new conversation.
@@ -2773,8 +2787,8 @@ curl --include \
   },
   "id": "msg_55c8c149",
   "type": "email",
-  "is_draft": true,
-  "version": "df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe",
+  "is_inbound": true,
+  "is_draft": false,
   "created_at": 1453770984.123,
   "blurb": "Anything less than immortality is a...",
   "author": {
@@ -2818,7 +2832,8 @@ curl --include \
         "cid": "123456789"
       }
     }
-  ]
+  ],
+  "metadata": {}
 }
 ```
 Creates a new draft as a reply to the **last message in the conversation**.
@@ -2889,8 +2904,8 @@ curl --include \
   },
   "id": "msg_55c8c149",
   "type": "email",
-  "is_draft": true,
-  "version": "df68aca1e0521c4e47afd7014ed2a701-1-1572387985194-26fe",
+  "is_inbound": true,
+  "is_draft": false,
   "created_at": 1453770984.123,
   "blurb": "Anything less than immortality is a...",
   "author": {
@@ -2934,7 +2949,8 @@ curl --include \
         "cid": "123456789"
       }
     }
-  ]
+  ],
+  "metadata": {}
 }
 ```
 Edits an existing draft. The `version` property is required to be sent within the request.
