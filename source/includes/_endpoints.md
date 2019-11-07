@@ -2530,8 +2530,8 @@ The **version** value is a token which indicates that the content of the request
 If the `version` value of the draft sent in the request and the `version` of the draft in Front do not match, then an HTTP error response code of **409/Conflict** will be returned.
 This is a response with indication that a new version of the draft is available.
 
-To obtain the latest version of a draft in a conversation, perform a `GET /conversations/{conversation_id}/drafts` request to retrieve the list of current drafts associated 
-with a conversation.
+To obtain the latest version of a draft in a conversation, using the `message_id`, perform a `GET /messages/{message_id}` request to retrieve information relating to the message. 
+The `version` will be included if it is a draft.
 
 ## List drafts within a conversation
 ```shell
@@ -2719,7 +2719,7 @@ If you want to create a new draft with attached files, please check [how to send
 
 Name | Type | Description
 -----|------|------------
-channel_id | string | Id, or address of the channel from which to create the draft
+channel_id | string | ID, or address of the channel from which to create the draft
 
 ### Body
 
@@ -2833,7 +2833,7 @@ If you want to create a new draft reply with attached files, please check [how t
 
 Name | Type | Description
 -----|------|------------
-conversation_id | string | Id of the conversation to create a reply as a draft
+conversation_id | string | ID of the conversation to create a reply as a draft
 
 ### Body
 
