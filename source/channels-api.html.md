@@ -23,15 +23,15 @@ search: true
 
 A channel is a communication stream that can be connected to Front. The most common channel type is email, but Twitter DMs, Facebook Messenger, and SMS are other great examples of communication channels that teams can use to send and receive messages in Front.
 
-Many Front teams have their own systems they want to connect to Front as a channel. That system may be a call log product they built themselves, or maybe a live chat that simply isn’t integrated into Front yet. In either case, the team wants to integrate this channel into Front, and that’s where the Channels API comes in. 
+Many Front teams have their own systems they want to connect to Front as a channel. That system may be a call log product they built themselves, or maybe a live chat that simply isn’t integrated into Front yet. In either case, the team wants to integrate this channel into Front, and that’s where the Channels API comes in.
 
-With the Channels API, a team using Front or a partner of Front can build a new channel type that will display in the “Add a Channel” menu, along with the other channels that come out of the box with Front. Teams can then send and receive messages over that channel with all the collaboration, automation, and integration Front offers. 
+With the Channels API, a team using Front or a partner of Front can build a new channel type that will display in the “Add a Channel” menu, along with the other channels that come out of the box with Front. Teams can then send and receive messages over that channel with all the collaboration, automation, and integration Front offers.
 
 **Why is a channel useful?**
 
-The user experience in Front is all about team collaboration, automation, and streamlining workflows through context. Creating a channel in Front means this new communication stream will be empowered by Front with comments, assignments, rules, synchronized contacts, and plugins. 
+The user experience in Front is all about team collaboration, automation, and streamlining workflows through context. Creating a channel in Front means this new communication stream will be empowered by Front with comments, assignments, rules, synchronized contacts, and plugins.
 
-Take this example below, a user connected their Drift account and is immediately able to send and receive Drift messages without leaving Front as well as assign that conversation to a teammate or look up this contact in Salesforce. 
+Take this example below, a user connected their Drift account and is immediately able to send and receive Drift messages without leaving Front as well as assign that conversation to a teammate or look up this contact in Salesforce.
 
 ![Channel Example](channel-example.gif)
 
@@ -52,18 +52,18 @@ What does this mean for you? As the diagrams above illustrate, Front will send y
 |--------------|------------------------------------|------------------------------------|
 | `New Channel Authorization`<br> `POST https://webhook.company.com/[unique_webhook]`     | This endpoint will be hit when a user creates a new channel of your channel type.    | Authentication payload |
 | `Message Receive` <br> `POST https://webhook.company.com/[unique_webhook]`     | This endpoint will be hit when a message is sent on your channel from Front. | [Message Payload](https://dev.frontapp.com/#messages) |
-| `Channel Delete` <br> `DELETE https://webhook.company.com/[unique_webhook]`<br>[optional to implement]   | This endpoint will be hit when a user deletes a channel of your channel type. All functionality is complete in Front without you implementing this, but it is optional in case you want to keep your channel's data in sync.         | None. Just a delete request. 
+| `Channel Delete` <br> `DELETE https://webhook.company.com/[unique_webhook]`<br>[optional to implement]   | This endpoint will be hit when a user deletes a channel of your channel type. All functionality is complete in Front without you implementing this, but it is optional in case you want to keep your channel's data in sync.         | None. Just a delete request.
 
 ##Security
 Front will sign the messages sent to your webhook server to guarantee that the request originated from Front. It is imperative you validate the message signature before accepting it into your system.
 
-The requests made to your webhook server will include 2 headers: `X-Front-Signature` and `X-Front-Request-Timestamp`. First, check that the timestamp says the request was made recently, to prevent replay attacks. We recommend 5 minutes as the maximum time before rejecting a message. 
+The requests made to your webhook server will include 2 headers: `X-Front-Signature` and `X-Front-Request-Timestamp`. First, check that the timestamp says the request was made recently, to prevent replay attacks. We recommend 5 minutes as the maximum time before rejecting a message.
 
 1. Retrieve the `X-Front-Request-Timestamp` header on the HTTP request, and the body of the request.
 2. Concatenate the timestamp and the JSON stringified body of the request to form a string. Use a colon as the delimiter between the two elements.
 3. Using HMAC SHA256, hash the above string, using your Channel Type Secret Key as the key.
 
-This should match the `X-Front-Signature` header. **If it does not, you should not trust this message**. 
+This should match the `X-Front-Signature` header. **If it does not, you should not trust this message**.
 
 Here is some [sample code in Typescript](https://gist.github.com/kschiu/e12a3e6b7842ee676ca3f134a93b5953) for how to validate a message and generate a JSON Web Token.
 
@@ -72,7 +72,7 @@ Finally, your system needs to respond to Front within 7 seconds. After 7 seconds
 ## Getting Started
 In building a channel, you must first define the new channel type. When you’re ready, submit [this form](https://airtable.com/shrNsQye44FDJGbDE) and our team at Front will set that new channel type up for you.
 
-To first get your feet wet, we have a sample channel built for you. You can find a deeper walkthrough [here](/channel-sample.html), or work through the following high level steps. This will create a sample channel for your team at Front to see what having a new channel type is like. 
+To first get your feet wet, we have a sample channel built for you. You can find a deeper walkthrough [here](/channel-sample.html), or work through the following high level steps. This will create a sample channel for your team at Front to see what having a new channel type is like.
 
 1\. Fill out [the form](https://airtable.com/shrNsQye44FDJGbDE) for your sample channel. Because it's for a sample channel, your answers don't need to be too in-depth.
 
@@ -91,11 +91,11 @@ To first get your feet wet, we have a sample channel built for you. You can find
 ##FAQ
 **How does Front communicate which user sent the message to my system?**
 
- - The only information provided is the user’s contact in Front. Our recommendation is to either 1) define a mapping from Front contact to user in your system or 2) match the user’s Front contact to that in your system. If no match is present, a default should be assumed. 
+ - The only information provided is the user’s contact in Front. Our recommendation is to either 1) define a mapping from Front contact to user in your system or 2) match the user’s Front contact to that in your system. If no match is present, a default should be assumed.
 
 **I’ve built a great channel many customers of Front would want. How do I make it usable by all Front customers? How do I get it into the app directory?**
 
- - Exciting! Contact us through this form and we’ll work with you to offer this as a channel for all Front customers. 
+ - Exciting! Contact us through [this form](https://airtable.com/shrNsQye44FDJGbDE) and we’ll work with you to offer this as a channel for all Front customers.
 
 
 

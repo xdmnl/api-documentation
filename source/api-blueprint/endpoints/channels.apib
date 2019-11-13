@@ -2,7 +2,7 @@
 
 A channel is a resource which can send and receive messages.
 
-For information on building your own channel type integration, see the [Channels API offering](/channels-api.html) for more info. 
+For information on building your own channel type integration, see the [Channels API offering](/channels-api.html) for more info.
 
 Here is the list of existing channel types:
 
@@ -59,7 +59,7 @@ As of today, you can only create an SMTP channel with the API.
 </aside>
 
 For `smtp` type channels, we will create an **unvalidated** SMTP channel.
-* In the response body returned, `address` is the **forwarding address**. 
+* In the response body returned, `address` is the **forwarding address**.
 * To complete the SMTP validation process, [add the forwarding address to your email provider's settings](https://help.frontapp.com/t/632v5z/switch-from-gmailo365-to-smtp-forwarding).
 
 + Parameters
@@ -74,7 +74,7 @@ For `smtp` type channels, we will create an **unvalidated** SMTP channel.
 
 ### Receive Message [POST /channels/{channel_id}/inbound_messages]
 
-This endpoint is used in building your own channel type. See the [Channels API offering](http://localhost:4567/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
+This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
 
 + Parameters
     + channel_id (string, required) - The id of the channel this message is sent to
@@ -88,7 +88,7 @@ This endpoint is used in building your own channel type. See the [Channels API o
 
 ### Import Sent Message [POST /channels/{channel_id}/outbound_messages]
 
-This endpoint is used in building your own channel type. See the [Channels API offering](http://localhost:4567/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
+This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
 
 + Parameters
     + channel_id (string, required) - The id of the channel this message is sent to
