@@ -2,11 +2,13 @@
 title: Front Channel Sample
 
 toc_footers:
-  - <a href='/'>API reference</a>
   - <a href='https://frontapp.com/signup?affiliate=developers'>Create a developer account</a>
-  - <a href='plugin.html'>Plugin API documentation</a>
-  - <a href='chat.html'>Chat widget API documentation</a>
+  - <a href='/'>API reference</a>
+  - <a href='channels-api.html'>Channels API</a>
   - <a href='channel-sample.html'>Channel Sample</a>
+  - <a href='chat.html'>Chat widget API documentation</a>
+  - <a href='plugin.html'>Plugin API documentation</a>
+  - <a href='https://github.com/frontapp/frontapp.github.io/'>Plugin Sample</a>
   - <a href='changelog.html'>Changelog</a>
   - <a href='mailto:api@frontapp.com'>Contact us</a>
 
