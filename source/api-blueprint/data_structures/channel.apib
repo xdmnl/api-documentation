@@ -22,33 +22,46 @@
 + settings (object, required)
 + is_private: `false` (boolean, required) - Whether or not the channel is individual
 
-## Channel settings
-
-+ settings (object, optional) - **Required only for `custom` channels.**
-  + webhook_url: `http://example.com` (string, optional) - `custom` type only. URL to which will be sent the replies of a custom message.
-  + reply_mode: `unsupported` (enum, optional) - How the channel can be used to reply to a message.
-  + compose_mode: `normal` (enum, optional) - Grants ability to compose new messages from this channel (`normal`) or prevents composing new messages (`unsupported`). Can be one of: `normal` or `unsupported`. (Default: `unsupported`)
-  + contact_type: `email` (enum, optional) - Contact type the channel uses. It can only be set on channel creation. Can be one of: `custom`, `email` or `phone`. (Default: `custom`)
-
 ## Channel to create
 
 + name: `My channel` (string, optional) - Name of the channel.
-+ type (enum[string], required) - Type of the channel. Can be one of: `custom`, `smtp`.
++ type (enum[string], required) - Type of the channel. Must be `smtp`.
     + Members
-        + `custom`
         + `smtp`
-+ send_as (string, optional) - **Required only for `smtp` channels**. Address of your SMTP mailbox.
-
-+ Include Channel settings
++ send_as (string, optional) - Address of your SMTP mailbox.
 
 ## Channel created
 
 + id: `cha_55c8c149` (string, required) - Unique identifier for the channel.
 + Include Channel to create
-+ address: `dw0a0b7aeg36cb56` - Address receiving the messages. Is the forwarding address for SMTP channels.
-+ sendAs: `dw0a0b7aeg36cb56` - Address which appears as the sender for messages sent from Front.
-+ Include Channel settings
++ address: `dw0a0-mowow@frontapp.com` - Address receiving the messages. Is the forwarding address for SMTP channels.
++ sendAs: `dw0a0-mowow@frontapp.com` - Address which appears as the sender for messages sent from Front.
 
-## Channel to update
-+ name: `My channel` (string, optional) - Name of the channel.
-+ settings (object, optional) - Settings to replace.
+## External message metadata
++ metadata (object, required) - Data pertaining to how this message is stored in the external system
+  + external_id: `external message 123` (string, required) - id of the message in the external system.
+  + external_conversation_id: `external_conversation_312` (string, required) - id of the conversation in the external system. This is used to thread messages together into the same conversation.
+
+## Incoming message
++ sender (object, required) - Sender of the message
+  + name: `Alex` (string, required) - Name of the person who sent this message.
+  + handle: `alex@company.com` (string, required) - Contact handle of the message sender
++ subject: `Quick sync` (string, required) - Subject to be displayed for this message
++ body: `Hey - just wanted to check what your status on the nuclear reactor? Are we still building the shut off switch on that?` (string, required) - Body text of this message
++ Include External message metadata
+
+## Inbound message received
++ message_uid: `dba584bd5116554332aa23f234j234` (string, required) - Front message uid
++ status: `accepted` (string, required) - Did front accept the message
+
+## Import outbound message
++ to (object, required) - Sender of the message
+  + name: `Alex` (string, required) - Name of the person who sent this message.
+  + handle: `alex@company.com` (string, required) - Contact handle of the message sender
++ body: `Hey - just wanted to check what your status on the nuclear reactor? Are we still building the shut off switch on that?` (string, required) - Body text of this message
++ Include External message metadata
+
+## Outbound message received
++ type: `success` (string, required) - Did front accept the message
++ external_id: `external message 2` (string, required) - External message id for this message
++ external_conversation_id: `external_conversation_1` (string, required) - External conversation id for this message

@@ -4,6 +4,8 @@ title: Front API Reference
 toc_footers:
   - <a href='https://frontapp.com/signup?affiliate=developers'>Create a developer account</a>
   - <a href='plugin.html'>Plugin API documentation</a>
+  - <a href='channels-api.html'>Channels API</a>
+  - <a href='channel-sample.html'>Channel Sample</a>
   - <a href='chat.html'>Chat widget API documentation</a>
   - <a href='changelog.html'>Changelog</a>
   - <a href='mailto:api@frontapp.com'>Contact us</a>
@@ -15,7 +17,6 @@ includes:
   - endpoints
   - attachments
   - file_upload
-  - custom_channels
   - webhooks
   - oauth
 

@@ -12,6 +12,17 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2019-11-12 - Channel API
+
+### Added
+* Description of our channel API.
+* Receive messages in Front through `POST /channels/{channel_id}/inbound_messages` & `POST /channels/{channel_id}/outbound_messages`
+
+### Deprecated
+* Creating a custom channel through `POST /channels` with the body `{type: 'custom'}`.
+* Updating a custom channel through `PATCH /channels/{channel_id}`.
+* Receive a custom message through `POST /channels/{channel_id}/incoming_messages`.
+
 ## 2019-11-01 - Drafts API
 
 ### Added

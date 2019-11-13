@@ -1070,6 +1070,8 @@ is_private | boolean | Whether or not the channel is individual
 
 A channel is a resource which can send and receive messages.
 
+For information on building your own channel type integration, see the [Channels API offering](/channels-api.html) for more info.
+
 Here is the list of existing channel types:
 
 | Type        | Description                                                                                |
@@ -1082,7 +1084,7 @@ Here is the list of existing channel types:
 | `smooch`    | Linked to a Smooch account.                                                                |
 | `intercom`  | Linked to an Intercom account.                                                             |
 | `truly`     | Linked to a truly account.                                                                 |
-| `custom`    | For messages sent and received only through the API (cf [Custom inboxes](#custom-inboxes)).|
+| `custom`    | For messages sent and received only through the API (cf [Custom inboxes](/channels-api.html)).|
 
 ## List channels
 ```shell
@@ -1176,53 +1178,7 @@ Name | Type | Description
 -----|------|------------
 channel_id | string | Id of the requested channel
 
-## Update a channel
-```shell
-
-curl --include \
-     --request PATCH \
-     --header "Content-Type: application/json" \
-     --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json" \
-     --data-binary "{
-  \"name\": \"My channel\"
-}" \
-'https://api2.frontapp.com/channels/${CHANNEL_ID}'
-```
-
-```node
-
-```
-
-> Response **204**
-
-Updates the settings of a channel.
-
-<aside class="notice">
-As of today, you can only update the settings of a <a href="#custom-channels">custom channel</a> with the API.
-</aside>
-
-`reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
-
-### HTTP Request
-
-`PATCH https://api2.frontapp.com/channels/{channel_id}`
-### Parameters
-
-
-Name | Type | Description
------|------|------------
-channel_id | string | Id of the requested channel
-
-### Body
-
-
-Name | Type | Description
------|------|------------
-name | string (optional) | Name of the channel. 
-settings | object (optional) | Settings to replace. 
-
-## Create a channel
+## Create an SMTP channel
 ```shell
 
 curl --include \
@@ -1232,13 +1188,7 @@ curl --include \
      --header "Accept: application/json" \
      --data-binary "{
   \"name\": \"My channel\",
-  \"type\": \"custom\",
-  \"settings\": {
-    \"webhook_url\": \"http://example.com\",
-    \"reply_mode\": \"unsupported\",
-    \"compose_mode\": \"normal\",
-    \"contact_type\": \"email\"
-  }
+  \"type\": \"smtp\"
 }" \
 'https://api2.frontapp.com/inboxes/${INBOX_ID}/channels'
 ```
@@ -1253,21 +1203,15 @@ curl --include \
 {
   "id": "cha_55c8c149",
   "name": "My channel",
-  "type": "custom",
-  "address": "dw0a0b7aeg36cb56",
-  "sendAs": "dw0a0b7aeg36cb56",
-  "settings": {
-    "webhook_url": "http://example.com",
-    "reply_mode": "unsupported",
-    "compose_mode": "normal",
-    "contact_type": "email"
-  }
+  "type": "smtp",
+  "address": "dw0a0-mowow@frontapp.com",
+  "sendAs": "dw0a0-mowow@frontapp.com"
 }
 ```
-Creates a channel linked to the requested inbox.
+Creates an SMTP channel linked to the requested inbox.
 
 <aside class="notice">
-As of today, you can create either a <a href="#custom-channels">custom channel</a> or a SMTP channel with the API.
+As of today, you can only create an SMTP channel with the API.
 </aside>
 
 For `smtp` type channels, we will create an **unvalidated** SMTP channel.
@@ -1275,10 +1219,6 @@ For `smtp` type channels, we will create an **unvalidated** SMTP channel.
 * In the response body returned, `address` is the **forwarding address**.
 
 * To complete the SMTP validation process, [add the forwarding address to your email provider's settings](https://help.frontapp.com/t/632v5z/switch-from-gmailo365-to-smtp-forwarding).
-
-For `custom` type channels:
-
-* `reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
 
 ### HTTP Request
 
@@ -1296,13 +1236,129 @@ inbox_id | string | Id of the inbox into which the channel messages will go.
 Name | Type | Description
 -----|------|------------
 name | string (optional) | Name of the channel. 
-type | enum | Type of the channel. Can be one of: `custom`, `smtp`. 
-send_as | string (optional) | **Required only for `smtp` channels**. Address of your SMTP mailbox. 
-settings | object (optional) | **Required only for `custom` channels.** 
-settings.webhook_url | string (optional) | `custom` type only. URL to which will be sent the replies of a custom message. 
-settings.reply_mode | enum (optional) | How the channel can be used to reply to a message. 
-settings.compose_mode | enum (optional) | Grants ability to compose new messages from this channel (`normal`) or prevents composing new messages (`unsupported`). Can be one of: `normal` or `unsupported`. (Default: `unsupported`) 
-settings.contact_type | enum (optional) | Contact type the channel uses. It can only be set on channel creation. Can be one of: `custom`, `email` or `phone`. (Default: `custom`) 
+type | enum | Type of the channel. Must be `smtp`. 
+send_as | string (optional) | Address of your SMTP mailbox. 
+
+## Receive Message
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"sender\": {
+    \"name\": \"Alex\",
+    \"handle\": \"alex@company.com\"
+  },
+  \"subject\": \"Quick sync\",
+  \"body\": \"Hey - just wanted to check what your status on the nuclear reactor? Are we still building the shut off switch on that?\",
+  \"metadata\": {
+    \"external_id\": \"external message 123\",
+    \"external_conversation_id\": \"external_conversation_312\"
+  }
+}" \
+'https://api2.frontapp.com/channels/${CHANNEL_ID}/inbound_messages'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "message_uid": "dba584bd5116554332aa23f234j234",
+  "status": "accepted"
+}
+```
+This endpoint is used in building your own channel type. See the [Channels API offering](http://localhost:4567/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/channels/{channel_id}/inbound_messages`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+channel_id | string | The id of the channel this message is sent to
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+sender | object | Sender of the message 
+sender.name | string | Name of the person who sent this message. 
+sender.handle | string | Contact handle of the message sender 
+subject | string | Subject to be displayed for this message 
+body | string | Body text of this message 
+metadata | object | Data pertaining to how this message is stored in the external system 
+metadata.external_id | string | id of the message in the external system. 
+metadata.external_conversation_id | string | id of the conversation in the external system. This is used to thread messages together into the same conversation. 
+
+## Import Sent Message
+```shell
+
+curl --include \
+     --request POST \
+     --header "Content-Type: application/json" \
+     --header "Authorization: Bearer {your_token}" \
+     --header "Accept: application/json" \
+     --data-binary "{
+  \"to\": {
+    \"name\": \"Alex\",
+    \"handle\": \"alex@company.com\"
+  },
+  \"body\": \"Hey - just wanted to check what your status on the nuclear reactor? Are we still building the shut off switch on that?\",
+  \"metadata\": {
+    \"external_id\": \"external message 123\",
+    \"external_conversation_id\": \"external_conversation_312\"
+  }
+}" \
+'https://api2.frontapp.com/channels/${CHANNEL_ID}/outbound_messages'
+```
+
+```node
+
+```
+
+> Response **200**
+
+```json
+{
+  "type": "success",
+  "external_id": "external message 2",
+  "external_conversation_id": "external_conversation_1"
+}
+```
+This endpoint is used in building your own channel type. See the [Channels API offering](http://localhost:4567/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
+
+### HTTP Request
+
+`POST https://api2.frontapp.com/channels/{channel_id}/outbound_messages`
+### Parameters
+
+
+Name | Type | Description
+-----|------|------------
+channel_id | string | The id of the channel this message is sent to
+
+### Body
+
+
+Name | Type | Description
+-----|------|------------
+to | object | Sender of the message 
+to.name | string | Name of the person who sent this message. 
+to.handle | string | Contact handle of the message sender 
+body | string | Body text of this message 
+metadata | object | Data pertaining to how this message is stored in the external system 
+metadata.external_id | string | id of the message in the external system. 
+metadata.external_conversation_id | string | id of the conversation in the external system. This is used to thread messages together into the same conversation. 
 
 # Conversations
 > 
@@ -3410,76 +3466,6 @@ channel_id | string (optional) | Channel through which to send the message. Defa
 to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message. 
 cc | array (optional) | List of the recipient handles who will receive a copy of this message. By default it will use the cc'ed recipients of the last received message. 
 bcc | array (optional) | List of the recipient handles who will receive a blind copy of this message 
-
-## Receive custom message
-```shell
-
-curl --include \
-     --request POST \
-     --header "Content-Type: application/json" \
-     --header "Authorization: Bearer {your_token}" \
-     --header "Accept: application/json" \
-     --data-binary "{
-  \"sender\": {
-    \"name\": \"hermes\",
-    \"handle\": \"hermes_123\"
-  },
-  \"subject\": \"Question\",
-  \"body\": \"Didn't we used to be a delivery company?\",
-  \"attachments\": [],
-  \"metadata\": {}
-}" \
-'https://api2.frontapp.com/channels/${CHANNEL_ID}/incoming_messages'
-```
-
-```node
-
-```
-
-> Response **202**
-
-```json
-{
-  "message_uid": "3b1q41d8"
-}
-```
-Receives a custom message in Front. This endpoint is available for [custom channels](#custom-channels) **ONLY**.
-
-If you want to receive a custom message with attached files, please check [how to send multipart request](#send-multipart-request).
-
-<aside class="notice">
-Receiving a message in Front is done asynchronously. <br>
-The endpoint will only validate the payload and will return a <code>message_uid</code> that can be used as an alias for the message ID (<code>alt:uid:{message_uid}</code>.
-<br><br>
-We guarantee that the UID will refer to a message but we don't guarantee that the message already exists. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
-</aside>
-
-### HTTP Request
-
-`POST https://api2.frontapp.com/channels/{channel_id}/incoming_messages`
-### Parameters
-
-
-Name | Type | Description
------|------|------------
-channel_id | string | Id of the requested custom channel
-
-### Body
-
-
-Name | Type | Description
------|------|------------
-sender | object | Data of the sender 
-sender.contact_id | string (optional) | ID of the contact in Front corresponding to the sender 
-sender.name | string (optional) | Name of the sender 
-sender.handle | string | Handle of the sender. It can be any string used to uniquely identify the sender 
-subject | string (optional) | Subject of the message 
-body | string | Body of the message 
-body_format | enum (optional) | Format of the message body. Can be one of: `'html'`, `'markdown'`. (Default: `'markdown'`)
-attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
-metadata | object (optional) |  
-metadata.thread_ref | string (optional) | Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead 
-metadata.headers | object (optional) | Custom object where any internal information can be stored 
 
 ## Import message
 ```shell

@@ -4,6 +4,7 @@ title: Front Chat API Reference
 toc_footers:
   - <a href='/'>API reference</a>
   - <a href='plugin.html'>Plugin API documentation</a>
+  - <a href='channel-sample.html'>Channel Sample</a>
   - <a href='changelog.html'>Changelog</a>
   - <a href='mailto:api@frontapp.com'>Contact us</a>
 
