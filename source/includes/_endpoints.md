@@ -1274,7 +1274,7 @@ curl --include \
   "status": "accepted"
 }
 ```
-This endpoint is used in building your own channel type. See the [Channels API offering](http://localhost:4567/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
+This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
 
 ### HTTP Request
 
@@ -1335,7 +1335,7 @@ curl --include \
   "external_conversation_id": "external_conversation_1"
 }
 ```
-This endpoint is used in building your own channel type. See the [Channels API offering](http://localhost:4567/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
+This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
 
 ### HTTP Request
 
@@ -3122,17 +3122,17 @@ A message can be either inbound (received) or outbound (sent). You can know if a
 
 Each message has a type depending on the channel it has been sent with:
 
-| Type name    | Description                        |
-|--------------|------------------------------------|
-| `email`      | Email message                      |
-| `tweet`      | Message from Twitter               |
-| `tweet_dm`   | Direct Message from Twitter        |
-| `sms`        | SMS message                        |
-| `smooch`     | Message from Smooch                |
-| `facebook`   | Message from Facebook              |
-| `intercom`   | Message from Intercom              |
-| `call`       | Phone call                         |
-| `custom`     | [Custom message](#custom-channels) |
+| Type name    | Description                          |
+|--------------|--------------------------------------|
+| `email`      | Email message                        |
+| `tweet`      | Message from Twitter                 |
+| `tweet_dm`   | Direct Message from Twitter          |
+| `sms`        | SMS message                          |
+| `smooch`     | Message from Smooch                  |
+| `facebook`   | Message from Facebook                |
+| `intercom`   | Message from Intercom                |
+| `call`       | Phone call                           |
+| `custom`     | [Custom message](/channels-api.html) |
 
 <aside class="notice">
 In order to comply with <a href="https://developer.twitter.com/en/developer-terms/policy#f-be-a-good-partner-to-twitter">Twitter's API Terms & Conditions</a>, Twitter content is not distributed through Front API.<br>
