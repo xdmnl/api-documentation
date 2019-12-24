@@ -1274,7 +1274,11 @@ curl --include \
   "status": "accepted"
 }
 ```
-This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
+<aside class="warning">
+This endpoint can only be used by Channels in partnership with Front. See the <a href="/channels-api.html">Channels API offering</a> for more info. 
+</aside>
+
+When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
 
 ### HTTP Request
 
@@ -1300,7 +1304,7 @@ metadata | object | Data pertaining to how this message is stored in the externa
 metadata.external_id | string | id of the message in the external system. 
 metadata.external_conversation_id | string | id of the conversation in the external system. This is used to thread messages together into the same conversation. 
 
-## Import Sent Message
+## Import External Message
 ```shell
 
 curl --include \
@@ -1335,7 +1339,15 @@ curl --include \
   "external_conversation_id": "external_conversation_1"
 }
 ```
-This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
+<aside class="warning">
+This endpoint can only be used by Channels in partnership with Front. See the <a href="/channels-api.html">Channels API offering</a> for more info. 
+</aside>
+
+<aside class="notice">
+If you are looking to import a message to any inbox, please see the <a href="/#import-message">Inbox import endpoint</a>
+</aside>
+
+This endpoint imports messages sent from an external service as a sent message in Front.
 
 ### HTTP Request
 
