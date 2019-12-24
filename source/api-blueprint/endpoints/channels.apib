@@ -74,7 +74,11 @@ For `smtp` type channels, we will create an **unvalidated** SMTP channel.
 
 ### Receive Message [POST /channels/{channel_id}/inbound_messages]
 
-This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
+<aside class="warning">
+This endpoint can only be used by Channels in partnership with Front. See the <a href="/channels-api.html">Channels API offering</a> for more info. 
+</aside>
+
+When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
 
 + Parameters
     + channel_id (string, required) - The id of the channel this message is sent to
@@ -86,9 +90,17 @@ This endpoint is used in building your own channel type. See the [Channels API o
 + Response 200 (application/json)
     + Attributes (Inbound message received)
 
-### Import Sent Message [POST /channels/{channel_id}/outbound_messages]
+### Import External Message [POST /channels/{channel_id}/outbound_messages]
 
-This endpoint is used in building your own channel type. See the [Channels API offering](/channels-api.html) for more info. This endpoint enables messages sent directly from an external service to reflect as a sent message in Front as well.
+<aside class="warning">
+This endpoint can only be used by Channels in partnership with Front. See the <a href="/channels-api.html">Channels API offering</a> for more info. 
+</aside>
+
+<aside class="notice">
+If you are looking to import a message to any inbox, please see the <a href="/#import-message">Inbox import endpoint</a>
+</aside>
+
+This endpoint imports messages sent from an external service as a sent message in Front.
 
 + Parameters
     + channel_id (string, required) - The id of the channel this message is sent to
