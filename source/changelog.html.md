@@ -32,11 +32,11 @@ The changelog is the history of updates released. Front is committed in not brea
 ## 2019-11-01 - Drafts API
 
 ### Added
-* `GET /conversations/{conversation_id}/drafts` - Listing drafts within a conversation
-* `POST /channels/{channel_id}/drafts` - Creating a draft as a 
+* `GET /conversations/{conversation_id}/drafts` - List drafts within a conversation
+* `POST /channels/{channel_id}/drafts` - Create a draft as a new conversation
 * `POST /conversations/{conversation_id}/drafts/{draft_id}` - Create a draft as a reply to a conversation
-* `PATCH /drafts/{draft_id}` - Edits a draft
-* `DELETE /drafts/{draft_id}` - Deletes a draft
+* `PATCH /drafts/{draft_id}` - Update a draft
+* `DELETE /drafts/{draft_id}` - Delete a draft
 
 ## 2019-10-29 - Create SMTP channel.
 
@@ -85,7 +85,7 @@ The changelog is the history of updates released. Front is committed in not brea
 ## 2019-05-20 - Conversation endpoints updates
 
 ### Added
-* `PUT /conversations/:conversation_id/assignee` route to update the assignee of the provided conversation. 
+* `PUT /conversations/:conversation_id/assignee` route to update the assignee of the provided conversation.
 
 ## 2019-05-10 - Tag & Conversation endpoints updates
 
@@ -113,7 +113,7 @@ The changelog is the history of updates released. Front is committed in not brea
 * `POST /channels/:channel_id` and `PATCH /channels/:channel_id` supports the optional `name` field to control the name of a channel from the API.
 
 ### Fixed
-* Documentation wording / typos. 
+* Documentation wording / typos.
 
 ## 2019-01-16 - Teammate endpoint updates
 
