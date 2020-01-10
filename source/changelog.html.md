@@ -18,10 +18,15 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2020-01-10 - Send Message Updates
+
+### Deprecated
+* Deprecate `tag` from `POST /channels/{channel_id}/messages` and `POST /conversations/{conversation_id}/messages`. Please use `tag_ids` instead.
+
 ## 2019-11-12 - Channel API
 
 ### Added
-* Description of our channel API.
+* Description of our Channel API.
 * Receive messages in Front through `POST /channels/{channel_id}/inbound_messages` & `POST /channels/{channel_id}/outbound_messages`
 
 ### Deprecated

@@ -3265,7 +3265,7 @@ curl --include \
   \"text\": \"Why is Zoidberg the only one still alone?\",
   \"attachments\": [],
   \"options\": {
-    \"tags\": [],
+    \"tag_ids\": [],
     \"archive\": true
   },
   \"to\": [
@@ -3358,7 +3358,7 @@ body | string | Body of the message
 text | string (optional) | Text version of the body for messages with non-text body 
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 options | object (optional) | Sending options 
-options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
+options.tag_ids | array (optional) | List of tag IDs to add to the conversation 
 options.archive | boolean (optional) | Archive the conversation right when sending the message (Default: `true`)
 to | array | List of the recipient handles who will receive this message 
 cc | array (optional) | List of the recipient handles who will receive a copy of this message 
@@ -3380,7 +3380,7 @@ curl --include \
   \"text\": \"Why is Zoidberg the only one still alone?\",
   \"attachments\": [],
   \"options\": {
-    \"tags\": [],
+    \"tag_ids\": [],
     \"archive\": true
   },
   \"channel_id\": \"cha_55c8c149\",
@@ -3472,7 +3472,7 @@ body | string | Body of the message
 text | string (optional) | Text version of the body for messages with non-text body 
 attachments | array (optional) | Binary data of the attached files. Available only for [multipart request](#send-multipart-request). 
 options | object (optional) | Sending options 
-options.tags | array (optional) | List of tag names to add to the conversation (unknown tags will automatically be created) 
+options.tag_ids | array (optional) | List of tag IDs to add to the conversation 
 options.archive | boolean (optional) | Archive the conversation right when sending the message (Default: `true`)
 channel_id | string (optional) | Channel through which to send the message. Defaults to the original conversation channel. For imported messages or messages received on multiple channels, you **MUST** specify a channel ID. 
 to | array (optional) | List of the recipient handles who will receive this message. By default it will use the recipients of the last received message. 
