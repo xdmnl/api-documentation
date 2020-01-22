@@ -67,6 +67,23 @@
 + cc (array[string], optional) - List of the recipient handles who will receive a copy of this message
 + bcc (array[string], optional) - List of the recipient handles who will receive a blind copy of this message
 
+
+## Custom message
+
++ sender (object, required) - Data of the sender
+    + contact_id (string, optional) - ID of the contact in Front corresponding to the sender
+    + name: `hermes` (string, optional) - Name of the sender
+    + handle: `hermes_123` (string, required) - Handle of the sender. It can be any string used to uniquely identify the sender
++ subject: `Question` (string, optional) - Subject of the message
++ body: `Didn't we used to be a delivery company?` (string, required) - Body of the message
++ body_format: `markdown` (enum[string], optional, default) - Format of the message body.
+     + `html`
+     + `markdown`
++ attachments (array[], optional) - Binary data of the attached files. Available only for [multipart request](#send-multipart-request).
++ metadata (object, optional)
+    + thread_ref (string, optional) - Custom reference which will be used to thread messages. If you omit this field, we'll thread by sender instead
+    + headers (object, optional) - Custom object where any internal information can be stored
+
 ## Outbound reply
 
 + Include Outbound message

@@ -18,6 +18,13 @@ toc_footers:
 
 The changelog is the history of updates released. Front is committed in not breaking backwards compatibility between releases.
 
+## 2020-01-23 - Documentation Updates
+
+### Restored documentation for
+* Creating a custom channel through `POST /channels` with the body `{type: 'custom'}`.
+* Updating a custom channel through `PATCH /channels/{channel_id}`.
+* Receive a custom message through `POST /channels/{channel_id}/incoming_messages`.
+
 ## 2020-01-10 - Send Message Updates
 
 ### Deprecated

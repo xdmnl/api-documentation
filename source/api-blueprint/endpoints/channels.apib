@@ -16,7 +16,7 @@ Here is the list of existing channel types:
 | `smooch`    | Linked to a Smooch account.                                                                |
 | `intercom`  | Linked to an Intercom account.                                                             |
 | `truly`     | Linked to a truly account.                                                                 |
-| `custom`    | For messages sent and received only through the API (cf [Custom inboxes](/channels-api.html)).|
+| `custom`    | For messages sent and received only through the API.|
 
 + Parameters
     + channel_id (string, required) - Id of the requested channel
@@ -50,12 +50,12 @@ Fetches the information of a channel. See [resource aliases](#resource-aliases) 
 + Response 200 (application/json)
     + Attributes (Channel)
 
-### Create an SMTP channel [POST /inboxes/{inbox_id}/channels]
+### Create a channel [POST /inboxes/{inbox_id}/channels]
 
-Creates an SMTP channel linked to the requested inbox.
+Creates a channel linked to the requested inbox.
 
 <aside class="notice">
-As of today, you can only create an SMTP channel with the API.
+As of today, you can only create an SMTP or custom channel with the API.
 </aside>
 
 For `smtp` type channels, we will create an **unvalidated** SMTP channel.
@@ -72,10 +72,30 @@ For `smtp` type channels, we will create an **unvalidated** SMTP channel.
 + Response 201 (application/json)
     + Attributes (Channel created)
 
+### Update a channel [PATCH]
+
+Updates the settings of a channel.
+
+<aside class="notice">
+As of today, you can only update the settings of a custom channel with the API.
+</aside>
+
+`reply_mode` can be one of: `same_channel` (channel can only reply to messages within the same channel) or `unsupported` (channel cannot reply to any messages) (Default: `same_channel`)
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Channel to update)
+
++ Response 204
+
 ### Receive Message [POST /channels/{channel_id}/inbound_messages]
 
 <aside class="warning">
-This endpoint can only be used by Channels in partnership with Front. See the <a href="/channels-api.html">Channels API offering</a> for more info. 
+This endpoint can only be used by Channels in partnership with Front. See the <a href="/channels-api.html">Channels API offering</a> for more info.
+</aside>
+
+<aside class="notice">
+If you are building a channel to be used for your company only, please use the <a href="/#receive-custom-message">incoming message </a> endpoint.
 </aside>
 
 When your system receives a message, this message can be sent to the Front channel by posting it to this endpoint.
