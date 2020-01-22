@@ -6119,7 +6119,7 @@ Exports are formatted as a [CSV](https://en.wikipedia.org/wiki/Comma-separated_v
 
 **If a message appears in multiple inboxes, it will appear once for each inbox**.
 
-Below is table of the field names & descriptions that will be included in the export.
+Below is a table of the field names & descriptions that will be included in the export.
 
 | Name                | Desctiption                                                                                                                                       |
 |---------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -6147,7 +6147,7 @@ Below is table of the field names & descriptions that will be included in the ex
 
 **Timezone**
 
-All dates in the the export are presented in the same timezone. If the export was requested from the app (by clicking on "Request Export"), it will be in the timezone of the user. If the export is requested with the API, the timezone can be manually defined (or defaults to UTC).
+All dates in the export are presented in the same timezone. If the export was requested from the app (by clicking on "Request Export"), it will be in the timezone of the user. If the export is requested with the API, the timezone can be manually defined (or defaults to UTC).
 
 **Response time**
 
