@@ -81,6 +81,29 @@ If you want to send a reply with attached files, please check [how to send multi
 <!-- include(../includes/accepted_response.apib) -->
     + Attributes (Draft)
 
+### Receive custom message [POST /channels/{channel_id}/incoming_messages]
+
+Receives a custom message in Front. This endpoint is available for custom channels **ONLY**.
+
+If you want to receive a custom message with attached files, please check [how to send multipart request](#send-multipart-request).
+
+<aside class="notice">
+Receiving a message in Front is done asynchronously. <br>
+The endpoint will only validate the payload and will return a <code>message_uid</code> that can be used as an alias for the message ID (<code>alt:uid:{message_uid}</code>.
+<br><br>
+We guarantee that the UID will refer to a message but we don't guarantee that the message already exists. The API might respond with a 404 error code if trying to use the UID before the message is effectively created.
+</aside>
+
++ Parameters
+    + channel_id (string, required) - Id of the requested custom channel
+
++ Request (application/json)
+    <!-- include(../includes/request_header.apib) -->
+    + Attributes (Custom message)
+
+<!-- include(../includes/accepted_response.apib) -->
+    + Attributes (Accepted message)
+
 ### Import message [POST /inboxes/{inbox_id}/imported_messages]
 
 Appends a new message into an inbox.

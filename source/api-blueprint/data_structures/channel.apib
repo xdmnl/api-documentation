@@ -22,13 +22,25 @@
 + settings (object, required)
 + is_private: `false` (boolean, required) - Whether or not the channel is individual
 
+
+## Channel settings
+
++ settings (object, optional) - **Required only for `custom` channels.**
+  + webhook_url: `http://example.com` (string, optional) - `custom` type only. URL to which will be sent the replies of a custom message.
+  + reply_mode: `unsupported` (enum, optional) - How the channel can be used to reply to a message.
+  + compose_mode: `normal` (enum, optional) - Grants ability to compose new messages from this channel (`normal`) or prevents composing new messages (`unsupported`). Can be one of: `normal` or `unsupported`. (Default: `unsupported`)
+  + contact_type: `email` (enum, optional) - Contact type the channel uses. It can only be set on channel creation. Can be one of: `custom`, `email` or `phone`. (Default: `custom`)
+
 ## Channel to create
 
 + name: `My channel` (string, optional) - Name of the channel.
-+ type (enum[string], required) - Type of the channel. Must be `smtp`.
++ type (enum[string], required) - Type of the channel. Can be one of: `custom`,  `smtp`.
     + Members
+        + `custom`
         + `smtp`
-+ send_as (string, optional) - Address of your SMTP mailbox.
++ send_as (string, optional) - **Required only for `smtp` channels**. Address of your SMTP mailbox.
+
++ Include Channel settings
 
 ## Channel created
 
@@ -65,3 +77,7 @@
 + type: `success` (string, required) - Did front accept the message
 + external_id: `external message 2` (string, required) - External message id for this message
 + external_conversation_id: `external_conversation_1` (string, required) - External conversation id for this message
+
+## Channel to update
++ name: `My channel` (string, optional) - Name of the channel.
++ settings (object, optional) - Settings to replace.
